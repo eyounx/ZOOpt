@@ -51,8 +51,7 @@ class SRacos(RacosC):
                 classifier = RacosClassification(
                     self._parameter.get_objective().get_dim(), self._positive_data, self._negative_data)
                 classifier.mixed_classification()
-                x = classifier.rand_sample()
-                ins = self._parameter.get_objective().construct_instance(x)
+                ins = self.distinct_sample_classifier(classifier, True, self._parameter.get_train_size())
             else:
                 ins = self.distinct_sample(self._parameter.get_objective().get_dim())
             bad_ele = self.replace(self._positive_data, ins, 'pos')
@@ -73,20 +72,6 @@ class SRacos(RacosC):
             best_sol = min(iset, key=lambda x: x.get_value())
             return self.strategy_lm(iset, best_sol, x)
 
-    # worst replace
-    def strategy_wr(self, iset, x, iset_type):
-        if iset_type == 'pos':
-            index = self.binary_search(iset, x, 0, len(iset) - 1)
-            iset.insert(index, x)
-            worst_ele = iset.pop()
-        else:
-            worst_ele, worst_index = Instance.find_maximum(iset)
-            if worst_ele.get_value() > x.get_value():
-                iset[worst_index] = x
-            else:
-                worst_ele = x
-        return worst_ele
-
     def binary_search(self, iset, x, begin, end):
         x_value = x.get_value()
         if x_value <= iset[begin].get_value():
@@ -101,6 +86,20 @@ class SRacos(RacosC):
         else:
             return self.binary_search(iset, x, mid, end)
 
+    # worst replace
+    def strategy_wr(self, iset, x, iset_type):
+        if iset_type == 'pos':
+            index = self.binary_search(iset, x, 0, len(iset) - 1)
+            iset.insert(index, x)
+            worst_ele = iset.pop()
+        else:
+            worst_ele, worst_index = Instance.find_maximum(iset)
+            if worst_ele.get_value() > x.get_value():
+                iset[worst_index] = x
+            else:
+                worst_ele = x
+        return worst_ele
+
     # random replace
     def strategy_rr(self, iset, x):
         len_iset = len(iset)
@@ -109,6 +108,7 @@ class SRacos(RacosC):
         iset[replace_index] = x
         return replace_ele
 
+    # replace the farest= instance from best_sol
     def strategy_lm(self, iset, best_sol, x):
         farest_dis = 0
         for i in range(iset):

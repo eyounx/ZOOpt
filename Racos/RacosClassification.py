@@ -132,6 +132,9 @@ class RacosClassification:
         index_set = range(self._solution_space.get_size())
         types = self._solution_space.get_types()
         while len_negative > 0:
+            # print len(index_set)
+            # self.print_neg()
+            # self.print_pos()
             k = index_set[Global.rand.randint(0, len(index_set) - 1)]
             x_pos_k = self._x_positive.get_coordinate(k)
             # continuous
@@ -184,7 +187,11 @@ class RacosClassification:
     def set_uncertain_bit(self, iset):
         index_set = iset
         for i in range(self._uncertain_bit):
-            index = index_set[Global.rand.randint(0, len(index_set) - 1)]
+            try:
+                index = index_set[Global.rand.randint(0, len(index_set) - 1)]
+            except ValueError:
+                print index_set
+                sys.exit(1)
             self._label[index] = True
             index_set.remove(index)
         return
@@ -204,6 +211,12 @@ class RacosClassification:
 
     def get_sample_region(self):
         return self._sample_region
+
+    def get_sample_space(self):
+        size = self._solution_space.get_size()
+        regions = self._sample_region
+        types = self._solution_space.get_types()
+        return Dimension(size, regions, types)
 
     # for debugging
     def print_neg(self):

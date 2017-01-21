@@ -27,7 +27,7 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-from ObjectFunction import Sphere, Arkley
+from ObjectFunction import Sphere, Arkley, SetCover
 from Dimension import Dimension
 from RacosOptimization import RacosOptimization
 from Objective import Objective
@@ -46,7 +46,7 @@ def result_analysis(result, top):
 
 
 # Sphere
-if True:
+if False:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -72,7 +72,7 @@ if True:
     print 'time is %f' % (t2 - t1)
 
 # Arkley
-if False:
+if True:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -97,3 +97,26 @@ if False:
     result_analysis(result, 100)
     t2 = time.clock()
     print 'time is %f' % (t2 - t1)
+
+# discrete optimization
+if False:
+
+    # dimension setting
+    dim_size = 20
+    dim_regs = []
+    dim_tys = []
+    for i in range(dim_size):
+        dim_regs.append([0, 1])
+        dim_tys.append(False)
+    dim = Dimension(dim_size, dim_regs, dim_tys)
+    objective = Objective(SetCover, dim)
+    budget = 2000
+    parameter = Parameter(objective, budget, autoset=False)
+    parameter.set_train_size(6)
+    parameter.set_positive_size(1)
+    parameter.set_negative_size(5)
+    racos = RacosOptimization()
+    ins = racos.opt(parameter, 'SRacos')
+    ins.print_instance()
+    result.append(ins.get_value())
+    # result_analysis(result, 100)

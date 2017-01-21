@@ -99,7 +99,7 @@ class Dimension:
             if self._types[i] is True:
                 return False, 0
             else:
-                number *= len(self._regions[i])
+                number *= self._regions[i][1] - self._regions[i][0] + 1
         return True, number
 
     # deep copy this instance

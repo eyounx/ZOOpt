@@ -82,12 +82,12 @@ class RacosC:
         self._best_solution = self._positive_data[0]
         return
 
-    # @staticmethod
-    # def extend(seta, setb):
-    #     result = copy.deepcopy(seta)
-    #     for x in setb:
-    #         result.append(copy.deepcopy(x))
-    #     return result
+    @staticmethod
+    def extend(seta, setb):
+        result = copy.deepcopy(seta)
+        for x in setb:
+            result.append(copy.deepcopy(x))
+        return result
 
     # Check if x is distinct from each instance in seta
     # return False if there exists an instance the same as x,
@@ -105,20 +105,46 @@ class RacosC:
         x = objective.construct_instance(dim.rand_sample())
         times = 1
         if turnon is True:
-            while self.judge_distinct(self._data, x) is False:
-                # print '------sample repeated------'
+            while self.judge_distinct(self._positive_data, x) is False and \
+                    self.judge_distinct(self._negative_data, x) is False:
+                print '------sample repeated------'
                 x = objective.construct_instance(dim.rand_sample())
                 times += 1
                 if times % 10 == 0:
                     limited, number = dim.limited_space()
                     if limited is True:
-                        if limited <= data_num:
+                        if number <= data_num:
                             print '------data number in sample space is too small------'
                             sys.exit()
                     if times > 100:
                         print '------error dead repeated------'
                         sys.exit()
         return x
+
+    def distinct_sample_classifier(self, classifier, turnon=True, data_num=0):
+        x = classifier.rand_sample()
+        ins = self._parameter.get_objective().construct_instance(x)
+        times = 1
+        if turnon is True:
+            while self.judge_distinct(self._positive_data, ins) is False or \
+                    self.judge_distinct(self._negative_data, ins) is False:
+                print '------sample repeated------'
+                x = classifier.rand_sample()
+                ins = self._parameter.get_objective().construct_instance(x)
+                times += 1
+                if times % 10 == 0:
+                    if times == 10:
+                        space = classifier.get_sample_space()
+                    limited, number = space.limited_space()
+                    if limited is True:
+                        if number <= data_num:
+                            print '------data number in sample space is too small------'
+                            sys.exit()
+                    if times > 100:
+                        print '------error dead repeated------'
+                        sys.exit()
+        return ins
+
 
     # For debugging
     def print_positive_data(self):
