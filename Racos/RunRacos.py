@@ -27,7 +27,7 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-from ObjectFunction import Sphere, Arkley, SetCover
+from ObjectFunction import Sphere, Arkley, SetCover, MixedFunction
 from Dimension import Dimension
 from RacosOptimization import RacosOptimization
 from Objective import Objective
@@ -72,7 +72,7 @@ if False:
     print 'time is %f' % (t2 - t1)
 
 # Arkley
-if True:
+if False:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -91,7 +91,7 @@ if True:
         parameter.set_positive_size(1)
         parameter.set_negative_size(20)
         racos = RacosOptimization()
-        ins = racos.opt(parameter, 'Racos')
+        ins = racos.opt(parameter, 'SRacos')
         ins.print_instance()
         result.append(ins.get_value())
     result_analysis(result, 100)
@@ -100,23 +100,53 @@ if True:
 
 # discrete optimization
 if False:
-
     # dimension setting
-    dim_size = 20
-    dim_regs = []
-    dim_tys = []
-    for i in range(dim_size):
-        dim_regs.append([0, 1])
-        dim_tys.append(False)
-    dim = Dimension(dim_size, dim_regs, dim_tys)
-    objective = Objective(SetCover, dim)
-    budget = 2000
-    parameter = Parameter(objective, budget, autoset=False)
-    parameter.set_train_size(6)
-    parameter.set_positive_size(1)
-    parameter.set_negative_size(5)
-    racos = RacosOptimization()
-    ins = racos.opt(parameter, 'SRacos')
-    ins.print_instance()
-    result.append(ins.get_value())
-    # result_analysis(result, 100)
+    repeat = 100
+    result = []
+    for i in range(repeat):
+        dim_size = 20
+        dim_regs = []
+        dim_tys = []
+        for i in range(dim_size):
+            dim_regs.append([0, 1])
+            dim_tys.append(False)
+        dim = Dimension(dim_size, dim_regs, dim_tys)
+        objective = Objective(SetCover, dim)
+        budget = 2000
+        parameter = Parameter(objective, budget, autoset=False)
+        parameter.set_train_size(6)
+        parameter.set_positive_size(1)
+        parameter.set_negative_size(5)
+        racos = RacosOptimization()
+        ins = racos.opt(parameter, 'SRacos')
+        ins.print_instance()
+        result.append(ins.get_value())
+    result_analysis(result, 100)
+
+# mixed optimization
+if True:
+    repeat = 15
+    result = []
+    for i in range(repeat):
+        dim_size = 10
+        dim_regs = []
+        dim_tys = []
+        for i in range(dim_size):
+            if i%2 == 0:
+                dim_regs.append([-1, 1])
+                dim_tys.append(True)
+            else:
+                dim_regs.append([0, 100])
+                dim_tys.append(False)
+        dim = Dimension(dim_size, dim_regs, dim_tys)
+        objective = Objective(MixedFunction, dim)
+        budget = 2000
+        parameter = Parameter(objective, budget, autoset=True)
+        # parameter.set_train_size(6)
+        # parameter.set_positive_size(1)
+        # parameter.set_negative_size(5)
+        racos = RacosOptimization()
+        ins = racos.opt(parameter, 'Racos')
+        ins.print_instance()
+        result.append(ins.get_value())
+    result_analysis(result, 15)

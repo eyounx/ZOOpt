@@ -46,7 +46,7 @@ class SRacos(RacosC):
         self.set_parameters(parameter)
         for i in range(self._parameter.get_budget() - self._parameter.get_train_size()):
             if i == 0:
-                time_1 = time.time()
+                time_log1 = time.time()
             if Global.rand.random() < self._parameter.get_probability():
                 classifier = RacosClassification(
                     self._parameter.get_objective().get_dim(), self._positive_data, self._negative_data)
@@ -58,9 +58,11 @@ class SRacos(RacosC):
             self.replace(self._negative_data, bad_ele, 'neg', strategy)
             self._best_solution = self._positive_data[0]
             if i == 4:
-                time_2 = time.time()
-                print 'expected run time is %f s:' % ((self._parameter.get_budget() - self._parameter.get_train_size()) *
-                                                      (time_2 - time_1) / 5)
+                time_log2 = time.time()
+                expected_time = (self._parameter.get_budget() - self._parameter.get_train_size()) * \
+                                (time_log2 - time_log1) / 5
+                if expected_time > 5:
+                    print 'expected run time is %f s:' % (expected_time)
         return self._best_solution
 
     def replace(self, iset, x, iset_type, strategy='WR'):

@@ -69,18 +69,22 @@ class RacosClassification:
         index_set = range(self._solution_space.get_size())
         while len_negative > 0:
             k = index_set[Global.rand.randint(0, len(index_set) - 1)]
-            index_set.remove(k)
+
             x_pos_k = self._x_positive.get_coordinate(k)
             i = 0
+            delete = 0
             while i < len_negative:
                 if self._negative_solution[i].get_coordinate(k) != x_pos_k:
                     len_negative -= 1
+                    delete += 1
                     itemp = self._negative_solution[i]
                     self._negative_solution[i] = self._negative_solution[len_negative]
                     self._negative_solution[len_negative] = itemp
                 else:
                         i += 1
-                self.set_uncertain_bit(index_set)
+            if delete != 0:
+                index_set.remove(k)
+        self.set_uncertain_bit(index_set)
         return
 
     # This method works if self._solution_space is continuous
@@ -132,9 +136,6 @@ class RacosClassification:
         index_set = range(self._solution_space.get_size())
         types = self._solution_space.get_types()
         while len_negative > 0:
-            # print len(index_set)
-            # self.print_neg()
-            # self.print_pos()
             k = index_set[Global.rand.randint(0, len(index_set) - 1)]
             x_pos_k = self._x_positive.get_coordinate(k)
             # continuous
@@ -170,16 +171,19 @@ class RacosClassification:
                                 i += 1
             # discrete
             else:
-                index_set.remove(k)
+                delete = 0
                 i = 0
                 while i < len_negative:
                     if self._negative_solution[i].get_coordinate(k) != x_pos_k:
                         len_negative -= 1
+                        delete += 1
                         itemp = self._negative_solution[i]
                         self._negative_solution[i] = self._negative_solution[len_negative]
                         self._negative_solution[len_negative] = itemp
                     else:
                         i += 1
+                if delete != 0:
+                    index_set.remove(k)
         self.set_uncertain_bit(index_set)
         return
 
@@ -187,11 +191,7 @@ class RacosClassification:
     def set_uncertain_bit(self, iset):
         index_set = iset
         for i in range(self._uncertain_bit):
-            try:
-                index = index_set[Global.rand.randint(0, len(index_set) - 1)]
-            except ValueError:
-                print index_set
-                sys.exit(1)
+            index = index_set[Global.rand.randint(0, len(index_set) - 1)]
             self._label[index] = True
             index_set.remove(index)
         return

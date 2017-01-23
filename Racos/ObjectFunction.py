@@ -85,7 +85,7 @@ def SetCover(x):
     dims = []
     for i in range(len(subset[0])):
         dims.append(False)
-    print len(subset)
+    # print len(subset)
     for i in range(len(subset)):
         if x[i] == 1:
             countw += weight[i]
@@ -101,3 +101,9 @@ def SetCover(x):
         countw += allweight
 
     return countw
+
+
+# A test function for mixed optimization
+def MixedFunction(x):
+    value = sum([i*i for i in x])
+    return value

@@ -107,7 +107,7 @@ class RacosC:
         if turnon is True:
             while self.judge_distinct(self._positive_data, x) is False and \
                     self.judge_distinct(self._negative_data, x) is False:
-                print '------sample repeated------'
+                # print '------sample repeated------'
                 x = objective.construct_instance(dim.rand_sample())
                 times += 1
                 if times % 10 == 0:
@@ -116,9 +116,9 @@ class RacosC:
                         if number <= data_num:
                             print '------data number in sample space is too small------'
                             sys.exit()
-                    if times > 100:
-                        print '------error dead repeated------'
-                        sys.exit()
+                    # if times > 100:
+                    #     print '------error dead repeated------'
+                    #     sys.exit()
         return x
 
     def distinct_sample_classifier(self, classifier, turnon=True, data_num=0):
@@ -128,7 +128,7 @@ class RacosC:
         if turnon is True:
             while self.judge_distinct(self._positive_data, ins) is False or \
                     self.judge_distinct(self._negative_data, ins) is False:
-                print '------sample repeated------'
+                    # print '------sample repeated------'
                 x = classifier.rand_sample()
                 ins = self._parameter.get_objective().construct_instance(x)
                 times += 1
@@ -144,7 +144,6 @@ class RacosC:
                         print '------error dead repeated------'
                         sys.exit()
         return ins
-
 
     # For debugging
     def print_positive_data(self):

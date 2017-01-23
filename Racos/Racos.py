@@ -29,7 +29,7 @@ Time:
 from RacosClassification import RacosClassification
 from RacosC import RacosC
 import Global
-
+import time
 
 class Racos(RacosC):
 
@@ -42,6 +42,8 @@ class Racos(RacosC):
         self.set_parameters(parameter)
         t = self._parameter.get_budget() / self._parameter.get_negative_size()
         for i in range(t):
+            if i == 0:
+                time_log1 = time.time()
             for j in range(len(self._negative_data)):
                 if Global.rand.random() < self._parameter.get_probability():
                     classifier = RacosClassification(
@@ -54,5 +56,10 @@ class Racos(RacosC):
                 self._data.append(ins)
             self.selection()
             self._best_solution = self._positive_data[0]
+            if i == 4:
+                time_log2 = time.time()
+                expected_time = t * (time_log2 - time_log1) / 5
+                if expected_time > 5:
+                    print 'expected run time is %f s:' % expected_time
         return self._best_solution
 
