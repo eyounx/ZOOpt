@@ -27,8 +27,7 @@ Time:
  """
 
 import time
-
-from Racos.Component import Global
+from ..Component import Global
 from Racos.Method.RacosC import RacosC
 from Racos.Method.RacosClassification import RacosClassification
 

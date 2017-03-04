@@ -31,9 +31,9 @@ import time
 
 import numpy as np
 
-from Racos.Method.Racos import Dimension
-from Racos.Method.Racos import Objective
-from Racos.Method.Racos import Parameter
+from Racos.Component.Dimension import Dimension
+from Racos.Component.Objective import Objective
+from Racos.Component.Parameter import Parameter
 from Racos.Method.RacosOptimization import RacosOptimization
 from Racos.ObjectiveFunction.ObjectFunction import Sphere, Arkley, SetCover, MixedFunction
 
