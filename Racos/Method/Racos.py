@@ -28,8 +28,8 @@ Time:
 
 import time
 from ..Component import Global
-from Racos.Method.RacosC import RacosC
-from Racos.Method.RacosClassification import RacosClassification
+from ..Method.RacosC import RacosC
+from ..Method.RacosClassification import RacosClassification
 
 
 class Racos(RacosC):

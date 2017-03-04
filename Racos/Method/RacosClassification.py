@@ -26,8 +26,8 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-from Racos.Method.Racos import Dimension
-from Racos.Method.Racos import Global
+from ..Component.Dimension import Dimension
+from ..Component import Global
 
 
 class RacosClassification:

@@ -30,10 +30,10 @@ import time
 
 import numpy
 
-from Racos.Method.Racos import Global
-from Racos.Method.Racos import Instance
-from Racos.Method.RacosC import RacosC
-from Racos.Method.RacosClassification import RacosClassification
+from ..Component import Global
+from ..Component import Instance
+from RacosC import RacosC
+from RacosClassification import RacosClassification
 
 
 class SRacos(RacosC):

@@ -27,7 +27,7 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-from Racos.Component.Instance import Instance
+from Instance import Instance
 
 
 class Objective:
