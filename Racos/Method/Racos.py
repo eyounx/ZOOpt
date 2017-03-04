@@ -26,10 +26,12 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
  """
 
-from RacosClassification import RacosClassification
-from RacosC import RacosC
-import Global
 import time
+
+from Racos.Component import Global
+from Racos.Method.RacosC import RacosC
+from Racos.Method.RacosClassification import RacosClassification
+
 
 class Racos(RacosC):
 

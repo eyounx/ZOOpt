@@ -27,13 +27,15 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-from ObjectFunction import Sphere, Arkley, SetCover, MixedFunction
-from Dimension import Dimension
-from RacosOptimization import RacosOptimization
-from Objective import Objective
-from Parameter import Parameter
-import numpy as np
 import time
+
+import numpy as np
+
+from Racos.Method.Racos import Dimension
+from Racos.Method.Racos import Objective
+from Racos.Method.Racos import Parameter
+from Racos.Method.RacosOptimization import RacosOptimization
+from Racos.ObjectiveFunction.ObjectFunction import Sphere, Arkley, SetCover, MixedFunction
 
 
 def result_analysis(result, top):

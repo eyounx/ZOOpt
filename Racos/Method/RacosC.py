@@ -27,10 +27,8 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
  """
 
-from Instance import Instance
 import copy
 import sys
-import time
 
 
 class RacosC:

@@ -26,9 +26,10 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-from SRacos import SRacos
-from Racos import Racos
 import sys
+
+from Racos.Method.Racos import Racos
+from Racos.Method.SRacos import SRacos
 
 
 class RacosOptimization:

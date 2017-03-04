@@ -26,12 +26,8 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-from Dimension import Dimension
-import Global
-import sys
-import Instance
-import time
-import copy
+from Racos.Method.Racos import Dimension
+from Racos.Method.Racos import Global
 
 
 class RacosClassification:

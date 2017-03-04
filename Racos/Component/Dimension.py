@@ -28,7 +28,7 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-import Global
+import Racos.Component.Global
 
 
 class Dimension:
@@ -83,10 +83,10 @@ class Dimension:
         x = []
         for i in range(self._size):
             if self._types[i] is True:
-                value = Global.rand.uniform(
+                value = Racos.Component.Global.rand.uniform(
                     self._regions[i][0], self._regions[i][1])
             else:
-                rand_index = Global.rand.randint(0, len(self._regions[i]) - 1)
+                rand_index = Racos.Component.Global.rand.randint(0, len(self._regions[i]) - 1)
                 value = self._regions[i][rand_index]
             x.append(value)
         return x
