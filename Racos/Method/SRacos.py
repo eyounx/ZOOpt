@@ -31,7 +31,7 @@ import time
 import numpy
 
 from ..Component import Global
-from ..Component import Instance
+from ..Component.Instance import Instance
 from RacosC import RacosC
 from RacosClassification import RacosClassification
 

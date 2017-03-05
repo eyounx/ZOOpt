@@ -148,7 +148,7 @@ if True:
         # parameter.set_positive_size(1)
         # parameter.set_negative_size(5)
         racos = RacosOptimization()
-        ins = racos.opt(parameter, 'Racos')
+        ins = racos.opt(parameter, 'SRacos')
         ins.print_instance()
         result.append(ins.get_value())
     result_analysis(result, 15)
