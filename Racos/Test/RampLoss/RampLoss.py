@@ -101,7 +101,7 @@ class RampLoss:
                 dim_tys.append(True)
             dim = Dimension(dim_size, dim_regs, dim_tys)
             objective = Objective(self.get_value, dim)
-            budget = 20 * dim_size
+            budget = 30 * dim_size
             parameter = Parameter(objective, budget)
             racos = RacosOptimization()
             print 'Best solution is:'
