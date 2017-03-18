@@ -61,6 +61,7 @@ if False:
             dim_tys.append(True)
 
         dim = Dimension(dim_size, dim_regs, dim_tys)
+        # objective means objective function
         objective = Objective(Sphere, dim)
         budget = 20 * dim_size
         parameter = Parameter(objective, budget)

@@ -38,7 +38,7 @@ class Racos(RacosC):
         RacosC.__init__(self)
 
     # Racos optimization function
-    def opt(self, parameter):
+    def opt(self, parameter, ub=1):
         self.clear()
         self.set_parameters(parameter)
         t = self._parameter.get_budget() / self._parameter.get_negative_size()
@@ -48,7 +48,7 @@ class Racos(RacosC):
             for j in range(len(self._negative_data)):
                 if Global.rand.random() < self._parameter.get_probability():
                     classifier = RacosClassification(
-                        self._parameter.get_objective().get_dim(), self._positive_data, self._negative_data)
+                        self._parameter.get_objective().get_dim(), self._positive_data, self._negative_data, ub)
                     classifier.mixed_classification()
                     x = classifier.rand_sample()
                     ins = self._parameter.get_objective().construct_instance(x)

@@ -43,14 +43,14 @@ class RacosOptimization:
         self._algorithm = None
 
     # General optimization function, it will choose concrete optimization algorithm
-    def opt(self, parameter, racos='SRacos', strategy='WR'):
+    def opt(self, parameter, racos='SRacos', strategy='WR', ub=1):
         self.clear()
         if racos == 'SRacos':
             self._algorithm = SRacos()
-            self._best_solution = self._algorithm.opt(parameter, strategy)
+            self._best_solution = self._algorithm.opt(parameter, strategy, ub)
         elif racos == 'Racos':
             self._algorithm = Racos()
-            self._best_solution = self._algorithm.opt(parameter)
+            self._best_solution = self._algorithm.opt(parameter, ub)
         else:
             print 'No such optimization algorithm'
             sys.exit(1)

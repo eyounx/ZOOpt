@@ -1,5 +1,6 @@
 import gym
 from gym.spaces.discrete import Discrete
+from NNModel import NNModel
 from gym.spaces.box import Box
 import os
 import sys
@@ -85,13 +86,14 @@ class GymTask:
     def get_stop_step(self):
         return self.__stop_step
 
-    def get_pare_size(self):
-        return self.__policy_model.getParaNum()
+    def get_w_size(self):
+        return self.__policy_model.get_w_size()
 
     def set_max_step(self, ms):
         self.__max_step = ms
         return
 
+    # Transform action from neural network into true action.
     def transform_action(self, temp_act):
         # print temp_act
         action = []
@@ -118,18 +120,15 @@ class GymTask:
             action = action[0]
         return action
 
-    # # generate a new model
-    # def newNN_Model(self, h_layer):
-    #     # initialize NN model as policy
-    #     self.__policy_model = NN_Model(self.__obser_size, h_layer, self.__action_size)
-    #     return
-    # 
-    # # reset NN model weight
-    # def ResetNN_Model(self, w):
-    #     self.__policy_model.ResetWeight(w)
-    #     return
-    # 
-    # # generate action from observation using neuron network policy
+    # generate a new model
+    def new_nnmodel(self, layers):
+        # initialize NN model as policy
+        self.__policy_model = NNModel()
+        self.__policy_model.construct_nnmodel(layers)
+
+        return
+
+    # generate action from observation using neuron network policy
     def nn_policy_sample(self, observation):
         # action = []
         output = self.__policy_model.cal_output(observation)
@@ -146,7 +145,7 @@ class GymTask:
         self.__stop_step = self.__max_step
 
         # reset nn model weight
-        self.__policy_model.ResetWeight(x)
+        self.__policy_model.decode_w(x)
 
         # reset environment
         observation = self.__envir.reset()
@@ -178,7 +177,7 @@ class GymTask:
         return value
 
 #     def show_result(self, w, time, record):
-#         # reset nn model weight
+#         # re nn model weight
 #         self.__policy_model.ResetWeight(w)
 # 
 #         # path = '/tmp/'+self.__envir_name+'-experiment-'+str(time)

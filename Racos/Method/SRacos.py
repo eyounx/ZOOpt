@@ -43,7 +43,7 @@ class SRacos(RacosC):
 
     # SRacos's optimization function
     # default strategy is WR(worst replace)
-    def opt(self, parameter, strategy='WR'):
+    def opt(self, parameter, strategy='WR', ub=1):
         self.clear()
         self.set_parameters(parameter)
         for i in range(self._parameter.get_budget() - self._parameter.get_train_size()):
@@ -51,7 +51,7 @@ class SRacos(RacosC):
                 time_log1 = time.time()
             if Global.rand.random() < self._parameter.get_probability():
                 classifier = RacosClassification(
-                    self._parameter.get_objective().get_dim(), self._positive_data, self._negative_data)
+                    self._parameter.get_objective().get_dim(), self._positive_data, self._negative_data, ub)
                 classifier.mixed_classification()
                 ins = self.distinct_sample_classifier(classifier, True, self._parameter.get_train_size())
             else:

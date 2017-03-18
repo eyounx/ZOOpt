@@ -1,21 +1,22 @@
 import theano
 import theano.tensor as T
 import numpy as np
-
+from ActivationFunction import ActivationFunction
 
 class Layer(object):
-    def __init__(self, in_size, out_size, activation_function=None):
+    def __init__(self, in_size, out_size, input_w = None, activation_function=None):
         # w includes b, the last line of w is b
-        self.__row = in_size + 1;
-        self.__column = out_size;
-        self.__w = theano.shared(np.random.normal(0, 1, (in_size + 1, out_size)))
-        # self.b = theano.shared(np.zeros((out_size, )) + 0.1)
+        self.__row = in_size
+        self.__column = out_size
+        self.__w = []
+        self.decode_w(input_w)
         self.__activation_function = activation_function
         self.__wx_plus_b = 0
         self.outputs = 0
 
-    def output(self, inputs):
-        self.__wx_plus_b = T.dot(inputs, self.__w) + self.b
+    def cal_output(self, inputs):
+        # In this example, we omit bias
+        self.__wx_plus_b = np.dot(inputs, self.__w)
         if self.__activation_function is None:
             self.outputs = self.__wx_plus_b
         else:
@@ -24,6 +25,8 @@ class Layer(object):
 
     # The input x is a vector.This function decompose w into a matrix
     def decode_w(self, w):
+        if w is None:
+            return
         interval = self.__column
         begin = 0
         output = []
@@ -31,11 +34,7 @@ class Layer(object):
         for i in range(step):
             output.append(w[begin: begin + interval])
             begin += interval
-        self.__w = theano.shared(output)
-        return output
-
-    def set_w(self, w):
-        self.__w = w
+        self.__w = np.array(output)
         return
 
     def get_row(self):
@@ -48,32 +47,42 @@ class Layer(object):
 class NNModel:
     def __init__(self):
         self.__layers = []
-        self.__ws = []
+        self.__layer_size = []
+        self.__w_size = 0
         return
 
-    def add_layer(self, layer):
-        self.__layers.append(layer)
+    # The input layers is a list, each element is the number of neurons in each layer.
+    def construct_nnmodel(self, layers):
+        # len(layers) is at least 2, including input layer and output layer
+        self.__layer_size = layers
+        for i in range(len(layers) - 1):
+            self.add_layer(layers[i], layers[i + 1], activation_function=ActivationFunction.sigmoid)
+            self.__w_size += layers[i] * layers[i + 1]
+
+    def add_layer(self, in_size, out_size, input_w = None, activation_function=None):
+        new_layer = Layer(in_size, out_size, input_w, activation_function)
+        self.__layers.append(new_layer)
         return
 
     # This function decompose a vector into several vectors.
     def decode_w(self, w):
         # ws means a list of w
-        ws = []
         begin = 0
         for i in range(len(self.__layers)):
             length = self.__layers[i].get_row() * self.__layers[i].get_column()
-            ws.append(w[begin: begin + length])
-            self.__layers[i].decode_w(ws[i])
-        self.__ws = ws
-        return ws
+            w_temp = w[begin: begin + length]
+            self.__layers[i].decode_w(w_temp)
+            begin += length
+        return
 
     # output y from input x
-    def output(self, x):
+    def cal_output(self, x):
         out = x
         for i in range(len(self.__layers)):
-            out = self.__layers[i].output(out)
+            out = self.__layers[i].cal_output(out)
         return out
 
-
+    def get_w_size(self):
+        return self.__w_size
 
 
