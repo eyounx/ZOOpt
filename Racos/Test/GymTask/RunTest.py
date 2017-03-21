@@ -4,26 +4,22 @@ from Racos.Component.Dimension import Dimension
 from Racos.Component.Objective import Objective
 from Racos.Component.Parameter import Parameter
 from Racos.Method.RacosOptimization import RacosOptimization
-# import FileOperator as fo
 
 # test function
 
 
-def run_test():
-    layers = [2, 5, 1]
+def run_test(name, in_layers, in_budget, maxstep):
+    layers = in_layers
 
-    task_name = 'MountainCar-v0'
+    task_name = name
 
-    max_step = 10000
+    max_step = maxstep
 
     gym_task = GymTask(task_name)
     gym_task.new_nnmodel(layers)
     gym_task.set_max_step(max_step)
 
-    sample_size = 20  # the instance number of sampling in an iteration
-    max_iteration = 100  # the number of iterations
-    budget = 2000  # budget in online style 2000
-    positive_num = 2  # the set size of PosPop
+    budget = in_budget  # budget in online style 2000
     rand_probability = 0.95  # the probability of sample in model
     uncertain_bits = 1  # the dimension size that is sampled randomly
 
@@ -43,4 +39,19 @@ def run_test():
     ins = racos.opt(parameter, strategy='WR', ub=uncertain_bits)
     ins.print_instance()
 
-run_test()
+mountain_car_layers = [2, 5, 1]
+acrobot_layers = [6, 5, 3, 1]
+halfcheetah_layers = [17, 10, 6]
+humanoid_layers = [376, 25, 17]
+swimmer_layers = [8, 5, 3, 2]
+ant_layers = [111, 15, 8]
+hopper_layers = [11, 9, 5, 3]
+lunarlander_layers = [8, 5, 3, 1]
+run_test('MountainCar-v0', mountain_car_layers, 2000, 10000)
+# run_test('Acrobot-v1', acrobot_layers, 2000, 2000)
+# run_test('HalfCheetah-v1', halfcheetah_layers, 2000, 10000)
+# run_test('Humanoid-v1', humanoid_layers, 2000, 50000)
+# run_test('Swimmer-v1', swimmer_layers, 2000, 10000)
+# run_test('Ant-v1', ant_layers, 2000, 10000)
+# run_test('Hopper-v1', hopper_layers, 2000, 10000)
+# run_test('LunarLander-v2', lunarlander_layers, 2000, 10000)
