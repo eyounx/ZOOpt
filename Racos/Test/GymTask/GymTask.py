@@ -59,37 +59,6 @@ class GymTask:
         self.__policy_model = None
         self.__max_step = 0
 
-    def get_environment(self):
-        return self.__envir
-
-    def get_environment_name(self):
-        return self.__envir_name
-
-    def get_observation_size(self):
-        return self.__obser_size
-
-    def get_observation_low_bound(self, index):
-        return self.__obser_low_bound[index]
-
-    def get_observation_upbound(self, index):
-        return self.__obser_up_bound[index]
-
-    def get_action_size(self):
-        return self.__action_size
-
-    def get_action_type(self, index):
-        return self.__action_type[index]
-
-    def get_stop_step(self):
-        return self.__stop_step
-
-    def get_w_size(self):
-        return self.__policy_model.get_w_size()
-
-    def set_max_step(self, ms):
-        self.__max_step = ms
-        return
-
     # Transform action from neural network into true action.
     def transform_action(self, temp_act):
         # print temp_act
@@ -135,35 +104,20 @@ class GymTask:
 
     # objective function of racos by summation of reward in a trajectory
     def sum_reward(self, x):
-
         sum_re = 0
-
         # reset stop step
         self.__stop_step = self.__max_step
-
         # reset nn model weight
         self.__policy_model.decode_w(x)
-
         # reset environment
         observation = self.__envir.reset()
-
-        # print observation
-
         for i in range(self.__max_step):
-            # self.__envir.render()
             action = self.nn_policy_sample(observation)
-            # print action
             observation, reward, done, info = self.__envir.step(action)
-            # print 'reward:', reward
             sum_re += reward
             if done:
                 self.__stop_step = i
-                # print("Episode finished after {} timesteps".format(i + 1))
                 break
-
-        # print 'sum reward:', sum_re
-        # print 'stop step:', self.__stop_step
-
         value = sum_re
         name = self.__envir_name
         if name == 'CartPole-v0' or name == 'MountainCar-v0' or name == 'Acrobot-v1' or name == 'HalfCheetah-v1' \
@@ -173,3 +127,33 @@ class GymTask:
         # print value
         return value
 
+    def get_environment(self):
+        return self.__envir
+
+    def get_environment_name(self):
+        return self.__envir_name
+
+    def get_observation_size(self):
+        return self.__obser_size
+
+    def get_observation_low_bound(self, index):
+        return self.__obser_low_bound[index]
+
+    def get_observation_upbound(self, index):
+        return self.__obser_up_bound[index]
+
+    def get_action_size(self):
+        return self.__action_size
+
+    def get_action_type(self, index):
+        return self.__action_type[index]
+
+    def get_stop_step(self):
+        return self.__stop_step
+
+    def get_w_size(self):
+        return self.__policy_model.get_w_size()
+
+    def set_max_step(self, ms):
+        self.__max_step = ms
+        return

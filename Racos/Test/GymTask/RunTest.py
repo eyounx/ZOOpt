@@ -8,7 +8,7 @@ from Racos.Method.RacosOptimization import RacosOptimization
 # test function
 
 
-def run_test(name, in_layers, in_budget, maxstep):
+def run_test(name, in_layers, in_budget, maxstep, repeat):
     layers = in_layers
 
     task_name = name
@@ -36,8 +36,15 @@ def run_test(name, in_layers, in_budget, maxstep):
     parameter.set_probability(rand_probability)
     racos = RacosOptimization()
     print 'Best solution is:'
-    ins = racos.opt(parameter, strategy='WR', ub=uncertain_bits)
-    ins.print_instance()
+    result = []
+    sum = 0
+    for i in range(repeat):
+        ins = racos.opt(parameter, strategy='WR', racos='Racos', ub=uncertain_bits)
+        result.append(ins.get_value())
+        sum += ins.get_value()
+        ins.print_instance()
+    print result
+    print sum/len(result)
 
 mountain_car_layers = [2, 5, 1]
 acrobot_layers = [6, 5, 3, 1]
@@ -47,7 +54,7 @@ swimmer_layers = [8, 5, 3, 2]
 ant_layers = [111, 15, 8]
 hopper_layers = [11, 9, 5, 3]
 lunarlander_layers = [8, 5, 3, 1]
-run_test('MountainCar-v0', mountain_car_layers, 2000, 10000)
+run_test('MountainCar-v0', mountain_car_layers, 2000, 10000, 10)
 # run_test('Acrobot-v1', acrobot_layers, 2000, 2000)
 # run_test('HalfCheetah-v1', halfcheetah_layers, 2000, 10000)
 # run_test('Humanoid-v1', humanoid_layers, 2000, 50000)

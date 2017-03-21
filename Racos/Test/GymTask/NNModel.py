@@ -5,7 +5,6 @@ from ActivationFunction import ActivationFunction
 
 class Layer(object):
     def __init__(self, in_size, out_size, input_w = None, activation_function=None):
-        # w includes b, the last line of w is b
         self.__row = in_size
         self.__column = out_size
         self.__w = []
@@ -15,7 +14,7 @@ class Layer(object):
         self.outputs = 0
 
     def cal_output(self, inputs):
-        # In this example, we omit bias
+        # In this example, we ignore bias
         self.__wx_plus_b = np.dot(inputs, self.__w)
         if self.__activation_function is None:
             self.outputs = self.__wx_plus_b

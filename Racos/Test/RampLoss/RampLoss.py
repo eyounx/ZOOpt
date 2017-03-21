@@ -8,7 +8,7 @@ class RampLoss:
     def __init__(self):
         self.dim = Dimension() # Dimension
         self.data = []  # training or testing data, include label
-        self.c = 1  # hyper-parameter
+        self.c = 0.5  # hyper-parameter
         self.s = 0  # hyper-parameter
         self.dim_size = 0   # Dimension size
         self.read_data('ionosphere.data.txt')
@@ -66,7 +66,7 @@ class RampLoss:
             H1 += self.get_h(self.data[i][len(self.data[0]) - 1] * fx, 1)
             Hs += self.get_h(self.data[i][len(self.data[0]) - 1] * fx, self.s)
         dis = self.get_distance(weight)
-        value = dis / 2 + self.c * H1  - self.c * Hs
+        value = dis / 2 + self.c * H1 - self.c * Hs
         return value
 
     # Validation function
@@ -101,7 +101,7 @@ class RampLoss:
                 dim_tys.append(True)
             dim = Dimension(dim_size, dim_regs, dim_tys)
             objective = Objective(self.get_value, dim)
-            budget = 30 * dim_size
+            budget = 40 * dim_size
             parameter = Parameter(objective, budget)
             racos = RacosOptimization()
             print 'Best solution is:'

@@ -33,4 +33,4 @@ def set_seed(Random, seed):
 
 # rand is the random object used by all files
 rand = Random()
-rand.seed(2)
+# and.seed(2)
