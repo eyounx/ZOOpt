@@ -82,8 +82,8 @@
       <file leaf-file-name="RunRacos.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test/RacosTest/RunRacos.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="109" column="27" lean-forward="true" selection-start-line="109" selection-start-column="27" selection-end-line="109" selection-end-column="27" />
+            <state relative-caret-position="592">
+              <caret line="125" column="33" lean-forward="true" selection-start-line="125" selection-start-column="33" selection-end-line="125" selection-end-column="33" />
               <folding>
                 <element signature="e#898#909#0" expanded="true" />
               </folding>
@@ -640,7 +640,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491214003790</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add a FunctionInterface in Racos.Modify all TestFunctions.Tiring!">
+      <created>1491214106115</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1491214106115</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1147,8 +1154,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/RacosTest/RunRacos.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="109" column="27" lean-forward="true" selection-start-line="109" selection-start-column="27" selection-end-line="109" selection-end-column="27" />
+        <state relative-caret-position="592">
+          <caret line="125" column="33" lean-forward="true" selection-start-line="125" selection-start-column="33" selection-end-line="125" selection-end-column="33" />
           <folding>
             <element signature="e#898#909#0" expanded="true" />
           </folding>
