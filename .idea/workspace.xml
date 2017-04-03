@@ -1,30 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="20b5f7ea-2098-45ef-8e7c-1071c27c372d" name="Default" comment="before separate sampling and computing f(x)">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Test/RacosTest/RampLoss/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Test/RacosTest/__init__.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Test/GymTask/ActivationFunction.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Test/GymTask/GymTask.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Test/GymTask/NNModel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Test/GymTask/RunTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Test/GymTask/Theano/GymTask_theano.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Test/GymTask/Theano/NNModel_theano.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Test/GymTask/Theano/RunTest_theano.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Test/GymTask/test.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ObjectiveFunction/ObjectFunction.py" afterPath="$PROJECT_DIR$/ObjectiveFunction/RacosObjectiveFunction/ObjectFunction.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Test/GymTask/Theano/__init__.py" afterPath="$PROJECT_DIR$/Component/ToolFunction.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Test/GymTask/__init__.py" afterPath="$PROJECT_DIR$/Method/Racos/FunctionInterface.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Test/RampLoss/RampLoss.py" afterPath="$PROJECT_DIR$/Test/RacosTest/RampLoss/RampLoss.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Test/RampLoss/__init__.py" afterPath="$PROJECT_DIR$/ObjectiveFunction/RacosObjectiveFunction/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Test/RampLoss/ionosphere.data.txt" afterPath="$PROJECT_DIR$/Test/RacosTest/RampLoss/ionosphere.data.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Test/RunRacos.py" afterPath="$PROJECT_DIR$/Test/RacosTest/RunRacos.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ZOO.iml" afterPath="$PROJECT_DIR$/.idea/ZOO.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+    <list default="true" id="20b5f7ea-2098-45ef-8e7c-1071c27c372d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Component/Dimension.py" afterPath="$PROJECT_DIR$/Component/Dimension.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Component/Objective.py" afterPath="$PROJECT_DIR$/Component/Objective.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Method/Racos/SRacos.py" afterPath="$PROJECT_DIR$/Method/Racos/SRacos.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -104,8 +82,8 @@
       <file leaf-file-name="RunRacos.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test/RacosTest/RunRacos.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="101" column="21" lean-forward="true" selection-start-line="101" selection-start-column="21" selection-end-line="101" selection-end-column="21" />
+            <state relative-caret-position="352">
+              <caret line="109" column="27" lean-forward="true" selection-start-line="109" selection-start-column="27" selection-end-line="109" selection-end-column="27" />
               <folding>
                 <element signature="e#898#909#0" expanded="true" />
               </folding>
@@ -655,7 +633,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491203423990</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add a FunctionInterface in Racos.Modify all TestFunctions.Tiring!">
+      <created>1491214003790</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1491214003790</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -695,7 +680,8 @@
     <MESSAGE value="before modification" />
     <MESSAGE value="modify structure" />
     <MESSAGE value="before separate sampling and computing f(x)" />
-    <option name="LAST_COMMIT_MESSAGE" value="before separate sampling and computing f(x)" />
+    <MESSAGE value="Add a FunctionInterface in Racos.Modify all TestFunctions.Tiring!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add a FunctionInterface in Racos.Modify all TestFunctions.Tiring!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1161,8 +1147,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/RacosTest/RunRacos.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="101" column="21" lean-forward="true" selection-start-line="101" selection-start-column="21" selection-end-line="101" selection-end-column="21" />
+        <state relative-caret-position="352">
+          <caret line="109" column="27" lean-forward="true" selection-start-line="109" selection-start-column="27" selection-end-line="109" selection-end-column="27" />
           <folding>
             <element signature="e#898#909#0" expanded="true" />
           </folding>
