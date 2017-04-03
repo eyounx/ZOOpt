@@ -31,7 +31,7 @@ import copy
 import sys
 
 
-class RacosC:
+class RacosCommon:
 
     def __init__(self):
         self._parameter = None

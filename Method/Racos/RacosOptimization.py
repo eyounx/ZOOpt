@@ -29,7 +29,7 @@ Time:
 import sys
 
 from Method.Racos import Racos
-from Method.SRacos import SRacos
+from Method.Racos.SRacos import SRacos
 
 
 class RacosOptimization:

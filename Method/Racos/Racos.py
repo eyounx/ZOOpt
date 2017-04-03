@@ -29,11 +29,11 @@ Time:
 import time
 
 from Component import Global
-from Method.Racos.RacosC import RacosC
+from Method.Racos.RacosCommon import RacosCommon
 from Method.Racos.RacosClassification import RacosClassification
 
 
-class Racos(RacosC):
+class Racos(RacosCommon):
 
     def __init__(self):
         RacosC.__init__(self)

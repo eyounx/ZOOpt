@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20b5f7ea-2098-45ef-8e7c-1071c27c372d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Method/Racos/__init__.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Racos/Test/GymTask/Theano/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Racos/Test/GymTask/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Racos/Test/GymTask/test.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Method/Racos.py" afterPath="$PROJECT_DIR$/Method/Racos/Racos.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Method/RacosC.py" afterPath="$PROJECT_DIR$/Method/Racos/RacosC.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Method/RacosClassification.py" afterPath="$PROJECT_DIR$/Method/Racos/RacosClassification.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Method/RacosOptimization.py" afterPath="$PROJECT_DIR$/Method/Racos/RacosOptimization.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Method/Racos/RacosC.py" afterPath="$PROJECT_DIR$/Method/Racos/RacosCommon.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Method/SRacos.py" afterPath="$PROJECT_DIR$/Method/Racos/SRacos.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Method/SRacos.py" afterPath="$PROJECT_DIR$/Method/SRacos.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/GymTask/RunTest.py" afterPath="$PROJECT_DIR$/Test/GymTask/RunTest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/RunRacos.py" afterPath="$PROJECT_DIR$/Test/RunRacos.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Method/Racos/Racos.py" afterPath="$PROJECT_DIR$/Method/Racos/Racos.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Method/Racos/RacosOptimization.py" afterPath="$PROJECT_DIR$/Method/Racos/RacosOptimization.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,8 +24,8 @@
       <file leaf-file-name="RacosClassification.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Method/Racos/RacosClassification.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2172">
-              <caret line="185" column="38" lean-forward="true" selection-start-line="185" selection-start-column="38" selection-end-line="185" selection-end-column="38" />
+            <state relative-caret-position="1645">
+              <caret line="197" column="38" lean-forward="true" selection-start-line="197" selection-start-column="38" selection-end-line="197" selection-end-column="38" />
               <folding>
                 <element signature="e#881#922#0" expanded="true" />
               </folding>
@@ -45,28 +38,28 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
               <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding>
-                <element signature="e#908#918#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SRacos.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Method/SRacos.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="46" column="20" lean-forward="false" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunRacos.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SRacos.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Method/Racos/SRacos.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="55" column="39" lean-forward="true" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+              <folding>
+                <element signature="e#882#893#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RunRacos.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test/RunRacos.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="83" column="21" lean-forward="true" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
+            <state relative-caret-position="255">
+              <caret line="89" column="42" lean-forward="true" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
               <folding>
                 <element signature="e#898#909#0" expanded="true" />
               </folding>
@@ -89,18 +82,20 @@
       <file leaf-file-name="Racos.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Method/Racos/Racos.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="37" column="18" lean-forward="false" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
-              <folding />
+            <state relative-caret-position="488">
+              <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+              <folding>
+                <element signature="e#881#892#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RacosC.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Method/Racos/RacosC.py">
+      <file leaf-file-name="RacosCommon.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Method/Racos/RacosCommon.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="311">
+              <caret line="114" column="36" lean-forward="true" selection-start-line="114" selection-start-column="36" selection-end-line="114" selection-end-column="36" />
               <folding>
                 <element signature="e#959#970#0" expanded="true" />
               </folding>
@@ -223,6 +218,9 @@
         <option value="$PROJECT_DIR$/Method/RacosC.py" />
         <option value="$PROJECT_DIR$/Test/RunRacos.py" />
         <option value="$PROJECT_DIR$/Test/GymTask/RunTest.py" />
+        <option value="$PROJECT_DIR$/Method/Racos/RacosCommon.py" />
+        <option value="$PROJECT_DIR$/Method/Racos/Racos.py" />
+        <option value="$PROJECT_DIR$/Method/Racos/SRacos.py" />
       </list>
     </option>
   </component>
@@ -333,11 +331,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Method/Racos" />
       <recent name="$PROJECT_DIR$/Method/RACOS" />
       <recent name="$PROJECT_DIR$/Racos/Test/GymTask/theano" />
       <recent name="$PROJECT_DIR$/Racos/Test/RampLoss" />
       <recent name="$PROJECT_DIR$/Racos/Test" />
-      <recent name="$PROJECT_DIR$/Racos/ObjectiveFunction" />
     </key>
   </component>
   <component name="RunManager" selected="Python.RunRacos">
@@ -654,7 +652,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491028617705</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="modify structure">
+      <created>1491202213028</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1491202213028</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -666,7 +671,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28674698" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28674698" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -692,7 +697,8 @@
     <MESSAGE value="Complete RL example" />
     <MESSAGE value="add gitignore" />
     <MESSAGE value="before modification" />
-    <option name="LAST_COMMIT_MESSAGE" value="before modification" />
+    <MESSAGE value="modify structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify structure" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1056,26 +1062,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Method/SRacos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="46" column="20" lean-forward="false" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Component/Instance.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
           <caret line="89" column="38" lean-forward="true" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Method/Racos/Racos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="37" column="18" lean-forward="false" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1102,9 +1092,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="e#908#918#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1118,32 +1106,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Test/RunRacos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="89" column="42" lean-forward="true" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
+          <folding>
+            <element signature="e#898#909#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Method/Racos/SRacos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="55" column="39" lean-forward="true" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+          <folding>
+            <element signature="e#882#893#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Method/Racos/Racos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+          <folding>
+            <element signature="e#881#892#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Method/Racos/RacosClassification.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2172">
-          <caret line="185" column="38" lean-forward="true" selection-start-line="185" selection-start-column="38" selection-end-line="185" selection-end-column="38" />
+        <state relative-caret-position="1645">
+          <caret line="197" column="38" lean-forward="true" selection-start-line="197" selection-start-column="38" selection-end-line="197" selection-end-column="38" />
           <folding>
             <element signature="e#881#922#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Method/Racos/RacosC.py">
+    <entry file="file://$PROJECT_DIR$/Method/Racos/RacosCommon.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="311">
+          <caret line="114" column="36" lean-forward="true" selection-start-line="114" selection-start-column="36" selection-end-line="114" selection-end-column="36" />
           <folding>
             <element signature="e#959#970#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/RunRacos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="83" column="21" lean-forward="true" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
-          <folding>
-            <element signature="e#898#909#0" expanded="true" />
           </folding>
         </state>
       </provider>

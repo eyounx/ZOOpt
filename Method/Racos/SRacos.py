@@ -32,11 +32,11 @@ import numpy
 
 from Component import Global
 from Component.Instance import Instance
-from Method.Racos.RacosC import RacosC
+from Method.Racos.RacosCommon import RacosCommon
 from Method.Racos.RacosClassification import RacosClassification
 
 
-class SRacos(RacosC):
+class SRacos(RacosCommon):
     def __init__(self):
         RacosC.__init__(self)
         return
