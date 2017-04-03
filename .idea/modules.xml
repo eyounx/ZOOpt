@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ZOO.iml" filepath="$PROJECT_DIR$/.idea/ZOO.iml" />
-      <module fileurl="file://$USER_HOME$/Downloads/RACOS-master/python-src/.idea/python-src.iml" filepath="$USER_HOME$/Downloads/RACOS-master/python-src/.idea/python-src.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../RACOS-master-2/python-src/.idea/python-src.iml" filepath="$PROJECT_DIR$/../RACOS-master-2/python-src/.idea/python-src.iml" />
     </modules>
   </component>
 </project>

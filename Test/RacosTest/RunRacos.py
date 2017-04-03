@@ -35,7 +35,7 @@ from Component.Dimension import Dimension
 from Component.Objective import Objective
 from Component.Parameter import Parameter
 from Method.Racos.RacosOptimization import RacosOptimization
-from ObjectiveFunction.ObjectFunction import Sphere, Arkley, SetCover, MixedFunction
+from ObjectiveFunction.RacosObjectiveFunction.ObjectFunction import Sphere, Arkley, SetCover, MixedFunction
 
 
 def result_analysis(result, top):
@@ -48,7 +48,7 @@ def result_analysis(result, top):
 
 
 # Sphere
-if True:
+if False:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -59,10 +59,10 @@ if True:
         for i in range(dim_size):
             dim_regs.append([0, 1])
             dim_tys.append(True)
-
         dim = Dimension(dim_size, dim_regs, dim_tys)
         # objective means objective function
-        objective = Objective(Sphere, dim)
+        sphere = Sphere()
+        objective = Objective(sphere, dim)
         budget = 20 * dim_size
         parameter = Parameter(objective, budget)
         racos = RacosOptimization()
@@ -87,7 +87,8 @@ if False:
             dim_regs.append([-1, 1])
             dim_tys.append(True)
         dim = Dimension(dim_size, dim_regs, dim_tys)
-        objective = Objective(Arkley, dim)
+        arkley = Arkley()
+        objective = Objective(arkley, dim)
         budget = 500
         parameter = Parameter(objective, budget, autoset=False)
         parameter.set_train_size(21)
@@ -114,7 +115,8 @@ if False:
             dim_regs.append([0, 1])
             dim_tys.append(False)
         dim = Dimension(dim_size, dim_regs, dim_tys)
-        objective = Objective(SetCover, dim)
+        setcover = SetCover()
+        objective = Objective(setcover, dim)
         budget = 2000
         parameter = Parameter(objective, budget, autoset=False)
         parameter.set_train_size(6)
@@ -127,7 +129,7 @@ if False:
     result_analysis(result, 100)
 
 # mixed optimization
-if False:
+if True:
     repeat = 15
     result = []
     for j in range(repeat):
@@ -142,7 +144,8 @@ if False:
                 dim_regs.append([0, 100])
                 dim_tys.append(False)
         dim = Dimension(dim_size, dim_regs, dim_tys)
-        objective = Objective(MixedFunction, dim)
+        mixed = MixedFunction()
+        objective = Objective(mixed, dim)
         budget = 2000
         parameter = Parameter(objective, budget, autoset=True)
         # parameter.set_train_size(6)

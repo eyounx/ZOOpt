@@ -143,7 +143,7 @@ class Dimension:
 
     # for debugging
     def print_dim(self):
-        print 'dim size is: %d' % (self._size)
+        print 'dim size is: %d' % self._size
         print 'dim regions is:'
         print self._regions
         print 'dim types is:'

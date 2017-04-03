@@ -37,10 +37,10 @@ class Objective:
         self.__dim = dim
 
     # Construct an instance from
-    def construct_instance(self, coordinate):
+    def construct_instance(self, coordinate, positive_data=None):
         new_ins = Instance()
         new_ins.set_coordinates(coordinate)
-        new_ins.set_value(self.__func(coordinate))
+        new_ins.set_value(self.__func.compute_fx(coordinate, positive_data))
         return new_ins
 
     def set_func(self, func):

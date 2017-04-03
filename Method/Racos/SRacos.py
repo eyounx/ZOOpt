@@ -38,7 +38,7 @@ from Method.Racos.RacosClassification import RacosClassification
 
 class SRacos(RacosCommon):
     def __init__(self):
-        RacosC.__init__(self)
+        RacosCommon.__init__(self)
         return
 
     # SRacos's optimization function
