@@ -32,8 +32,8 @@ import numpy
 
 from Component import Global
 from Component.Instance import Instance
-from RacosC import RacosC
-from RacosClassification import RacosClassification
+from Method.Racos.RacosC import RacosC
+from Method.Racos.RacosClassification import RacosClassification
 
 
 class SRacos(RacosC):

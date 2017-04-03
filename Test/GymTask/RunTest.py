@@ -1,9 +1,9 @@
 from NNModel import NNModel, Layer
 from GymTask import GymTask
-from Racos.Component.Dimension import Dimension
-from Racos.Component.Objective import Objective
-from Racos.Component.Parameter import Parameter
-from Racos.Method.RacosOptimization import RacosOptimization
+from Component.Dimension import Dimension
+from Component.Objective import Objective
+from Component.Parameter import Parameter
+from Method.Racos.RacosOptimization import RacosOptimization
 
 # test function
 

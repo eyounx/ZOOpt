@@ -34,7 +34,7 @@ import numpy as np
 from Component.Dimension import Dimension
 from Component.Objective import Objective
 from Component.Parameter import Parameter
-from Method.RacosOptimization import RacosOptimization
+from Method.Racos.RacosOptimization import RacosOptimization
 from ObjectiveFunction.ObjectFunction import Sphere, Arkley, SetCover, MixedFunction
 
 

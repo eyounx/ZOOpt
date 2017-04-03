@@ -27,9 +27,10 @@ Time:
  """
 
 import time
+
 from Component import Global
-from Method.RacosC import RacosC
-from Method.RacosClassification import RacosClassification
+from Method.Racos.RacosC import RacosC
+from Method.Racos.RacosClassification import RacosClassification
 
 
 class Racos(RacosC):
