@@ -26,8 +26,9 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-from Component.Dimension import Dimension
-from Component import Global
+from zoo.utils.dimension import Dimension
+
+from zoo.utils import my_global
 
 
 class RacosClassification:
@@ -57,14 +58,14 @@ class RacosClassification:
             self._label[i] = False
         self._x_positive = None
 
-    # This method works if self._solution_space is discrete
+    # This algos works if self._solution_space is discrete
     def discrete_classification(self):
-        self._x_positive = self._positive_solution[Global.rand.randint(
+        self._x_positive = self._positive_solution[my_global.rand.randint(
             0, len(self._positive_solution) - 1)]
         len_negative = len(self._negative_solution)
         index_set = range(self._solution_space.get_size())
         while len_negative > 0:
-            k = index_set[Global.rand.randint(0, len(index_set) - 1)]
+            k = index_set[my_global.rand.randint(0, len(index_set) - 1)]
             x_pos_k = self._x_positive.get_coordinate(k)
             i = 0
             delete = 0
@@ -82,19 +83,19 @@ class RacosClassification:
         self.set_uncertain_bit(index_set)
         return
 
-    # This method works if self._solution_space is continuous
+    # This algos works if self._solution_space is continuous
     def continuous_classification(self):
-        self._x_positive = self._positive_solution[Global.rand.randint(
+        self._x_positive = self._positive_solution[my_global.rand.randint(
             0, len(self._positive_solution) - 1)]
         len_negative = len(self._negative_solution)
         while len_negative > 0:
-            k = Global.rand.randint(0, self._solution_space.get_size() - 1)
+            k = my_global.rand.randint(0, self._solution_space.get_size() - 1)
             x_negative = self._negative_solution[
-                Global.rand.randint(0, len_negative - 1)]
+                my_global.rand.randint(0, len_negative - 1)]
             x_pos_k = self._x_positive.get_coordinate(k)
             x_neg_k = x_negative.get_coordinate(k)
             if x_pos_k < x_neg_k:
-                r = Global.rand.uniform(x_pos_k, x_neg_k)
+                r = my_global.rand.uniform(x_pos_k, x_neg_k)
                 if r < self._sample_region[k][1]:
                     self._sample_region[k][1] = r
                     i = 0
@@ -107,7 +108,7 @@ class RacosClassification:
                         else:
                             i += 1
             else:
-                r = Global.rand.uniform(x_neg_k, x_pos_k)
+                r = my_global.rand.uniform(x_neg_k, x_pos_k)
                 if r > self._sample_region[k][0]:
                     self._sample_region[k][0] = r
                     i = 0
@@ -123,23 +124,23 @@ class RacosClassification:
         self.set_uncertain_bit(index_set)
         return
 
-    # This method always works, whether discrete or continuous
+    # This algos always works, whether discrete or continuous
     def mixed_classification(self):
-        self._x_positive = self._positive_solution[Global.rand.randint(
+        self._x_positive = self._positive_solution[my_global.rand.randint(
             0, len(self._positive_solution) - 1)]
         len_negative = len(self._negative_solution)
         index_set = range(self._solution_space.get_size())
         types = self._solution_space.get_types()
         while len_negative > 0:
-            k = index_set[Global.rand.randint(0, len(index_set) - 1)]
+            k = index_set[my_global.rand.randint(0, len(index_set) - 1)]
             x_pos_k = self._x_positive.get_coordinate(k)
             # continuous
             if types[k] is True:
                 x_negative = self._negative_solution[
-                    Global.rand.randint(0, len_negative - 1)]
+                    my_global.rand.randint(0, len_negative - 1)]
                 x_neg_k = x_negative.get_coordinate(k)
                 if x_pos_k < x_neg_k:
-                    r = Global.rand.uniform(x_pos_k, x_neg_k)
+                    r = my_global.rand.uniform(x_pos_k, x_neg_k)
                     if r < self._sample_region[k][1]:
                         self._sample_region[k][1] = r
                         i = 0
@@ -152,7 +153,7 @@ class RacosClassification:
                             else:
                                 i += 1
                 else:
-                    r = Global.rand.uniform(x_neg_k, x_pos_k)
+                    r = my_global.rand.uniform(x_neg_k, x_pos_k)
                     if r > self._sample_region[k][0]:
                         self._sample_region[k][0] = r
                         i = 0
@@ -186,7 +187,7 @@ class RacosClassification:
     def set_uncertain_bit(self, iset):
         index_set = iset
         for i in range(self._uncertain_bit):
-            index = index_set[Global.rand.randint(0, len(index_set) - 1)]
+            index = index_set[my_global.rand.randint(0, len(index_set) - 1)]
             self._label[index] = True
             index_set.remove(index)
         return
@@ -197,9 +198,9 @@ class RacosClassification:
         for i in range(self._solution_space.get_size()):
             if self._label[i] is True:
                 if self._solution_space.get_type(i) is True:
-                    x.append(Global.rand.uniform(self._sample_region[i][0], self._sample_region[i][1]))
+                    x.append(my_global.rand.uniform(self._sample_region[i][0], self._sample_region[i][1]))
                 else:
-                    x.append(Global.rand.randint(self._sample_region[i][0], self._sample_region[i][1]))
+                    x.append(my_global.rand.randint(self._sample_region[i][0], self._sample_region[i][1]))
             else:
                 x.append(self._x_positive.get_coordinate(i))
         return x

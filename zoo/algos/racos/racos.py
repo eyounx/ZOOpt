@@ -28,9 +28,9 @@ Time:
 
 import time
 
-from Component import Global
-from Method.Racos.RacosCommon import RacosCommon
-from Method.Racos.RacosClassification import RacosClassification
+from zoo.algos.racos import RacosClassification
+from zoo.algos.racos import RacosCommon
+from zoo.utils import my_global
 
 
 class Racos(RacosCommon):
@@ -38,7 +38,7 @@ class Racos(RacosCommon):
     def __init__(self):
         RacosC.__init__(self)
 
-    # Racos optimization function
+    # racos optimization function
     def opt(self, parameter, ub=1):
         self.clear()
         self.set_parameters(parameter)
@@ -47,7 +47,7 @@ class Racos(RacosCommon):
             if i == 0:
                 time_log1 = time.time()
             for j in range(len(self._negative_data)):
-                if Global.rand.random() < self._parameter.get_probability():
+                if my_global.rand.random() < self._parameter.get_probability():
                     classifier = RacosClassification(
                         self._parameter.get_objective().get_dim(), self._positive_data, self._negative_data, ub)
                     classifier.mixed_classification()

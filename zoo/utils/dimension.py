@@ -28,7 +28,7 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-import Component.Global
+import zoo.utils.my_global
 
 
 class Dimension:
@@ -78,20 +78,20 @@ class Dimension:
         return
 
     # random sample from dimension messages.
-    # this method returns a list.
+    # this algos returns a list.
     def rand_sample(self):
         x = []
         for i in range(self._size):
             if self._types[i] is True:
-                value = Component.Global.rand.uniform(
+                value = zoo.utils.my_global.rand.uniform(
                     self._regions[i][0], self._regions[i][1])
             else:
-                rand_index = Component.Global.rand.randint(0, len(self._regions[i]) - 1)
+                rand_index = zoo.utils.my_global.rand.randint(0, len(self._regions[i]) - 1)
                 value = self._regions[i][rand_index]
             x.append(value)
         return x
 
-    # This method will return True and the number of dimension value if each dimension is discrete.
+    # This algos will return True and the number of dimension value if each dimension is discrete.
     # Otherwise, return False and zero
     def limited_space(self):
         number = 1

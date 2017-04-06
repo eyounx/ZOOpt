@@ -26,10 +26,11 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-from theano import function
-from Method.Racos.FunctionInterface import FunctionInterface
-import theano.tensor as T
 import numpy
+import theano.tensor as T
+from theano import function
+
+from zoo.algos.racos.function_interface import FunctionInterface
 
 
 # Sphere

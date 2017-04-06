@@ -28,8 +28,7 @@ Time:
 
 import sys
 
-from Method.Racos import Racos
-from Method.Racos.SRacos import SRacos
+from zoo.algos.racos.sracos import SRacos
 
 
 class RacosOptimization:
@@ -48,8 +47,8 @@ class RacosOptimization:
         if racos == 'SRacos':
             self._algorithm = SRacos()
             self._best_solution = self._algorithm.opt(parameter, strategy, ub)
-        elif racos == 'Racos':
-            self._algorithm = Racos()
+        elif racos == 'racos':
+            self._algorithm = racos()
             self._best_solution = self._algorithm.opt(parameter, ub)
         else:
             print 'No such optimization algorithm'

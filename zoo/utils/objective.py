@@ -27,12 +27,13 @@ Time:
  Copyright (C) 2015 Nanjing University, Nanjing, China
 """
 
-from Instance import Instance
+from instance import Instance
 
 
 class Objective:
 
     def __init__(self, func=None, dim=None):
+        # func is defined by user, it has to inherit the class ToolFunction
         self.__func = func
         self.__dim = dim
 

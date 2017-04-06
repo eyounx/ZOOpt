@@ -30,12 +30,11 @@ Time:
 import time
 
 import numpy as np
-
-from Component.Dimension import Dimension
-from Component.Objective import Objective
-from Component.Parameter import Parameter
-from Method.Racos.RacosOptimization import RacosOptimization
-from ObjectiveFunction.RacosObjectiveFunction.ObjectFunction import Sphere, Arkley, SetCover, MixedFunction
+from example.racos_test.fx.fx import Sphere, Arkley, SetCover, MixedFunction
+from zoo.algos.racos.racos_optimization import RacosOptimization
+from zoo.utils.dimension import Dimension
+from zoo.utils.objective import Objective
+from zoo.utils.parameter import Parameter
 
 
 def result_analysis(result, top):

@@ -1,9 +1,9 @@
-from NNModel import NNModel, Layer
 from GymTask import GymTask
-from Component.Dimension import Dimension
-from Component.Objective import Objective
-from Component.Parameter import Parameter
-from Method.Racos.RacosOptimization import RacosOptimization
+from zoo.algos.racos import RacosOptimization
+from zoo.utils import Dimension
+from zoo.utils import Objective
+from zoo.utils import Parameter
+
 
 # test function
 
@@ -39,7 +39,7 @@ def run_test(name, in_layers, in_budget, maxstep, repeat):
     result = []
     sum = 0
     for i in range(repeat):
-        ins = racos.opt(parameter, strategy='WR', racos='Racos', ub=uncertain_bits)
+        ins = racos.opt(parameter, strategy='WR', racos='racos', ub=uncertain_bits)
         result.append(ins.get_value())
         sum += ins.get_value()
         ins.print_instance()

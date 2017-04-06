@@ -29,11 +29,11 @@ Time:
 import time
 
 import numpy
+from zoo.utils.instance import Instance
 
-from Component import Global
-from Component.Instance import Instance
-from Method.Racos.RacosCommon import RacosCommon
-from Method.Racos.RacosClassification import RacosClassification
+from zoo.algos.racos.racos_classification import RacosClassification
+from zoo.algos.racos.racos_common import RacosCommon
+from zoo.utils import my_global
 
 
 class SRacos(RacosCommon):
@@ -49,7 +49,7 @@ class SRacos(RacosCommon):
         for i in range(self._parameter.get_budget() - self._parameter.get_train_size()):
             if i == 0:
                 time_log1 = time.time()
-            if Global.rand.random() < self._parameter.get_probability():
+            if my_global.rand.random() < self._parameter.get_probability():
                 classifier = RacosClassification(
                     self._parameter.get_objective().get_dim(), self._positive_data, self._negative_data, ub)
                 classifier.mixed_classification()
@@ -107,7 +107,7 @@ class SRacos(RacosCommon):
     # random replace
     def strategy_rr(self, iset, x):
         len_iset = len(iset)
-        replace_index = Global.rand.randint(0, len_iset - 1)
+        replace_index = my_global.rand.randint(0, len_iset - 1)
         replace_ele = iset[replace_index]
         iset[replace_index] = x
         return replace_ele
