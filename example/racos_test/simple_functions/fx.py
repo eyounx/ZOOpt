@@ -4,7 +4,7 @@ Objective functions can be implemented in this file
 Author:
     Yu-Ren Liu
 
-Copyright (C) 2017"""
+"""
 
 """
  This program is free software; you can redistribute it and/or
@@ -28,22 +28,22 @@ import numpy
 import theano.tensor as T
 from theano import function
 
-from zoo.algos.racos.function_interface import FunctionInterface
+from zoo.algos.racos.inherit_interface import InheritInterface
 
 
 # Sphere
-class Sphere(FunctionInterface):
+class Sphere(InheritInterface):
     def __init__(self):
         self.__x = T.dvector('x')
         self.__value_sphere = ((self.__x - 0.2) ** 2).sum()
         self.__func = function([self.__x], self.__value_sphere)
 
-    def compute_fx(self, x, positive_data=None):
+    def inherit(self, x, positive_data=None):
         return self.__func(x)
 
 
 # Arkley
-class Arkley(FunctionInterface):
+class Arkley(InheritInterface):
     def __init__(self):
         self.__x = T.dvector('x')
         self.__a = 20
@@ -59,11 +59,11 @@ class Arkley(FunctionInterface):
                               + self.__a + numpy.e
         self.__func = function([self.__x], self.__value_arkley)
 
-    def compute_fx(self, x, positive_data=None):
+    def inherit(self, x, positive_data=None):
         return self.__func(x)
 
 
-class SetCover(FunctionInterface):
+class SetCover(InheritInterface):
     def __init__(self):
         self.__weight = [0.8356, 0.5495, 0.4444, 0.7269, 0.9960, 0.6633, 0.5062, 0.8429, 0.1293, 0.7355,
                   0.7979, 0.2814, 0.7962, 0.1754, 0.0267, 0.9862, 0.1786, 0.5884, 0.6289, 0.3008]
@@ -92,7 +92,7 @@ class SetCover(FunctionInterface):
         pass
 
     # set cover problem for discrete optimization
-    def compute_fx(self, x, positive_data=None):
+    def inherit(self, x, positive_data=None):
         allweight = 0
         countw = 0
         for i in range(len(self.__weight)):
@@ -120,10 +120,10 @@ class SetCover(FunctionInterface):
 
 
 # A test function for mixed optimization
-class MixedFunction(FunctionInterface):
+class MixedFunction(InheritInterface):
     def __init__(self):
         pass
 
-    def compute_fx(self, x, positive_data=None):
+    def inherit(self, x, positive_data=None):
         value = sum([i*i for i in x])
         return value

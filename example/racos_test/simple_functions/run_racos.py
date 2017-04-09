@@ -5,7 +5,7 @@ optimization algorithm
 Author:
     Yu-Ren Liu
 
-Copyright (C) 2017"""
+"""
 
 """
  This program is free software; you can redistribute it and/or

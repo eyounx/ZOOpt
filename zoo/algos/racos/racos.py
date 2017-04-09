@@ -4,7 +4,7 @@ The class Racos represents Racos algorithm. It's inherited from RacosC.
 Author:
     Yu-Ren Liu
 
-Copyright (C) 2017"""
+"""
 
 """
  This program is free software; you can redistribute it and/or
