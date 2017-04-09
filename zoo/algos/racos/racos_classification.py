@@ -216,12 +216,12 @@ class RacosClassification:
     def print_neg(self):
         print '------print neg------'
         for x in self._negative_solution:
-            x.print_instance()
+            x.print_solution()
 
     def print_pos(self):
         print '------print pos------'
         for x in self._positive_solution:
-            x.print_instance()
+            x.print_solution()
 
     def print_sample_region(self):
         print '------print sample region------'

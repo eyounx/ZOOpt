@@ -1,3 +1,9 @@
+import time
+
+from zoo.algos.racos.racos_classification import RacosClassification
+from zoo.algos.racos.racos_common import RacosCommon
+from zoo.utils import my_global
+
 """
 The class Racos represents Racos algorithm. It's inherited from RacosC.
 
@@ -24,17 +30,10 @@ Author:
  Copyright (C) 2017 Nanjing University, Nanjing, China
  """
 
-import time
-
-from zoo.algos.racos import RacosClassification
-from zoo.algos.racos import RacosCommon
-from zoo.utils import my_global
-
-
 class Racos(RacosCommon):
 
     def __init__(self):
-        RacosC.__init__(self)
+        RacosCommon.__init__(self)
 
     # racos optimization function
     def opt(self, parameter, ub=1):
@@ -50,16 +49,18 @@ class Racos(RacosCommon):
                         self._parameter.get_objective().get_dim(), self._positive_data, self._negative_data, ub)
                     classifier.mixed_classification()
                     x = classifier.rand_sample()
-                    ins = self._parameter.get_objective().construct_instance(x)
+                    solution = self._parameter.get_objective().construct_solution(x, classifier._x_positive)
                 else:
-                    ins = self.distinct_sample(self._parameter.get_objective().get_dim())
-                self._data.append(ins)
+                    solution = self.distinct_sample(self._parameter.get_objective().get_dim())
+                self._data.append(solution)
             self.selection()
             self._best_solution = self._positive_data[0]
             if i == 4:
                 time_log2 = time.time()
                 expected_time = t * (time_log2 - time_log1) / 5
                 if expected_time > 5:
-                    print 'expected run time is %f s:' % expected_time
+                    m, s = divmod(expected_time, 60)
+                    h, m = divmod(m, 60)
+                    print 'expected running time will be %02d:%02d:%02d' % (h, m, s)
         return self._best_solution
 

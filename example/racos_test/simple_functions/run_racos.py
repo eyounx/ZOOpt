@@ -66,7 +66,7 @@ if False:
         racos = RacosOptimization()
         print 'Best solution is:'
         ins = racos.opt(parameter, strategy='WR')
-        ins.print_instance()
+        ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 5)
     t2 = time.clock()
@@ -94,7 +94,7 @@ if False:
         parameter.set_negative_size(20)
         racos = RacosOptimization()
         ins = racos.opt(parameter, 'SRacos')
-        ins.print_instance()
+        ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 100)
     t2 = time.clock()
@@ -122,7 +122,7 @@ if False:
         parameter.set_negative_size(5)
         racos = RacosOptimization()
         ins = racos.opt(parameter, 'SRacos')
-        ins.print_instance()
+        ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 100)
 
@@ -151,7 +151,7 @@ if True:
         # parameter.set_negative_size(5)
         racos = RacosOptimization()
         ins = racos.opt(parameter, 'SRacos')
-        ins.print_instance()
+        ins.print_solution()
         print j
         result.append(ins.get_value())
     result_analysis(result, 15)

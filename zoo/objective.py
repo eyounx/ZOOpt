@@ -25,31 +25,43 @@ Author:
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
 
-from zoo.utils.solution import Solution
+from zoo.solution import Solution
 
 
 class Objective:
-
     def __init__(self, func=None, dim=None):
-        # func is defined by user, it has to inherit the class ToolFunction
+        # objective function defined by the user
         self.__func = func
+        # number of dimensions, dimension bounds are in the dim object
         self.__dim = dim
+        # the function for inheriting solution attachement
+        self.__inherit = self.default_inherit
 
-    # Construct an instance from
-    def construct_instance(self, coordinate, positive_data=None):
-        new_ins = Solution()
-        new_ins.set_coordinates(coordinate)
-        new_ins.set_value(self.__func.inherit(coordinate, positive_data))
-        return new_ins
+    # Construct a solution from
+    def construct_solution(self, x, parent=None):
+        new_solution = Solution()
+        new_solution.set_x(x)
+        new_solution.set_value(self.__inherit(x, parent))
+        return new_solution
 
     def set_func(self, func):
         self.__func = func
 
-    def set_dim(self, dim):
-        self.__dim = dim
-
     def get_func(self):
         return self.__func
 
+    def set_dim(self, dim):
+        self.__dim = dim
+
     def get_dim(self):
         return self.__dim
+
+    def set_inherit_func(self, inherit_func):
+        self.__inherit=inherit_func
+
+    def get_inherit_func(self):
+        return self.__inherit
+
+    @staticmethod
+    def default_inherit(self, x, parent=None):
+        pass

@@ -27,8 +27,8 @@ Author:
 import time
 
 import numpy
-from zoo.utils.solution import Solution
 
+from zoo.solution import Solution
 from zoo.algos.racos.racos_classification import RacosClassification
 from zoo.algos.racos.racos_common import RacosCommon
 from zoo.utils import my_global

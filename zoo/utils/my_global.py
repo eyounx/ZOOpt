@@ -31,4 +31,9 @@ def set_seed(Random, seed):
 
 # rand is the random object used by all files
 rand = Random()
-rand.seed(2)
+rand.seed(100)
+
+# constants
+pos_inf = float('Inf')
+neg_inf = float('-Inf')
+nan = float('Nan')

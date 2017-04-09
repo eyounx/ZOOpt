@@ -38,7 +38,7 @@ class Sphere(InheritInterface):
         self.__value_sphere = ((self.__x - 0.2) ** 2).sum()
         self.__func = function([self.__x], self.__value_sphere)
 
-    def inherit(self, x, positive_data=None):
+    def inherit(self, x, parent=None):
         return self.__func(x)
 
 
@@ -59,7 +59,7 @@ class Arkley(InheritInterface):
                               + self.__a + numpy.e
         self.__func = function([self.__x], self.__value_arkley)
 
-    def inherit(self, x, positive_data=None):
+    def inherit(self, x, parent=None):
         return self.__func(x)
 
 
@@ -92,7 +92,7 @@ class SetCover(InheritInterface):
         pass
 
     # set cover problem for discrete optimization
-    def inherit(self, x, positive_data=None):
+    def inherit(self, x, parent=None):
         allweight = 0
         countw = 0
         for i in range(len(self.__weight)):
@@ -124,6 +124,6 @@ class MixedFunction(InheritInterface):
     def __init__(self):
         pass
 
-    def inherit(self, x, positive_data=None):
+    def inherit(self, x, parent=None):
         value = sum([i*i for i in x])
         return value
