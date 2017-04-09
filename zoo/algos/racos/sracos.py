@@ -4,8 +4,6 @@ The class SRacos represents SRacos algorithm. It's inherited from RacosC.
 Author:
     Yu-Ren Liu
 
-Time:
-    2017.1.20
 """
 
 """
@@ -23,13 +21,13 @@ Time:
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2015 Nanjing University, Nanjing, China
+ Copyright (C) 2017 Nanjing University, Nanjing, China
 """
 
 import time
 
 import numpy
-from zoo.utils.instance import Instance
+from zoo.utils.solution import Solution
 
 from zoo.algos.racos.racos_classification import RacosClassification
 from zoo.algos.racos.racos_common import RacosCommon
@@ -97,7 +95,7 @@ class SRacos(RacosCommon):
             iset.insert(index, x)
             worst_ele = iset.pop()
         else:
-            worst_ele, worst_index = Instance.find_maximum(iset)
+            worst_ele, worst_index = Solution.find_maximum(iset)
             if worst_ele.get_value() > x.get_value():
                 iset[worst_index] = x
             else:

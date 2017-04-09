@@ -5,8 +5,6 @@ Class Racos and SRacos both inherit from RacosC.
 Author:
     Yu-Ren Liu
 
-Time:
-    2017.1.20
 """
 
 """
@@ -24,7 +22,7 @@ Time:
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2015 Nanjing University, Nanjing, China
+ Copyright (C) 2017 Nanjing University, Nanjing, China
  """
 
 import copy
@@ -35,20 +33,20 @@ class RacosCommon:
 
     def __init__(self):
         self._parameter = None
-        # Instance set
+        # Solution set
         # Random sampled Instances construct self._data
         self._data = []
         # self._positive_data are best-positive_size instance set
         self._positive_data = []
         # self._negative_data are the others
         self._negative_data = []
-        # Instance
+        # Solution
         self._best_solution = None
         return
 
     def clear(self):
         self._parameter = None
-        # Instance
+        # Solution
         self._data = []
         self._positive_data = []
         self._negative_data = []

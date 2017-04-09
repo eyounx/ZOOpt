@@ -5,9 +5,6 @@ Each sample like x from the dimension together with func(x) is an instance
 
 Author:
     Yu-Ren Liu
-
-Time:
-    2017.1.20
 """
 
 """
@@ -25,11 +22,11 @@ Time:
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2015 Nanjing University, Nanjing, China
+ Copyright (C) 2017 Nanjing University, Nanjing, China
 """
 
 
-class Instance:
+class Solution:
 
     def __init__(self, coordinate=[], value=0):
         self.__coordinate = coordinate
@@ -42,7 +39,7 @@ class Instance:
         for x in self.__coordinate:
             coordinate.append(x)
         value = self.__value
-        return Instance(coordinate, value)
+        return Solution(coordinate, value)
 
     # Check if two instances equal
     def judge_equal(self, ins, precision=1e-10):

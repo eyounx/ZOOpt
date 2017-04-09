@@ -5,8 +5,6 @@ This class contains a func and  a dim
 Author:
     Yu-Ren Liu
 
-Time:
-    2017.1.20
 """
 
 """
@@ -24,10 +22,10 @@ Time:
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2015 Nanjing University, Nanjing, China
+ Copyright (C) 2017 Nanjing University, Nanjing, China
 """
 
-from instance import Instance
+from zoo.utils.solution import Solution
 
 
 class Objective:
@@ -39,7 +37,7 @@ class Objective:
 
     # Construct an instance from
     def construct_instance(self, coordinate, positive_data=None):
-        new_ins = Instance()
+        new_ins = Solution()
         new_ins.set_coordinates(coordinate)
         new_ins.set_value(self.__func.compute_fx(coordinate, positive_data))
         return new_ins
