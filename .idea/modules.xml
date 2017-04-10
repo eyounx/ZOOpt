@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ZOO.iml" filepath="$PROJECT_DIR$/.idea/ZOO.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../RACOS-master-2/python-src/.idea/python-src.iml" filepath="$PROJECT_DIR$/../RACOS-master-2/python-src/.idea/python-src.iml" />
-    </modules>
-  </component>
-</project>

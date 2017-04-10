@@ -106,7 +106,7 @@ class RampLoss:
             racos = RacosOptimization()
             print 'Best solution is:'
             ins = racos.opt(parameter, strategy='WR')
-            ins.print_instance()
+            ins.print_solution()
             print self.validation(ins.get_coordinates())
         return
 

@@ -41,7 +41,7 @@ def run_test(name, in_layers, in_budget, maxstep, repeat):
         ins = racos.opt(parameter, strategy='WR', racos='SRacos', ub=uncertain_bits)
         result.append(ins.get_value())
         sum += ins.get_value()
-        ins.print_instance()
+        ins.print_solution()
     print result
     print sum/len(result)
 

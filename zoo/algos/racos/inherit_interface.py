@@ -1,10 +1,3 @@
-""""
-This file records Global variables used in the algorithm
-Author:
-    Yu-Ren Liu
-
-"""
-
 """
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
@@ -21,19 +14,11 @@ Author:
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
-"""
+ """
 
-from random import Random
-
-
-def set_seed(Random, seed):
-    Random.seed(seed)
-
-# rand is the random object used by all files
-rand = Random()
-rand.seed(100)
-
-# constants
-pos_inf = float('Inf')
-neg_inf = float('-Inf')
-nan = float('Nan')
+class InheritInterface(object):
+    # User has to implement this interface
+    # Objective_function is used to compute f(x)
+    # parent: the solution that leads to the generation of the current solution x
+    def inherit(self, x, parent=None):
+        pass

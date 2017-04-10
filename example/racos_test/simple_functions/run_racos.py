@@ -5,8 +5,6 @@ optimization algorithm
 Author:
     Yu-Ren Liu
 
-Time:
-    2017.1.20
 """
 
 """
@@ -24,17 +22,18 @@ Time:
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2015 Nanjing University, Nanjing, China
+ Copyright (C) 2017 Nanjing University, Nanjing, China
 """
 
 import time
 
 import numpy as np
-from example.racos_test.fx.fx import Sphere, Arkley, SetCover, MixedFunction
+
+from example.racos_test.simple_functions.fx import Sphere, Arkley, SetCover, MixedFunction
 from zoo.algos.racos.racos_optimization import RacosOptimization
-from zoo.utils.dimension import Dimension
-from zoo.utils.objective import Objective
-from zoo.utils.parameter import Parameter
+from zoo.dimension import Dimension
+from zoo.objective import Objective
+from zoo.parameter import Parameter
 
 
 def result_analysis(result, top):
@@ -67,7 +66,7 @@ if False:
         racos = RacosOptimization()
         print 'Best solution is:'
         ins = racos.opt(parameter, strategy='WR')
-        ins.print_instance()
+        ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 5)
     t2 = time.clock()
@@ -95,7 +94,7 @@ if False:
         parameter.set_negative_size(20)
         racos = RacosOptimization()
         ins = racos.opt(parameter, 'SRacos')
-        ins.print_instance()
+        ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 100)
     t2 = time.clock()
@@ -123,7 +122,7 @@ if False:
         parameter.set_negative_size(5)
         racos = RacosOptimization()
         ins = racos.opt(parameter, 'SRacos')
-        ins.print_instance()
+        ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 100)
 
@@ -152,7 +151,7 @@ if True:
         # parameter.set_negative_size(5)
         racos = RacosOptimization()
         ins = racos.opt(parameter, 'SRacos')
-        ins.print_instance()
+        ins.print_solution()
         print j
         result.append(ins.get_value())
     result_analysis(result, 15)

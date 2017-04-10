@@ -4,8 +4,6 @@ The class RacosClassification contains a classifier generation algorithm
 Author:
     Yu-Ren Liu
 
-Time:
-    2017.1.20
 """
 
 """
@@ -23,10 +21,10 @@ Time:
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2015 Nanjing University, Nanjing, China
+ Copyright (C) 2017 Nanjing University, Nanjing, China
 """
 
-from zoo.utils.dimension import Dimension
+from zoo.dimension import Dimension
 
 from zoo.utils import my_global
 
@@ -37,7 +35,7 @@ class RacosClassification:
         self._solution_space = dim
         self._sample_region = []
         self._label = []
-        # Instance
+        # Solution
         self._positive_solution = positive
         self._negative_solution = negative
         self._x_positive = None
@@ -218,12 +216,12 @@ class RacosClassification:
     def print_neg(self):
         print '------print neg------'
         for x in self._negative_solution:
-            x.print_instance()
+            x.print_solution()
 
     def print_pos(self):
         print '------print pos------'
         for x in self._positive_solution:
-            x.print_instance()
+            x.print_solution()
 
     def print_sample_region(self):
         print '------print sample region------'

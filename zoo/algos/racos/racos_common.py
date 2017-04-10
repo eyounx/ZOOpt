@@ -5,8 +5,6 @@ Class Racos and SRacos both inherit from RacosC.
 Author:
     Yu-Ren Liu
 
-Time:
-    2017.1.20
 """
 
 """
@@ -24,7 +22,7 @@ Time:
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2015 Nanjing University, Nanjing, China
+ Copyright (C) 2017 Nanjing University, Nanjing, China
  """
 
 import copy
@@ -35,20 +33,20 @@ class RacosCommon:
 
     def __init__(self):
         self._parameter = None
-        # Instance set
+        # Solution set
         # Random sampled Instances construct self._data
         self._data = []
         # self._positive_data are best-positive_size instance set
         self._positive_data = []
         # self._negative_data are the others
         self._negative_data = []
-        # Instance
+        # Solution
         self._best_solution = None
         return
 
     def clear(self):
         self._parameter = None
-        # Instance
+        # Solution
         self._data = []
         self._positive_data = []
         self._negative_data = []
@@ -91,22 +89,22 @@ class RacosCommon:
     # return False if there exists an instance the same as x,
     # otherwise return True
     @staticmethod
-    def judge_distinct(seta, x):
+    def is_distinct(seta, x):
         for ins in seta:
-            if x.judge_equal(ins):
+            if x.is_equal(ins):
                 return False
         return True
 
     # Distinct sample from dim, return an instance
-    def distinct_sample(self, dim, turnon=True, data_num=0):
+    def distinct_sample(self, dim, check_distinct=True, data_num=0):
         objective = self._parameter.get_objective()
-        x = objective.construct_instance(dim.rand_sample())
+        x = objective.construct_solution(dim.rand_sample())
         times = 1
-        if turnon is True:
-            while self.judge_distinct(self._positive_data, x) is False and \
-                    self.judge_distinct(self._negative_data, x) is False:
+        if check_distinct is True:
+            while self.is_distinct(self._positive_data, x) is False and \
+                    self.is_distinct(self._negative_data, x) is False:
                 # print '------sample repeated------'
-                x = objective.construct_instance(dim.rand_sample())
+                x = objective.construct_solution(dim.rand_sample())
                 times += 1
                 if times % 10 == 0:
                     limited, number = dim.limited_space()
@@ -119,16 +117,16 @@ class RacosCommon:
                     #     sys.exit()
         return x
 
-    def distinct_sample_classifier(self, classifier, turnon=True, data_num=0):
+    def distinct_sample_classifier(self, classifier, check_distinct=True, data_num=0):
         x = classifier.rand_sample()
-        ins = self._parameter.get_objective().construct_instance(x)
+        ins = self._parameter.get_objective().construct_solution(x)
         times = 1
-        if turnon is True:
-            while self.judge_distinct(self._positive_data, ins) is False or \
-                    self.judge_distinct(self._negative_data, ins) is False:
+        if check_distinct is True:
+            while self.is_distinct(self._positive_data, ins) is False or \
+                    self.is_distinct(self._negative_data, ins) is False:
                     # print '------sample repeated------'
                 x = classifier.rand_sample()
-                ins = self._parameter.get_objective().construct_instance(x)
+                ins = self._parameter.get_objective().construct_solution(x)
                 times += 1
                 if times % 10 == 0:
                     if times == 10:
@@ -149,16 +147,16 @@ class RacosCommon:
         print '------print positive_data------'
         print 'the size of positive_data is: %d' % (len(self._positive_data))
         for x in self._positive_data:
-            x.print_instance()
+            x.print_solution()
 
     def print_negative_data(self):
         print '------print negative_data------'
         print 'the size of negative_data is: %d' % (len(self._negative_data))
         for x in self._negative_data:
-            x.print_instance()
+            x.print_solution()
 
     def print_data(self):
         print '------print b------'
         print 'the size of b is: %d' % (len(self._data))
         for x in self._data:
-            x.print_instance()
+            x.print_solution()
