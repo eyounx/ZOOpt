@@ -27,7 +27,7 @@ Author:
 import sys
 
 from zoo.algos.racos.sracos import SRacos
-
+from zoo.algos.racos.racos import Racos
 
 class RacosOptimization:
 
@@ -40,17 +40,14 @@ class RacosOptimization:
         self._algorithm = None
 
     # General optimization function, it will choose concrete optimization algorithm
-    def opt(self, parameter, racos='SRacos', strategy='WR', ub=1):
+    def opt(self, objective, parameter, strategy='WR', ub=1):
         self.clear()
-        if racos == 'SRacos':
+        if parameter.get_algorithm() == 'racos':
+            self._algorithm = Racos()
+            self._best_solution = self._algorithm.opt(objective, parameter, ub)
+        else :
             self._algorithm = SRacos()
-            self._best_solution = self._algorithm.opt(parameter, strategy, ub)
-        elif racos == 'racos':
-            self._algorithm = racos()
-            self._best_solution = self._algorithm.opt(parameter, ub)
-        else:
-            print 'No such optimization algorithm'
-            sys.exit(1)
+            self._best_solution = self._algorithm.opt(objective, parameter, strategy, ub)
         return self._best_solution
 
     def get_best_sol(self):

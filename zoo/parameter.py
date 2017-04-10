@@ -30,7 +30,8 @@ import sys
 
 class Parameter:
 
-    def __init__(self, objective=None, budget=0, autoset=True):
+    def __init__(self, algorithm=None, objective=None, budget=0, autoset=True):
+        self.__algorithm = algorithm
         self.__budget = budget
         self.__train_size = 0
         self.__positive_size = 0
@@ -63,41 +64,55 @@ class Parameter:
             self.__positive_size = 2
         self.__negative_size = self.__train_size - self.__positive_size
 
-    def set_objective(self, objective):
-        self.__objective = objective
+    def set_algorithm(self, algorithm):
+        self.__algorithm = algorithm
+
+    def get_algorithm(self):
+        return self.__algorithm
 
     def set_budget(self, budget):
         self.__budget = budget
+        return
+
+    def get_budget(self):
+        return self.__budget
 
     def set_train_size(self, size):
         self.__train_size = size
         return
 
+    def get_train_size(self):
+        return self.__train_size
+
     def set_positive_size(self, size):
         self.__positive_size = size
         return
+
+    def get_positive_size(self):
+        return self.__positive_size
 
     def set_negative_size(self, size):
         self.__negative_size = size
         return
 
-    def set_probability(self, probability):
-        self.__probability = probability
-
-    def get_objective(self):
-        return self.__objective
-
-    def get_budget(self):
-        return self.__budget
-
-    def get_train_size(self):
-        return self.__train_size
-
-    def get_positive_size(self):
-        return self.__positive_size
-
     def get_negative_size(self):
         return self.__negative_size
 
+    def set_probability(self, probability):
+        self.__probability = probability
+
     def get_probability(self):
         return self.__probability
+
+
+
+
+
+
+
+
+
+
+
+
+

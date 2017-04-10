@@ -29,13 +29,14 @@ from zoo.solution import Solution
 
 
 class Objective:
-    def __init__(self, func=None, dim=None):
+    def __init__(self, func=None, dim=None, constraint=None):
         # objective function defined by the user
         self.__func = func
         # number of dimensions, dimension bounds are in the dim object
         self.__dim = dim
         # the function for inheriting solution attachement
         self.__inherit = self.default_inherit
+        self._constraint = constraint
 
     # Construct a solution from
     def construct_solution(self, x, parent=None):
@@ -61,6 +62,13 @@ class Objective:
 
     def get_inherit_func(self):
         return self.__inherit
+
+    def set_constraint(self, constraint):
+        self._constraint = constraint
+        return
+
+    def get_constraint(self):
+        return self._constraint
 
     @staticmethod
     def default_inherit(self, x, parent=None):

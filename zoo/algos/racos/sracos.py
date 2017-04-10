@@ -41,19 +41,21 @@ class SRacos(RacosCommon):
 
     # SRacos's optimization function
     # default strategy is WR(worst replace)
-    def opt(self, parameter, strategy='WR', ub=1):
+    def opt(self, objective, parameter, strategy='WR', ub=1):
         self.clear()
+        self.set_objective(objective)
         self.set_parameters(parameter)
+        self.init_attribute()
         for i in range(self._parameter.get_budget() - self._parameter.get_train_size()):
             if i == 0:
                 time_log1 = time.time()
             if my_global.rand.random() < self._parameter.get_probability():
                 classifier = RacosClassification(
-                    self._parameter.get_objective().get_dim(), self._positive_data, self._negative_data, ub)
+                    self._objective.get_dim(), self._positive_data, self._negative_data, ub)
                 classifier.mixed_classification()
                 ins = self.distinct_sample_classifier(classifier, True, self._parameter.get_train_size())
             else:
-                ins = self.distinct_sample(self._parameter.get_objective().get_dim())
+                ins = self.distinct_sample(self._objective.get_dim())
             bad_ele = self.replace(self._positive_data, ins, 'pos')
             self.replace(self._negative_data, bad_ele, 'neg', strategy)
             self._best_solution = self._positive_data[0]
@@ -62,7 +64,7 @@ class SRacos(RacosCommon):
                 expected_time = (self._parameter.get_budget() - self._parameter.get_train_size()) * \
                                 (time_log2 - time_log1) / 5
                 if expected_time > 5:
-                    print 'expected run time is %f s:' % (expected_time)
+                    print 'expected run time is %f s:' % expected_time
         return self._best_solution
 
     def replace(self, iset, x, iset_type, strategy='WR'):

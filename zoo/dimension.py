@@ -34,13 +34,14 @@ class Dimension:
     def __init__(self, size=0, regs=[], tys=[]):
         self._size = size
         self._regions = regs
+        # True means continuous, False means discrete
         self._types = tys
         return
 
     # Check if the dimensions of regs and tys
     # are both the same as size
     @staticmethod
-    def judge_match(self, size, regs, tys):
+    def judge_match(size, regs, tys):
         if size != len(regs) or size != len(tys):
             print 'dimensions don\'t match '
             return False
@@ -123,6 +124,12 @@ class Dimension:
                 interval.append(reg[i])
             regions.append(interval)
         return regions
+
+    def is_discrete(self):
+        for i in range(len(self._types)):
+            if self._types[i] is True:
+                return False
+        return True
 
     def get_size(self):
         return self._size
