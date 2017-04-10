@@ -33,6 +33,7 @@ class RacosCommon:
 
     def __init__(self):
         self._parameter = None
+        self._objective = None
         # Solution set
         # Random sampled Instances construct self._data
         self._data = []
@@ -46,6 +47,7 @@ class RacosCommon:
 
     def clear(self):
         self._parameter = None
+        self._objective = None
         # Solution
         self._data = []
         self._positive_data = []
@@ -55,7 +57,10 @@ class RacosCommon:
 
     def set_parameters(self, parameter):
         self._parameter = parameter
-        self.init_attribute()
+        return
+
+    def set_objective(self, objective):
+        self._objective = objective
         return
 
     # Construct self._data, self._positive_data, self._negative_data

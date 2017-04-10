@@ -30,15 +30,18 @@ Author:
  Copyright (C) 2017 Nanjing University, Nanjing, China
  """
 
+
 class Racos(RacosCommon):
 
     def __init__(self):
         RacosCommon.__init__(self)
 
     # racos optimization function
-    def opt(self, parameter, ub=1):
+    def opt(self, objective, parameter, ub=1):
         self.clear()
+        self.set_objective(objective)
         self.set_parameters(parameter)
+        self.init_attribute()
         t = self._parameter.get_budget() / self._parameter.get_negative_size()
         for i in range(t):
             if i == 0:
@@ -46,12 +49,12 @@ class Racos(RacosCommon):
             for j in range(len(self._negative_data)):
                 if my_global.rand.random() < self._parameter.get_probability():
                     classifier = RacosClassification(
-                        self._parameter.get_objective().get_dim(), self._positive_data, self._negative_data, ub)
+                        self._objective.get_dim(), self._positive_data, self._negative_data, ub)
                     classifier.mixed_classification()
                     x = classifier.rand_sample()
-                    solution = self._parameter.get_objective().construct_solution(x, classifier._x_positive)
+                    solution = self._objective.construct_solution(x, classifier.get_x_positive())
                 else:
-                    solution = self.distinct_sample(self._parameter.get_objective().get_dim())
+                    solution = self.distinct_sample(self._objective.get_dim())
                 self._data.append(solution)
             self.selection()
             self._best_solution = self._positive_data[0]

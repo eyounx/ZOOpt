@@ -31,7 +31,6 @@ import sys
 class Parameter:
 
     def __init__(self, objective=None, budget=0, autoset=True):
-        self.__objective = objective
         self.__budget = budget
         self.__train_size = 0
         self.__positive_size = 0
