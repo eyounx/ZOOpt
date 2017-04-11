@@ -29,6 +29,7 @@ import sys
 from zoo.algos.racos.sracos import SRacos
 from zoo.algos.racos.racos import Racos
 
+
 class RacosOptimization:
 
     def __init__(self):
@@ -42,12 +43,12 @@ class RacosOptimization:
     # General optimization function, it will choose concrete optimization algorithm
     def opt(self, objective, parameter, strategy='WR', ub=1):
         self.clear()
-        if parameter.get_algorithm() == 'racos':
-            self._algorithm = Racos()
-            self._best_solution = self._algorithm.opt(objective, parameter, ub)
-        else :
+        if parameter.get_sequence() is True:
             self._algorithm = SRacos()
             self._best_solution = self._algorithm.opt(objective, parameter, strategy, ub)
+        else :
+            self._algorithm = Racos()
+            self._best_solution = self._algorithm.opt(objective, parameter, ub)
         return self._best_solution
 
     def get_best_sol(self):

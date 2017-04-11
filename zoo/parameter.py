@@ -30,8 +30,9 @@ import sys
 
 class Parameter:
 
-    def __init__(self, algorithm=None, objective=None, budget=0, autoset=True):
+    def __init__(self, algorithm=None, sequential=True, objective=None, budget=0, autoset=True):
         self.__algorithm = algorithm
+        self.__sequential = sequential
         self.__budget = budget
         self.__train_size = 0
         self.__positive_size = 0

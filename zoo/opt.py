@@ -9,10 +9,12 @@ class Opt:
         algorithm = parameter.get_algorithm()
         constraint = parameter.get_constraint()
         result = None
-        if algorithm == 'poss' or ((constraint is not None) and (objective.get_dim().is_discrete() is True)):
+        if constraint is not None and ((algorithm is None) or (algorithm == 'poss')):
             # TODO
             pass
-        else:
+        elif constraint is None and ((algorithm is None) or (algorithm == 'racos')):
             optimizer = RacosOptimization()
             result = optimizer.opt(objective, parameter)
+        else:
+            print "No proper algorithm find for %s" % algorithm
         return result

@@ -26,10 +26,9 @@ Author:
 """
 
 import time
-
 import numpy as np
 
-from example.racos_test.simple_functions.fx import Sphere, Arkley, SetCover, MixedFunction
+from example.simple_functions.fx import Sphere, Arkley, SetCover, MixedFunction
 from zoo.algos.racos.racos_optimization import RacosOptimization
 from zoo.dimension import Dimension
 from zoo.objective import Objective
