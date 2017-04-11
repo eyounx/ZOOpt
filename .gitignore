@@ -1,5 +1,6 @@
 *.py[cod]
 .idea
 test
-Theano
-test.py
+/example/direct_policy_search_for_gym/Theano
+/example/direct_policy_search_for_gym/test.py
+
