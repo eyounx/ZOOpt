@@ -28,11 +28,12 @@ Author:
 import time
 import numpy as np
 
-from example.simple_functions.fx import Sphere, Arkley, SetCover, MixedFunction
+from example.simple_functions.fx import sphere, arkley, set_cover, mixed_function
 from zoo.algos.racos.racos_optimization import RacosOptimization
 from zoo.dimension import Dimension
 from zoo.objective import Objective
 from zoo.parameter import Parameter
+from zoo.opt import Optimizer
 
 
 def result_analysis(result, top):
@@ -58,13 +59,12 @@ if False:
             dim_tys.append(True)
         dim = Dimension(dim_size, dim_regs, dim_tys)
         # objective means objective function
-        sphere = Sphere()
         objective = Objective(sphere, dim)
         budget = 20 * dim_size
-        parameter = Parameter(objective, budget)
-        racos = RacosOptimization()
+        parameter = Parameter(algorithm="racos", budget=budget)
+        opt = Optimizer()
         print 'Best solution is:'
-        ins = racos.opt(parameter, strategy='WR')
+        ins = opt.min(objective, parameter)
         ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 5)
@@ -84,15 +84,14 @@ if False:
             dim_regs.append([-1, 1])
             dim_tys.append(True)
         dim = Dimension(dim_size, dim_regs, dim_tys)
-        arkley = Arkley()
         objective = Objective(arkley, dim)
         budget = 500
-        parameter = Parameter(objective, budget, autoset=False)
+        parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
         parameter.set_train_size(21)
         parameter.set_positive_size(1)
         parameter.set_negative_size(20)
-        racos = RacosOptimization()
-        ins = racos.opt(parameter, 'SRacos')
+        opt = Optimizer()
+        ins = opt.min(objective, parameter)
         ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 100)
@@ -102,7 +101,7 @@ if False:
 # discrete optimization
 if False:
     # dimension setting
-    repeat = 100
+    repeat = 10
     result = []
     for i in range(repeat):
         dim_size = 20
@@ -112,15 +111,14 @@ if False:
             dim_regs.append([0, 1])
             dim_tys.append(False)
         dim = Dimension(dim_size, dim_regs, dim_tys)
-        setcover = SetCover()
-        objective = Objective(setcover, dim)
+        objective = Objective(set_cover, dim)
         budget = 2000
-        parameter = Parameter(objective, budget, autoset=False)
+        parameter = Parameter(budget=budget, autoset=False)
         parameter.set_train_size(6)
         parameter.set_positive_size(1)
         parameter.set_negative_size(5)
-        racos = RacosOptimization()
-        ins = racos.opt(parameter, 'SRacos')
+        opt = Optimizer()
+        ins = opt.min(objective, parameter)
         ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 100)
@@ -141,16 +139,14 @@ if True:
                 dim_regs.append([0, 100])
                 dim_tys.append(False)
         dim = Dimension(dim_size, dim_regs, dim_tys)
-        mixed = MixedFunction()
-        objective = Objective(mixed, dim)
+        objective = Objective(mixed_function, dim)
         budget = 2000
-        parameter = Parameter(objective, budget, autoset=True)
+        parameter = Parameter(budget=budget, autoset=True)
         # parameter.set_train_size(6)
         # parameter.set_positive_size(1)
         # parameter.set_negative_size(5)
-        racos = RacosOptimization()
-        ins = racos.opt(parameter, 'SRacos')
+        opt = Optimizer()
+        ins = opt.min(objective, parameter)
         ins.print_solution()
-        print j
         result.append(ins.get_value())
     result_analysis(result, 15)

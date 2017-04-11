@@ -1,18 +1,20 @@
 from zoo.algos.racos.racos_optimization import RacosOptimization
 
 
-class Opt:
+class Optimizer:
     def __init__(self):
         return
 
     def min(self, objective, parameter):
+        constraint = objective.get_constraint()
         algorithm = parameter.get_algorithm()
-        constraint = parameter.get_constraint()
+        if algorithm:
+            algorithm = algorithm.lower()
         result = None
-        if constraint is not None and ((algorithm is None) or (algorithm == 'poss')):
+        if constraint is not None and ((algorithm is None) or (algorithm == "poss")):
             # TODO
             pass
-        elif constraint is None and ((algorithm is None) or (algorithm == 'racos')):
+        elif constraint is None and ((algorithm is None) or (algorithm == "racos")):
             optimizer = RacosOptimization()
             result = optimizer.opt(objective, parameter)
         else:

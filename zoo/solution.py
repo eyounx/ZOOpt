@@ -64,12 +64,12 @@ class Solution:
                 return True
         return False
 
-    def set_x(self, index, coordinate):
-        self.__x[index] = coordinate
+    def set_x_index(self, index, x):
+        self.__x[index] = x
         return
 
-    def set_x(self, coordinate):
-        self.__x = coordinate
+    def set_x(self, x):
+        self.__x = x
         return
 
     def set_value(self, value):
@@ -80,7 +80,7 @@ class Solution:
         self.__attach = attach
         return
 
-    def get_x(self, index):
+    def get_x_index(self, index):
         return self.__x[index]
 
     def get_x(self):

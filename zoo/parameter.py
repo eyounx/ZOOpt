@@ -30,7 +30,7 @@ import sys
 
 class Parameter:
 
-    def __init__(self, algorithm=None, sequential=True, objective=None, budget=0, autoset=True):
+    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True):
         self.__algorithm = algorithm
         self.__sequential = sequential
         self.__budget = budget
@@ -70,6 +70,13 @@ class Parameter:
 
     def get_algorithm(self):
         return self.__algorithm
+
+    def set_sequential(self, sequential):
+        self.__sequential = sequential
+        return
+
+    def get_sequential(self):
+        return self.__sequential
 
     def set_budget(self, budget):
         self.__budget = budget

@@ -43,7 +43,7 @@ class RacosOptimization:
     # General optimization function, it will choose concrete optimization algorithm
     def opt(self, objective, parameter, strategy='WR', ub=1):
         self.clear()
-        if parameter.get_sequence() is True:
+        if parameter.get_sequential() is True:
             self._algorithm = SRacos()
             self._best_solution = self._algorithm.opt(objective, parameter, strategy, ub)
         else :

@@ -66,7 +66,7 @@ class RacosCommon:
     # Construct self._data, self._positive_data, self._negative_data
     def init_attribute(self):
         for i in range(self._parameter.get_train_size()):
-            x = self.distinct_sample(self._parameter.get_objective().get_dim())
+            x = self.distinct_sample(self._objective.get_dim())
             self._data.append(x)
         self.selection()
         return
@@ -102,7 +102,7 @@ class RacosCommon:
 
     # Distinct sample from dim, return an instance
     def distinct_sample(self, dim, check_distinct=True, data_num=0):
-        objective = self._parameter.get_objective()
+        objective = self._objective
         x = objective.construct_solution(dim.rand_sample())
         times = 1
         if check_distinct is True:
@@ -124,14 +124,14 @@ class RacosCommon:
 
     def distinct_sample_classifier(self, classifier, check_distinct=True, data_num=0):
         x = classifier.rand_sample()
-        ins = self._parameter.get_objective().construct_solution(x)
+        ins = self._objective.construct_solution(x)
         times = 1
         if check_distinct is True:
             while self.is_distinct(self._positive_data, ins) is False or \
                     self.is_distinct(self._negative_data, ins) is False:
                     # print '------sample repeated------'
                 x = classifier.rand_sample()
-                ins = self._parameter.get_objective().construct_solution(x)
+                ins = self._objective.construct_solution(x)
                 times += 1
                 if times % 10 == 0:
                     if times == 10:

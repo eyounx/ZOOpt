@@ -64,11 +64,11 @@ class RacosClassification:
         index_set = range(self._solution_space.get_size())
         while len_negative > 0:
             k = index_set[my_global.rand.randint(0, len(index_set) - 1)]
-            x_pos_k = self._x_positive.get_coordinate(k)
+            x_pos_k = self._x_positive.get_x_index(k)
             i = 0
             delete = 0
             while i < len_negative:
-                if self._negative_solution[i].get_coordinate(k) != x_pos_k:
+                if self._negative_solution[i].get_x_index(k) != x_pos_k:
                     len_negative -= 1
                     delete += 1
                     itemp = self._negative_solution[i]
@@ -90,15 +90,15 @@ class RacosClassification:
             k = my_global.rand.randint(0, self._solution_space.get_size() - 1)
             x_negative = self._negative_solution[
                 my_global.rand.randint(0, len_negative - 1)]
-            x_pos_k = self._x_positive.get_coordinate(k)
-            x_neg_k = x_negative.get_coordinate(k)
+            x_pos_k = self._x_positive.get_x_index(k)
+            x_neg_k = x_negative.get_x_index(k)
             if x_pos_k < x_neg_k:
                 r = my_global.rand.uniform(x_pos_k, x_neg_k)
                 if r < self._sample_region[k][1]:
                     self._sample_region[k][1] = r
                     i = 0
                     while i < len_negative:
-                        if self._negative_solution[i].get_coordinate(k) >= r:
+                        if self._negative_solution[i].get_x_index(k) >= r:
                             len_negative -= 1
                             itemp = self._negative_solution[i]
                             self._negative_solution[i] = self._negative_solution[len_negative]
@@ -111,7 +111,7 @@ class RacosClassification:
                     self._sample_region[k][0] = r
                     i = 0
                     while i < len_negative:
-                        if self._negative_solution[i].get_coordinate(k) <= r:
+                        if self._negative_solution[i].get_x_index(k) <= r:
                             len_negative -= 1
                             itemp = self._negative_solution[i]
                             self._negative_solution[i] = self._negative_solution[len_negative]
@@ -131,19 +131,19 @@ class RacosClassification:
         types = self._solution_space.get_types()
         while len_negative > 0:
             k = index_set[my_global.rand.randint(0, len(index_set) - 1)]
-            x_pos_k = self._x_positive.get_coordinate(k)
+            x_pos_k = self._x_positive.get_x_index(k)
             # continuous
             if types[k] is True:
                 x_negative = self._negative_solution[
                     my_global.rand.randint(0, len_negative - 1)]
-                x_neg_k = x_negative.get_coordinate(k)
+                x_neg_k = x_negative.get_x_index(k)
                 if x_pos_k < x_neg_k:
                     r = my_global.rand.uniform(x_pos_k, x_neg_k)
                     if r < self._sample_region[k][1]:
                         self._sample_region[k][1] = r
                         i = 0
                         while i < len_negative:
-                            if self._negative_solution[i].get_coordinate(k) >= r:
+                            if self._negative_solution[i].get_x_index(k) >= r:
                                 len_negative -= 1
                                 itemp = self._negative_solution[i]
                                 self._negative_solution[i] = self._negative_solution[len_negative]
@@ -156,7 +156,7 @@ class RacosClassification:
                         self._sample_region[k][0] = r
                         i = 0
                         while i < len_negative:
-                            if self._negative_solution[i].get_coordinate(k) <= r:
+                            if self._negative_solution[i].get_x_index(k) <= r:
                                 len_negative -= 1
                                 itemp = self._negative_solution[i]
                                 self._negative_solution[i] = self._negative_solution[len_negative]
@@ -168,7 +168,7 @@ class RacosClassification:
                 delete = 0
                 i = 0
                 while i < len_negative:
-                    if self._negative_solution[i].get_coordinate(k) != x_pos_k:
+                    if self._negative_solution[i].get_x_index(k) != x_pos_k:
                         len_negative -= 1
                         delete += 1
                         itemp = self._negative_solution[i]
@@ -200,7 +200,7 @@ class RacosClassification:
                 else:
                     x.append(my_global.rand.randint(self._sample_region[i][0], self._sample_region[i][1]))
             else:
-                x.append(self._x_positive.get_coordinate(i))
+                x.append(self._x_positive.get_x_index(i))
         return x
 
     def get_sample_region(self):

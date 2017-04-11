@@ -42,7 +42,8 @@ class Objective:
     def construct_solution(self, x, parent=None):
         new_solution = Solution()
         new_solution.set_x(x)
-        new_solution.set_value(self.__inherit(x, parent))
+        new_solution.set_value(self.__func(x))
+        new_solution.set_attach(self.__inherit(x, parent))
         return new_solution
 
     def set_func(self, func):
@@ -71,5 +72,5 @@ class Objective:
         return self._constraint
 
     @staticmethod
-    def default_inherit(self, x, parent=None):
-        pass
+    def default_inherit(x, parent=None):
+        return None
