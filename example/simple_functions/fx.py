@@ -25,35 +25,54 @@ Author:
 """
 
 import numpy
-import theano.tensor as T
-from theano import function
+import math
 
-from zoo.algos.racos.inherit_interface import InheritInterface
+# solution = Solution()
+# solution.set_x(T.dvector('x'))
+# value_sphere = ((solution.get_x() - 0.2) ** 2).sum()
+# sphere = function([solution], value_sphere)
 
 
-# Sphere
-x = T.dvector('x')
-value_sphere = ((x - 0.2) ** 2).sum()
-sphere = function([x], value_sphere)
+# Sphere function for continue optimization
+def sphere(solution):
+    x = solution.get_x()
+    value = sum([(i-0.2)*(i-0.2) for i in x])
+    return value
+
+
+# Ackley function for continue optimization
+def ackley(solution):
+    x = solution.get_x()
+    bias = 0.2
+    value_seq = 0
+    value_cos = 0
+    for i in range(len(x)):
+        value_seq += (x[i]-bias)*(x[i]-bias)
+        value_cos += math.cos(2.0*math.pi*(x[i]-bias))
+    ave_seq = value_seq/len(x)
+    ave_cos = value_cos/len(x)
+    value = -20*math.exp(-0.2*math.sqrt(ave_seq))-math.exp(ave_cos)+20.0+math.e
+    return value
 
 # Arkley
-x = T.dvector('x')
-a = 20
-b = 0.2
-c = 2 * numpy.pi
-bias = [-0.151132887462, 0.388548543877, -0.933234772744, -0.581705468848, 0.920983693072, -0.117206127637,
-                -0.716147047949, 0.231077702939, -0.751868710065, -0.968869507224]
-length = T.shape(x)[0]
-value_seq = -b * numpy.sqrt(((x - bias) ** 2).sum() / length)
-RE = function([x], value_seq)
-value_cos = (c * (x - bias)).cos().sum() / length
-value_arkley = -a * numpy.exp(value_seq) - numpy.exp(value_cos)\
-                              + a + numpy.e
-arkley = function([x], value_arkley)
+# x = T.dvector('x')
+# a = 20
+# b = 0.2
+# c = 2 * numpy.pi
+# bias = [-0.151132887462, 0.388548543877, -0.933234772744, -0.581705468848, 0.920983693072, -0.117206127637,
+#                 -0.716147047949, 0.231077702939, -0.751868710065, -0.968869507224]
+# length = T.shape(x)[0]
+# value_seq = -b * numpy.sqrt(((x - bias) ** 2).sum() / length)
+# RE = function([x], value_seq)
+# value_cos = (c * (x - bias)).cos().sum() / length
+# value_arkley = -a * numpy.exp(value_seq) - numpy.exp(value_cos)\
+#                               + a + numpy.e
+# arkley = function([x], value_arkley)
 
 
 # set cover problem for discrete optimization
-def set_cover(x):
+def set_cover(solution):
+    x = solution.get_x()
     weight = [0.8356, 0.5495, 0.4444, 0.7269, 0.9960, 0.6633, 0.5062, 0.8429, 0.1293, 0.7355,
               0.7979, 0.2814, 0.7962, 0.1754, 0.0267, 0.9862, 0.1786, 0.5884, 0.6289, 0.3008]
     subset = []
@@ -105,6 +124,7 @@ def set_cover(x):
 
 
 # A test function for mixed optimization
-def mixed_function(x):
+def mixed_function(solution):
+    x = solution.get_x()
     value = sum([i*i for i in x])
     return value

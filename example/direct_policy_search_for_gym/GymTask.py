@@ -103,7 +103,8 @@ class GymTask:
         return action
 
     # objective function of racos by summation of reward in a trajectory
-    def sum_reward(self, x):
+    def sum_reward(self, solution):
+        x = solution.get_x()
         sum_re = 0
         # reset stop step
         self.__stop_step = self.__max_step

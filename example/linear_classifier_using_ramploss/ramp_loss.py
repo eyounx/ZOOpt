@@ -1,7 +1,7 @@
-from Racos.Component.Dimension import Dimension
-from Racos.Component.Objective import Objective
-from Racos.Component.Parameter import Parameter
-from Racos.Method.RacosOptimization import RacosOptimization
+from zoo.dimension import Dimension
+from zoo.objective import Objective
+from zoo.parameter import Parameter
+from zoo.opt import Optimizer
 
 
 class RampLoss:
@@ -58,7 +58,8 @@ class RampLoss:
         return temp_sum
 
     # Main function to compute ramploss
-    def get_value(self, weight):
+    def get_value(self, solution):
+        weight = solution.get_x()
         H1 = 0
         Hs = 0
         for i in range(len(self.data)):
@@ -102,12 +103,12 @@ class RampLoss:
             dim = Dimension(dim_size, dim_regs, dim_tys)
             objective = Objective(self.get_value, dim)
             budget = 40 * dim_size
-            parameter = Parameter(objective, budget)
-            racos = RacosOptimization()
+            parameter = Parameter(algorithm="racos", budget=budget)
+            opt = Optimizer()
+            ins = opt.min(objective, parameter)
             print 'Best solution is:'
-            ins = racos.opt(parameter, strategy='WR')
             ins.print_solution()
-            print self.validation(ins.get_coordinates())
+            print self.validation(ins.get_x())
         return
 
 test = RampLoss()

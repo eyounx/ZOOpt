@@ -28,7 +28,7 @@ Author:
 import time
 import numpy as np
 
-from example.simple_functions.fx import sphere, arkley, set_cover, mixed_function
+from example.simple_functions.fx import sphere, ackley, set_cover, mixed_function
 from zoo.dimension import Dimension
 from zoo.objective import Objective
 from zoo.parameter import Parameter
@@ -45,7 +45,7 @@ def result_analysis(result, top):
 
 
 # Sphere
-if False:
+if True:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -83,7 +83,7 @@ if False:
             dim_regs.append([-1, 1])
             dim_tys.append(True)
         dim = Dimension(dim_size, dim_regs, dim_tys)
-        objective = Objective(arkley, dim)
+        objective = Objective(ackley, dim)
         budget = 500
         parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
         parameter.set_train_size(21)
@@ -123,7 +123,7 @@ if False:
     result_analysis(result, 100)
 
 # mixed optimization
-if True:
+if False:
     repeat = 15
     result = []
     for j in range(repeat):
@@ -141,9 +141,6 @@ if True:
         objective = Objective(mixed_function, dim)
         budget = 2000
         parameter = Parameter(budget=budget, autoset=True)
-        # parameter.set_train_size(6)
-        # parameter.set_positive_size(1)
-        # parameter.set_negative_size(5)
         opt = Optimizer()
         ins = opt.min(objective, parameter)
         ins.print_solution()

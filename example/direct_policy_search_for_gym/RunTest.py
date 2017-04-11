@@ -1,9 +1,9 @@
 from GymTask import GymTask
-from zoo.algos.racos import RacosOptimization
-from zoo.utils import Dimension
-from zoo.utils import Objective
-from zoo.utils import Parameter
-
+from zoo.algos.racos.racos_optimization import RacosOptimization
+from zoo.dimension import Dimension
+from zoo.objective import Objective
+from zoo.parameter import Parameter
+from zoo.opt import Optimizer
 
 # test function
 
@@ -32,14 +32,14 @@ def run_test(name, in_layers, in_budget, maxstep, repeat):
         dim_tys.append(True)
     dim = Dimension(dim_size, dim_regs, dim_tys)
     objective = Objective(gym_task.sum_reward, dim)
-    parameter = Parameter(objective, budget)
+    parameter = Parameter(budget=budget, autoset=True)
     parameter.set_probability(rand_probability)
-    racos = RacosOptimization()
+    opt = Optimizer()
     print 'Best solution is:'
     result = []
     sum = 0
     for i in range(repeat):
-        ins = racos.opt(parameter, strategy='WR', racos='racos', ub=uncertain_bits)
+        ins = opt.min(objective, parameter)
         result.append(ins.get_value())
         sum += ins.get_value()
         ins.print_solution()
