@@ -29,7 +29,6 @@ import time
 import numpy as np
 
 from example.simple_functions.fx import sphere, arkley, set_cover, mixed_function
-from zoo.algos.racos.racos_optimization import RacosOptimization
 from zoo.dimension import Dimension
 from zoo.objective import Objective
 from zoo.parameter import Parameter

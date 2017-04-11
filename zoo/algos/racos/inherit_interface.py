@@ -16,10 +16,13 @@
  Copyright (C) 2017 Nanjing University, Nanjing, China
  """
 
+from abc import abstractmethod
+
 
 class InheritInterface():
     # User has to implement this interface
     # Objective_function is used to compute f(x)
     # parent: the solution that leads to the generation of the current solution x
+    @abstractmethod
     def inherit(self, x, parent=None):
-        pass
+        return None
