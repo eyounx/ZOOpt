@@ -1,3 +1,5 @@
+import pickle
+
 class ToolFunction:
     def __init__(self):
         pass
@@ -10,3 +12,7 @@ class ToolFunction:
             if list1[i] != list2[i]:
                 return False
         return True
+
+    @staticmethod
+    def deepcopy(obj):
+        return pickle.loads(pickle.dumps(obj));
