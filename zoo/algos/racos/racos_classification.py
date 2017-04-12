@@ -215,6 +215,9 @@ class RacosClassification:
     def get_x_positive(self):
         return self._x_positive
 
+    def get_label(self):
+        return self._label
+
     # for debugging
     def print_neg(self):
         print '------print neg------'

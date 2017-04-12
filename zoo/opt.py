@@ -1,11 +1,12 @@
 from zoo.algos.racos.racos_optimization import RacosOptimization
 
 
-class Optimizer:
+class Opt:
     def __init__(self):
         return
 
-    def min(self, objective, parameter):
+    @staticmethod
+    def min(objective, parameter):
         constraint = objective.get_constraint()
         algorithm = parameter.get_algorithm()
         if algorithm:

@@ -32,7 +32,7 @@ from example.simple_functions.fx import sphere, ackley, set_cover, mixed_functio
 from zoo.dimension import Dimension
 from zoo.objective import Objective
 from zoo.parameter import Parameter
-from zoo.opt import Optimizer
+from zoo.opt import Opt
 
 
 def result_analysis(result, top):
@@ -45,7 +45,7 @@ def result_analysis(result, top):
 
 
 # Sphere
-if True:
+if False:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -61,9 +61,8 @@ if True:
         objective = Objective(sphere, dim)
         budget = 20 * dim_size
         parameter = Parameter(algorithm="racos", budget=budget)
-        opt = Optimizer()
+        ins = Opt.min(objective, parameter)
         print 'Best solution is:'
-        ins = opt.min(objective, parameter)
         ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 5)
@@ -71,7 +70,7 @@ if True:
     print 'time is %f' % (t2 - t1)
 
 # Arkley
-if False:
+if True:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -84,13 +83,13 @@ if False:
             dim_tys.append(True)
         dim = Dimension(dim_size, dim_regs, dim_tys)
         objective = Objective(ackley, dim)
-        budget = 500
+        budget = 50000
         parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
         parameter.set_train_size(21)
         parameter.set_positive_size(1)
         parameter.set_negative_size(20)
-        opt = Optimizer()
-        ins = opt.min(objective, parameter)
+        ins = Opt.min(objective, parameter)
+        print 'Best solution is:'
         ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 100)
@@ -116,8 +115,7 @@ if False:
         parameter.set_train_size(6)
         parameter.set_positive_size(1)
         parameter.set_negative_size(5)
-        opt = Optimizer()
-        ins = opt.min(objective, parameter)
+        ins = Opt.min(objective, parameter)
         ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 100)
@@ -141,8 +139,7 @@ if False:
         objective = Objective(mixed_function, dim)
         budget = 2000
         parameter = Parameter(budget=budget, autoset=True)
-        opt = Optimizer()
-        ins = opt.min(objective, parameter)
+        ins = Opt.min(objective, parameter)
         ins.print_solution()
         result.append(ins.get_value())
     result_analysis(result, 15)

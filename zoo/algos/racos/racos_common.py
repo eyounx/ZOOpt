@@ -144,6 +144,7 @@ class RacosCommon:
                     if times > 100:
                         print '------error dead repeated------'
                         classifier.get_sample_space().print_dim()
+                        classifier.get_la
                         sys.exit()
         return ins
 
