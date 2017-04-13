@@ -141,10 +141,12 @@ class RacosCommon:
                         if number <= data_num:
                             print '------data number in sample space is too small------'
                             sys.exit()
+                    if times > 50:
+                        print x
                     if times > 100:
                         print '------error dead repeated------'
                         classifier.get_sample_space().print_dim()
-                        classifier.get_la
+                        print classifier.get_label()
                         sys.exit()
         return ins
 

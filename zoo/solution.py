@@ -45,7 +45,7 @@ class Solution:
         return Solution(x, value, attach)
 
     # Check if two solutions equal
-    def is_equal(self, sol, precision=1e-10):
+    def is_equal(self, sol, precision=1e-17):
         sol_x = sol.get_x()
         sol_value = sol.get_value()
         if abs(self.__value - sol_value) > precision:
