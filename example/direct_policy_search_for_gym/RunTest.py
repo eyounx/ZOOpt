@@ -1,9 +1,8 @@
 from GymTask import GymTask
-from zoo.algos.racos.racos_optimization import RacosOptimization
 from zoo.dimension import Dimension
 from zoo.objective import Objective
 from zoo.parameter import Parameter
-from zoo.opt import Optimizer
+from zoo.opt import Opt
 
 # test function
 
@@ -21,7 +20,6 @@ def run_test(name, in_layers, in_budget, maxstep, repeat):
 
     budget = in_budget  # budget in online style 2000
     rand_probability = 0.95  # the probability of sample in model
-    uncertain_bits = 1  # the dimension size that is sampled randomly
 
     # set dimension
     dim_size = gym_task.get_w_size()
@@ -34,12 +32,11 @@ def run_test(name, in_layers, in_budget, maxstep, repeat):
     objective = Objective(gym_task.sum_reward, dim)
     parameter = Parameter(budget=budget, autoset=True)
     parameter.set_probability(rand_probability)
-    opt = Optimizer()
     print 'Best solution is:'
     result = []
     sum = 0
     for i in range(repeat):
-        ins = opt.min(objective, parameter)
+        ins = Opt.min(objective, parameter)
         result.append(ins.get_value())
         sum += ins.get_value()
         ins.print_solution()

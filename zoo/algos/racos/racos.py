@@ -46,16 +46,22 @@ class Racos(RacosCommon):
         for i in range(t):
             if i == 0:
                 time_log1 = time.time()
-            for j in range(len(self._negative_data)):
+            j = 0
+            iteration_num = len(self._negative_data)
+            while j < iteration_num:
                 if my_global.rand.random() < self._parameter.get_probability():
                     classifier = RacosClassification(
                         self._objective.get_dim(), self._positive_data, self._negative_data, ub)
                     classifier.mixed_classification()
-                    x = classifier.rand_sample()
-                    solution = self._objective.construct_solution(x, classifier.get_x_positive())
+                    solution, distinct_flag = self.distinct_sample_classifier(classifier, True,
+                                                                              self._parameter.get_train_size())
                 else:
-                    solution = self.distinct_sample(self._objective.get_dim())
+                    solution, distinct_flag = self.distinct_sample(self._objective.get_dim())
+                # If the solution had been sampled, skip it
+                if distinct_flag is False:
+                    continue
                 self._data.append(solution)
+                j += 1
             self.selection()
             self._best_solution = self._positive_data[0]
             if i == 4:

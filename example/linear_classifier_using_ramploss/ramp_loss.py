@@ -1,7 +1,7 @@
 from zoo.dimension import Dimension
 from zoo.objective import Objective
 from zoo.parameter import Parameter
-from zoo.opt import Optimizer
+from zoo.opt import Opt
 
 
 class RampLoss:
@@ -104,8 +104,7 @@ class RampLoss:
             objective = Objective(self.get_value, dim)
             budget = 40 * dim_size
             parameter = Parameter(algorithm="racos", budget=budget)
-            opt = Optimizer()
-            ins = opt.min(objective, parameter)
+            ins = Opt.min(objective, parameter)
             print 'Best solution is:'
             ins.print_solution()
             print self.validation(ins.get_x())

@@ -212,6 +212,12 @@ class RacosClassification:
         types = self.__solution_space.get_types()
         return Dimension(size, regions, types)
 
+    def get_positive_solution(self):
+        return self.__positive_solution
+
+    def get_negative_solution(self):
+        return self.__negative_solution
+
     def get_x_positive(self):
         return self.__x_positive
 

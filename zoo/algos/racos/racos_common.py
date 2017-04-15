@@ -65,9 +65,13 @@ class RacosCommon:
 
     # Construct self._data, self._positive_data, self._negative_data
     def init_attribute(self):
-        for i in range(self._parameter.get_train_size()):
-            x = self.distinct_sample(self._objective.get_dim())
-            self._data.append(x)
+        iteration_num = self._parameter.get_train_size()
+        i = 0
+        while i < iteration_num:
+            x, distinct_flag = self.distinct_sample(self._objective.get_dim())
+            if distinct_flag:
+                self._data.append(x)
+                i += 1
         self.selection()
         return
 
@@ -105,10 +109,10 @@ class RacosCommon:
         objective = self._objective
         x = objective.construct_solution(dim.rand_sample())
         times = 1
+        distinct_flag = True
         if check_distinct is True:
             while self.is_distinct(self._positive_data, x) is False and \
                     self.is_distinct(self._negative_data, x) is False:
-                # print '------sample repeated------'
                 x = objective.construct_solution(dim.rand_sample())
                 times += 1
                 if times % 10 == 0:
@@ -117,15 +121,16 @@ class RacosCommon:
                         if number <= data_num:
                             print '------data number in sample space is too small------'
                             sys.exit()
-                    # if times > 100:
-                    #     print '------error dead repeated------'
-                    #     sys.exit()
-        return x
+                    if times > 100:
+                        distinct_flag = False
+                        break
+        return x, distinct_flag
 
     def distinct_sample_classifier(self, classifier, check_distinct=True, data_num=0):
         x = classifier.rand_sample()
         ins = self._objective.construct_solution(x)
         times = 1
+        distinct_flag = True
         if check_distinct is True:
             while self.is_distinct(self._positive_data, ins) is False or \
                     self.is_distinct(self._negative_data, ins) is False:
@@ -141,14 +146,10 @@ class RacosCommon:
                         if number <= data_num:
                             print '------data number in sample space is too small------'
                             sys.exit()
-                    if times > 50:
-                        print x
                     if times > 100:
-                        print '------error dead repeated------'
-                        classifier.get_sample_space().print_dim()
-                        print classifier.get_label()
-                        sys.exit()
-        return ins
+                        distinct_flag = False
+                        break
+        return ins, distinct_flag
 
     # For debugging
     def print_positive_data(self):
