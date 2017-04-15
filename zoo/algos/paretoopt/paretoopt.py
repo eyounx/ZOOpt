@@ -69,7 +69,7 @@ def paretoopt(X,y,k):
         if fitness[p,1]<=k and fitness[p,1]>maxSize:
             maxSize=fitness[p,1]
             resultIndex=p    
-    print 'correlation is:%f'%(1-fitness[resultIndex,0])        
+    #print 'correlation is:%f'%(1-fitness[resultIndex,0])        
     return population[resultIndex,:]        
 
 if __name__=="__main__":
