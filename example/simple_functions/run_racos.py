@@ -55,7 +55,7 @@ if False:
         dim = Dimension(dim_size, dim_regs, dim_tys)
         # objective means objective function
         objective = Objective(sphere, dim)
-        budget = 20 * dim_size
+        budget = 20 * 2000
         parameter = Parameter(algorithm="racos", budget=budget)
         solution = Opt.min(objective, parameter)
         print 'Best solution is:'
@@ -72,12 +72,12 @@ if True:
     result = []
     gl.set_seed(12345)
     for i in range(repeat):
-        dim_size = 10
+        dim_size = 100
         dim_regs = [[-1, 1]] * dim_size
         dim_tys = [True] * dim_size
         dim = Dimension(dim_size, dim_regs, dim_tys)
         objective = Objective(ackley, dim)
-        budget = 5000
+        budget = 50000
         parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
         parameter.set_train_size(21)
         parameter.set_positive_size(1)
