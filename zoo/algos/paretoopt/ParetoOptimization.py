@@ -43,7 +43,7 @@ class ParetoOptimization:
         self._algorithm = ParetoOpt()
         paretoParameter = parameter.get_paretoopt_parameters()
         self._best_solution = self._algorithm.opt(paretoParameter[0], paretoParameter[1], paretoParameter[2])
-        return
+        return self._best_solution
 
     def get_best_sol(self):
         return self._best_solution
