@@ -21,6 +21,7 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
+from zoo.algos.paretoopt.ParetoOptimization import ParetoOptimization
 from zoo.algos.racos.racos_optimization import RacosOptimization
 from zoo.utils.my_global import gl
 
@@ -31,7 +32,6 @@ class Opt:
 
     @staticmethod
     def min(objective, parameter):
-        # 1e-17 in default
         Opt.set_global(parameter)
         constraint = objective.get_constraint()
         algorithm = parameter.get_algorithm()
@@ -39,14 +39,16 @@ class Opt:
             algorithm = algorithm.lower()
         result = None
         if constraint is not None and ((algorithm is None) or (algorithm == "poss")):
-            # TODO
-            pass
+            optimizer = ParetoOptimization()
+            result = optimizer.opt(objective, parameter)
         elif constraint is None and ((algorithm is None) or (algorithm == "racos")):
             optimizer = RacosOptimization()
             result = optimizer.opt(objective, parameter)
         else:
             print "No proper algorithm find for %s" % algorithm
-        return result
+        if result:
+            return result
+        return
 
     @staticmethod
     def set_global(parameter):
@@ -56,3 +58,4 @@ class Opt:
             gl.set_precision(precision)
         if seed:
             gl.set_seed(seed)
+
