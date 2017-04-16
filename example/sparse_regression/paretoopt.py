@@ -71,13 +71,13 @@ class ParetoOpt:
             if fitness[p,1]<=k and fitness[p,1]>maxSize:
                 maxSize=fitness[p,1]
                 resultIndex=p    
-        #print 'correlation is:%f'%(1-fitness[resultIndex,0])        
+        print 'correlation is:%f'%(1-fitness[resultIndex,0])        
         return population[resultIndex,:]        
 
- '''  
+   
 if __name__=="__main__":
     print "start"
-    orginX=NormlizeDate("../housing.txt")
+    orginX=NormlizeDate("housing.txt")
     n=np.shape(orginX)[1]
     X=orginX[:,0:n-1]
     y=orginX[:,n-1]
@@ -85,7 +85,7 @@ if __name__=="__main__":
     selectIndex=paretoopt.opt(X, y, 8)
     print selectIndex
     print "end"
- '''   
+    
    
         
                   

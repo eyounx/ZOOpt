@@ -22,8 +22,7 @@ Author:
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
 from zoo.algos.racos.racos_optimization import RacosOptimization
-
-
+from zoo.algos.paretoopt.ParetoOptMization import ParetoOptMization
 class Opt:
     def __init__(self):
         return
@@ -37,7 +36,9 @@ class Opt:
         result = None
         if constraint is not None and ((algorithm is None) or (algorithm == "poss")):
             # TODO
-            pass
+			optimizer = ParetoOptMization()
+            result = optimizer.opt(objective, parameter)
+            #pass
         elif constraint is None and ((algorithm is None) or (algorithm == "racos")):
             optimizer = RacosOptimization()
             result = optimizer.opt(objective, parameter)

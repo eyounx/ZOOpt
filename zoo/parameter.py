@@ -39,6 +39,9 @@ class Parameter:
         self.__positive_size = 0
         self.__negative_size = 0
         self.__probability = 0.99
+		self._X=None
+		self._y=None
+		self._k=0
         if budget != 0 and autoset is True:
             self.auto_set(budget)
 
@@ -112,6 +115,13 @@ class Parameter:
 
     def get_probability(self):
         return self.__probability
+	def set_paretoopt_parameters(self,X,y,k):
+		self._X=X
+		self._y=y
+		self._k=k
+		
+	def get_paretoopt_parameters(self)
+		return (self._X,self._y,self._k)
 
 
 
