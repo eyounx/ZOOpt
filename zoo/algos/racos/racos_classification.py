@@ -23,7 +23,7 @@ Author:
 
 from zoo.dimension import Dimension
 
-from zoo.utils import my_global
+from zoo.utils.my_global import gl
 
 
 class RacosClassification:
@@ -56,12 +56,12 @@ class RacosClassification:
     # This algos works if self.__solution_space is discrete.
     # But actually this function will not be invoked because we use mixed_classification in all cases.
     def discrete_classification(self):
-        self.__x_positive = self.__positive_solution[my_global.rand.randint(
+        self.__x_positive = self.__positive_solution[gl.rand.randint(
             0, len(self.__positive_solution) - 1)]
         len_negative = len(self.__negative_solution)
         index_set = range(self.__solution_space.get_size())
         while len_negative > 0:
-            k = index_set[my_global.rand.randint(0, len(index_set) - 1)]
+            k = index_set[gl.rand.randint(0, len(index_set) - 1)]
             x_pos_k = self.__x_positive.get_x_index(k)
             i = 0
             delete = 0
@@ -82,17 +82,17 @@ class RacosClassification:
     # This algos works if self.__solution_space is continuous
     # But actually this function will not be invoked because we use mixed_classification in all cases.
     def continuous_classification(self):
-        self.__x_positive = self.__positive_solution[my_global.rand.randint(
+        self.__x_positive = self.__positive_solution[gl.rand.randint(
             0, len(self.__positive_solution) - 1)]
         len_negative = len(self.__negative_solution)
         while len_negative > 0:
-            k = my_global.rand.randint(0, self.__solution_space.get_size() - 1)
+            k = gl.rand.randint(0, self.__solution_space.get_size() - 1)
             x_negative = self.__negative_solution[
-                my_global.rand.randint(0, len_negative - 1)]
+                gl.rand.randint(0, len_negative - 1)]
             x_pos_k = self.__x_positive.get_x_index(k)
             x_neg_k = x_negative.get_x_index(k)
             if x_pos_k < x_neg_k:
-                r = my_global.rand.uniform(x_pos_k, x_neg_k)
+                r = gl.rand.uniform(x_pos_k, x_neg_k)
                 if r < self.__sample_region[k][1]:
                     self.__sample_region[k][1] = r
                     i = 0
@@ -105,7 +105,7 @@ class RacosClassification:
                         else:
                             i += 1
             else:
-                r = my_global.rand.uniform(x_neg_k, x_pos_k)
+                r = gl.rand.uniform(x_neg_k, x_pos_k)
                 if r > self.__sample_region[k][0]:
                     self.__sample_region[k][0] = r
                     i = 0
@@ -123,21 +123,21 @@ class RacosClassification:
 
     # This algos always works, whether discrete or continuous, we always use this function.
     def mixed_classification(self):
-        self.__x_positive = self.__positive_solution[my_global.rand.randint(
+        self.__x_positive = self.__positive_solution[gl.rand.randint(
             0, len(self.__positive_solution) - 1)]
         len_negative = len(self.__negative_solution)
         index_set = range(self.__solution_space.get_size())
         types = self.__solution_space.get_types()
         while len_negative > 0:
-            k = index_set[my_global.rand.randint(0, len(index_set) - 1)]
+            k = index_set[gl.rand.randint(0, len(index_set) - 1)]
             x_pos_k = self.__x_positive.get_x_index(k)
             # continuous
             if types[k] is True:
                 x_negative = self.__negative_solution[
-                    my_global.rand.randint(0, len_negative - 1)]
+                    gl.rand.randint(0, len_negative - 1)]
                 x_neg_k = x_negative.get_x_index(k)
                 if x_pos_k < x_neg_k:
-                    r = my_global.rand.uniform(x_pos_k, x_neg_k)
+                    r = gl.rand.uniform(x_pos_k, x_neg_k)
                     if r < self.__sample_region[k][1]:
                         self.__sample_region[k][1] = r
                         i = 0
@@ -150,7 +150,7 @@ class RacosClassification:
                             else:
                                 i += 1
                 else:
-                    r = my_global.rand.uniform(x_neg_k, x_pos_k)
+                    r = gl.rand.uniform(x_neg_k, x_pos_k)
                     if r > self.__sample_region[k][0]:
                         self.__sample_region[k][0] = r
                         i = 0
@@ -184,7 +184,7 @@ class RacosClassification:
     def set_uncertain_bit(self, iset):
         index_set = iset
         for i in range(self.__uncertain_bit):
-            index = index_set[my_global.rand.randint(0, len(index_set) - 1)]
+            index = index_set[gl.rand.randint(0, len(index_set) - 1)]
             self.__label[index] = True
             index_set.remove(index)
         return
@@ -195,9 +195,9 @@ class RacosClassification:
         for i in range(self.__solution_space.get_size()):
             if self.__label[i] is True:
                 if self.__solution_space.get_type(i) is True:
-                    x.append(my_global.rand.uniform(self.__sample_region[i][0], self.__sample_region[i][1]))
+                    x.append(gl.rand.uniform(self.__sample_region[i][0], self.__sample_region[i][1]))
                 else:
-                    x.append(my_global.rand.randint(self.__sample_region[i][0], self.__sample_region[i][1]))
+                    x.append(gl.rand.randint(self.__sample_region[i][0], self.__sample_region[i][1]))
             else:
                 x.append(self.__x_positive.get_x_index(i))
         return x

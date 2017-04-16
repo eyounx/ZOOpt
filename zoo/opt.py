@@ -22,6 +22,7 @@ Author:
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
 from zoo.algos.racos.racos_optimization import RacosOptimization
+from zoo.utils.my_global import gl
 
 
 class Opt:
@@ -30,6 +31,8 @@ class Opt:
 
     @staticmethod
     def min(objective, parameter):
+        # 1e-17 in default
+        Opt.set_global(parameter)
         constraint = objective.get_constraint()
         algorithm = parameter.get_algorithm()
         if algorithm:
@@ -44,3 +47,12 @@ class Opt:
         else:
             print "No proper algorithm find for %s" % algorithm
         return result
+
+    @staticmethod
+    def set_global(parameter):
+        precision = parameter.get_precision()
+        seed = parameter.get_seed()
+        if precision:
+            gl.set_precision(precision)
+        if seed:
+            gl.set_seed(seed)

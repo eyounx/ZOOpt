@@ -23,7 +23,7 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
-from zoo.utils.my_global import pos_inf, neg_inf, nan
+from zoo.utils.my_global import pos_inf, neg_inf, nan, gl
 
 
 class Solution:
@@ -45,15 +45,15 @@ class Solution:
         return Solution(x, value, attach)
 
     # Check if two solutions equal
-    def is_equal(self, sol, precision=1e-17):
+    def is_equal(self, sol):
         sol_x = sol.get_x()
         sol_value = sol.get_value()
-        if abs(self.__value - sol_value) > precision:
+        if abs(self.__value - sol_value) > gl.precision:
             return False
         if len(self.__x) != len(sol_x):
             return False
         for i in range(len(self.__x)):
-            if abs(self.__x[i] - sol_x[i]) > precision:
+            if abs(self.__x[i] - sol_x[i]) > gl.precision:
                 return False
         return True
 
@@ -133,5 +133,8 @@ class Solution:
                 mini_index = i
         return mini, mini_index
 
-
+if __name__ == "__main__":
+    print gl.precision
+    gl.set_precision(1e-10)
+    print gl.precision
 

@@ -31,10 +31,14 @@ class Parameter:
     # If algorithm is 'racos' and sequential is True, opt will invoke SRacos.opt(default)
     # if algorithm is 'racos' and sequential is False, opt will invoke Racos.opt
     # If autoset is True, train_size, positive_size, negative_size will be set automatically
-    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True):
+    # If precision is None, we will set precision as 1e-17 in default. Otherwise, set precision.
+    # If seed is None , random sequence is not fixed.
+    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, seed=None):
         self.__algorithm = algorithm
         self.__sequential = sequential
         self.__budget = budget
+        self.__precision = precision
+        self.__seed = seed
         self.__train_size = 0
         self.__positive_size = 0
         self.__negative_size = 0
@@ -86,6 +90,20 @@ class Parameter:
     def get_budget(self):
         return self.__budget
 
+    def set_precision(self, precision):
+        self.__precision = precision
+        return
+
+    def get_precision(self):
+        return self.__precision
+
+    def set_seed(self, seed):
+        self.__seed = seed
+        return
+
+    def get_seed(self):
+        return self.__seed
+
     def set_train_size(self, size):
         self.__train_size = size
         return
@@ -112,7 +130,6 @@ class Parameter:
 
     def get_probability(self):
         return self.__probability
-
 
 
 

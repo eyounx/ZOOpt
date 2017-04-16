@@ -3,9 +3,6 @@ This file records Global variables used in the algorithm
 Author:
     Yuren Liu
 
-"""
-
-"""
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
  as published by the Free Software Foundation; either version 2
@@ -22,18 +19,27 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
-
 from random import Random
 
 
-def set_seed(seed):
-    rand.seed(seed)
-    return
+class Global:
+    def __init__(self):
+        # rand is the random object used by all files
+        self.rand = Random()
+        self.precision = 1e-17
+        # rand.seed(100)
 
-# rand is the random object used by all files
-rand = Random()
-# rand.seed(100)
+    # Set random seed
+    def set_seed(self, seed):
+        self.rand.seed(seed)
+        return
 
+    # Set precision, precision is used to judge whether two floats are equal
+    def set_precision(self, my_precision):
+        self.precision = my_precision
+        return
+
+gl = Global()
 # constants
 pos_inf = float('Inf')
 neg_inf = float('-Inf')

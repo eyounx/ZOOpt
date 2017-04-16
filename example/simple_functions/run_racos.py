@@ -23,7 +23,7 @@ Author:
 """
 import time
 import numpy as np
-import zoo.utils.my_global as gl
+from zoo.utils.my_global import gl
 
 from example.simple_functions.fx import sphere, ackley, set_cover, mixed_function
 from zoo.dimension import Dimension
@@ -47,7 +47,6 @@ if False:
     repeat = 15
     result = []
     # Set random seed in sample
-    gl.set_seed(12345)
     for i in range(repeat):
         dim_size = 100
         dim_regs = [[-1, 1]] * dim_size
@@ -70,15 +69,14 @@ if True:
     t1 = time.clock()
     repeat = 15
     result = []
-    gl.set_seed(12345)
     for i in range(repeat):
-        dim_size = 100
+        dim_size = 10
         dim_regs = [[-1, 1]] * dim_size
         dim_tys = [True] * dim_size
         dim = Dimension(dim_size, dim_regs, dim_tys)
         objective = Objective(ackley, dim)
-        budget = 50000
-        parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
+        budget = 5000
+        parameter = Parameter(algorithm="racos", budget=budget, autoset=False, seed=1234)
         parameter.set_train_size(21)
         parameter.set_positive_size(1)
         parameter.set_negative_size(20)
@@ -95,7 +93,6 @@ if False:
     # dimension setting
     repeat = 10
     result = []
-    gl.set_seed(12345)
     for i in range(repeat):
         dim_size = 20
         dim_regs = [[-1, 1]] * dim_size
@@ -116,7 +113,6 @@ if False:
 if False:
     repeat = 15
     result = []
-    gl.set_seed(12345)
     for j in range(repeat):
         dim_size = 10
         dim_regs = []

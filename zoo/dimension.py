@@ -22,7 +22,7 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
-import zoo.utils.my_global
+from zoo.utils.my_global import gl
 
 
 class Dimension:
@@ -78,7 +78,7 @@ class Dimension:
         x = []
         for i in range(self._size):
             if self._types[i] is True:
-                value = zoo.utils.my_global.rand.uniform(
+                value = gl.rand.uniform(
                     self._regions[i][0], self._regions[i][1])
             else:
                 rand_index = zoo.utils.my_global.rand.randint(0, len(self._regions[i]) - 1)
