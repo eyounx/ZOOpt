@@ -22,7 +22,7 @@ def position(s):#This function is to find the index of s where element is 1
             result.append(i)
     return result   
         
-def ParetoOpt(X,y,k):
+def paretoopt(X,y,k):
     C=X.T*X
     b=X.T*y
     [m,n]=np.shape(X)#row and column number of the matrix
@@ -69,16 +69,16 @@ def ParetoOpt(X,y,k):
         if fitness[p,1]<=k and fitness[p,1]>maxSize:
             maxSize=fitness[p,1]
             resultIndex=p    
-    print 'correlation is:%f'%(1-fitness[resultIndex,0])        
+    #print 'correlation is:%f'%(1-fitness[resultIndex,0])        
     return population[resultIndex,:]        
 
 if __name__=="__main__":
     print "start"
-    orginX=NormlizeDate("../sonar.txt")
+    orginX=NormlizeDate("housing.txt")
     n=np.shape(orginX)[1]
     X=orginX[:,0:n-1]
     y=orginX[:,n-1]
-    selectIndex=ParetoOpt(X, y, 8)
+    selectIndex=paretoopt(X, y, 8)
     print selectIndex
     print "end"
     
