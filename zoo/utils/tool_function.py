@@ -1,5 +1,3 @@
-import pickle
-
 """
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
@@ -17,11 +15,14 @@ import pickle
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
+import pickle
+
 
 class ToolFunction:
     def __init__(self):
         pass
 
+    # Compare two lists. If lists are same, return True.
     @staticmethod
     def list_compare(list1, list2):
         if len(list1) != len(list2):

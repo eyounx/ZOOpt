@@ -3,11 +3,8 @@ This file contains some examples about how to use Racos(or SRacos)
 optimization algorithm
 
 Author:
-    Yu-Ren Liu
+    Yuren Liu
 
-"""
-
-"""
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
  as published by the Free Software Foundation; either version 2
@@ -24,9 +21,9 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
-
 import time
 import numpy as np
+import zoo.utils.my_global as gl
 
 from example.simple_functions.fx import sphere, ackley, set_cover, mixed_function
 from zoo.dimension import Dimension
@@ -49,6 +46,8 @@ if False:
     t1 = time.clock()
     repeat = 15
     result = []
+    # Set random seed in sample
+    gl.set_seed(12345)
     for i in range(repeat):
         dim_size = 100
         dim_regs = [[-1, 1]] * dim_size
@@ -66,11 +65,12 @@ if False:
     t2 = time.clock()
     print 'time is %f' % (t2 - t1)
 
-# Arkley
+# Ackley
 if True:
     t1 = time.clock()
     repeat = 15
     result = []
+    gl.set_seed(12345)
     for i in range(repeat):
         dim_size = 10
         dim_regs = [[-1, 1]] * dim_size
@@ -95,6 +95,7 @@ if False:
     # dimension setting
     repeat = 10
     result = []
+    gl.set_seed(12345)
     for i in range(repeat):
         dim_size = 20
         dim_regs = [[-1, 1]] * dim_size
@@ -115,6 +116,7 @@ if False:
 if False:
     repeat = 15
     result = []
+    gl.set_seed(12345)
     for j in range(repeat):
         dim_size = 10
         dim_regs = []

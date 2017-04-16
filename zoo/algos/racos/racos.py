@@ -1,14 +1,8 @@
-import time
-
-from zoo.algos.racos.racos_classification import RacosClassification
-from zoo.algos.racos.racos_common import RacosCommon
-from zoo.utils import my_global
-
 """
 The class Racos represents Racos algorithm. It's inherited from RacosC.
 
 Author:
-    Yu-Ren Liu
+    Yuren Liu
 
 """
 
@@ -29,6 +23,12 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
  """
+
+import time
+
+from zoo.algos.racos.racos_classification import RacosClassification
+from zoo.algos.racos.racos_common import RacosCommon
+from zoo.utils import my_global
 
 
 class Racos(RacosCommon):

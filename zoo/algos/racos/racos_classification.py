@@ -2,7 +2,7 @@
 The class RacosClassification contains a classifier generation algorithm
 
 Author:
-    Yu-Ren Liu
+    Yuren Liu
 
 """
 
@@ -56,7 +56,8 @@ class RacosClassification:
             self.__label[i] = False
         self.__x_positive = None
 
-    # This algos works if self.__solution_space is discrete
+    # This algos works if self.__solution_space is discrete.
+    # But actually this function will not be invoked because we use mixed_classification in all cases.
     def discrete_classification(self):
         self.__x_positive = self.__positive_solution[my_global.rand.randint(
             0, len(self.__positive_solution) - 1)]
@@ -82,6 +83,7 @@ class RacosClassification:
         return
 
     # This algos works if self.__solution_space is continuous
+    # But actually this function will not be invoked because we use mixed_classification in all cases.
     def continuous_classification(self):
         self.__x_positive = self.__positive_solution[my_global.rand.randint(
             0, len(self.__positive_solution) - 1)]
@@ -122,7 +124,7 @@ class RacosClassification:
         self.set_uncertain_bit(index_set)
         return
 
-    # This algos always works, whether discrete or continuous
+    # This algos always works, whether discrete or continuous, we always use this function.
     def mixed_classification(self):
         self.__x_positive = self.__positive_solution[my_global.rand.randint(
             0, len(self.__positive_solution) - 1)]

@@ -2,11 +2,8 @@
 Objective functions can be implemented in this file
 
 Author:
-    Yu-Ren Liu
+    Yuren Liu
 
-"""
-
-"""
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
  as published by the Free Software Foundation; either version 2
@@ -24,13 +21,7 @@ Author:
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
 
-import numpy
 import math
-
-# solution = Solution()
-# solution.set_x(T.dvector('x'))
-# value_sphere = ((solution.get_x() - 0.2) ** 2).sum()
-# sphere = function([solution], value_sphere)
 
 
 # Sphere function for continue optimization

@@ -1,5 +1,3 @@
-This RACOS algorithm was implemented in python
-
 Directory Layout:
 zoo:
     algos
@@ -9,7 +7,7 @@ zoo:
            racos_common.py
            racos_optimization.py
            sracos.py
-	   poss
+	   paretoopt
 	       paretoopt.py
     utils
         my_global.py
@@ -37,7 +35,9 @@ from zoo.dimension import Dimension
 from zoo.objective import Objective
 from zoo.parameter import Parameter
 from zoo.opt import Opt
-        
+import zoo.utils.my_global as gl
+
+gl.set_seed(12)
 dim_size = 10
 dim_regs = [[-1, 1]] * dim_size
 dim_tys = [True] * dim_size

@@ -2,7 +2,7 @@
 The class RacosOptimization will contains best_solution and optimization algorithm(Racos or SRacos)
 
 Author:
-    Yu-Ren Liu
+    Yuren Liu
 
 """
 
@@ -40,7 +40,9 @@ class RacosOptimization:
         self._best_solution = None
         self._algorithm = None
 
-    # General optimization function, it will choose concrete optimization algorithm
+    # General optimization function, it will choose optimization algorithm according to parameter.get_sequential()
+    # Default replace strategy is 'WR'
+    # If ub is 0, which means user didn't set ub, we will set ub automatically.
     def opt(self, objective, parameter, strategy='WR', ub=0):
         self.clear()
         if ub == 0:

@@ -1,7 +1,7 @@
 """"
 This file records Global variables used in the algorithm
 Author:
-    Yu-Ren Liu
+    Yuren Liu
 
 """
 
@@ -26,12 +26,13 @@ Author:
 from random import Random
 
 
-def set_seed(Random, seed):
-    Random.seed(seed)
+def set_seed(seed):
+    rand.seed(seed)
+    return
 
 # rand is the random object used by all files
 rand = Random()
-rand.seed(100)
+# rand.seed(100)
 
 # constants
 pos_inf = float('Inf')

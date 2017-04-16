@@ -1,8 +1,8 @@
 """
-The class SRacos represents SRacos algorithm. It's inherited from RacosC.
+The class SRacos represents SRacos algorithm. It's inherited from RacosCommon.
 
 Author:
-    Yu-Ren Liu
+    Yuren Liu
 
 """
 
@@ -40,7 +40,8 @@ class SRacos(RacosCommon):
         return
 
     # SRacos's optimization function
-    # default strategy is WR(worst replace)
+    # Default strategy is WR(worst replace)
+    # Default uncertain_bits is 1, but actually ub will be set either by user or by RacosOptimization automatically.
     def opt(self, objective, parameter, strategy='WR', ub=1):
         self.clear()
         self.set_objective(objective)
@@ -83,6 +84,7 @@ class SRacos(RacosCommon):
             best_sol = min(iset, key=lambda x: x.get_value())
             return self.strategy_lm(iset, best_sol, x)
 
+    # Find first element larger than x
     def binary_search(self, iset, x, begin, end):
         x_value = x.get_value()
         if x_value <= iset[begin].get_value():
@@ -97,7 +99,7 @@ class SRacos(RacosCommon):
         else:
             return self.binary_search(iset, x, mid, end)
 
-    # worst replace
+    # Worst replace
     def strategy_wr(self, iset, x, iset_type):
         if iset_type == 'pos':
             index = self.binary_search(iset, x, 0, len(iset) - 1)
@@ -111,7 +113,7 @@ class SRacos(RacosCommon):
                 worst_ele = x
         return worst_ele
 
-    # random replace
+    # Random replace
     def strategy_rr(self, iset, x):
         len_iset = len(iset)
         replace_index = my_global.rand.randint(0, len_iset - 1)
@@ -119,17 +121,17 @@ class SRacos(RacosCommon):
         iset[replace_index] = x
         return replace_ele
 
-    # replace the farest= instance from best_sol
+    # replace the farthest solution from best_sol
     def strategy_lm(self, iset, best_sol, x):
-        farest_dis = 0
+        farthest_dis = 0
         for i in range(iset):
             dis = self.distance(iset[i].get_coordinates(), best_sol.get_coordinates())
-            if dis > farest_dis:
-                farest_dis = dis
-                farest_index = i
-        farest_ele = iset[farest_index]
-        iset[farest_index] = x
-        return farest_ele
+            if dis > farthest_dis:
+                farthest_dis = dis
+                farthest_index = i
+        farthest_ele = iset[farthest_index]
+        iset[farthest_index] = x
+        return farthest_ele
 
     @staticmethod
     def distance(x, y):

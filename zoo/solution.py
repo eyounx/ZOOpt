@@ -1,15 +1,12 @@
-from zoo.utils.my_global import pos_inf, neg_inf, nan
-
 """"
 The class solution was implemented in this file.
 
-A solution encapsulates a solution vector with attached properties, including dimension information, objective value, and attachment
+A solution encapsulates a solution vector with attached properties, including dimension information, objective value,
+and attachment
 
 Author:
-    Yu-Ren Liu
-"""
+    Yuren Liu
 
-"""
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
  as published by the Free Software Foundation; either version 2
@@ -26,6 +23,8 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
+from zoo.utils.my_global import pos_inf, neg_inf, nan
+
 
 class Solution:
 

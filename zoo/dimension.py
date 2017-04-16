@@ -4,11 +4,8 @@ The class Dimension was implemented in this file.
 This class describes dimension messages.
 
 Author:
-    Yu-Ren Liu
+    Yuren Liu
 
-"""
-
-"""
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
  as published by the Free Software Foundation; either version 2
@@ -25,7 +22,6 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
-
 import zoo.utils.my_global
 
 

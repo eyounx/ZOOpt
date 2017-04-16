@@ -3,11 +3,8 @@ The class Parameter was implemented in this file.
 A Parameter instance should be a necessary parameter to opt in RacosOptimization
 
 Author:
-    Yu-Ren Liu
+    Yuren Liu
 
-"""
-
-"""
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
  as published by the Free Software Foundation; either version 2
