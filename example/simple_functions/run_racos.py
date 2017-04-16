@@ -42,7 +42,7 @@ def result_analysis(result, top):
 
 
 # Sphere
-if True:
+if False:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -77,7 +77,7 @@ if True:
         dim_tys = [True] * dim_size
         dim = Dimension(dim_size, dim_regs, dim_tys)
         objective = Objective(ackley, dim)
-        budget = 50000
+        budget = 5000
         parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
         parameter.set_train_size(21)
         parameter.set_positive_size(1)
@@ -91,7 +91,7 @@ if True:
     print 'time is %f' % (t2 - t1)
 
 # discrete optimization
-if True:
+if False:
     # dimension setting
     repeat = 10
     result = []
@@ -113,7 +113,7 @@ if True:
     result_analysis(result, 100)
 
 # mixed optimization
-if True:
+if False:
     repeat = 15
     result = []
     gl.set_seed(12345)

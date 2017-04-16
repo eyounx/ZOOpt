@@ -20,22 +20,20 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
-
-import sys
-
 from zoo.algos.racos.sracos import SRacos
 from zoo.algos.racos.racos import Racos
 from zoo.objective import Objective
 
+
 class RacosOptimization:
 
     def __init__(self):
-        self._best_solution = None
-        self._algorithm = None
+        self.__best_solution = None
+        self.__algorithm = None
 
     def clear(self):
-        self._best_solution = None
-        self._algorithm = None
+        self.__best_solution = None
+        self.__algorithm = None
 
     # General optimization function, it will choose optimization algorithm according to parameter.get_sequential()
     # Default replace strategy is 'WR'
@@ -45,12 +43,12 @@ class RacosOptimization:
         if ub == 0:
             ub = Objective.set_ub(objective)
         if parameter.get_sequential() is True:
-            self._algorithm = SRacos()
-            self._best_solution = self._algorithm.opt(objective, parameter, strategy, ub)
+            self.__algorithm = SRacos()
+            self.__best_solution = self.__algorithm.opt(objective, parameter, strategy, ub)
         else :
-            self._algorithm = Racos()
-            self._best_solution = self._algorithm.opt(objective, parameter, ub)
-        return self._best_solution
+            self.__algorithm = Racos()
+            self.__best_solution = self.__algorithm.opt(objective, parameter, ub)
+        return self.__best_solution
 
     def get_best_sol(self):
-        return self._best_solution
+        return self.__best_solution
