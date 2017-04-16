@@ -27,6 +27,7 @@ import sys
 
 class Parameter:
 
+    # Users should set at least algorithm and budget
     # algorithm can be 'racos' or 'poss'
     # If algorithm is 'racos' and sequential is True, opt will invoke SRacos.opt(default)
     # if algorithm is 'racos' and sequential is False, opt will invoke Racos.opt

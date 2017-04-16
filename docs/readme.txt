@@ -35,16 +35,15 @@ from zoo.dimension import Dimension
 from zoo.objective import Objective
 from zoo.parameter import Parameter
 from zoo.opt import Opt
-import zoo.utils.my_global as gl
 
-gl.set_seed(12345)
+
 dim_size = 10
 dim_regs = [[-1, 1]] * dim_size
 dim_tys = [True] * dim_size
 dim = Dimension(dim_size, dim_regs, dim_tys)
 objective = Objective(ackley, dim)
 budget = 50000
-parameter = Parameter(algorithm="racos", budget=budget)
+parameter = Parameter(algorithm="racos", budget=budget, seed=123)
 solution = Opt.min(objective, parameter)
 solution.print_solution()
 
