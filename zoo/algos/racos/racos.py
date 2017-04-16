@@ -4,9 +4,6 @@ The class Racos represents Racos algorithm. It's inherited from RacosC.
 Author:
     Yuren Liu
 
-"""
-
-"""
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
  as published by the Free Software Foundation; either version 2
@@ -23,7 +20,6 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
  """
-
 import time
 
 from zoo.algos.racos.racos_classification import RacosClassification

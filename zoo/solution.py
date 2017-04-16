@@ -28,6 +28,7 @@ from zoo.utils.my_global import pos_inf, neg_inf, nan
 
 class Solution:
 
+    # value is f(x)
     def __init__(self, x=[], value=nan, attach=None):
         self.__x = x
         self.__value = value

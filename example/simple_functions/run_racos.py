@@ -42,7 +42,7 @@ def result_analysis(result, top):
 
 
 # Sphere
-if False:
+if True:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -91,7 +91,7 @@ if True:
     print 'time is %f' % (t2 - t1)
 
 # discrete optimization
-if False:
+if True:
     # dimension setting
     repeat = 10
     result = []
@@ -113,7 +113,7 @@ if False:
     result_analysis(result, 100)
 
 # mixed optimization
-if False:
+if True:
     repeat = 15
     result = []
     gl.set_seed(12345)

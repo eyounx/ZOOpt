@@ -27,7 +27,11 @@ import sys
 
 class Parameter:
 
-    def __init__(self, algorithm=None, sequential=True, discrete=False, budget=0, autoset=True):
+    # algorithm can be 'racos' or 'poss'
+    # If algorithm is 'racos' and sequential is True, opt will invoke SRacos.opt(default)
+    # if algorithm is 'racos' and sequential is False, opt will invoke Racos.opt
+    # If autoset is True, train_size, positive_size, negative_size will be set automatically
+    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True):
         self.__algorithm = algorithm
         self.__sequential = sequential
         self.__budget = budget

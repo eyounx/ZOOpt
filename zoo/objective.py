@@ -3,7 +3,7 @@ The class Objective was implemented in this file.
 This class contains a func and  a dim
 
 Author:
-    Yu-Ren Liu
+    Yuren Liu
 
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
