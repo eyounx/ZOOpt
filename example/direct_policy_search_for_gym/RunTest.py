@@ -23,11 +23,8 @@ def run_test(name, in_layers, in_budget, maxstep, repeat):
 
     # set dimension
     dim_size = gym_task.get_w_size()
-    dim_regs = []
-    dim_tys = []
-    for i in range(dim_size):
-        dim_regs.append([-10, 10])
-        dim_tys.append(True)
+    dim_regs = [[-10, 10]] * dim_size
+    dim_tys = [True] * dim_size
     dim = Dimension(dim_size, dim_regs, dim_tys)
     objective = Objective(gym_task.sum_reward, dim)
     parameter = Parameter(budget=budget, autoset=True)

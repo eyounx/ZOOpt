@@ -95,11 +95,8 @@ class RampLoss:
         for i in range(repeat):
             # dim means [weight, bias]
             dim_size = 35
-            dim_regs = []
-            dim_tys = []
-            for j in range(dim_size):
-                dim_regs.append([-10, 10])
-                dim_tys.append(True)
+            dim_regs = [[-10, 10]] * dim_size
+            dim_tys = [True] * dim_size
             dim = Dimension(dim_size, dim_regs, dim_tys)
             objective = Objective(self.get_value, dim)
             budget = 40 * dim_size

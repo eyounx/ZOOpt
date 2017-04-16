@@ -51,20 +51,17 @@ if False:
     result = []
     for i in range(repeat):
         dim_size = 100
-        dim_regs = []
-        dim_tys = []
-        for i in range(dim_size):
-            dim_regs.append([0, 1])
-            dim_tys.append(True)
+        dim_regs = [[-1, 1]] * dim_size
+        dim_tys = [True] * dim_size
         dim = Dimension(dim_size, dim_regs, dim_tys)
         # objective means objective function
         objective = Objective(sphere, dim)
         budget = 20 * dim_size
         parameter = Parameter(algorithm="racos", budget=budget)
-        ins = Opt.min(objective, parameter)
+        solution = Opt.min(objective, parameter)
         print 'Best solution is:'
-        ins.print_solution()
-        result.append(ins.get_value())
+        solution.print_solution()
+        result.append(solution.get_value())
     result_analysis(result, 5)
     t2 = time.clock()
     print 'time is %f' % (t2 - t1)
@@ -76,11 +73,8 @@ if True:
     result = []
     for i in range(repeat):
         dim_size = 10
-        dim_regs = []
-        dim_tys = []
-        for i in range(dim_size):
-            dim_regs.append([-1, 1])
-            dim_tys.append(True)
+        dim_regs = [[-1, 1]] * dim_size
+        dim_tys = [True] * dim_size
         dim = Dimension(dim_size, dim_regs, dim_tys)
         objective = Objective(ackley, dim)
         budget = 50000
@@ -88,10 +82,10 @@ if True:
         parameter.set_train_size(21)
         parameter.set_positive_size(1)
         parameter.set_negative_size(20)
-        ins = Opt.min(objective, parameter)
+        solution = Opt.min(objective, parameter)
         print 'Best solution is:'
-        ins.print_solution()
-        result.append(ins.get_value())
+        solution.print_solution()
+        result.append(solution.get_value())
     result_analysis(result, 100)
     t2 = time.clock()
     print 'time is %f' % (t2 - t1)
@@ -103,11 +97,8 @@ if False:
     result = []
     for i in range(repeat):
         dim_size = 20
-        dim_regs = []
-        dim_tys = []
-        for i in range(dim_size):
-            dim_regs.append([0, 1])
-            dim_tys.append(False)
+        dim_regs = [[-1, 1]] * dim_size
+        dim_tys = [True] * dim_size
         dim = Dimension(dim_size, dim_regs, dim_tys)
         objective = Objective(set_cover, dim)
         budget = 2000
@@ -115,9 +106,9 @@ if False:
         parameter.set_train_size(6)
         parameter.set_positive_size(1)
         parameter.set_negative_size(5)
-        ins = Opt.min(objective, parameter)
-        ins.print_solution()
-        result.append(ins.get_value())
+        solution = Opt.min(objective, parameter)
+        solution.print_solution()
+        result.append(solution.get_value())
     result_analysis(result, 100)
 
 # mixed optimization
@@ -139,7 +130,7 @@ if False:
         objective = Objective(mixed_function, dim)
         budget = 2000
         parameter = Parameter(budget=budget, autoset=True)
-        ins = Opt.min(objective, parameter)
-        ins.print_solution()
-        result.append(ins.get_value())
+        solution = Opt.min(objective, parameter)
+        solution.print_solution()
+        result.append(solution.get_value())
     result_analysis(result, 15)

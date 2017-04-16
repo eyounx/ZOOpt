@@ -22,4 +22,28 @@ zoo:
 docs
 example
 
-The necessary files for RACOS are Components.py, Racos.py and Tools.py. The RACOS algorithm was implemented in Racos.py. There are some test functions in ObjectiveFunction.py, you can implement other tasks in other file. In Run_Racos.py, There are some demos of calling RACOS.
+How to use this package?
+Examples are listed in the directory 'examples'，you can follow these steps to optimize.
+1.Import related packages
+2.You should construct a dim
+3.Define your objective function. You can refer to objective functions defined in fx.py(example/simple_functions/fx.py)
+3.Use dim and objective function to construct an objective
+4.Construct parameter, which includes at least the algorithm you want to use and budget
+5.Optimize
+
+eg.:
+from example.simple_functions.fx import ackley
+from zoo.dimension import Dimension
+from zoo.objective import Objective
+from zoo.parameter import Parameter
+from zoo.opt import Opt
+        
+dim_size = 10
+dim_regs = [[-1, 1]] * dim_size
+dim_tys = [True] * dim_size
+dim = Dimension(dim_size, dim_regs, dim_tys)
+objective = Objective(ackley, dim)
+budget = 50000
+parameter = Parameter(algorithm="racos", budget=budget)
+solution = Opt.min(objective, parameter)
+solution.print_solution()
