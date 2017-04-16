@@ -41,15 +41,12 @@ class Opt:
         if constraint is not None and ((algorithm is None) or (algorithm == "poss")):
             optimizer = ParetoOptimization()
             result = optimizer.opt(objective, parameter)
-            return result
         elif constraint is None and ((algorithm is None) or (algorithm == "racos")):
             optimizer = RacosOptimization()
             result = optimizer.opt(objective, parameter)
         else:
             print "No proper algorithm find for %s" % algorithm
-        if result:
-            return result
-        return
+        return result
 
     @staticmethod
     def set_global(parameter):
