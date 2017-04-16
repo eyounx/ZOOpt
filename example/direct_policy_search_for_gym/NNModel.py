@@ -1,5 +1,3 @@
-import theano
-import theano.tensor as T
 import numpy as np
 from ActivationFunction import ActivationFunction
 

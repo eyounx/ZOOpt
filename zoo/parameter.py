@@ -34,12 +34,11 @@ class Parameter:
     # If autoset is True, train_size, positive_size, negative_size will be set automatically
     # If precision is None, we will set precision as 1e-17 in default. Otherwise, set precision.
     # If seed is None , random sequence is not fixed.
-    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, seed=None):
+    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None):
         self.__algorithm = algorithm
         self.__sequential = sequential
         self.__budget = budget
         self.__precision = precision
-        self.__seed = seed
         self.__train_size = 0
         self.__positive_size = 0
         self.__negative_size = 0
@@ -100,13 +99,6 @@ class Parameter:
 
     def get_precision(self):
         return self.__precision
-
-    def set_seed(self, seed):
-        self.__seed = seed
-        return
-
-    def get_seed(self):
-        return self.__seed
 
     def set_train_size(self, size):
         self.__train_size = size

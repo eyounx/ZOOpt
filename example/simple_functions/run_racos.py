@@ -23,13 +23,13 @@ Author:
 """
 import time
 import numpy as np
-from zoo.utils.my_global import gl
 
 from example.simple_functions.fx import sphere, ackley, set_cover, mixed_function
 from zoo.dimension import Dimension
 from zoo.objective import Objective
 from zoo.parameter import Parameter
 from zoo.opt import Opt
+from zoo.utils.my_global import gl
 
 
 def result_analysis(result, top):
@@ -42,7 +42,7 @@ def result_analysis(result, top):
 
 
 # Sphere
-if False:
+if True:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -69,6 +69,7 @@ if True:
     t1 = time.clock()
     repeat = 15
     result = []
+    gl.set_seed(12345)
     for i in range(repeat):
         dim_size = 10
         dim_regs = [[-1, 1]] * dim_size
@@ -76,7 +77,7 @@ if True:
         dim = Dimension(dim_size, dim_regs, dim_tys)
         objective = Objective(ackley, dim)
         budget = 5000
-        parameter = Parameter(algorithm="racos", budget=budget, autoset=False, seed=1234)
+        parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
         parameter.set_train_size(21)
         parameter.set_positive_size(1)
         parameter.set_negative_size(20)
@@ -89,7 +90,7 @@ if True:
     print 'time is %f' % (t2 - t1)
 
 # discrete optimization
-if False:
+if True:
     # dimension setting
     repeat = 10
     result = []

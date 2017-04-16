@@ -1,11 +1,11 @@
 # the python version is 2.7
-import sys
 import numpy as np
 from random import randint
 from math import ceil
 from math import exp
 from NormalizeData import NormlizeDate
 from copy import deepcopy
+
 
 class ParetoOpt:
     def mutation(self,s,n):#every bit will be flipped with probability 1/n

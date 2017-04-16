@@ -41,7 +41,7 @@ class Opt:
         if constraint is not None and ((algorithm is None) or (algorithm == "poss")):
             optimizer = ParetoOptimization()
             result = optimizer.opt(objective, parameter)
-			return result
+            return result
         elif constraint is None and ((algorithm is None) or (algorithm == "racos")):
             optimizer = RacosOptimization()
             result = optimizer.opt(objective, parameter)
@@ -54,9 +54,7 @@ class Opt:
     @staticmethod
     def set_global(parameter):
         precision = parameter.get_precision()
-        seed = parameter.get_seed()
         if precision:
             gl.set_precision(precision)
-        if seed:
-            gl.set_seed(seed)
+
 
