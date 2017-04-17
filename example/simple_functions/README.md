@@ -1,8 +1,8 @@
 # Optimization Example on Simple Functions
 
-In `example.py`, there are some examples of optimizing simple functions defined in `fx.pl`
+In `example.py`, there are some examples of optimizing simple functions defined in `fx.py`
 
-Four simple functions in `fx.pl`
+Four simple functions in `fx.py`
 
 * `sphere`: a convex hyper-sphere function in real dimensions
 

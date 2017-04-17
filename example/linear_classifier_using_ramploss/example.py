@@ -31,6 +31,7 @@ from zoo.objective import Objective
 from zoo.parameter import Parameter
 from zoo.opt import Opt
 
+
 ## define ramploss learning loss function
 class RampLoss:
     __data = None
@@ -109,7 +110,7 @@ class RampLoss:
         return rate
 
     def dim(self):
-        return Dimension( self.__dim_size, [S[-10, 10]] * self.__dim_size, [True] * self.__dim_size)
+        return Dimension( self.__dim_size, [[-10, 10]] * self.__dim_size, [True] * self.__dim_size)
 
 
 if __name__=='__main__':

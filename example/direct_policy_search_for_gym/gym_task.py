@@ -1,6 +1,6 @@
 import gym
 from gym.spaces.discrete import Discrete
-from NNModel import NNModel
+from nn_model import NNModel
 
 
 class GymTask:

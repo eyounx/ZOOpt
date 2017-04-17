@@ -1,5 +1,5 @@
 import numpy as np
-from ActivationFunction import ActivationFunction
+from activation_function import ActivationFunction
 
 
 class Layer(object):
