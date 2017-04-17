@@ -27,15 +27,21 @@ class MSE:
         return result  
       
     def Constraint(self,solution):
-            return self._k
+        if solution[0,:].sum()>self._k:#over k choosed featrues,not satisfy
+            return False
+        return True
     
     def IsolationFunction(self,solution):
             return 0#In this case isolationfunction is a constant
         
     def T(self):
         return long(ceil(self._size[1] * self._k * self._k * 2 * exp(1)))
+    def get_k(self):
+        return self._k
      
     def Loss(self,solution):
+        if solution[0, :].sum()==0.0 or solution[0, :].sum()>=2.0*self._k:
+            return float('inf')
         pos = self.position(solution)
         alpha = (self._C[pos, :])[:, pos].I*self._b[pos, :]
         sub = self._y - self._X[:, pos]*alpha
