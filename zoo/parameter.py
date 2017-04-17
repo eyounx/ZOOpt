@@ -44,9 +44,8 @@ class Parameter:
         self.__positive_size = 0
         self.__negative_size = 0
         self.__probability = 0.99
-        self.__X = None
-        self.__y = None
-        self.__k = 0
+        self.__T=0
+        self.__isolationFunc=None
         if budget != 0 and autoset is True:
             self.auto_set(budget)
         return
@@ -136,15 +135,17 @@ class Parameter:
     def get_probability(self):
         return self.__probability
 
-    def set_paretoopt_parameters(self, X, y, k):
-        self.__X = X
-        self.__y = y
-        self.__k = k
+    def set_paretoopt_iteration_times(self, T):
+        self.__T = T
 
-    def get_paretoopt_parameters(self):
-        return self.__X, self.__y, self.__k
+    def get_paretoopt_iteration_times(self):
+        return self.__T
 
+    def set_isolationFunc(self, func):
+        self.__isolationFunc = func
 
+    def get_isolationFunc(self):
+        return self.__isolationFunc
 
 
 
