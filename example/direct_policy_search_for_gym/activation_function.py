@@ -17,32 +17,25 @@
 """
 
 """
-This file records Global variables used in the algorithm
+The class ActivationFunction defines some activation functions.
+
 Author:
     Yuren Liu
 """
-from random import Random
+import math
 
 
-class Global:
-    def __init__(self):
-        # rand is the random object used by all files
-        self.rand = Random()
-        self.precision = 1e-17
-        # rand.seed(100)
+class ActivationFunction:
 
-    # Set random seed
-    def set_seed(self, seed):
-        self.rand.seed(seed)
-        return
-
-    # Set precision, precision is used to judge whether two floats are equal
-    def set_precision(self, my_precision):
-        self.precision = my_precision
-        return
-
-gl = Global()
-# constants
-pos_inf = float('Inf')
-neg_inf = float('-Inf')
-nan = float('Nan')
+    @staticmethod
+    # sigmoid function
+    def sigmoid(x):
+        for i in range(len(x)):
+            if -700 <= x[i] <= 700:
+                x[i] = (2 / (1 + math.exp(-x[i]))) - 1  # sigmoid function
+            else:
+                if x[i] < -700:
+                    x[i] = -1
+                else:
+                    x[i] = 1
+        return x

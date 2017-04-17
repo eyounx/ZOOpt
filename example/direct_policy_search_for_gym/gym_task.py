@@ -1,21 +1,45 @@
+"""
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+ Copyright (C) 2017 Nanjing University, Nanjing, China
+"""
+
+"""
+the class GymTask constructs a gym runtime environment.
+
+Author:
+    Yuren Liu
+"""
 import gym
 from gym.spaces.discrete import Discrete
-from NNModel import NNModel
+from nn_model import NNModel
 
 
 class GymTask:
-    __envir = None                      # environment object
+    __envir = None                      # gym environment
     __envir_name = None                 # environment name
     __obser_size = None                 # the number of parameters in observation
     __obser_low_bound = []              # the lower bound of parameters in observation
     __obser_up_bound = []               # the upper bound of parameters in observation
     __action_size = None                # the number of parameters in action
-    __action_sca = []
+    __action_sca = []                   # environment action space, specified by gym
     __action_type = []                  # the type of action, false means discrete
-    __action_low_bound = []
-    __action_up_bound = []
-    __policy_model = None
-    __max_step = 0
+    __action_low_bound = []             # action lower bound
+    __action_up_bound = []              # action upper bound
+    __policy_model = None               # policy model, it's a neural network in this example
+    __max_step = 0                      # maximum stop step
     __stop_step = 0                     # the stop step in recent trajectory
 
     def __init__(self, name):
