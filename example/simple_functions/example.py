@@ -32,6 +32,7 @@ from zoo.opt import Opt
 from zoo.utils.my_global import gl
 
 
+### a function to print optimization results
 def result_analysis(result, top):
     result.sort()
     top_k = result[0:top]
@@ -41,60 +42,83 @@ def result_analysis(result, top):
     return
 
 
-# Sphere
+### example for minimizing the sphere function
 if True:
     t1 = time.clock()
+    # repeat of optimization experiments
     repeat = 15
     result = []
-    # Set random seed in sample
     for i in range(repeat):
-        dim_size = 100
-        dim_regs = [[-1, 1]] * dim_size
-        dim_tys = [True] * dim_size
-        dim = Dimension(dim_size, dim_regs, dim_tys)
-        # objective means objective function
-        objective = Objective(sphere, dim)
-        budget = 20 * 2000
-        parameter = Parameter(algorithm="racos", budget=budget)
+        
+        # setup optimization problem 
+        dim_size = 100 # dimensions
+        dim_regs = [[-1, 1]] * dim_size # dimension range
+        dim_tys = [True] * dim_size # dimension type : real
+        dim = Dimension(dim_size, dim_regs, dim_tys) # form up the dimension object
+        objective = Objective(sphere, dim) # form up the objective function
+        
+        # setup algorithm parameters
+        budget = 100*dim_size # number of calls to the objective function
+        parameter = Parameter(budget=budget) # by default, the algorithm is sequential RACOS
+        
+        # perform the optimization
         solution = Opt.min(objective, parameter)
+        
+        # store the optimization result
         print 'Best solution is:'
         solution.print_solution()
         result.append(solution.get_value())
+        
     result_analysis(result, 5)
     t2 = time.clock()
-    print 'time is %f' % (t2 - t1)
+    print 'time costed %f seconds' % (t2 - t1)
 
-# Ackley
+
+### example for minimizing the ackley function
 if True:
+	  # the random seed for zoo can be set
+    gl.set_seed(12345)
+    
     t1 = time.clock()
+    # repeat of optimization experiments
     repeat = 15
     result = []
-    gl.set_seed(12345)
     for i in range(repeat):
-        dim_size = 10
-        dim_regs = [[-1, 1]] * dim_size
-        dim_tys = [True] * dim_size
-        dim = Dimension(dim_size, dim_regs, dim_tys)
-        objective = Objective(ackley, dim)
-        budget = 5000
+    	  
+    	  # setup optimization problem 
+        dim_size = 10 # dimensions
+        dim_regs = [[-1, 1]] * dim_size # dimension range
+        dim_tys = [True] * dim_size # dimension type : real
+        dim = Dimension(dim_size, dim_regs, dim_tys) # form up the dimension object
+        objective = Objective(ackley, dim) # form up the objective function
+        budget = 100*dim_size # number of calls to the objective function
+        # by setting autoset=false, the algorithm parameters will not be set by default
         parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
+        # so you are allowed to setup algorithm parameters of racos
         parameter.set_train_size(21)
         parameter.set_positive_size(1)
         parameter.set_negative_size(20)
+        
+        # perform the optimization
         solution = Opt.min(objective, parameter)
+        
+        # store the optimization result
         print 'Best solution is:'
         solution.print_solution()
         result.append(solution.get_value())
+        
     result_analysis(result, 100)
     t2 = time.clock()
     print 'time is %f' % (t2 - t1)
 
-# discrete optimization
+
+### discrete optimization example using minimum set cover instance
 if True:
-    # dimension setting
+    # repeat of optimization experiments
     repeat = 10
     result = []
     for i in range(repeat):
+    	  
         dim_size = 20
         dim_regs = [[-1, 1]] * dim_size
         dim_tys = [True] * dim_size

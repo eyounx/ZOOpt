@@ -45,21 +45,6 @@ def ackley(solution):
     value = -20*math.exp(-0.2*math.sqrt(ave_seq))-math.exp(ave_cos)+20.0+math.e
     return value
 
-# Arkley
-# x = T.dvector('x')
-# a = 20
-# b = 0.2
-# c = 2 * numpy.pi
-# bias = [-0.151132887462, 0.388548543877, -0.933234772744, -0.581705468848, 0.920983693072, -0.117206127637,
-#                 -0.716147047949, 0.231077702939, -0.751868710065, -0.968869507224]
-# length = T.shape(x)[0]
-# value_seq = -b * numpy.sqrt(((x - bias) ** 2).sum() / length)
-# RE = function([x], value_seq)
-# value_cos = (c * (x - bias)).cos().sum() / length
-# value_arkley = -a * numpy.exp(value_seq) - numpy.exp(value_cos)\
-#                               + a + numpy.e
-# arkley = function([x], value_arkley)
-
 
 # set cover problem for discrete optimization
 def set_cover(solution):
