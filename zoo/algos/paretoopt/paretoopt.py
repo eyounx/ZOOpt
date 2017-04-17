@@ -30,7 +30,8 @@ class ParetoOpt:
             
     def opt(self,objective,parameter):
         # initiate the population
-        n=objective.get_dim().get_size()
+        n=objective.get_dim().get_size()[0]
+        k=objective.get_dim().get_size()[1]
         population = np.mat(np.zeros([1,n], 'int8'))
         fitness = np.mat(np.zeros([1, 2]))
         fitness[0,0] = float('inf')
@@ -39,15 +40,16 @@ class ParetoOpt:
         t = 0
         constraint=objective.get_constraint()
         isolationFunc=parameter.get_isolationFunc()
-        T=parameter.get_paretoopt_iteration_times()
+        tempT=parameter.get_paretoopt_iteration_parameter()
         evaluationFunc=objective.get_func()
+        T=ceil(n*k*k*tempT)
         while t < T:
             # choose a individual from population randomly
             s = population[randint(1, popSize)-1, :]
             # every bit will be flipped with probability 1/n
             offSpring = self.mutation(s, n)
             offSpringFit = np.mat(np.zeros([1,2]))
-            offSpringFit[0, 1] = offSpring[0, :].sum()
+            offSpringFit[0, 1] = constraint(offSpring)
             offSpringFit[0, 0] = evaluationFunc(offSpring)
             # now we need to update the population
             hasBetter = False
@@ -55,15 +57,15 @@ class ParetoOpt:
                 if isolationFunc(offSpring)!=isolationFunc(population[i,:]):
                     continue;
                 else:
-                    if (fitness[i, 0] < offSpringFit[0, 0] and fitness[i, 1] <= offSpringFit[0, 1]) or \
-                            (fitness[i, 0] <= offSpringFit[0, 0] and fitness[i,1]<offSpringFit[0,1]):
+                    if (fitness[i, 0] < offSpringFit[0, 0] and fitness[i, 1] >= offSpringFit[0, 1]) or \
+                            (fitness[i, 0] <= offSpringFit[0, 0] and fitness[i,1]>offSpringFit[0,1]):
                         hasBetter = True
                         break   
             # there is no better individual than offSpring
             if hasBetter == False:
                 Q = []
                 for j in range(0,popSize):
-                    if offSpringFit[0, 0] <= fitness[j, 0] and offSpringFit[0, 1] <= fitness[j, 1]:
+                    if offSpringFit[0, 0] <= fitness[j, 0] and offSpringFit[0, 1] >= fitness[j, 1]:
                         continue
                     else:
                         Q.append(j)
@@ -75,11 +77,12 @@ class ParetoOpt:
             t += 1
             popSize = np.shape(fitness)[0]
         resultIndex = -1
-        maxSize=-1 
+        maxSize=float('inf') 
         for p in range(0, popSize):
-            if constraint(population[p,:]) and fitness[p, 1] > maxSize:
+            if constraint(population[p,:])>=0 and fitness[p, 1] < maxSize:
                 maxSize = fitness[p, 1]
                 resultIndex = p
+        #print fitness[resultIndex,0]        
         return population[resultIndex, :]
 
 '''
