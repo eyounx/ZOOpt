@@ -41,8 +41,9 @@ class ParetoOpt:
         popSize = 1
         # the current iterate count
         t = 0
-        k=objective.get_constraint()
-        T = long(ceil(n * k * k * 2 * exp(1)))
+        constraint=objective.get_constraint()
+        isolationFunc=parameter.get_isolationFunc()
+        T=parameter.get_paretoopt_iteration_times()
         evaluationFunc=objective.get_func()
         while t < T:
             # choose a individual from population randomly
@@ -51,17 +52,17 @@ class ParetoOpt:
             offSpring = self.mutation(s, n)
             offSpringFit = np.mat(np.zeros([1,2]))
             offSpringFit[0, 1] = offSpring[0, :].sum()
-            if offSpringFit[0, 1] == 0.0 or offSpringFit[0, 1] >= 2.0 * k:
-                offSpringFit[0, 0] = float("inf")
-            else:
-                offSpringFit[0, 0] = evaluationFunc(offSpring)
+            offSpringFit[0, 0] = evaluationFunc(offSpring)
             # now we need to update the population
             hasBetter = False
             for i in range(0, popSize):
-                if (fitness[i, 0] < offSpringFit[0, 0] and fitness[i, 1] <= offSpringFit[0, 1]) or \
-                        (fitness[i, 0] <= offSpringFit[0, 0] and fitness[i,1]<offSpringFit[0,1]):
-                    hasBetter = True
-                    break
+                if isolationFunc(offSpring)!=isolationFunc(population[i,:]):
+                    continue;
+                else:
+                    if (fitness[i, 0] < offSpringFit[0, 0] and fitness[i, 1] <= offSpringFit[0, 1]) or \
+                            (fitness[i, 0] <= offSpringFit[0, 0] and fitness[i,1]<offSpringFit[0,1]):
+                        hasBetter = True
+                        break   
             # there is no better individual than offSpring
             if hasBetter == False:
                 Q = []
@@ -80,7 +81,7 @@ class ParetoOpt:
         resultIndex = -1
         maxSize=-1 
         for p in range(0, popSize):
-            if fitness[p, 1] <= k and fitness[p, 1] > maxSize:
+            if constraint(population[p,:]) and fitness[p, 1] > maxSize:
                 maxSize = fitness[p, 1]
                 resultIndex = p
         return population[resultIndex, :]
