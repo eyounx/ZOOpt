@@ -3,7 +3,6 @@ from zoo.algos.paretoopt.NormalizeData import NormlizeDate
 from zoo.opt import Opt
 from zoo.parameter import Parameter
 from zoo.objective import Objective
-import numpy as np
 from zoo.dimension import Dimension
 from math import ceil
 from math import exp
