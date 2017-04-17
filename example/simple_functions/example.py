@@ -24,7 +24,7 @@ Author:
 import time
 import numpy as np
 
-from example.simple_functions.fx import sphere, ackley, set_cover, mixed_function
+from fx import sphere, ackley, setcover, mixed_function
 from zoo.dimension import Dimension
 from zoo.objective import Objective
 from zoo.parameter import Parameter
@@ -43,10 +43,10 @@ def result_analysis(result, top):
 
 
 ### example for minimizing the sphere function
-if True:
+if False:
     t1 = time.clock()
     # repeat of optimization experiments
-    repeat = 15
+    repeat = 5
     result = []
     for i in range(repeat):
         
@@ -75,8 +75,8 @@ if True:
 
 
 ### example for minimizing the ackley function
-if True:
-	  # the random seed for zoo can be set
+if False:
+    # the random seed for zoo can be set
     gl.set_seed(12345)
     
     t1 = time.clock()
@@ -85,8 +85,8 @@ if True:
     result = []
     for i in range(repeat):
     	  
-    	  # setup optimization problem 
-        dim_size = 10 # dimensions
+        # setup optimization problem
+        dim_size = 100 # dimensions
         dim_regs = [[-1, 1]] * dim_size # dimension range
         dim_tys = [True] * dim_size # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys) # form up the dimension object
@@ -118,18 +118,22 @@ if True:
     repeat = 10
     result = []
     for i in range(repeat):
-    	  
-        dim_size = 20
-        dim_regs = [[-1, 1]] * dim_size
-        dim_tys = [True] * dim_size
-        dim = Dimension(dim_size, dim_regs, dim_tys)
-        objective = Objective(set_cover, dim)
-        budget = 2000
+
+    	# setup problem
+        problem = setcover() # instantialize a set cover instance
+        dim = problem.dim # the dim is prepared by the class
+        objective = Objective(problem.fx, dim) # form up the objective function
+        budget = 100*dim.get_size()  # number of calls to the objective function
         parameter = Parameter(budget=budget, autoset=False)
         parameter.set_train_size(6)
         parameter.set_positive_size(1)
         parameter.set_negative_size(5)
+
+        # perform the optimization
         solution = Opt.min(objective, parameter)
+
+        # store the optimization result
+        print 'Best solution is:'
         solution.print_solution()
         result.append(solution.get_value())
     result_analysis(result, 100)

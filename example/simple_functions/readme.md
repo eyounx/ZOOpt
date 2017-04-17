@@ -8,7 +8,7 @@ Four simple function in `fx.pl`
 
 * `ackley`: a non-convex ackley function with many local optima in real dimensions
 
-* `set_cover`: an instance of the NP-hard minimum set cover problem in discrete dimensions
+* `setcover`: an instance of the NP-hard minimum set cover problem in discrete dimensions
 
 * mixed_function: a sum-of-all-dimension function for mixed real/discrete dimensions
 
