@@ -4,7 +4,8 @@ optimization algorithm
 
 Author:
     Yuren Liu
-
+"""
+"""
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
  as published by the Free Software Foundation; either version 2
@@ -146,6 +147,8 @@ if True:
         dim_size = 10
         dim_regs = []
         dim_tys = []
+        # In this example, dimension is mixed. If dimension index is odd, this dimension if discrete, Otherwise, this
+        # dimension is continuous.
         for i in range(dim_size):
             if i%2 == 0:
                 dim_regs.append([0, 1])

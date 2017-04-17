@@ -1,3 +1,28 @@
+"""
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+ Copyright (C) 2017 Nanjing University, Nanjing, China
+"""
+
+"""
+Function run_test is defined in this file. You can run this file to get results of this example.
+
+Author:
+    Yuren Liu
+"""
+
 from gym_task import GymTask
 from zoo.dimension import Dimension
 from zoo.objective import Objective
@@ -7,18 +32,18 @@ from zoo.opt import Opt
 # test function
 
 
-def run_test(name, in_layers, in_budget, maxstep, repeat):
-    layers = in_layers
+# in_layers means layers information. eg. [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5,
+# output layer has 1.
+# in_budget means budget
+# maxstep means stop step in gym
+# repeat means repeat number in a test.
+def run_test(task_name, layers, in_budget, max_step, repeat):
 
-    task_name = name
+    gym_task = GymTask(task_name)  # choose a task by name
+    gym_task.new_nnmodel(layers)  # construct a neural network
+    gym_task.set_max_step(max_step)  # set max step in gym
 
-    max_step = maxstep
-
-    gym_task = GymTask(task_name)
-    gym_task.new_nnmodel(layers)
-    gym_task.set_max_step(max_step)
-
-    budget = in_budget  # budget in online style 2000
+    budget = in_budget  # number of calls to the objective function
     rand_probability = 0.95  # the probability of sample in model
 
     # set dimension
@@ -26,19 +51,21 @@ def run_test(name, in_layers, in_budget, maxstep, repeat):
     dim_regs = [[-10, 10]] * dim_size
     dim_tys = [True] * dim_size
     dim = Dimension(dim_size, dim_regs, dim_tys)
-    objective = Objective(gym_task.sum_reward, dim)
-    parameter = Parameter(budget=budget, autoset=True)
+
+    objective = Objective(gym_task.sum_reward, dim)  # form up the objective function
+    parameter = Parameter(budget=budget, autoset=True)  # by default, the algorithm is sequential RACOS
     parameter.set_probability(rand_probability)
-    print 'Best solution is:'
+
     result = []
     sum = 0
+    print 'Best solution is:'
     for i in range(repeat):
         ins = Opt.min(objective, parameter)
         result.append(ins.get_value())
         sum += ins.get_value()
         ins.print_solution()
-    print result
-    print sum/len(result)
+    print result  # results in repeat times
+    print sum/len(result)  # average result
 
 if __name__ == '__main__':
     mountain_car_layers = [2, 5, 1]

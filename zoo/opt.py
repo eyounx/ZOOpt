@@ -1,10 +1,4 @@
 """
-The class Opt was the main class. You can use Opt.min(objective, parameter)
-to optimize objective.
-
-Author:
-    Yuren Liu
-
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
  as published by the Free Software Foundation; either version 2
@@ -20,6 +14,14 @@ Author:
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
+"""
+
+"""
+The class Opt was the main class. You can use Opt.min(objective, parameter)
+to optimize objective.
+
+Author:
+    Yuren Liu
 """
 from zoo.algos.paretoopt.ParetoOptimization import ParetoOptimization
 from zoo.algos.racos.racos_optimization import RacosOptimization
