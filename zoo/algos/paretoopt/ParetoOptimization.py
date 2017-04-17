@@ -40,10 +40,9 @@ class ParetoOptimization:
     # General optimization function, it will choose concrete optimization algorithm
     def opt(self, objective, parameter):
         self.clear()
-        self._algorithm = ParetoOpt()
-        paretoParameter = parameter.get_paretoopt_parameters()
-        self._best_solution = self._algorithm.opt(paretoParameter[0], paretoParameter[1], paretoParameter[2])
-        return self._best_solution
+        self.__algorithm = ParetoOpt()
+        self.__best_solution = self.__algorithm.opt(objective, parameter)
+        return self.__best_solution
 
     def get_best_sol(self):
         return self._best_solution
