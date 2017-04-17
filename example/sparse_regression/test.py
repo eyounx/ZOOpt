@@ -26,7 +26,7 @@ class MSE:
         return result  
       
     def Constraint(self,solution):
-        if solution[0,:].sum()>self._k:#over k choosed featrues,not satisfy
+        if solution[0,:].sum()>self._k:#over k choosed featrues,not satisify
             return False
         return True
     
