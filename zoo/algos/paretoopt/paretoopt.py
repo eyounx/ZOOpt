@@ -29,10 +29,6 @@ class ParetoOpt:
         return result   
             
     def opt(self,objective,parameter):
-        #C = X.T * X
-        #b = X.T * y
-        # row and column number of the matrix
-        #[m,n] = np.shape(X)
         # initiate the population
         n=objective.get_dim().get_size()
         population = np.mat(np.zeros([1,n], 'int8'))
