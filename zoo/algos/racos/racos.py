@@ -24,7 +24,7 @@ import time
 
 from zoo.algos.racos.racos_classification import RacosClassification
 from zoo.algos.racos.racos_common import RacosCommon
-from zoo.utils.my_global import gl
+from zoo.utils.zoo_global import gl
 
 
 class Racos(RacosCommon):

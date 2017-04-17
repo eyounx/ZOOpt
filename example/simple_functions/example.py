@@ -29,7 +29,7 @@ from zoo.dimension import Dimension
 from zoo.objective import Objective
 from zoo.parameter import Parameter
 from zoo.opt import Opt
-from zoo.utils.my_global import gl
+from zoo.utils.zoo_global import gl
 
 
 ### a function to print optimization results
@@ -114,9 +114,9 @@ if True:
 ### discrete optimization example using minimum set cover instance
 if True:
     # repeat of optimization experiments
+    gl.set_seed(12345)
     repeat = 10
     result = []
-    gl.set_seed(12345)
     for i in range(repeat):
 
         # setup problem
@@ -149,7 +149,7 @@ if True:
         dim_tys = []
         for i in range(dim_size):
             if i%2 == 0:
-                dim_regs.append([-1, 1])
+                dim_regs.append([0, 1])
                 dim_tys.append(True)
             else:
                 dim_regs.append([0, 100])
