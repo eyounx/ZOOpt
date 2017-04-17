@@ -32,22 +32,24 @@ class Parameter:
     # If algorithm is 'racos' and sequential is True, opt will invoke SRacos.opt(default)
     # if algorithm is 'racos' and sequential is False, opt will invoke Racos.opt
     # If autoset is True, train_size, positive_size, negative_size will be set automatically
-    # If precision is None, we will set precision as 1e-17 in default. Otherwise, set precision.
-    # If seed is None , random sequence is not fixed.
-    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None):
+    # If precision is None, we will set precision as 1e-17 in default. Otherwise, set precision
+    # If uncertain_bits is None, racos will set uncertain_bits automatically
+    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None):
         self.__algorithm = algorithm
         self.__sequential = sequential
         self.__budget = budget
         self.__precision = precision
+        self.__uncertain_bits = uncertain_bits
         self.__train_size = 0
         self.__positive_size = 0
         self.__negative_size = 0
         self.__probability = 0.99
-        self.__X=None
-        self.__y=None
-        self.__k=0
+        self.__X = None
+        self.__y = None
+        self.__k = 0
         if budget != 0 and autoset is True:
             self.auto_set(budget)
+        return
 
     # Set train_size, positive_size, negative_size by following rules:
     # budget < 3 ->> error
@@ -100,6 +102,13 @@ class Parameter:
     def get_precision(self):
         return self.__precision
 
+    def set_uncertain_bits(self, uncertain_bits):
+        self.__uncertain_bits = uncertain_bits
+        return
+
+    def get_uncertain_bits(self):
+        return self.__uncertain_bits
+
     def set_train_size(self, size):
         self.__train_size = size
         return
@@ -128,9 +137,9 @@ class Parameter:
         return self.__probability
 
     def set_paretoopt_parameters(self, X, y, k):
-        self.__X=X
-        self.__y=y
-        self.__k=k
+        self.__X = X
+        self.__y = y
+        self.__k = k
 
     def get_paretoopt_parameters(self):
         return self.__X, self.__y, self.__k

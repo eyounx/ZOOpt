@@ -41,14 +41,13 @@ def result_analysis(result, top):
     print mean_r, '#', std_r
     return
 
-
-
 ### example for minimizing the sphere function
-if False:
+if True:
     t1 = time.clock()
     # repeat of optimization experiments
     repeat = 5
     result = []
+    gl.set_seed(12345)
     for i in range(repeat):
         
         # setup optimization problem 
@@ -76,7 +75,7 @@ if False:
 
 
 ### example for minimizing the ackley function
-if False:
+if True:
     # the random seed for zoo can be set
     gl.set_seed(12345)
     t1 = time.clock()
@@ -117,6 +116,7 @@ if True:
     # repeat of optimization experiments
     repeat = 10
     result = []
+    gl.set_seed(12345)
     for i in range(repeat):
 
         # setup problem
@@ -139,9 +139,10 @@ if True:
     result_analysis(result, 100)
 
 # mixed optimization
-if False:
+if True:
     repeat = 15
     result = []
+    gl.set_seed(12345)
     for j in range(repeat):
         dim_size = 10
         dim_regs = []

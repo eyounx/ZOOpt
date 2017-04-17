@@ -24,7 +24,7 @@ import time
 
 from zoo.algos.racos.racos_classification import RacosClassification
 from zoo.algos.racos.racos_common import RacosCommon
-from zoo.utils import my_global
+from zoo.utils.my_global import gl
 
 
 class Racos(RacosCommon):
@@ -45,7 +45,7 @@ class Racos(RacosCommon):
             j = 0
             iteration_num = len(self._negative_data)
             while j < iteration_num:
-                if my_global.rand.random() < self._parameter.get_probability():
+                if gl.rand.random() < self._parameter.get_probability():
                     classifier = RacosClassification(
                         self._objective.get_dim(), self._positive_data, self._negative_data, ub)
                     classifier.mixed_classification()

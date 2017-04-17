@@ -113,7 +113,7 @@ class SRacos(RacosCommon):
     # Random replace
     def strategy_rr(self, iset, x):
         len_iset = len(iset)
-        replace_index = my_global.rand.randint(0, len_iset - 1)
+        replace_index = gl.rand.randint(0, len_iset - 1)
         replace_ele = iset[replace_index]
         iset[replace_index] = x
         return replace_ele
@@ -121,6 +121,7 @@ class SRacos(RacosCommon):
     # replace the farthest solution from best_sol
     def strategy_lm(self, iset, best_sol, x):
         farthest_dis = 0
+        farthest_index = 0
         for i in range(iset):
             dis = self.distance(iset[i].get_coordinates(), best_sol.get_coordinates())
             if dis > farthest_dis:

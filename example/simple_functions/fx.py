@@ -43,7 +43,7 @@ def ackley(solution):
         value_cos += math.cos(2.0*math.pi*(x[i]-bias))
     ave_seq = value_seq/len(x)
     ave_cos = value_cos/len(x)
-    value = -20*math.exp(-0.2*math.sqrt(ave_seq))-math.exp(ave_cos)+20.0+math.e
+    value = -20 * math.exp(-0.2 * math.sqrt(ave_seq)) - math.exp(ave_cos) + 20.0 + math.e
     return value
 
 
@@ -80,7 +80,6 @@ class setcover:
 
     def fx(self, solution):
         x = solution.get_x()
-
         allweight = 0
         countw = 0
         for i in range(len(self.__weight)):
@@ -109,7 +108,7 @@ class setcover:
     @property
     def dim(self):
         dim_size = 20
-        dim_regs = [[-1, 1]] * dim_size
+        dim_regs = [[0, 1]] * dim_size
         dim_tys = [False] * dim_size
         return Dimension(dim_size, dim_regs, dim_tys)
 

@@ -1,6 +1,6 @@
 # Optimization Example on Simple Functions
 
-In `example.pl`, there are some examples of optimizing simple functions defined in `fx.pl`
+In `example.py`, there are some examples of optimizing simple functions defined in `fx.pl`
 
 Four simple function in `fx.pl`
 
@@ -12,4 +12,4 @@ Four simple function in `fx.pl`
 
 * mixed_function: a sum-of-all-dimension function for mixed real/discrete dimensions
 
-In `example.pl`,  the main program has four sections separated by `if`. Each section is an example for minimzing one function.
+In `example.py`,  the main program has four sections separated by `if`. Each section is an example for minimzing one function.

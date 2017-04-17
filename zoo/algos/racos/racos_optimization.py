@@ -37,10 +37,10 @@ class RacosOptimization:
 
     # General optimization function, it will choose optimization algorithm according to parameter.get_sequential()
     # Default replace strategy is 'WR'
-    # If ub is 0, which means user didn't set ub, we will set ub automatically.
-    def opt(self, objective, parameter, strategy='WR', ub=0):
+    def opt(self, objective, parameter, strategy='WR'):
         self.clear()
-        if ub == 0:
+        ub = parameter.get_uncertain_bits()
+        if ub is None:
             ub = Objective.set_ub(objective)
         if parameter.get_sequential() is True:
             self.__algorithm = SRacos()
