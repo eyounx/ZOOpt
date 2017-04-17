@@ -81,7 +81,7 @@ class Dimension:
                 value = gl.rand.uniform(
                     self._regions[i][0], self._regions[i][1])
             else:
-                rand_index = zoo.utils.my_global.rand.randint(0, len(self._regions[i]) - 1)
+                rand_index = gl.rand.randint(0, len(self._regions[i]) - 1)
                 value = self._regions[i][rand_index]
             x.append(value)
         return x

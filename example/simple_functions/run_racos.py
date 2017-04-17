@@ -42,7 +42,7 @@ def result_analysis(result, top):
 
 
 # Sphere
-if True:
+if False:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -65,7 +65,7 @@ if True:
     print 'time is %f' % (t2 - t1)
 
 # Ackley
-if True:
+if False:
     t1 = time.clock()
     repeat = 15
     result = []
@@ -97,7 +97,7 @@ if True:
     for i in range(repeat):
         dim_size = 20
         dim_regs = [[-1, 1]] * dim_size
-        dim_tys = [True] * dim_size
+        dim_tys = [False] * dim_size
         dim = Dimension(dim_size, dim_regs, dim_tys)
         objective = Objective(set_cover, dim)
         budget = 2000
