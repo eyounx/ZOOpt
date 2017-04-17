@@ -28,19 +28,22 @@ class ParetoOpt:
                 result.append(i)
         return result   
             
-    def opt(self, X, y, k):
-        C = X.T * X
-        b = X.T * y
+    def opt(self,objective,parameter):
+        #C = X.T * X
+        #b = X.T * y
         # row and column number of the matrix
-        [m,n] = np.shape(X)
+        #[m,n] = np.shape(X)
         # initiate the population
+        n=objective.get_dim().get_size()
         population = np.mat(np.zeros([1,n], 'int8'))
         fitness = np.mat(np.zeros([1, 2]))
         fitness[0,0] = float('inf')
         popSize = 1
         # the current iterate count
         t = 0
+        k=objective.get_constraint()
         T = long(ceil(n * k * k * 2 * exp(1)))
+        evaluationFunc=objective.get_func()
         while t < T:
             # choose a individual from population randomly
             s = population[randint(1, popSize)-1, :]
@@ -51,10 +54,7 @@ class ParetoOpt:
             if offSpringFit[0, 1] == 0.0 or offSpringFit[0, 1] >= 2.0 * k:
                 offSpringFit[0, 0] = float("inf")
             else:
-                pos = self.position(offSpring)
-                alpha = (C[pos, :])[:, pos].I*b[pos, :]
-                err = y - X[:, pos]*alpha
-                offSpringFit[0, 0] = err.T * err/m
+                offSpringFit[0, 0] = evaluationFunc(offSpring)
             # now we need to update the population
             hasBetter = False
             for i in range(0, popSize):
