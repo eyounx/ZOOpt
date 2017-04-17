@@ -58,6 +58,8 @@ class SRacos(RacosCommon):
                 ins, distinct_flag = self.distinct_sample(self._objective.get_dim())
             if distinct_flag is False:
                 continue
+            # evaluate the solution
+            objective.eval(ins)
             bad_ele = self.replace(self._positive_data, ins, 'pos')
             self.replace(self._negative_data, bad_ele, 'neg', strategy)
             self._best_solution = self._positive_data[0]

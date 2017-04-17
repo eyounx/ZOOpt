@@ -7,3 +7,6 @@ Yang Yu, Hong Qian, and Yi-Qi Hu. Derivative-free optimization via classificatio
 
 In `example.py`, a class RampLoss is defined to handle the loss function calculation and file reading. You can run this file to get results of this example. `ionosphere.arff` is an example data set.
 
+__Package requirement:__
+* liac-arff: https://pypi.python.org/pypi/liac-arff
+

@@ -64,6 +64,7 @@ class RacosCommon:
             # False means sample is distinct, you should sample again.
             x, distinct_flag = self.distinct_sample(self._objective.get_dim())
             if distinct_flag:
+                self._objective.eval(x)
                 self._data.append(x)
                 i += 1
         self.selection()

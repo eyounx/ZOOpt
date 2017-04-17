@@ -59,6 +59,8 @@ class Racos(RacosCommon):
                 # If the solution had been sampled, skip it
                 if distinct_flag is False:
                     continue
+                # evaluate the solution
+                objective.eval(solution)
                 self._data.append(solution)
                 j += 1
             self.selection()
@@ -69,6 +71,6 @@ class Racos(RacosCommon):
                 if expected_time > 5:
                     m, s = divmod(expected_time, 60)
                     h, m = divmod(m, 60)
-                    print 'expected running time will be %02d:%02d:%02d' % (h, m, s)
+                    print '[zoo] expected running time will be %02d:%02d:%02d' % (h, m, s)
         return self._best_solution
 

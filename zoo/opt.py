@@ -15,18 +15,16 @@
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
-
-"""
-The class Opt was the main class. You can use Opt.min(objective, parameter)
-to optimize objective.
-
-Author:
-    Yuren Liu
-"""
 from zoo.algos.paretoopt.ParetoOptimization import ParetoOptimization
 from zoo.algos.racos.racos_optimization import RacosOptimization
 from zoo.utils.zoo_global import gl
 
+"""
+The class Opt is the main entrance of using zoo: Opt.min(objective, parameter)
+
+Author:
+    Yuren Liu
+"""
 
 class Opt:
     def __init__(self):
@@ -43,12 +41,11 @@ class Opt:
         if constraint is not None and ((algorithm is None) or (algorithm == "poss")):
             optimizer = ParetoOptimization()
             result = optimizer.opt(objective, parameter)
-            return result
         elif constraint is None and ((algorithm is None) or (algorithm == "racos")):
             optimizer = RacosOptimization()
             result = optimizer.opt(objective, parameter)
         else:
-            print "No proper algorithm find for %s" % algorithm
+            print "[zoo] No proper algorithm find for %s" % algorithm
         return result
 
     @staticmethod
@@ -56,5 +53,3 @@ class Opt:
         precision = parameter.get_precision()
         if precision:
             gl.set_precision(precision)
-
-

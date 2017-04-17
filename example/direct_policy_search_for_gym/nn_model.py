@@ -15,16 +15,28 @@
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
+import numpy as np
 
 """
-Neural network structure is defined in NNModel.
+define a simple neural network model.
 
 Author:
     Yuren Liu
 """
-import numpy as np
-from activation_function import ActivationFunction
 
+class ActivationFunction:
+    @staticmethod
+    # sigmoid function
+    def sigmoid(x):
+        for i in range(len(x)):
+            if -700 <= x[i] <= 700:
+                x[i] = (2 / (1 + math.exp(-x[i]))) - 1  # sigmoid function
+            else:
+                if x[i] < -700:
+                    x[i] = -1
+                else:
+                    x[i] = 1
+        return x
 
 class Layer(object):
     def __init__(self, in_size, out_size, input_w=None, activation_function=None):
