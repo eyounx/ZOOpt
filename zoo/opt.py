@@ -23,7 +23,7 @@ Author:
 """
 from zoo.algos.paretoopt.ParetoOptimization import ParetoOptimization
 from zoo.algos.racos.racos_optimization import RacosOptimization
-from zoo.utils.my_global import gl
+from zoo.utils.zoo_global import gl
 
 
 class Opt:

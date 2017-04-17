@@ -22,7 +22,7 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
-from zoo.utils.my_global import gl
+from zoo.utils.zoo_global import gl
 
 
 class Dimension:

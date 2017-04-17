@@ -4,7 +4,6 @@ from zoo.opt import Opt
 from zoo.parameter import Parameter
 from zoo.objective import Objective
 from zoo.dimension import Dimension
-from math import ceil
 from math import exp
 
 
@@ -25,20 +24,16 @@ class MSE:
                 result.append(i)
         return result  
       
-    def Constraint(self,solution):
-        if solution[0,:].sum()>self._k:#over k choosed featrues,not satisify
-            return False
-        return True
+    def constraint(self,solution):
+        return self._k-solution[0,:].sum()#result is bigger than zero mean satisitying,otherwise
     
-    def IsolationFunction(self,solution):
+    def isolationfunction(self,solution):
             return 0#In this case isolationfunction is a constant
         
-    def T(self):
-        return long(ceil(self._size[1] * self._k * self._k * 2 * exp(1)))
     def get_k(self):
         return self._k
      
-    def Loss(self,solution):
+    def loss(self,solution):
         if solution[0, :].sum()==0.0 or solution[0, :].sum()>=2.0*self._k:
             return float('inf')
         pos = self.position(solution)
@@ -53,14 +48,14 @@ if __name__=='__main__':
     n=np.shape(orginX)[1]
     X=orginX[:,0:n-1]
     y=orginX[:,n-1]
-    
+    k=8
     opt=Opt()
-    dimension=Dimension(n-1)#n represent the number of features
-    Mse=MSE(X,y,8)
+    Mse=MSE(X,y,k)
+    dimension=Dimension((n-1,k))#n represent the number of features
     parameter=Parameter(algorithm='poss')
-    parameter.set_paretoopt_iteration_times(Mse.T())
-    parameter.set_isolationFunc(Mse.IsolationFunction)
-    objective=Objective(func=Mse.Loss, dim=dimension, constraint=Mse.Constraint)
+    parameter.set_paretoopt_iteration_parameter(2*exp(1))
+    parameter.set_isolationFunc(Mse.isolationfunction)
+    objective=Objective(func=Mse.loss, dim=dimension, constraint=Mse.constraint)
     print 'start'
     result=opt.min(objective, parameter)
     print result
