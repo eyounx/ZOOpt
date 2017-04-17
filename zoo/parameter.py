@@ -135,18 +135,15 @@ class Parameter:
     def get_probability(self):
         return self.__probability
 
-    def set_paretoopt_iteration_times(self, T):
-        self.__T = T
+    def set_paretoopt_iteration_parameter(self,T):
+        self.__T=T
 
-    def get_paretoopt_iteration_times(self):
+    def get_paretoopt_iteration_parameter(self):
         return self.__T
-
-    def set_isolationFunc(self, func):
-        self.__isolationFunc = func
-
+    def set_isolationFunc(self,func):
+        self.__isolationFunc=func
     def get_isolationFunc(self):
         return self.__isolationFunc
-
 
 
 
