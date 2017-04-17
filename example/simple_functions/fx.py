@@ -1,9 +1,4 @@
 """
-Objective functions can be implemented in this file
-
-Author:
-    Yuren Liu
-
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
  as published by the Free Software Foundation; either version 2
@@ -19,6 +14,13 @@ Author:
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
+"""
+
+"""
+Objective functions can be implemented in this file
+
+Author:
+    Yuren Liu
 """
 
 import math
