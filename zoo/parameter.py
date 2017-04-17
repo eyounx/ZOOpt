@@ -34,18 +34,18 @@ class Parameter:
     # If autoset is True, train_size, positive_size, negative_size will be set automatically
     # If precision is None, we will set precision as 1e-17 in default. Otherwise, set precision.
     # If seed is None , random sequence is not fixed.
-    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None):
+    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, seed=None):
         self.__algorithm = algorithm
         self.__sequential = sequential
         self.__budget = budget
         self.__precision = precision
+        self.__seed = seed
         self.__train_size = 0
         self.__positive_size = 0
         self.__negative_size = 0
         self.__probability = 0.99
-        self.__X=None
-        self.__y=None
-        self.__k=0
+        self.__T=0
+        self.__isolationFunc=None
         if budget != 0 and autoset is True:
             self.auto_set(budget)
 
@@ -100,6 +100,13 @@ class Parameter:
     def get_precision(self):
         return self.__precision
 
+    def set_seed(self, seed):
+        self.__seed = seed
+        return
+
+    def get_seed(self):
+        return self.__seed
+
     def set_train_size(self, size):
         self.__train_size = size
         return
@@ -127,15 +134,15 @@ class Parameter:
     def get_probability(self):
         return self.__probability
 
-    def set_paretoopt_parameters(self, X, y, k):
-        self.__X=X
-        self.__y=y
-        self.__k=k
+    def set_paretoopt_iteration_times(self,T):
+        self.__T=T
 
-    def get_paretoopt_parameters(self):
-        return self.__X, self.__y, self.__k
-
-
+    def get_paretoopt_iteration_times(self):
+        return self.__T
+    def set_isolationFunc(self,func):
+        self.__isolationFunc=func
+    def get_isolationFunc(self):
+        return self.__isolationFunc
 
 
 
