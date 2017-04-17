@@ -73,7 +73,6 @@ if True:
     t2 = time.clock()
     print 'time costed %f seconds' % (t2 - t1)
 
-
 ### example for minimizing the ackley function
 if True:
     # the random seed for zoo can be set
