@@ -68,21 +68,21 @@ def run_test(task_name, layers, in_budget, max_step, repeat):
     print result  # results in repeat times
     print sum/len(result)  # average result
 
-if __name__ == '__main__':
-    mountain_car_layers = [2, 5, 1]
-    acrobot_layers = [6, 5, 3, 1]
-    halfcheetah_layers = [17, 10, 6]
-    humanoid_layers = [376, 25, 17]
-    swimmer_layers = [8, 5, 3, 2]
-    ant_layers = [111, 15, 8]
-    hopper_layers = [11, 9, 5, 3]
-    lunarlander_layers = [8, 5, 3, 1]
-    run_test('MountainCar-v0', mountain_car_layers, 2000, 10000, 1)
-    run_test('Acrobot-v1', acrobot_layers, 2000, 2000, 1)
-    # If you want to run the following examples, you may need to install more libs(mujoco, Box2D).
-    # run_test('HalfCheetah-v1', halfcheetah_layers, 2000, 10000, 10)
-    # run_test('Humanoid-v1', humanoid_layers, 2000, 50000, 10)
-    # run_test('Swimmer-v1', swimmer_layers, 2000, 10000, 10)
-    # run_test('Ant-v1', ant_layers, 2000, 10000, 10)
-    # run_test('Hopper-v1', hopper_layers, 2000, 10000, 10)
-    # run_test('LunarLander-v2', lunarlander_layers, 2000, 10000, 10)
+if __name__ == '__main__' and False:
+        mountain_car_layers = [2, 5, 1]
+        acrobot_layers = [6, 5, 3, 1]
+        halfcheetah_layers = [17, 10, 6]
+        humanoid_layers = [376, 25, 17]
+        swimmer_layers = [8, 5, 3, 2]
+        ant_layers = [111, 15, 8]
+        hopper_layers = [11, 9, 5, 3]
+        lunarlander_layers = [8, 5, 3, 1]
+        run_test('MountainCar-v0', mountain_car_layers, 2000, 10000, 1)
+        run_test('Acrobot-v1', acrobot_layers, 2000, 2000, 1)
+        # If you want to run the following examples, you may need to install more libs(mujoco, Box2D).
+        # run_test('HalfCheetah-v1', halfcheetah_layers, 2000, 10000, 10)
+        # run_test('Humanoid-v1', humanoid_layers, 2000, 50000, 10)
+        # run_test('Swimmer-v1', swimmer_layers, 2000, 10000, 10)
+        # run_test('Ant-v1', ant_layers, 2000, 10000, 10)
+        # run_test('Hopper-v1', hopper_layers, 2000, 10000, 10)
+        # run_test('LunarLander-v2', lunarlander_layers, 2000, 10000, 10)

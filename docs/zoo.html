@@ -1,0 +1,620 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>zoo package &#8212; zoo 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="zoo.algos package" href="zoo.algos.html" />
+    <link rel="prev" title="Welcome to zoo’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="zoo-package">
+<h1>zoo package<a class="headerlink" href="#zoo-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="zoo.algos.html">zoo.algos package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="zoo.algos.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="zoo.algos.paretoopt.html">zoo.algos.paretoopt package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="zoo.algos.paretoopt.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zoo.algos.paretoopt.html#module-zoo.algos.paretoopt.ParetoOptimization">zoo.algos.paretoopt.ParetoOptimization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zoo.algos.paretoopt.html#module-zoo.algos.paretoopt.paretoopt">zoo.algos.paretoopt.paretoopt module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zoo.algos.paretoopt.html#module-zoo.algos.paretoopt">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="zoo.algos.racos.html">zoo.algos.racos package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="zoo.algos.racos.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zoo.algos.racos.html#module-zoo.algos.racos.racos">zoo.algos.racos.racos module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zoo.algos.racos.html#module-zoo.algos.racos.racos_classification">zoo.algos.racos.racos_classification module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zoo.algos.racos.html#module-zoo.algos.racos.racos_common">zoo.algos.racos.racos_common module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zoo.algos.racos.html#module-zoo.algos.racos.racos_optimization">zoo.algos.racos.racos_optimization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zoo.algos.racos.html#module-zoo.algos.racos.sracos">zoo.algos.racos.sracos module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zoo.algos.racos.html#module-zoo.algos.racos">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="zoo.algos.html#module-zoo.algos">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.utils.html">zoo.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="zoo.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zoo.utils.html#module-zoo.utils.tool_function">zoo.utils.tool_function module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zoo.utils.html#module-zoo.utils.zoo_global">zoo.utils.zoo_global module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zoo.utils.html#module-zoo.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-zoo.dimension">
+<span id="zoo-dimension-module"></span><h2>zoo.dimension module<a class="headerlink" href="#module-zoo.dimension" title="Permalink to this headline">¶</a></h2>
+<p>This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.</p>
+<blockquote>
+<div>Copyright (C) 2017 Nanjing University, Nanjing, China
+LAMDA, <a class="reference external" href="http://lamda.nju.edu.cn">http://lamda.nju.edu.cn</a></div></blockquote>
+<dl class="class">
+<dt id="zoo.dimension.Dimension">
+<em class="property">class </em><code class="descclassname">zoo.dimension.</code><code class="descname">Dimension</code><span class="sig-paren">(</span><em>size=0</em>, <em>regs=[]</em>, <em>tys=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="zoo.dimension.Dimension.copy_region">
+<code class="descname">copy_region</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.copy_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.deep_copy">
+<code class="descname">deep_copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.deep_copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.get_region">
+<code class="descname">get_region</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.get_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.get_regions">
+<code class="descname">get_regions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.get_regions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.get_size">
+<code class="descname">get_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.get_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.get_type">
+<code class="descname">get_type</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.get_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.get_types">
+<code class="descname">get_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.get_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.is_discrete">
+<code class="descname">is_discrete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.is_discrete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="zoo.dimension.Dimension.judge_match">
+<em class="property">static </em><code class="descname">judge_match</code><span class="sig-paren">(</span><em>size</em>, <em>regs</em>, <em>tys</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.judge_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.limited_space">
+<code class="descname">limited_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.limited_space" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.print_dim">
+<code class="descname">print_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.print_dim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.rand_sample">
+<code class="descname">rand_sample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.rand_sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.set_all">
+<code class="descname">set_all</code><span class="sig-paren">(</span><em>size</em>, <em>regs</em>, <em>tys</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.set_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.set_dimension_size">
+<code class="descname">set_dimension_size</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.set_dimension_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.set_region">
+<code class="descname">set_region</code><span class="sig-paren">(</span><em>index</em>, <em>reg</em>, <em>ty</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.set_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.dimension.Dimension.set_regions">
+<code class="descname">set_regions</code><span class="sig-paren">(</span><em>regs</em>, <em>tys</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.dimension.Dimension.set_regions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-zoo.objective">
+<span id="zoo-objective-module"></span><h2>zoo.objective module<a class="headerlink" href="#module-zoo.objective" title="Permalink to this headline">¶</a></h2>
+<p>This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.</p>
+<blockquote>
+<div>Copyright (C) 2017 Nanjing University, Nanjing, China
+LAMDA, <a class="reference external" href="http://lamda.nju.edu.cn">http://lamda.nju.edu.cn</a></div></blockquote>
+<dl class="class">
+<dt id="zoo.objective.Objective">
+<em class="property">class </em><code class="descclassname">zoo.objective.</code><code class="descname">Objective</code><span class="sig-paren">(</span><em>func=None</em>, <em>dim=None</em>, <em>constraint=None</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="zoo.objective.Objective.clean_history">
+<code class="descname">clean_history</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.clean_history" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.construct_solution">
+<code class="descname">construct_solution</code><span class="sig-paren">(</span><em>x</em>, <em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.construct_solution" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="zoo.objective.Objective.default_inherit">
+<em class="property">static </em><code class="descname">default_inherit</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.default_inherit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.eval">
+<code class="descname">eval</code><span class="sig-paren">(</span><em>solution</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.eval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.eval_constraint">
+<code class="descname">eval_constraint</code><span class="sig-paren">(</span><em>solution</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.eval_constraint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.get_constraint">
+<code class="descname">get_constraint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.get_constraint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.get_dim">
+<code class="descname">get_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.get_dim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.get_func">
+<code class="descname">get_func</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.get_func" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.get_history">
+<code class="descname">get_history</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.get_history" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.get_history_bestsofar">
+<code class="descname">get_history_bestsofar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.get_history_bestsofar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.get_inherit_func">
+<code class="descname">get_inherit_func</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.get_inherit_func" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.set_constraint">
+<code class="descname">set_constraint</code><span class="sig-paren">(</span><em>constraint</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.set_constraint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.set_dim">
+<code class="descname">set_dim</code><span class="sig-paren">(</span><em>dim</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.set_dim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.set_func">
+<code class="descname">set_func</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.set_func" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.objective.Objective.set_inherit_func">
+<code class="descname">set_inherit_func</code><span class="sig-paren">(</span><em>inherit_func</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.objective.Objective.set_inherit_func" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-zoo.opt">
+<span id="zoo-opt-module"></span><h2>zoo.opt module<a class="headerlink" href="#module-zoo.opt" title="Permalink to this headline">¶</a></h2>
+<p>This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.</p>
+<blockquote>
+<div>Copyright (C) 2017 Nanjing University, Nanjing, China
+LAMDA, <a class="reference external" href="http://lamda.nju.edu.cn">http://lamda.nju.edu.cn</a></div></blockquote>
+<dl class="class">
+<dt id="zoo.opt.Opt">
+<em class="property">class </em><code class="descclassname">zoo.opt.</code><code class="descname">Opt</code><a class="headerlink" href="#zoo.opt.Opt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="zoo.opt.Opt.min">
+<em class="property">static </em><code class="descname">min</code><span class="sig-paren">(</span><em>objective</em>, <em>parameter</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.opt.Opt.min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="zoo.opt.Opt.set_global">
+<em class="property">static </em><code class="descname">set_global</code><span class="sig-paren">(</span><em>parameter</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.opt.Opt.set_global" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-zoo.parameter">
+<span id="zoo-parameter-module"></span><h2>zoo.parameter module<a class="headerlink" href="#module-zoo.parameter" title="Permalink to this headline">¶</a></h2>
+<p>This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.</p>
+<blockquote>
+<div>Copyright (C) 2017 Nanjing University, Nanjing, China
+LAMDA, <a class="reference external" href="http://lamda.nju.edu.cn">http://lamda.nju.edu.cn</a></div></blockquote>
+<dl class="class">
+<dt id="zoo.parameter.Parameter">
+<em class="property">class </em><code class="descclassname">zoo.parameter.</code><code class="descname">Parameter</code><span class="sig-paren">(</span><em>algorithm=None</em>, <em>sequential=True</em>, <em>budget=0</em>, <em>autoset=True</em>, <em>precision=None</em>, <em>uncertain_bits=None</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="zoo.parameter.Parameter.auto_set">
+<code class="descname">auto_set</code><span class="sig-paren">(</span><em>budget</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.auto_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.get_algorithm">
+<code class="descname">get_algorithm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.get_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.get_budget">
+<code class="descname">get_budget</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.get_budget" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.get_isolationFunc">
+<code class="descname">get_isolationFunc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.get_isolationFunc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.get_negative_size">
+<code class="descname">get_negative_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.get_negative_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.get_positive_size">
+<code class="descname">get_positive_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.get_positive_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.get_precision">
+<code class="descname">get_precision</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.get_precision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.get_probability">
+<code class="descname">get_probability</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.get_probability" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.get_sequential">
+<code class="descname">get_sequential</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.get_sequential" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.get_train_size">
+<code class="descname">get_train_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.get_train_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.get_uncertain_bits">
+<code class="descname">get_uncertain_bits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.get_uncertain_bits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.set_algorithm">
+<code class="descname">set_algorithm</code><span class="sig-paren">(</span><em>algorithm</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.set_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.set_budget">
+<code class="descname">set_budget</code><span class="sig-paren">(</span><em>budget</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.set_budget" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.set_isolationFunc">
+<code class="descname">set_isolationFunc</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.set_isolationFunc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.set_negative_size">
+<code class="descname">set_negative_size</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.set_negative_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.set_positive_size">
+<code class="descname">set_positive_size</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.set_positive_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.set_precision">
+<code class="descname">set_precision</code><span class="sig-paren">(</span><em>precision</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.set_precision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.set_probability">
+<code class="descname">set_probability</code><span class="sig-paren">(</span><em>probability</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.set_probability" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.set_sequential">
+<code class="descname">set_sequential</code><span class="sig-paren">(</span><em>sequential</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.set_sequential" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.set_train_size">
+<code class="descname">set_train_size</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.set_train_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.parameter.Parameter.set_uncertain_bits">
+<code class="descname">set_uncertain_bits</code><span class="sig-paren">(</span><em>uncertain_bits</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.parameter.Parameter.set_uncertain_bits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-zoo.solution">
+<span id="zoo-solution-module"></span><h2>zoo.solution module<a class="headerlink" href="#module-zoo.solution" title="Permalink to this headline">¶</a></h2>
+<p>This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.</p>
+<blockquote>
+<div>Copyright (C) 2017 Nanjing University, Nanjing, China
+LAMDA, <a class="reference external" href="http://lamda.nju.edu.cn">http://lamda.nju.edu.cn</a></div></blockquote>
+<dl class="class">
+<dt id="zoo.solution.Solution">
+<em class="property">class </em><code class="descclassname">zoo.solution.</code><code class="descname">Solution</code><span class="sig-paren">(</span><em>x=[]</em>, <em>value=nan</em>, <em>attach=None</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="zoo.solution.Solution.deep_copy">
+<code class="descname">deep_copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.deep_copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="zoo.solution.Solution.deep_copy_set">
+<em class="property">static </em><code class="descname">deep_copy_set</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.deep_copy_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.solution.Solution.exist_equal">
+<code class="descname">exist_equal</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.exist_equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="zoo.solution.Solution.find_maximum">
+<em class="property">static </em><code class="descname">find_maximum</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.find_maximum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="zoo.solution.Solution.find_minimum">
+<em class="property">static </em><code class="descname">find_minimum</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.find_minimum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.solution.Solution.get_attach">
+<code class="descname">get_attach</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.get_attach" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.solution.Solution.get_value">
+<code class="descname">get_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.get_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.solution.Solution.get_x">
+<code class="descname">get_x</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.get_x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.solution.Solution.get_x_index">
+<code class="descname">get_x_index</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.get_x_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.solution.Solution.is_equal">
+<code class="descname">is_equal</code><span class="sig-paren">(</span><em>sol</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.is_equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.solution.Solution.print_solution">
+<code class="descname">print_solution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.print_solution" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="zoo.solution.Solution.print_solution_set">
+<em class="property">static </em><code class="descname">print_solution_set</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.print_solution_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.solution.Solution.set_attach">
+<code class="descname">set_attach</code><span class="sig-paren">(</span><em>attach</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.set_attach" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.solution.Solution.set_value">
+<code class="descname">set_value</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.set_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.solution.Solution.set_x">
+<code class="descname">set_x</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.set_x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="zoo.solution.Solution.set_x_index">
+<code class="descname">set_x_index</code><span class="sig-paren">(</span><em>index</em>, <em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#zoo.solution.Solution.set_x_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-zoo">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-zoo" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">zoo package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-zoo.dimension">zoo.dimension module</a></li>
+<li><a class="reference internal" href="#module-zoo.objective">zoo.objective module</a></li>
+<li><a class="reference internal" href="#module-zoo.opt">zoo.opt module</a></li>
+<li><a class="reference internal" href="#module-zoo.parameter">zoo.parameter module</a></li>
+<li><a class="reference internal" href="#module-zoo.solution">zoo.solution module</a></li>
+<li><a class="reference internal" href="#module-zoo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to zoo&#8217;s documentation!</a></li>
+      <li>Next: <a href="zoo.algos.html" title="next chapter">zoo.algos package</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/zoo.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Yu-Ren Liu, Chao Feng, Yi-Qi Hu, Yang Yu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/zoo.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

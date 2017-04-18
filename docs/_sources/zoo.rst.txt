@@ -1,0 +1,62 @@
+zoo package
+===========
+
+Subpackages
+-----------
+
+.. toctree::
+
+    zoo.algos
+    zoo.utils
+
+Submodules
+----------
+
+zoo.dimension module
+--------------------
+
+.. automodule:: zoo.dimension
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+zoo.objective module
+--------------------
+
+.. automodule:: zoo.objective
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+zoo.opt module
+--------------
+
+.. automodule:: zoo.opt
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+zoo.parameter module
+--------------------
+
+.. automodule:: zoo.parameter
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+zoo.solution module
+-------------------
+
+.. automodule:: zoo.solution
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: zoo
+    :members:
+    :undoc-members:
+    :show-inheritance:

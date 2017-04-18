@@ -1,0 +1,30 @@
+example.simple_functions package
+================================
+
+Submodules
+----------
+
+example.simple_functions.example module
+---------------------------------------
+
+.. automodule:: example.simple_functions.example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+example.simple_functions.fx module
+----------------------------------
+
+.. automodule:: example.simple_functions.fx
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: example.simple_functions
+    :members:
+    :undoc-members:
+    :show-inheritance:

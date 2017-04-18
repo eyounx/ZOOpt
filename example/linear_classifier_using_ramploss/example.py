@@ -113,11 +113,11 @@ class RampLoss:
         return Dimension( self.__dim_size, [[-10, 10]] * self.__dim_size, [True] * self.__dim_size)
 
 
-if __name__=='__main__':
+if __name__=='__main__' and False:
     # read data
     loss = RampLoss('ionosphere.arff')
     # optimization
-    repeat = 5
+    repeat = 1
     result = []
     for i in range(repeat):
 

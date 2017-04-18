@@ -110,7 +110,7 @@ class Sparse_MSE:
             pass
 
 
-if __name__=='__main__':
+if __name__=='__main__' and False:
     # load data file
     mse = Sparse_MSE('sonar.arff')
     mse.set_sparsity(8)

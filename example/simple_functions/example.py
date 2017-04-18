@@ -81,7 +81,7 @@ if False:
     print 'time costed %f seconds' % (t2 - t1)
 
 ### example for minimizing the ackley function
-if True:
+if False:
     # the random seed for zoo can be set
     gl.set_seed(12345)
     t1 = time.clock()
@@ -118,7 +118,7 @@ if True:
 
 
 ### discrete optimization example using minimum set cover instance
-if True:
+if False:
     # repeat of optimization experiments
     gl.set_seed(12345)
     repeat = 10
@@ -145,7 +145,7 @@ if True:
     result_analysis(result, 100)
 
 # mixed optimization
-if True:
+if False:
     repeat = 15
     result = []
     gl.set_seed(12345)

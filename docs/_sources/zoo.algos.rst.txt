@@ -1,0 +1,18 @@
+zoo.algos package
+=================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    zoo.algos.paretoopt
+    zoo.algos.racos
+
+Module contents
+---------------
+
+.. automodule:: zoo.algos
+    :members:
+    :undoc-members:
+    :show-inheritance:
