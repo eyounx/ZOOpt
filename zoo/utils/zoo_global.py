@@ -13,21 +13,24 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2017 Nanjing University, Nanjing, China
+  Copyright (C) 2017 Nanjing University, Nanjing, China
+  LAMDA, http://lamda.nju.edu.cn
 """
+from random import Random
 
 """
 This file records Global variables used in the algorithm
 Author:
     Yuren Liu
 """
-from random import Random
-
 
 class Global:
+    rand = None
+
     def __init__(self):
         # rand is the random object used by all files
         self.rand = Random()
+        self.set_seed(100)
         self.precision = 1e-17
         # rand.seed(100)
 

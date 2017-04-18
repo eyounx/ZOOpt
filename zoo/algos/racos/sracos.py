@@ -13,8 +13,15 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2017 Nanjing University, Nanjing, China
+  Copyright (C) 2017 Nanjing University, Nanjing, China
+  LAMDA, http://lamda.nju.edu.cn
 """
+import time
+import numpy
+from zoo.solution import Solution
+from zoo.algos.racos.racos_classification import RacosClassification
+from zoo.algos.racos.racos_common import RacosCommon
+from zoo.utils.zoo_global import gl
 
 """
 The class SRacos represents SRacos algorithm. It's inherited from RacosCommon.
@@ -22,13 +29,6 @@ The class SRacos represents SRacos algorithm. It's inherited from RacosCommon.
 Author:
     Yuren Liu
 """
-
-import time
-import numpy
-from zoo.solution import Solution
-from zoo.algos.racos.racos_classification import RacosClassification
-from zoo.algos.racos.racos_common import RacosCommon
-from zoo.utils.zoo_global import gl
 
 
 class SRacos(RacosCommon):

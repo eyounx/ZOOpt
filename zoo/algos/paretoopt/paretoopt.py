@@ -1,22 +1,54 @@
-# the python version is 2.7
-import numpy as np
-from random import randint
-from math import ceil
-from math import exp
-from copy import deepcopy
+"""
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+  Copyright (C) 2017 Nanjing University, Nanjing, China
+  LAMDA, http://lamda.nju.edu.cn
+"""
+import numpy as np
+from zoo.utils.zoo_global import gl
+from copy import deepcopy
+import time
+
+"""
+The canonical Pareto optimization
+Running Pareto optimization will use the objective.eval_constraint function. This function makes the solution.get_value() a vector.
+The first element of the vector is the objective function value by objective.__func, and the second element is the constraint degree by objective.__constraint
+
+Author:
+    Chao Feng, Yang Yu
+"""
 
 class ParetoOpt:
+
     def __init__(self):
         pass
 
     # every bit will be flipped with probability 1/n
     def mutation(self, s ,n):
-        s_temp=deepcopy(s)
-        for i in range(1,n+1):
+        s_temp = deepcopy(s)
+        threshold = 1.0 / n
+        flipped = False
+        for i in range(0,n):
             # the probability is 1/n
-            if randint(1,n)==i:
-                s_temp[0,i-1]=(s[0,i-1]+1)%2
+            if gl.rand.uniform(0,1) <= threshold:
+                s_temp[0,i]=(s[0,i]+1)%2
+                flipped = True
+        if not flipped:
+            mustflip = gl.rand.randint(0,n-1)
+            s_temp[0, mustflip] = (s[0, mustflip] + 1) % 2
+
         return s_temp
 
     # This function is to find the index of s where element is 1
@@ -28,61 +60,79 @@ class ParetoOpt:
                 result.append(i)
         return result   
             
-    def opt(self,objective,parameter):
+    def opt(self, objective, parameter):
+        evaluationFunc = objective.get_func()
+        constraint = objective.get_constraint()
+        isolationFunc = parameter.get_isolationFunc()
+        n=objective.get_dim().get_size()
+
         # initiate the population
-        n=objective.get_dim().get_size()[0]
-        k=objective.get_dim().get_size()[1]
-        population = np.mat(np.zeros([1,n], 'int8'))
-        fitness = np.mat(np.zeros([1, 2]))
-        fitness[0,0] = float('inf')
+        sol = objective.construct_solution(np.zeros([1,n]))
+        objective.eval_constraint(sol)
+
+        population = [sol]
+        fitness = [sol.get_value()]
         popSize = 1
-        # the current iterate count
+        # iteration count
         t = 0
-        constraint=objective.get_constraint()
-        isolationFunc=parameter.get_isolationFunc()
-        tempT=parameter.get_paretoopt_iteration_parameter()
-        evaluationFunc=objective.get_func()
-        T=ceil(n*k*k*tempT)
+        T = parameter.get_budget()
         while t < T:
+            if t == 0:
+                time_log1 = time.time()
             # choose a individual from population randomly
-            s = population[randint(1, popSize)-1, :]
+            s = population[gl.rand.randint(1, popSize)-1]
             # every bit will be flipped with probability 1/n
-            offSpring = self.mutation(s, n)
-            offSpringFit = np.mat(np.zeros([1,2]))
-            offSpringFit[0, 1] = constraint(offSpring)
-            offSpringFit[0, 0] = evaluationFunc(offSpring)
+            offSpringX = self.mutation(s.get_x(), n)
+            offSpring = objective.construct_solution(offSpringX)
+            objective.eval_constraint(offSpring)
+            offSpringFit = offSpring.get_value()
             # now we need to update the population
             hasBetter = False
+
             for i in range(0, popSize):
-                if isolationFunc(offSpring)!=isolationFunc(population[i,:]):
-                    continue;
+                if isolationFunc(offSpringX)!=isolationFunc(population[i].get_x()):
+                    continue
                 else:
-                    if (fitness[i, 0] < offSpringFit[0, 0] and fitness[i, 1] >= offSpringFit[0, 1]) or \
-                            (fitness[i, 0] <= offSpringFit[0, 0] and fitness[i,1]>offSpringFit[0,1]):
+                    if (fitness[i][0] < offSpringFit[0] and fitness[i][1] >= offSpringFit[1]) or \
+                            (fitness[i][0] <= offSpringFit[0] and fitness[i][1] > offSpringFit[1]):
                         hasBetter = True
-                        break   
+                        break
             # there is no better individual than offSpring
-            if hasBetter == False:
+            if not hasBetter:
                 Q = []
+                Qfit = []
                 for j in range(0,popSize):
-                    if offSpringFit[0, 0] <= fitness[j, 0] and offSpringFit[0, 1] >= fitness[j, 1]:
+                    if offSpringFit[0] <= fitness[j][0] and offSpringFit[1] >= fitness[j][1]:
                         continue
                     else:
-                        Q.append(j)
-                Q.sort()
+                        Q.append(population[j])
+                        Qfit.append(fitness[j])
+                Q.append(offSpring)
+                Qfit.append(offSpringFit)
                 # update fitness
-                fitness=np.vstack((offSpringFit, fitness[Q, :]))
+                fitness=Qfit
                 # update population
-                population=np.vstack((offSpring,population[Q,:]))
+                population = Q
             t += 1
             popSize = np.shape(fitness)[0]
+
+            # display expected running time
+            if t == 5:
+                time_log2 = time.time()
+                expected_time = T * (time_log2 - time_log1) / 5
+                if expected_time > 5:
+                    m, s = divmod(expected_time, 60)
+                    h, m = divmod(m, 60)
+                    print '[zoo] expected remaining running time: %02d:%02d:%02d' % (h, m, s)
+
         resultIndex = -1
-        maxSize=float('inf') 
+        maxValue=float('inf')
         for p in range(0, popSize):
-            if constraint(population[p,:])>=0 and fitness[p, 1] < maxSize:
-                maxSize = fitness[p, 1]
+            fitness = population[p].get_value()
+            if fitness[1]>=0 and fitness[0] < maxValue:
+                maxValue = fitness[0]
                 resultIndex = p
         #print fitness[resultIndex,0]        
-        return population[resultIndex, :]
+        return population[resultIndex]
 
 

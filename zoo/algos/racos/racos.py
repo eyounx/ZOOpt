@@ -13,8 +13,13 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2017 Nanjing University, Nanjing, China
+  Copyright (C) 2017 Nanjing University, Nanjing, China
+  LAMDA, http://lamda.nju.edu.cn
 """
+import time
+from zoo.algos.racos.racos_classification import RacosClassification
+from zoo.algos.racos.racos_common import RacosCommon
+from zoo.utils.zoo_global import gl
 
 """
 The class Racos represents Racos algorithm. It's inherited from RacosCommon.
@@ -22,12 +27,6 @@ The class Racos represents Racos algorithm. It's inherited from RacosCommon.
 Author:
     Yuren Liu
 """
-
-import time
-
-from zoo.algos.racos.racos_classification import RacosClassification
-from zoo.algos.racos.racos_common import RacosCommon
-from zoo.utils.zoo_global import gl
 
 
 class Racos(RacosCommon):
@@ -65,12 +64,13 @@ class Racos(RacosCommon):
                 j += 1
             self.selection()
             self._best_solution = self._positive_data[0]
+            # display expected running time
             if i == 4:
                 time_log2 = time.time()
                 expected_time = t * (time_log2 - time_log1) / 5
                 if expected_time > 5:
                     m, s = divmod(expected_time, 60)
                     h, m = divmod(m, 60)
-                    print '[zoo] expected running time will be %02d:%02d:%02d' % (h, m, s)
+                    print '[zoo] expected remaining running time: %02d:%02d:%02d' % (h, m, s)
         return self._best_solution
 

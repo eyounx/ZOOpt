@@ -13,8 +13,10 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2017 Nanjing University, Nanjing, China
+  Copyright (C) 2017 Nanjing University, Nanjing, China
+  LAMDA, http://lamda.nju.edu.cn
 """
+import sys
 
 """
 The class Parameter was implemented in this file.
@@ -23,7 +25,6 @@ A Parameter instance should be a necessary parameter to opt in RacosOptimization
 Author:
     Yuren Liu
 """
-import sys
 
 
 class Parameter:
@@ -37,16 +38,20 @@ class Parameter:
     # If uncertain_bits is None, racos will set uncertain_bits automatically
     def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None):
         self.__algorithm = algorithm
-        self.__sequential = sequential
         self.__budget = budget
+
+        # for racos optimization
+        self.__sequential = sequential
         self.__precision = precision
         self.__uncertain_bits = uncertain_bits
         self.__train_size = 0
         self.__positive_size = 0
         self.__negative_size = 0
         self.__probability = 0.99
-        self.__T=0
-        self.__isolationFunc=None
+
+        # for pareto optimization
+        self.__isolationFunc = lambda x: 0
+
         if budget != 0 and autoset is True:
             self.auto_set(budget)
         return
@@ -136,13 +141,9 @@ class Parameter:
     def get_probability(self):
         return self.__probability
 
-    def set_paretoopt_iteration_parameter(self,T):
-        self.__T=T
-
-    def get_paretoopt_iteration_parameter(self):
-        return self.__T
     def set_isolationFunc(self,func):
         self.__isolationFunc=func
+
     def get_isolationFunc(self):
         return self.__isolationFunc
 

@@ -13,7 +13,8 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2017 Nanjing University, Nanjing, China
+  Copyright (C) 2017 Nanjing University, Nanjing, China
+  LAMDA, http://lamda.nju.edu.cn
 """
 from zoo.solution import Solution
 from zoo.utils.zoo_global import pos_inf
@@ -35,7 +36,7 @@ class Objective:
         # the function for inheriting solution attachment
         self.__inherit = self.default_inherit
         # the constraint function
-        self._constraint = constraint
+        self.__constraint = constraint
         # the history of optimization
         self.__history = []
 
@@ -50,6 +51,10 @@ class Objective:
     # evaluate the objective function of a solution
     def eval(self, solution):
         solution.set_value(self.__func(solution))
+        self.__history.append(solution.get_value())
+
+    def eval_constraint(self, solution):
+        solution.set_value( [self.__func(solution), self.__constraint(solution)])
         self.__history.append(solution.get_value())
 
     # set the optimization function
@@ -78,12 +83,12 @@ class Objective:
 
     # set the constraint function
     def set_constraint(self, constraint):
-        self._constraint = constraint
+        self.__constraint = constraint
         return
 
     # return the constraint function
     def get_constraint(self):
-        return self._constraint
+        return self.__constraint
 
     # get the optimization history
     def get_history(self):

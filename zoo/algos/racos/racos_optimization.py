@@ -13,8 +13,13 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
- Copyright (C) 2017 Nanjing University, Nanjing, China
+  Copyright (C) 2017 Nanjing University, Nanjing, China
+  LAMDA, http://lamda.nju.edu.cn
 """
+from zoo.algos.racos.sracos import SRacos
+from zoo.algos.racos.racos import Racos
+from zoo.objective import Objective
+
 
 """
 The class RacosOptimization will contains best_solution and optimization algorithm(Racos or SRacos)
@@ -22,10 +27,6 @@ The class RacosOptimization will contains best_solution and optimization algorit
 Author:
     Yuren Liu
 """
-from zoo.algos.racos.sracos import SRacos
-from zoo.algos.racos.racos import Racos
-from zoo.objective import Objective
-
 
 class RacosOptimization:
 
