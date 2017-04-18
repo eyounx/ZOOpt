@@ -70,7 +70,7 @@ class SRacos(RacosCommon):
                 if expected_time > 5:
                     m, s = divmod(expected_time, 60)
                     h, m = divmod(m, 60)
-                    print 'expected running time will be %02d:%02d:%02d' % (h, m, s)
+                    print '[zoo] expected remaining running time: %02d:%02d:%02d' % (h, m, s)
             i += 1
         return self._best_solution
 
