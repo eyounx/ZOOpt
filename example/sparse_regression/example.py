@@ -76,7 +76,7 @@ class Sparse_MSE:
         alpha = (self._C[pos, :])[:, pos]
         alpha = alpha.I * self._b[pos, :]
         sub = self._Y - self._X[:, pos]*alpha
-        mse= sub.T*sub / self._size
+        mse= sub.T*sub / np.shape(self._Y)[0]
         return mse[0,0]
 
     def get_dim(self):
