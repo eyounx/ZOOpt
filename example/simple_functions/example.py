@@ -43,7 +43,7 @@ def result_analysis(result, top):
     return
 
 ### example for minimizing the sphere function
-if True:
+if False:
     t1 = time.clock()
     # repeat of optimization experiments
     repeat = 5

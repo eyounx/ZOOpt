@@ -70,31 +70,5 @@ class Objective:
         return self._constraint
 
     @staticmethod
-    # Set uncertain_bits
-    def set_ub(objective):
-        dim = objective.get_dim()
-        dim_size = dim.get_size()
-        is_discrete = dim.is_discrete()
-        if is_discrete is False:
-            if dim_size <= 100:
-                ub = 1
-            elif dim_size <= 1000:
-                ub = 2
-            else:
-                ub = 3
-        else:
-            if dim_size <= 10:
-                ub = 1
-            elif dim_size <= 50:
-                ub = 2
-            elif dim_size <= 100:
-                ub = 3
-            elif dim_size <= 1000:
-                ub = 4
-            else:
-                ub = 5
-        return ub
-
-    @staticmethod
     def default_inherit(parent=None):
         return None
