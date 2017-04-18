@@ -26,7 +26,7 @@ solution = Opt.min(obj, Parameter(budget=100 * dim))
 # print result
 solution.print_solution()
 ```
-After optimization, visualize the optimization progress
+For a few seconds, the optimization is done. Then, we can visualize the optimization progress
 ```python
 from matplotlib import pyplot
 pyplot.plot(obj.get_history_bestsofar())
