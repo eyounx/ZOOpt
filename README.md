@@ -5,7 +5,7 @@ Zeroth-order optimization does not rely on the gradient of the objective functio
 
 ## A quick example
 We define the Ackley function for minimization using Theano
-```
+```python
 import math, theano, theano.tensor as T
 x = T.dvector('x')
 f = theano.function([x], -20 * T.exp(-0.2 * T.sqrt((T.dot(x - 0.2, x - 0.2)).mean())) - T.exp(
@@ -15,7 +15,7 @@ Ackley function is a classical function with many local minima. In 2-dimensions,
 <table border=0><tr><td width="400px"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Ackley%27s_function.pdf/page1-400px-Ackley%27s_function.pdf.jpg" alt="Expeirment results"/></td></tr></table>
 
 Then, use zoo to optimize a 100-dimension Ackley function
-```
+```python
 from zoo import dimension, objective, parameter, opt, solution
 dim = 100 # dimension
 obj = objective(lambda s: f(s.get_x()), dimension(dim, [[-1, 1]] * dim, [True] * dim)) # setup objective
@@ -25,7 +25,7 @@ solution = opt.min(obj, parameter(budget=100 * dim))
 solution.print_solution()
 ```
 The optimization process can be visualized
-```
+```python
 from matplotlib import pyplot
 pyplot.plot(obj.get_history_bestsofar())
 pyplot.savefig('figure.png')
