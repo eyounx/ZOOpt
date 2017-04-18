@@ -68,7 +68,7 @@ def run_test(task_name, layers, in_budget, max_step, repeat):
     print result  # results in repeat times
     print sum/len(result)  # average result
 
-if __name__ == '__main__' and False:
+if __name__ == '__main__':
         mountain_car_layers = [2, 5, 1]
         acrobot_layers = [6, 5, 3, 1]
         halfcheetah_layers = [17, 10, 6]
