@@ -18,7 +18,7 @@
 """
 from zoo.algos.racos.sracos import SRacos
 from zoo.algos.racos.racos import Racos
-from zoo.objective import Objective
+from zoo.objective import objective
 
 
 """

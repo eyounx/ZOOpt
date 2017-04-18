@@ -17,7 +17,7 @@
   LAMDA, http://lamda.nju.edu.cn
 """
 import math
-from zoo.dimension import Dimension
+from zoo.dimension import dimension
 
 """
 Objective functions can be implemented in this file
@@ -114,7 +114,7 @@ class setcover:
         dim_size = 20
         dim_regs = [[0, 1]] * dim_size
         dim_tys = [False] * dim_size
-        return Dimension(dim_size, dim_regs, dim_tys)
+        return dimension(dim_size, dim_regs, dim_tys)
 
 
 # A test function for mixed optimization

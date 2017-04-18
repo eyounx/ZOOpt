@@ -27,7 +27,7 @@ Author:
 """
 
 
-class Parameter:
+class parameter:
 
     # Users should set at least algorithm and budget
     # algorithm can be 'racos' or 'poss'

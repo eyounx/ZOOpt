@@ -26,7 +26,7 @@ Author:
     Yuren Liu
 """
 
-class Dimension:
+class dimension:
 
     def __init__(self, size=0, regs=[], tys=[]):
         self._size = size
@@ -110,7 +110,7 @@ class Dimension:
             regions.append(interval)
         for x in self._types:
             tys.append(x)
-        return Dimension(size, regions, tys)
+        return dimension(size, regions, tys)
 
     # deep copy the instance's regions information
     def copy_region(self):

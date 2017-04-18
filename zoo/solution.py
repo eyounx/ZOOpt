@@ -28,7 +28,7 @@ Author:
     Yuren Liu
 """
 
-class Solution:
+class solution:
 
     # value is f(x)
     def __init__(self, x=[], value=nan, attach=None):
@@ -44,7 +44,7 @@ class Solution:
             x.append(x_i)
         value = self.__value
         attach = self.__attach
-        return Solution(x, value, attach)
+        return solution(x, value, attach)
 
     # Check if two solutions equal
     def is_equal(self, sol):
