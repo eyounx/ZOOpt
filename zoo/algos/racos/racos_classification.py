@@ -16,7 +16,7 @@
   Copyright (C) 2017 Nanjing University, Nanjing, China
   LAMDA, http://lamda.nju.edu.cn
 """
-from zoo.dimension import dimension
+from zoo.dimension import Dimension
 from zoo.utils.zoo_global import gl
 
 """
@@ -142,7 +142,7 @@ class RacosClassification:
         size = self.__solution_space.get_size()
         regions = self.__sample_region
         types = self.__solution_space.get_types()
-        return dimension(size, regions, types)
+        return Dimension(size, regions, types)
 
     def get_positive_solution(self):
         return self.__positive_solution

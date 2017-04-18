@@ -28,7 +28,8 @@ Author:
     Yuren Liu
 """
 
-class solution:
+
+class Solution:
 
     # value is f(x)
     def __init__(self, x=[], value=nan, attach=None):

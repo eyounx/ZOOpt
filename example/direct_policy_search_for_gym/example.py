@@ -17,10 +17,7 @@
   LAMDA, http://lamda.nju.edu.cn
 """
 from gym_task import GymTask
-from zoo.dimension import dimension
-from zoo.objective import objective
-from zoo.parameter import parameter
-from zoo.opt import opt
+from zoo import Dimension, Objective, Parameter, Opt, Solution
 
 """
 Function run_test is defined in this file. You can run this file to get results of this example.
@@ -51,17 +48,17 @@ def run_test(task_name, layers, in_budget, max_step, repeat):
     dim_size = gym_task.get_w_size()
     dim_regs = [[-10, 10]] * dim_size
     dim_tys = [True] * dim_size
-    dim = dimension(dim_size, dim_regs, dim_tys)
+    dim = Dimension(dim_size, dim_regs, dim_tys)
 
-    objective = objective(gym_task.sum_reward, dim)  # form up the objective function
-    parameter = parameter(budget=budget, autoset=True)  # by default, the algorithm is sequential RACOS
+    objective = Objective(gym_task.sum_reward, dim)  # form up the objective function
+    parameter = Parameter(budget=budget, autoset=True)  # by default, the algorithm is sequential RACOS
     parameter.set_probability(rand_probability)
 
     result = []
     sum = 0
     print 'Best solution is:'
     for i in range(repeat):
-        ins = opt.min(objective, parameter)
+        ins = Opt.min(objective, parameter)
         result.append(ins.get_value())
         sum += ins.get_value()
         ins.print_solution()

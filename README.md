@@ -16,11 +16,11 @@ Ackley function is a classical function with many local minima. In 2-dimensions,
 
 Then, use zoo to optimize a 100-dimension Ackley function
 ```python
-from zoo import dimension, objective, parameter, opt, solution
+from zoo import Dimension, Objective, Parameter, Opt, Solution
 dim = 100 # dimension
-obj = objective(lambda s: f(s.get_x()), dimension(dim, [[-1, 1]] * dim, [True] * dim)) # setup objective
+obj = Objective(lambda s: f(s.get_x()), Dimension(dim, [[-1, 1]] * dim, [True] * dim)) # setup objective
 # perform optimization
-solution = opt.min(obj, parameter(budget=100 * dim))
+solution = Opt.min(obj, Parameter(budget=100 * dim))
 # print result
 solution.print_solution()
 ```

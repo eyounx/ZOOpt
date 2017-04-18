@@ -17,6 +17,7 @@
   LAMDA, http://lamda.nju.edu.cn
 """
 import numpy as np
+import math
 
 """
 define a simple neural network model.

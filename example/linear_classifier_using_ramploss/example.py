@@ -17,10 +17,7 @@
   LAMDA, http://lamda.nju.edu.cn
 """
 import arff, codecs
-from zoo.dimension import dimension
-from zoo.objective import objective
-from zoo.parameter import parameter
-from zoo.opt import opt
+from zoo import Dimension, Objective, Parameter, Opt, Solution
 
 """
 this example optimizes a linear classifier using the non-convex ramploss instead of any convex loss function.
@@ -110,7 +107,7 @@ class RampLoss:
         return rate
 
     def dim(self):
-        return dimension(self.__dim_size, [[-10, 10]] * self.__dim_size, [True] * self.__dim_size)
+        return Dimension(self.__dim_size, [[-10, 10]] * self.__dim_size, [True] * self.__dim_size)
 
 
 if __name__=='__main__' and False:
@@ -121,11 +118,11 @@ if __name__=='__main__' and False:
     result = []
     for i in range(repeat):
 
-        objective = objective(loss.eval, loss.dim())
+        objective = Objective(loss.eval, loss.dim())
         budget = 100 * loss.get_dim_size()
-        parameter = parameter(budget=budget)
+        parameter = Parameter(budget=budget)
         # perform optimization
-        ins = opt.min(objective, parameter)
+        ins = Opt.min(objective, parameter)
 
         print 'Best solution is:'
         ins.print_solution()

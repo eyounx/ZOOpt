@@ -27,13 +27,14 @@ Author:
     Yuren Liu
 """
 
-class opt:
+
+class Opt:
     def __init__(self):
         return
 
     @staticmethod
     def min(objective, parameter):
-        opt.set_global(parameter)
+        Opt.set_global(parameter)
         constraint = objective.get_constraint()
         algorithm = parameter.get_algorithm()
         if algorithm:

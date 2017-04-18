@@ -26,7 +26,7 @@ Author:
     Yuren Liu
 """
 
-class dimension:
+class Dimension:
 
     def __init__(self, size=0, regs=[], tys=[]):
         self._size = size

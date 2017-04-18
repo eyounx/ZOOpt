@@ -20,10 +20,7 @@
 import time
 import numpy as np
 from fx import sphere, ackley, setcover, mixed_function
-from zoo.dimension import dimension
-from zoo.objective import objective
-from zoo.parameter import parameter
-from zoo.opt import opt
+from zoo import Dimension, Objective, Parameter, Opt, Solution
 from zoo.utils.zoo_global import gl
 
 """
@@ -33,6 +30,7 @@ optimization algorithm
 Author:
     Yuren Liu
 """
+
 
 ### a function to print optimization results
 def result_analysis(result, top):
@@ -56,15 +54,15 @@ if False:
         dim_size = 100  # dimensions
         dim_regs = [[-1, 1]] * dim_size  # dimension range
         dim_tys = [True] * dim_size  # dimension type : real
-        dim = dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
-        objective = objective(sphere, dim)  # form up the objective function
+        dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
+        objective = Objective(sphere, dim)  # form up the objective function
         
         # setup algorithm parameters
         budget = 100*dim_size # number of calls to the objective function
-        parameter = parameter(budget=budget)  # by default, the algorithm is sequential RACOS
+        parameter = Parameter(budget=budget)  # by default, the algorithm is sequential RACOS
         
         # perform the optimization
-        solution = opt.min(objective, parameter)
+        solution = Opt.min(objective, parameter)
         
         # store the optimization result
         print 'Best solution is:'
@@ -86,26 +84,26 @@ if False:
     gl.set_seed(12345)
     t1 = time.clock()
     # repeat of optimization experiments
-    repeat = 15
+    repeat = 5
     result = []
     for i in range(repeat):
 
         # setup optimization problem
         dim_size = 100  # dimensions
-        dim_regs = [[-1, 1]] * dim_size  # dimension range
+        dim_regs = [[0, 1]] * dim_size  # dimension range
         dim_tys = [True] * dim_size  # dimension type : real
-        dim = dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
-        objective = objective(ackley, dim)  # form up the objective function
+        dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
+        objective = Objective(ackley, dim)  # form up the objective function
         budget = 100*dim_size  # number of calls to the objective function
         # by setting autoset=false, the algorithm parameters will not be set by default
-        parameter = parameter(algorithm="racos", budget=budget, autoset=False)
+        parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
         # so you are allowed to setup algorithm parameters of racos
         parameter.set_train_size(21)
         parameter.set_positive_size(1)
         parameter.set_negative_size(20)
         
         # perform the optimization
-        solution = opt.min(objective, parameter)
+        solution = Opt.min(objective, parameter)
         
         # store the optimization result
         print 'Best solution is:'
@@ -128,19 +126,19 @@ if False:
         # setup problem
         problem = setcover()  # instantialize a set cover instance
         dim = problem.dim  # the dim is prepared by the class
-        objective = objective(problem.fx, dim)  # form up the objective function
+        objective = Objective(problem.fx, dim)  # form up the objective function
         budget = 100 * dim.get_size()  # number of calls to the objective function
-        parameter = parameter(budget=budget, autoset=False)
+        parameter = Parameter(budget=budget, autoset=False)
         parameter.set_train_size(6)
         parameter.set_positive_size(1)
         parameter.set_negative_size(5)
 
         # perform the optimization
-        solution = opt.min(objective, parameter)
+        solution = Opt.min(objective, parameter)
 
         # store the optimization result
-        print 'Best solution is:'
-        solution.print_solution()
+        # print 'Best solution is:'
+        # solution.print_solution()
         result.append(solution.get_value())
     result_analysis(result, 100)
 
@@ -162,11 +160,11 @@ if False:
             else:
                 dim_regs.append([0, 100])
                 dim_tys.append(False)
-        dim = dimension(dim_size, dim_regs, dim_tys)
-        objective = objective(mixed_function, dim)
+        dim = Dimension(dim_size, dim_regs, dim_tys)
+        objective = Objective(mixed_function, dim)
         budget = 2000
-        parameter = parameter(budget=budget, autoset=True)
-        solution = opt.min(objective, parameter)
-        solution.print_solution()
+        parameter = Parameter(budget=budget, autoset=True)
+        solution = Opt.min(objective, parameter)
+        # solution.print_solution()
         result.append(solution.get_value())
     result_analysis(result, 15)

@@ -18,7 +18,7 @@
 """
 import time
 import numpy
-from zoo.solution import solution
+from zoo.solution import Solution
 from zoo.algos.racos.racos_classification import RacosClassification
 from zoo.algos.racos.racos_common import RacosCommon
 from zoo.utils.zoo_global import gl
@@ -105,7 +105,7 @@ class SRacos(RacosCommon):
             iset.insert(index, x)
             worst_ele = iset.pop()
         else:
-            worst_ele, worst_index = solution.find_maximum(iset)
+            worst_ele, worst_index = Solution.find_maximum(iset)
             if worst_ele.get_value() > x.get_value():
                 iset[worst_index] = x
             else:

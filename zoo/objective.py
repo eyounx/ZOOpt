@@ -16,7 +16,7 @@
   Copyright (C) 2017 Nanjing University, Nanjing, China
   LAMDA, http://lamda.nju.edu.cn
 """
-from zoo.solution import solution
+from zoo.solution import Solution
 from zoo.utils.zoo_global import pos_inf
 
 """
@@ -27,7 +27,7 @@ Author:
 """
 
 
-class objective:
+class Objective:
     def __init__(self, func=None, dim=None, constraint=None):
         # Objective function defined by the user
         self.__func = func
@@ -42,7 +42,7 @@ class objective:
 
     # Construct a solution from x
     def construct_solution(self, x, parent=None):
-        new_solution = solution()
+        new_solution = Solution()
         new_solution.set_x(x)
         new_solution.set_attach(self.__inherit(parent))
         # new_solution.set_value(self.__func(new_solution)) # evaluation should be invoked explicitly
