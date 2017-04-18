@@ -16,7 +16,7 @@
   Copyright (C) 2017 Nanjing University, Nanjing, China
   LAMDA, http://lamda.nju.edu.cn
 """
-# import matplotlib.pyplot as plt # uncomment this line to plot figures
+import matplotlib.pyplot as plt  # uncomment this line to plot figures
 import time
 import numpy as np
 from fx import sphere, ackley, setcover, mixed_function
@@ -45,7 +45,7 @@ def result_analysis(result, top):
 if False:
     t1 = time.clock()
     # repeat of optimization experiments
-    repeat = 5
+    repeat = 15
     result = []
     gl.set_seed(12345)
     for i in range(repeat):
@@ -71,26 +71,26 @@ if False:
 
         ### to plot the optimization history, uncomment the following codes.
         ### matplotlib is required
-        # plt.plot(objective.get_history_bestsofar())
-        # plt.savefig("figure.png")
+        plt.plot(objective.get_history_bestsofar())
+        plt.savefig("figure.png")
         
     result_analysis(result, 5)
     t2 = time.clock()
     print 'time costed %f seconds' % (t2 - t1)
 
 ### example for minimizing the ackley function
-if False:
+if True:
     # the random seed for zoo can be set
     gl.set_seed(12345)
     t1 = time.clock()
     # repeat of optimization experiments
-    repeat = 5
+    repeat = 1
     result = []
     for i in range(repeat):
 
         # setup optimization problem
         dim_size = 100  # dimensions
-        dim_regs = [[0, 1]] * dim_size  # dimension range
+        dim_regs = [[-1, 1]] * dim_size  # dimension range
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
         objective = Objective(ackley, dim)  # form up the objective function
@@ -109,7 +109,9 @@ if False:
         print 'Best solution is:'
         solution.print_solution()
         result.append(solution.get_value())
-        
+
+        # plt.plot(objective.get_history_bestsofar())
+        # plt.savefig("figure.png")
     result_analysis(result, 100)
     t2 = time.clock()
     print 'time is %f' % (t2 - t1)
