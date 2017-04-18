@@ -15,6 +15,9 @@
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
+import gym
+from gym.spaces.discrete import Discrete
+from nn_model import NNModel
 
 """
 the class GymTask constructs a gym runtime environment.
@@ -22,10 +25,6 @@ the class GymTask constructs a gym runtime environment.
 Author:
     Yuren Liu
 """
-import gym
-from gym.spaces.discrete import Discrete
-from nn_model import NNModel
-
 
 class GymTask:
     __envir = None                      # gym environment
@@ -145,6 +144,7 @@ class GymTask:
                 break
         value = sum_re
         name = self.__envir_name
+        # turn the direction for minimization
         if name == 'CartPole-v0' or name == 'MountainCar-v0' or name == 'Acrobot-v1' or name == 'HalfCheetah-v1' \
                 or name == 'Humanoid-v1' or name == 'Swimmer-v1' or name == 'Ant-v1' or name == 'Hopper-v1' \
                 or name == 'LunarLander-v2' or name == 'BipedalWalker-v2':

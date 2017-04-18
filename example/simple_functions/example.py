@@ -22,9 +22,9 @@ Author:
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
+# import matplotlib.pyplot as plt # uncomment this line to plot figures
 import time
 import numpy as np
-
 from fx import sphere, ackley, setcover, mixed_function
 from zoo.dimension import Dimension
 from zoo.objective import Objective
@@ -69,6 +69,11 @@ if False:
         print 'Best solution is:'
         solution.print_solution()
         result.append(solution.get_value())
+
+        ### to plot the optimization history, uncomment the following codes.
+        ### matplotlib is required
+        # plt.plot(objective.get_history_bestsofar())
+        # plt.savefig("figure.png")
         
     result_analysis(result, 5)
     t2 = time.clock()

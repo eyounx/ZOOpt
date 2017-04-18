@@ -15,6 +15,11 @@
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
+from gym_task import GymTask
+from zoo.dimension import Dimension
+from zoo.objective import Objective
+from zoo.parameter import Parameter
+from zoo.opt import Opt
 
 """
 Function run_test is defined in this file. You can run this file to get results of this example.
@@ -23,11 +28,6 @@ Author:
     Yuren Liu
 """
 
-from gym_task import GymTask
-from zoo.dimension import Dimension
-from zoo.objective import Objective
-from zoo.parameter import Parameter
-from zoo.opt import Opt
 
 # test function
 

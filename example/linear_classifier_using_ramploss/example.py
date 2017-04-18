@@ -15,6 +15,11 @@
 
  Copyright (C) 2017 Nanjing University, Nanjing, China
 """
+import arff, codecs
+from zoo.dimension import Dimension
+from zoo.objective import Objective
+from zoo.parameter import Parameter
+from zoo.opt import Opt
 
 """
 this example optimizes a linear classifier using the non-convex ramploss instead of any convex loss function.
@@ -24,12 +29,6 @@ this example requires the liac-arff package to read ARFF file
 Author:
     Yuren Liu, Yang Yu
 """
-
-import arff, codecs
-from zoo.dimension import Dimension
-from zoo.objective import Objective
-from zoo.parameter import Parameter
-from zoo.opt import Opt
 
 
 ## define ramploss learning loss function
