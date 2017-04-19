@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: zoo
+Version: 0.1
+Summary: A Python Package for Zeroth-Order Optimization
+Home-page: https://github.com/eyounx/ZOO
+Author: Yu-Ren Liu, Chao Feng, Yi-Qi Hu, Yang Yu
+Author-email: yuy@nju.edu.cn
+License: The MIT License
+Description: UNKNOWN
+Platform: all
+Classifier: Development Status :: 4 - Beta
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: Implementation
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Libraries

@@ -4,25 +4,23 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='zoo',
+    name='zoopt',
     version=0.1,
     description=(
-        'Zeroth-Order Optimization package'
+        'A Python Package for Zeroth-Order Optimization'
     ),
-    long_description=description,
-    author='Yu-Ren Liu, Chao Feng, Yi-Qi Hu, Yang Yu',
+    author='Yang Yu',
     author_email='yuy@nju.edu.cn',
-    maintainer='Yang Yu',
-    maintainer_email='yuy@nju.edu.cn',
-    license='The MIT License',
+    maintainer='Yu-Ren Liu, Chao Feng, Yi-Qi Hu, Yang Yu',
+    license='MIT License',
     packages=find_packages(),
     platforms=["all"],
-    url='https://github.com/eyounx/ZOO',
+    url='https://github.com/eyounx/ZOOpt',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Operating System :: OS Independent',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: The MIT License',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
         'Programming Language :: Python :: Implementation',
         'Programming Language :: Python :: 2',
