@@ -1,5 +1,5 @@
 # ZOO
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/eyounx/ZOO/LICENSE.txt)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/eyounx/ZOO/blob/master/LICENSE.txt)
 
 A python package of Zeroth-Order Optimization (ZOO). 
 
