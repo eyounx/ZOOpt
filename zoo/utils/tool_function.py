@@ -43,3 +43,7 @@ class ToolFunction:
     @staticmethod
     def deepcopy(obj):
         return pickle.loads(pickle.dumps(obj));
+
+    @staticmethod
+    def log(text):
+        print('[zoo] '+text)

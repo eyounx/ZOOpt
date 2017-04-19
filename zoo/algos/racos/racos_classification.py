@@ -18,6 +18,7 @@
 """
 from zoo.dimension import Dimension
 from zoo.utils.zoo_global import gl
+from zoo.utils.tool_function import ToolFunction
 
 """
 The class RacosClassification contains a classifier generation algorithm
@@ -158,15 +159,15 @@ class RacosClassification:
 
     # for debugging
     def print_neg(self):
-        print '------print neg------'
+        ToolFunction.log('------print neg------')
         for x in self.__negative_solution:
             x.print_solution()
 
     def print_pos(self):
-        print '------print pos------'
+        ToolFunction.log('------print pos------')
         for x in self.__positive_solution:
             x.print_solution()
 
     def print_sample_region(self):
-        print '------print sample region------'
-        print self.__sample_region
+        ToolFunction.log('------print sample region------')
+        ToolFunction.log(self.__sample_region)

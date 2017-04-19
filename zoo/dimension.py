@@ -17,6 +17,7 @@
   LAMDA, http://lamda.nju.edu.cn
 """
 from zoo.utils.zoo_global import gl
+from zoo.utils.tool_function import ToolFunction
 """
 The class Dimension was implemented in this file.
 
@@ -40,7 +41,7 @@ class Dimension:
     @staticmethod
     def judge_match(size, regs, tys):
         if size != len(regs) or size != len(tys):
-            print 'dimensions don\'t match '
+            ToolFunction.log('dimension.py: dimensions do not match')
             return False
         else:
             return True
@@ -60,7 +61,7 @@ class Dimension:
 
     def set_region(self, index, reg, ty):
         if index > self._size - 1:
-            print 'index out of bound'
+            ToolFunction.log('dimension.py: index out of bound')
             return
         self._regions[index] = reg
         self._types[index] = ty
@@ -110,7 +111,7 @@ class Dimension:
             regions.append(interval)
         for x in self._types:
             tys.append(x)
-        return dimension(size, regions, tys)
+        return Dimension(size, regions, tys)
 
     # deep copy the instance's regions information
     def copy_region(self):
@@ -145,8 +146,8 @@ class Dimension:
 
     # for debugging
     def print_dim(self):
-        print 'dim size is: %d' % self._size
-        print 'dim regions is:'
-        print self._regions
-        print 'dim types is:'
-        print self._types
+        ToolFunction.log('dim size: %d' % self._size)
+        ToolFunction.log('dim regions is:')
+        ToolFunction.log(self._regions)
+        ToolFunction.log('dim types is:')
+        ToolFunction.log(self._types)

@@ -124,6 +124,6 @@ if __name__=='__main__':
         # perform optimization
         ins = Opt.min(objective, parameter)
 
-        print 'Best solution is:'
+        print('solved solution is:')
         ins.print_solution()
-        print 'training error:', loss.trainerror(ins.get_x())
+        print('training error: %f' % loss.trainerror(ins.get_x()))

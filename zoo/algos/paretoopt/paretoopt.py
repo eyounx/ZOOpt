@@ -20,6 +20,7 @@ import numpy as np
 from zoo.utils.zoo_global import gl
 from copy import deepcopy
 import time
+from zoo.utils.tool_function import ToolFunction
 
 """
 The canonical Pareto optimization
@@ -123,7 +124,7 @@ class ParetoOpt:
                 if expected_time > 5:
                     m, s = divmod(expected_time, 60)
                     h, m = divmod(m, 60)
-                    print '[zoo] expected remaining running time: %02d:%02d:%02d' % (h, m, s)
+                    ToolFunction.log('expected remaining running time: %02d:%02d:%02d' % (h, m, s))
 
         resultIndex = -1
         maxValue=float('inf')
@@ -132,7 +133,6 @@ class ParetoOpt:
             if fitness[1]>=0 and fitness[0] < maxValue:
                 maxValue = fitness[0]
                 resultIndex = p
-        #print fitness[resultIndex,0]        
         return population[resultIndex]
 
 

@@ -20,6 +20,7 @@ import time
 from zoo.algos.racos.racos_classification import RacosClassification
 from zoo.algos.racos.racos_common import RacosCommon
 from zoo.utils.zoo_global import gl
+from zoo.utils.tool_function import ToolFunction
 
 """
 The class Racos represents Racos algorithm. It's inherited from RacosCommon.
@@ -71,6 +72,6 @@ class Racos(RacosCommon):
                 if expected_time > 5:
                     m, s = divmod(expected_time, 60)
                     h, m = divmod(m, 60)
-                    print '[zoo] expected remaining running time: %02d:%02d:%02d' % (h, m, s)
+                    ToolFunction.log('expected remaining running time: %02d:%02d:%02d' % (h, m, s))
         return self._best_solution
 

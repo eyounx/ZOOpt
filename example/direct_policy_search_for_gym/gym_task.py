@@ -85,7 +85,6 @@ class GymTask:
 
     # Transform action from neural network into true action.
     def transform_action(self, temp_act):
-        # print temp_act
         action = []
         for i in range(self.__action_size):
             # if action is continue
@@ -122,7 +121,6 @@ class GymTask:
     def nn_policy_sample(self, observation):
         # action = []
         output = self.__policy_model.cal_output(observation)
-        # print 'output:', output
         action = self.transform_action(output)
         return action
 
@@ -150,7 +148,6 @@ class GymTask:
                 or name == 'Humanoid-v1' or name == 'Swimmer-v1' or name == 'Ant-v1' or name == 'Hopper-v1' \
                 or name == 'LunarLander-v2' or name == 'BipedalWalker-v2':
             value = -value
-        # print value
         return value
 
     def get_environment(self):

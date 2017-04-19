@@ -18,6 +18,7 @@
 """
 import copy
 import sys
+from zoo.utils.tool_function import ToolFunction
 
 """
 The class RacosCommon contains common attributes and methods between Racos and SRacos.
@@ -97,8 +98,8 @@ class RacosCommon:
                     limited, number = dim.limited_space()
                     if limited is True:
                         if number <= data_num:
-                            print '------data number in sample space is too small------'
-                            sys.exit()
+                            ToolFunction.log('racos_common.py: WARNING -- data number in sample space is too small')
+                            break
                     if times > 100:
                         distinct_flag = False
                         break
@@ -114,7 +115,6 @@ class RacosCommon:
         if check_distinct is True:
             while self.is_distinct(self._positive_data, ins) is False or \
                     self.is_distinct(self._negative_data, ins) is False:
-                    # print '------sample repeated------'
                 x = classifier.rand_sample()
                 ins = self._objective.construct_solution(x)
                 times += 1
@@ -124,8 +124,8 @@ class RacosCommon:
                     limited, number = space.limited_space()
                     if limited is True:
                         if number <= data_num:
-                            print '------data number in sample space is too small------'
-                            sys.exit()
+                            ToolFunction.log('racos_common: WARNING -- data number in sample space is too small')
+                            break
                     if times > 100:
                         distinct_flag = False
                         break
@@ -165,19 +165,19 @@ class RacosCommon:
 
     # For debugging
     def print_positive_data(self):
-        print '------print positive_data------'
-        print 'the size of positive_data is: %d' % (len(self._positive_data))
+        ToolFunction.log('------print positive_data------')
+        ToolFunction.log('the size of positive_data is: %d' % (len(self._positive_data)))
         for x in self._positive_data:
             x.print_solution()
 
     def print_negative_data(self):
-        print '------print negative_data------'
-        print 'the size of negative_data is: %d' % (len(self._negative_data))
+        ToolFunction.log('------print negative_data------')
+        ToolFunction.log('the size of negative_data is: %d' % (len(self._negative_data)))
         for x in self._negative_data:
             x.print_solution()
 
     def print_data(self):
-        print '------print b------'
-        print 'the size of b is: %d' % (len(self._data))
+        ToolFunction.log('------print b------')
+        ToolFunction.log('the size of b is: %d' % (len(self._data)))
         for x in self._data:
             x.print_solution()

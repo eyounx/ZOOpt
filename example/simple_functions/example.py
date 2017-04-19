@@ -16,7 +16,7 @@
   Copyright (C) 2017 Nanjing University, Nanjing, China
   LAMDA, http://lamda.nju.edu.cn
 """
-import matplotlib.pyplot as plt  # uncomment this line to plot figures
+#import matplotlib.pyplot as plt  # uncomment this line to plot figures
 import time
 import numpy as np
 from fx import sphere, ackley, setcover, mixed_function
@@ -38,7 +38,7 @@ def result_analysis(result, top):
     top_k = result[0:top]
     mean_r = np.mean(top_k)
     std_r = np.std(top_k)
-    print mean_r, '#', std_r
+    print('%f +- %f' % (mean_r, std_r))
     return
 
 ### example for minimizing the sphere function
@@ -58,25 +58,25 @@ if False:
         objective = Objective(sphere, dim)  # form up the objective function
         
         # setup algorithm parameters
-        budget = 100*dim_size # number of calls to the objective function
+        budget = 10*dim_size # number of calls to the objective function
         parameter = Parameter(budget=budget)  # by default, the algorithm is sequential RACOS
         
         # perform the optimization
         solution = Opt.min(objective, parameter)
         
         # store the optimization result
-        print 'Best solution is:'
+        print('solved solution is:')
         solution.print_solution()
         result.append(solution.get_value())
 
         ### to plot the optimization history, uncomment the following codes.
         ### matplotlib is required
-        plt.plot(objective.get_history_bestsofar())
-        plt.savefig("figure.png")
+        #plt.plot(objective.get_history_bestsofar())
+        #plt.savefig("figure.png")
         
     result_analysis(result, 5)
     t2 = time.clock()
-    print 'time costed %f seconds' % (t2 - t1)
+    print('time costed %f seconds' % (t2 - t1))
 
 ### example for minimizing the ackley function
 if True:
@@ -84,7 +84,7 @@ if True:
     gl.set_seed(12345)
     t1 = time.clock()
     # repeat of optimization experiments
-    repeat = 1
+    repeat = 5
     result = []
     for i in range(repeat):
 
@@ -94,7 +94,7 @@ if True:
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
         objective = Objective(ackley, dim)  # form up the objective function
-        budget = 100*dim_size  # number of calls to the objective function
+        budget = 10*dim_size  # number of calls to the objective function
         # by setting autoset=false, the algorithm parameters will not be set by default
         parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
         # so you are allowed to setup algorithm parameters of racos
@@ -106,7 +106,7 @@ if True:
         solution = Opt.min(objective, parameter)
         
         # store the optimization result
-        print 'Best solution is:'
+        print('solved solution is:')
         solution.print_solution()
         result.append(solution.get_value())
 
@@ -114,7 +114,7 @@ if True:
         # plt.savefig("figure.png")
     result_analysis(result, 100)
     t2 = time.clock()
-    print 'time is %f' % (t2 - t1)
+    print('time cost: %f' % (t2 - t1))
 
 
 ### discrete optimization example using minimum set cover instance
@@ -139,8 +139,6 @@ if False:
         solution = Opt.min(objective, parameter)
 
         # store the optimization result
-        # print 'Best solution is:'
-        # solution.print_solution()
         result.append(solution.get_value())
     result_analysis(result, 100)
 

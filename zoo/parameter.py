@@ -17,6 +17,7 @@
   LAMDA, http://lamda.nju.edu.cn
 """
 import sys
+from zoo.utils.tool_function import ToolFunction
 
 """
 The class Parameter was implemented in this file.
@@ -64,7 +65,7 @@ class Parameter:
     # budget > 1001 ->> train_size = 22, positive_size = 2
     def auto_set(self, budget):
         if budget < 3:
-            print 'budget too small'
+            ToolFunction.log('parameter.py: budget too small')
             sys.exit(1)
         elif budget <= 50:
             self.__train_size = 4

@@ -17,6 +17,7 @@
   LAMDA, http://lamda.nju.edu.cn
 """
 from zoo.utils.zoo_global import pos_inf, neg_inf, nan, gl
+from zoo.utils.tool_function import ToolFunction
 
 """
 The class solution was implemented in this file.
@@ -96,8 +97,8 @@ class Solution:
         return self.__attach
 
     def print_solution(self):
-        print 'x is: ' + repr(self.__x)
-        print 'value is ' + repr(self.__value)
+        ToolFunction.log('x: ' + repr(self.__x))
+        ToolFunction.log('value: ' + repr(self.__value))
 
     # Deep copy an solution set
     @staticmethod
@@ -111,7 +112,7 @@ class Solution:
     @staticmethod
     def print_solution_set(sol_set):
         for sol in sol_set:
-            print 'value is %f' % (sol.get_value())
+            ToolFunction.log('value: %f' % (sol.get_value()))
         return
 
     # Find the maximum-valued solution from the solution set
@@ -135,9 +136,4 @@ class Solution:
                 mini = sol_set[i].get_value()
                 mini_index = i
         return mini, mini_index
-
-if __name__ == "__main__":
-    print gl.precision
-    gl.set_precision(1e-10)
-    print gl.precision
 

@@ -56,14 +56,14 @@ def run_test(task_name, layers, in_budget, max_step, repeat):
 
     result = []
     sum = 0
-    print 'Best solution is:'
+    print('solved solution is:')
     for i in range(repeat):
         ins = Opt.min(objective, parameter)
         result.append(ins.get_value())
         sum += ins.get_value()
         ins.print_solution()
-    print result  # results in repeat times
-    print sum/len(result)  # average result
+    print(result)  # results in repeat times
+    print(sum/len(result))  # average result
 
 if __name__ == '__main__':
         mountain_car_layers = [2, 5, 1]

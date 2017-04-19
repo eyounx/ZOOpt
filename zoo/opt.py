@@ -19,6 +19,7 @@
 from zoo.algos.paretoopt.ParetoOptimization import ParetoOptimization
 from zoo.algos.racos.racos_optimization import RacosOptimization
 from zoo.utils.zoo_global import gl
+from zoo.utils.tool_function import ToolFunction
 
 """
 The class Opt is the main entrance of using zoo: Opt.min(objective, parameter)
@@ -47,7 +48,7 @@ class Opt:
             optimizer = RacosOptimization()
             result = optimizer.opt(objective, parameter)
         else:
-            print "[zoo] No proper algorithm find for %s" % algorithm
+            ToolFunction.log("opt.py: No proper algorithm find for %s" % algorithm)
         return result
 
     @staticmethod

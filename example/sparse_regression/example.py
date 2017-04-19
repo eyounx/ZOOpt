@@ -121,5 +121,5 @@ if __name__=='__main__':
 
     # perform sparse regression with constraint |w|_0 <= k
     result = opt.min(objective, parameter)
-    print 'the best solution is:', np.array(result.get_x())[0].tolist()
-    print 'with objective value:', result.get_value()[0], 'and sparsity:', result.get_value()[1] + mse.get_sparsity()
+    print('the best solution is:', np.array(result.get_x())[0].tolist())
+    print('with objective value:', result.get_value()[0], 'and sparsity:', result.get_value()[1] + mse.get_sparsity())
