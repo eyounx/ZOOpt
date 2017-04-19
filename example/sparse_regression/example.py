@@ -1,26 +1,9 @@
-"""
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
 
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-
-  Copyright (C) 2017 Nanjing University, Nanjing, China
-  LAMDA, http://lamda.nju.edu.cn
-"""
 import numpy as np
-from zoo.opt import opt
-from zoo.parameter import parameter
-from zoo.objective import objective
-from zoo.dimension import dimension
+from zoo.opt import Opt
+from zoo.parameter import Parameter
+from zoo.objective import Objective
+from zoo.dimension import Dimension
 from math import exp
 import codecs
 import arff
@@ -82,7 +65,7 @@ class Sparse_MSE:
     def get_dim(self):
         dim_regs = [[0, 1]] * self._size
         dim_tys = [False] * self._size
-        return dimension(self._size, dim_regs, dim_tys)
+        return Dimension(self._size, dim_regs, dim_tys)
 
     # Read data from file
     def read_data(self, filename):
@@ -116,10 +99,10 @@ if __name__=='__main__':
     mse.set_sparsity(8)
 
     # setup objective
-    objective = objective(func=mse.loss, dim=mse.get_dim(), constraint=mse.constraint)
-    parameter = parameter(algorithm='poss', budget=2 * exp(1) * mse.get_sparsity() * mse.get_sparsity() * mse.get_dim().get_size())
+    objective = Objective(func=mse.loss, dim=mse.get_dim(), constraint=mse.constraint)
+    parameter = Parameter(algorithm='poss', budget=2 * exp(1) * mse.get_sparsity() * mse.get_sparsity() * mse.get_dim().get_size())
 
     # perform sparse regression with constraint |w|_0 <= k
-    result = opt.min(objective, parameter)
+    result = Opt.min(objective, parameter)
     print('the best solution is:', np.array(result.get_x())[0].tolist())
     print('with objective value:', result.get_value()[0], 'and sparsity:', result.get_value()[1] + mse.get_sparsity())
