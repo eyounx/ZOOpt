@@ -5,7 +5,7 @@ A python package of Zeroth-Order Optimization (ZOOpt).
 
 Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimization) does not rely on the gradient of the objective function, but instead, learns from samples of the search space. It is suitable for optimizing functions that are nondifferentiable, with many local minima, or even unknown but only testable.
 
-Install: `pip install zoopt`
+**Install**: `pip install zoopt`
 
 ## A quick example
 We define the Ackley function for minimization using Theano
@@ -41,4 +41,6 @@ More examples are available in the `example` fold.
 
 ## release 0.1
 - Include the general optimization method RACOS (AAAI'16) and Sequential RACOS (AAAI'17), and the subset selection method POSS (NIPS'15).
-- The algorithm selection is automatic. See examples in the example directory.
+- The algorithm selection is automatic. See examples in the 'example' fold.
+- Default parameters work well on many problems, while parameters are fully controllable
+- Running speed optmized for Python
