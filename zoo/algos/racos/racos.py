@@ -56,6 +56,9 @@ class Racos(RacosCommon):
                                                                               self._parameter.get_train_size())
                 else:
                     solution, distinct_flag = self.distinct_sample(self._objective.get_dim())
+                # panic stop
+                if solution is None:
+                    return self._best_solution
                 # If the solution had been sampled, skip it
                 if distinct_flag is False:
                     continue

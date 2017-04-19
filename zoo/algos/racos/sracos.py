@@ -56,6 +56,9 @@ class SRacos(RacosCommon):
                 ins, distinct_flag = self.distinct_sample_classifier(classifier, True, self._parameter.get_train_size())
             else:
                 ins, distinct_flag = self.distinct_sample(self._objective.get_dim())
+            # panic stop
+            if ins is None:
+                return self._best_solution
             if distinct_flag is False:
                 continue
             # evaluate the solution

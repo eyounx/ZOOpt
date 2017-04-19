@@ -64,6 +64,9 @@ class RacosCommon:
             # distinct_flag: True means sample is distinct(can be use),
             # False means sample is distinct, you should sample again.
             x, distinct_flag = self.distinct_sample(self._objective.get_dim())
+            # panic stop
+            if x is None:
+                break
             if distinct_flag:
                 self._objective.eval(x)
                 self._data.append(x)
@@ -98,7 +101,8 @@ class RacosCommon:
                     limited, number = dim.limited_space()
                     if limited is True:
                         if number <= data_num:
-                            ToolFunction.log('racos_common.py: WARNING -- data number in sample space is too small')
+                            ToolFunction.log('racos_common.py: WARNING -- sample space has been fully enumerated. Stop early')
+                            return None, None
                             break
                     if times > 100:
                         distinct_flag = False
@@ -124,8 +128,8 @@ class RacosCommon:
                     limited, number = space.limited_space()
                     if limited is True:
                         if number <= data_num:
-                            ToolFunction.log('racos_common: WARNING -- data number in sample space is too small')
-                            break
+                            ToolFunction.log('racos_common: WARNING -- sample space has been fully enumerated. Stop early')
+                            return None, None
                     if times > 100:
                         distinct_flag = False
                         break
