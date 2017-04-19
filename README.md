@@ -41,6 +41,6 @@ More examples are available in the `example` fold.
 
 ## release 0.1
 - Include the general optimization method RACOS (AAAI'16) and Sequential RACOS (AAAI'17), and the subset selection method POSS (NIPS'15).
-- The algorithm selection is automatic. See examples in the 'example' fold.
+- The algorithm selection is automatic. See examples in the `example` fold.
 - Default parameters work well on many problems, while parameters are fully controllable
 - Running speed optmized for Python
