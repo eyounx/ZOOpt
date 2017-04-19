@@ -15,7 +15,7 @@ x = T.dvector('x')
 f = theano.function([x], -20 * T.exp(-0.2 * T.sqrt((T.dot(x - 0.2, x - 0.2)).mean())) - T.exp(
     (T.cos(2 * math.pi * (x - 0.2))).mean()) + math.e + 20)
 ```
-Ackley function is a classical function with many local minima. In 2-dimensions, it looks like (from wikipedia)
+Ackley function is a classical function with many local minima. In 2-dimension, it looks like (from wikipedia)
 <table border=0><tr><td width="400px"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Ackley%27s_function.pdf/page1-400px-Ackley%27s_function.pdf.jpg" alt="Expeirment results"/></td></tr></table>
 
 Then, use ZOOpt to optimize a 100-dimension Ackley function
