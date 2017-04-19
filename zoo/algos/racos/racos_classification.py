@@ -60,7 +60,7 @@ class RacosClassification:
         self.__x_positive = self.__positive_solution[gl.rand.randint(
             0, len(self.__positive_solution) - 1)]
         len_negative = len(self.__negative_solution)
-        index_set = range(self.__solution_space.get_size())
+        index_set = list(range(self.__solution_space.get_size()))
         types = self.__solution_space.get_types()
         while len_negative > 0:
             k = index_set[gl.rand.randint(0, len(index_set) - 1)]
