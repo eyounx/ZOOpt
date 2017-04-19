@@ -1,11 +1,11 @@
-# ZOO
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/eyounx/ZOO/blob/master/LICENSE.txt)
+# ZOOpt
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/eyounx/ZOOpt/blob/master/LICENSE.txt)
 
-A python package of Zeroth-Order Optimization (ZOO). 
+A python package of Zeroth-Order Optimization (ZOOpt). 
 
 Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimization) does not rely on the gradient of the objective function, but instead, learns from samples of the search space. It is suitable for optimizing functions that are nondifferentiable, with many local minima, or even unknown but only testable.
 
-Install: `pip install zoo`
+Install: `pip install zoopt`
 
 ## A quick example
 We define the Ackley function for minimization using Theano
@@ -18,9 +18,9 @@ f = theano.function([x], -20 * T.exp(-0.2 * T.sqrt((T.dot(x - 0.2, x - 0.2)).mea
 Ackley function is a classical function with many local minima. In 2-dimensions, it looks like (from wikipedia)
 <table border=0><tr><td width="400px"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Ackley%27s_function.pdf/page1-400px-Ackley%27s_function.pdf.jpg" alt="Expeirment results"/></td></tr></table>
 
-Then, use zoo to optimize a 100-dimension Ackley function
+Then, use ZOOpt to optimize a 100-dimension Ackley function
 ```python
-from zoo import Dimension, Objective, Parameter, Opt, Solution
+from zoopt import Dimension, Objective, Parameter, Opt, Solution
 dim = 100 # dimension
 obj = Objective(lambda s: f(s.get_x()), Dimension(dim, [[-1, 1]] * dim, [True] * dim)) # setup objective
 # perform optimization
