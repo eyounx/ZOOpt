@@ -1,5 +1,5 @@
 import socket
-from zoo.utils.tool_function import ToolFunction
+from zoopt.utils.tool_function import ToolFunction
 
 
 class CalculatorServer:
@@ -27,7 +27,7 @@ class CalculatorServer:
         s_port = 0
 
         # print 'this is SetCover server 1!'
-        print 'waiting for connector...'
+        ToolFunction.log('waiting for connector...')
 
         while True:
 
@@ -35,15 +35,15 @@ class CalculatorServer:
             cs, address = s.accept()
             # print all_connect + 1, ' get connected...'
             all_connect += 1
-            print 'connect num:', all_connect, ' address:', address
+            ToolFunction.log('connect num: %d, address: %d' % (all_connect, address))
             cs.send('connected')
-            mess = cs.recv(1024)
-            if mess == 'exit':
+            message = cs.recv(1024)
+            if message == 'exit':
                 break
-            s_ip, s_port = self.explain_address(mess)
+            s_ip, s_port = self.explain_address(message)
             cs.send('received address')
-            mess = cs.recv(1024)
-            if mess != 'next is data':
+            message = cs.recv(1024)
+            if message != 'next is data':
                 continue
             cs.send('ready')
             data_str = cs.recv(self.__data_length)
@@ -63,33 +63,33 @@ class CalculatorServer:
             try:
                 fx_server.connect((s_ip, s_port))
             except socket.error, e:
-                print 'connect error %s' % e
+                ToolFunction.log('connect error %s' % e)
                 continue
             try:
-                mess = fx_server.recv(1024)
+                message = fx_server.recv(1024)
             except socket.error, e:
-                print 'receive error %s' % e
+                ToolFunction.log('receive error %s' % e)
                 continue
-            if mess != 'connected':
+            if message != 'connected':
                 fx_server.close()
                 continue
             fx_server.send(self.__server_ip + ':' + str(self.__server_port))
-            mess = fx_server.recv(1024)
-            if mess != 'received address':
+            message = fx_server.recv(1024)
+            if message != 'received address':
                 fx_server.close()
                 continue
             fx_server.send('ready for fx')
-            mess = fx_server.recv(1024)
-            if mess != 'ready':
+            message = fx_server.recv(1024)
+            if message != 'ready':
                 fx_server.close()
                 continue
             fx_server.send(fx_x)
-            mess = fx_server.recv(1024)
-            if mess == 'received':
-                print 'pass result finished! ', fx_x
-            print 'send result finished...'
+            message = fx_server.recv(1024)
+            if message == 'received':
+                ToolFunction.log('pass result finished! %s' % fx_x)
+            ToolFunction.log('send result finished...')
             fx_server.close()
-        print 'server close!'
+        ToolFunction.log('server close!')
         s.close()
 
     def result_2_string(self, fx=0, x=[0]):
