@@ -46,7 +46,7 @@ class Solution:
             x.append(x_i)
         value = self.__value
         attach = self.__attach
-        return solution(x, value, attach)
+        return Solution(x, value, attach)
 
     # Check if two solutions equal
     def is_equal(self, sol):

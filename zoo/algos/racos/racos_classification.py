@@ -27,6 +27,7 @@ Author:
     Yuren Liu
 """
 
+
 class RacosClassification:
 
     def __init__(self, dim, positive, negative, ub=1):
