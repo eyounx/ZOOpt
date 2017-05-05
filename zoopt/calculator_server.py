@@ -1,5 +1,6 @@
 import socket
 from zoopt.utils.tool_function import ToolFunction
+from zoopt import Solution
 
 
 class CalculatorServer:
@@ -11,10 +12,10 @@ class CalculatorServer:
         self.__data_length = data_len               # data length
         return
 
-    def start_server(self, objective=None):
+    def start_server(self, func=None):
 
         # define objective function
-        calculate = objective
+        calculate = func
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  #
         s.bind((self.__server_ip, self.__server_port))
@@ -55,7 +56,7 @@ class CalculatorServer:
             data_str = data_str.split(' ')
             for i in range(len(data_str)):
                 x.append(float(data_str[i]))
-            fx = calculate(x=x)
+            fx = calculate(Solution(x))
             fx_x = self.result_2_string(fx=fx, x=x)
 
             # send result back

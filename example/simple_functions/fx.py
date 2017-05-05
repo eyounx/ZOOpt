@@ -10,8 +10,6 @@ Author:
 """
 
 
-
-
 # Sphere function for continue optimization
 def sphere(solution):
     x = solution.get_x()

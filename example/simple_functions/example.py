@@ -3,7 +3,7 @@
 import time
 import numpy as np
 from fx import sphere, ackley, setcover, mixed_function
-from zoopt import Dimension, Objective, Parameter, Opt, Solution
+from zoopt import Dimension, Objective, Parameter, Opt, Solution, CalculatorServer
 from zoopt.utils.zoo_global import gl
 
 """
@@ -15,7 +15,7 @@ Author:
 """
 
 
-### a function to print optimization results
+# a function to print optimization results
 def result_analysis(result, top):
     result.sort()
     top_k = result[0:top]
@@ -24,7 +24,7 @@ def result_analysis(result, top):
     print('%f +- %f' % (mean_r, std_r))
     return
 
-### example for minimizing the sphere function
+# example for minimizing the sphere function
 if False:
     t1 = time.clock()
     # repeat of optimization experiments
@@ -61,7 +61,7 @@ if False:
     t2 = time.clock()
     print('time costed %f seconds' % (t2 - t1))
 
-### example for minimizing the ackley function
+# example for minimizing the ackley function
 if True:
     # the random seed for zoopt can be set
     gl.set_seed(12345)
@@ -100,7 +100,7 @@ if True:
     print('time cost: %f' % (t2 - t1))
 
 
-### discrete optimization example using minimum set cover instance
+# discrete optimization example using minimum set cover instance
 if False:
     # repeat of optimization experiments
     gl.set_seed(12345)
@@ -151,3 +151,15 @@ if False:
         # solution.print_solution()
         result.append(solution.get_value())
     result_analysis(result, 15)
+
+# asynchronous racos
+if False:
+    data_length = 1024
+    server_ip = '127.0.0.1'
+    server_port = 3000
+
+    # set server ip, port and longest data length in initialization
+    server = CalculatorServer(server_ip, server_port, data_length)
+    set_cover = setcover()
+    # set objective function when starting server
+    server.start_server(func=set_cover.fx)

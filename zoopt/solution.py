@@ -3,7 +3,7 @@ from zoopt.utils.zoo_global import pos_inf, neg_inf, nan, gl
 from zoopt.utils.tool_function import ToolFunction
 
 """
-The class solution was implemented in this file.
+The class Solution was implemented in this file.
 
 A solution encapsulates a solution vector with attached properties, including dimension information, objective value,
 and attachment
@@ -29,7 +29,7 @@ class Solution:
             x.append(x_i)
         value = self.__value
         attach = self.__attach
-        return solution(x, value, attach)
+        return Solution(x, value, attach)
 
     # Check if two solutions equal
     def is_equal(self, sol):
