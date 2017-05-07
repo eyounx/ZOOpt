@@ -12,7 +12,7 @@ We define the Ackley function for minimization using Theano
 ```python
 import math, theano, theano.tensor as T
 x = T.dvector('x')
-f = theano.function([x], -20 * T.exp(-0.2 * T.sqrt((T.dot(x - 0.2, x - 0.2)).mean())) - T.exp(
+f = theano.function([x], -20 * T.exp(-0.2 * T.sqrt((T.dot(x - 0.2, x - 0.2))/T.shape(x))) - T.exp(
     (T.cos(2 * math.pi * (x - 0.2))).mean()) + math.e + 20)
 ```
 Ackley function is a classical function with many local minima. In 2-dimension, it looks like (from wikipedia)
