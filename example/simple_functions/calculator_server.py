@@ -1,6 +1,6 @@
 import socket
 from zoopt.utils.tool_function import ToolFunction
-from zoopt import Solution
+from zoopt.solution import Solution
 
 
 class CalculatorServer:
@@ -36,7 +36,7 @@ class CalculatorServer:
             cs, address = s.accept()
             # print all_connect + 1, ' get connected...'
             all_connect += 1
-            ToolFunction.log('connect num: %d, address: %d' % (all_connect, address))
+            ToolFunction.log('connect num: %d, address: %s' % (all_connect, address))
             cs.send('connected')
             message = cs.recv(1024)
             if message == 'exit':

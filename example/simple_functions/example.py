@@ -3,7 +3,7 @@
 import time
 import numpy as np
 from fx import sphere, ackley, setcover, mixed_function
-from zoopt import Dimension, Objective, Parameter, Opt, Solution, CalculatorServer
+from zoopt import Dimension, Objective, Parameter, Opt, Solution
 from zoopt.utils.zoo_global import gl
 
 """
@@ -148,18 +148,8 @@ if False:
         budget = 2000
         parameter = Parameter(budget=budget, autoset=True)
         solution = Opt.min(objective, parameter)
-        # solution.print_solution()
+        solution.print_solution()
         result.append(solution.get_value())
     result_analysis(result, 15)
 
-# asynchronous racos
-if False:
-    data_length = 1024
-    server_ip = '127.0.0.1'
-    server_port = 3000
 
-    # set server ip, port and longest data length in initialization
-    server = CalculatorServer(server_ip, server_port, data_length)
-    set_cover = setcover()
-    # set objective function when starting server
-    server.start_server(func=set_cover.fx)

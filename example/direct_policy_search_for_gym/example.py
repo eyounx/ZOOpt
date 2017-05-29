@@ -58,7 +58,7 @@ if __name__ == '__main__':
         hopper_layers = [11, 9, 5, 3]
         lunarlander_layers = [8, 5, 3, 1]
         run_test('MountainCar-v0', mountain_car_layers, 2000, 10000, 1)
-        run_test('Acrobot-v1', acrobot_layers, 2000, 2000, 1)
+        # run_test('Acrobot-v1', acrobot_layers, 2000, 2000, 1)
         # If you want to run the following examples, you may need to install more libs(mujoco, Box2D).
         # run_test('HalfCheetah-v1', halfcheetah_layers, 2000, 10000, 10)
         # run_test('Humanoid-v1', humanoid_layers, 2000, 50000, 10)
