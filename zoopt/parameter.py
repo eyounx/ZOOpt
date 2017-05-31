@@ -20,6 +20,7 @@ class Parameter:
     # If autoset is True, train_size, positive_size, negative_size will be set automatically
     # If precision is None, we will set precision as 1e-17 in default. Otherwise, set precision
     # If uncertain_bits is None, racos will set uncertain_bits automatically
+    # init_data parameter sets the initial solutions instead of randomly generated solutions
     def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None, init_data=None):
         self.__algorithm = algorithm
         self.__budget = budget
