@@ -20,7 +20,7 @@ class Parameter:
     # If autoset is True, train_size, positive_size, negative_size will be set automatically
     # If precision is None, we will set precision as 1e-17 in default. Otherwise, set precision
     # If uncertain_bits is None, racos will set uncertain_bits automatically
-    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None):
+    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None, init_data=None):
         self.__algorithm = algorithm
         self.__budget = budget
 
@@ -32,6 +32,7 @@ class Parameter:
         self.__positive_size = 0
         self.__negative_size = 0
         self.__probability = 0.99
+        self.__init_data = init_data
 
         # for pareto optimization
         self.__isolationFunc = lambda x: 0
@@ -131,11 +132,8 @@ class Parameter:
     def get_isolationFunc(self):
         return self.__isolationFunc
 
+    def set_init_data(self, init_data):
+        self.__init_data = init_data 
 
-
-
-
-
-
-
-
+    def get_init_data(self):
+        return self.__init_data
