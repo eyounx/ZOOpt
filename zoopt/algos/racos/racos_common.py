@@ -41,6 +41,7 @@ class RacosCommon:
 
     # Construct self._data, self._positive_data, self._negative_data
     def init_attribute(self):
+        # check if the initial solutions have been set
         data_temp = self._parameter.get_init_data()
         if data_temp != None and self._best_solution == None:
             for j in range(len(data_temp)):
@@ -49,6 +50,7 @@ class RacosCommon:
                 self._data.append(x)
             self.selection()
             return 
+        # otherwise generate random solutions
         iteration_num = self._parameter.get_train_size()
         i = 0
         while i < iteration_num:
