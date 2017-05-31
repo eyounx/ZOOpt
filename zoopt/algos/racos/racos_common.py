@@ -41,6 +41,14 @@ class RacosCommon:
 
     # Construct self._data, self._positive_data, self._negative_data
     def init_attribute(self):
+        data_temp = self._parameter.get_init_data()
+        if data_temp != None and self._best_solution == None:
+            for j in range(len(data_temp)):
+                x = self._objective.construct_solution(data_temp[j])
+                self._objective.eval(x)
+                self._data.append(x)
+            self.selection()
+            return 
         iteration_num = self._parameter.get_train_size()
         i = 0
         while i < iteration_num:
