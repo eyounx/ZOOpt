@@ -42,7 +42,7 @@ class RacosCommon:
     # Construct self._data, self._positive_data, self._negative_data
     def init_attribute(self):
         # check if the initial solutions have been set
-        data_temp = self._parameter.get_init_data()
+        data_temp = self._parameter.get_init_samples()
         if data_temp != None and self._best_solution == None:
             for j in range(len(data_temp)):
                 x = self._objective.construct_solution(data_temp[j])
