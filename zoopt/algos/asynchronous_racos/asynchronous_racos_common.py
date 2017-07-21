@@ -1,6 +1,6 @@
 
 import copy
-import sys
+import socket
 from zoopt.utils.tool_function import ToolFunction
 
 """
@@ -12,9 +12,9 @@ Author:
 """
 
 
-class RacosCommon:
+class AsynchronousRacosCommon:
 
-    def __init__(self):
+    def __init__(self, client_ip, client_port):
         self._parameter = None
         self._objective = None
         # Solution set
@@ -26,6 +26,27 @@ class RacosCommon:
         self._negative_data = []
         # Solution
         self._best_solution = None
+
+        # server_poop is a list containing a list of ip address of servers:
+        # e.g: ['192.168.71.1', '192.168.71.1', '192.168.71.3']
+        self.__server_pool = None
+        # server_num means the number of fx servers
+        self.__server_num = 0
+
+        # ip address of racos client
+        self.__client_ip = client_ip
+        # the port of client
+        self.__client_port = client_port
+        self._racos_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self._racos_client.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.__data_length = 1024
+        return
+
+    # client_ip_port is a tuple: ('127.0.0.1', 9999])
+    def client_set_up(self, client_ip_port, server_pool, server_num):
+        self._racos_client.bind()
+        self._racos_client.bind(client_ip_port)
+        self._racos_client.listen(self.__server_num)
         return
 
     # Clear RacosCommon
@@ -38,11 +59,18 @@ class RacosCommon:
         self._negative_data = []
         # value
         self._best_solution = None
+        self.__server_pool = None
+        self.__server_num = 0
+        self.__client_ip = None
+        self.__client_port = None
+        self._racos_client.close()
 
     # Construct self._data, self._positive_data, self._negative_data
     def init_attribute(self):
         iteration_num = self._parameter.get_train_size()
         i = 0
+        sample_pool = []
+        # sample procedure
         while i < iteration_num:
             # distinct_flag: True means sample is distinct(can be use),
             # False means sample is distinct, you should sample again.
@@ -51,9 +79,11 @@ class RacosCommon:
             if x is None:
                 break
             if distinct_flag:
+                sample_pool.append(x)
                 self._objective.eval(x)
                 self._data.append(x)
                 i += 1
+        # computation procedure
         self.selection()
         return
 
@@ -135,6 +165,13 @@ class RacosCommon:
             if x.is_equal(ins):
                 return False
         return True
+
+    def set_data_length(self, length):
+        self.__data_length = length
+        return
+
+    def get_data_length(self):
+        return self.__data_length
 
     def set_parameters(self, parameter):
         self._parameter = parameter

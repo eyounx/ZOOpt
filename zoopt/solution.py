@@ -35,8 +35,9 @@ class Solution:
     def is_equal(self, sol):
         sol_x = sol.get_x()
         sol_value = sol.get_value()
-        if abs(self.__value - sol_value) > gl.precision:
-            return False
+        if sol_value != nan and self.__value != nan:
+            if abs(self.__value - sol_value) > gl.precision:
+                return False
         if len(self.__x) != len(sol_x):
             return False
         for i in range(len(self.__x)):

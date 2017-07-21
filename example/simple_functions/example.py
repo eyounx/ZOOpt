@@ -67,7 +67,7 @@ if True:
     gl.set_seed(12345)
     t1 = time.clock()
     # repeat of optimization experiments
-    repeat = 5
+    repeat = 15
     result = []
     for i in range(repeat):
 
@@ -77,7 +77,7 @@ if True:
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
         objective = Objective(ackley, dim)  # form up the objective function
-        budget = 10*dim_size  # number of calls to the objective function
+        budget = 20*dim_size  # number of calls to the objective function
         # by setting autoset=false, the algorithm parameters will not be set by default
         parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
         # so you are allowed to setup algorithm parameters of racos
@@ -95,7 +95,7 @@ if True:
 
         # plt.plot(objective.get_history_bestsofar())
         # plt.savefig("figure.png")
-    result_analysis(result, 100)
+    result_analysis(result, 5)
     t2 = time.clock()
     print('time cost: %f' % (t2 - t1))
 

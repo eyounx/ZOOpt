@@ -1,6 +1,6 @@
 import time
-from zoopt.algos.racos.racos_classification import RacosClassification
-from zoopt.algos.racos.racos_common import RacosCommon
+from zoopt.algos.asynchronous_racos.asynchronous_racos_classification import AsynchronousRacosClassification
+from zoopt.algos.asynchronous_racos.asynchronous_racos_common import AsynchronousRacosCommon
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
 """
@@ -11,7 +11,7 @@ Author:
 """
 
 
-class Racos(RacosCommon):
+class AsynchronousRacos(AsynchronousRacosCommon):
 
     def __init__(self):
         RacosCommon.__init__(self)
