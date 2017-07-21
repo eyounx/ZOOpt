@@ -11,7 +11,7 @@ Author:
 """
 
 
-class RacosClassification:
+class AsynchronousRacosClassification:
 
     def __init__(self, dim, positive, negative, ub=1):
         self.__solution_space = dim
