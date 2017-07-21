@@ -4,4 +4,4 @@ test
 /example/direct_policy_search_for_gym/Theano
 /example/direct_policy_search_for_gym/test.py
 /doc-make
-
+/zoopt/algos/asynchronous_racos/*.py
