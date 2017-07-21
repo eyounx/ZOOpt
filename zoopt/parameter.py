@@ -7,7 +7,7 @@ The class Parameter was implemented in this file.
 A Parameter instance should be a necessary parameter to opt in RacosOptimization
 
 Author:
-    Yuren Liu
+    Yuren Liu, Yang Yu
 """
 
 
@@ -17,12 +17,21 @@ class Parameter:
     # algorithm can be 'racos' or 'poss'
     # If algorithm is 'racos' and sequential is True, opt will invoke SRacos.opt(default)
     # if algorithm is 'racos' and sequential is False, opt will invoke Racos.opt
+    # budget cannot be None. It is the number of samples.
     # If autoset is True, train_size, positive_size, negative_size will be set automatically
     # If precision is None, we will set precision as 1e-17 in default. Otherwise, set precision
     # If uncertain_bits is None, racos will set uncertain_bits automatically
-    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None):
+    # If init_samples is not None, the samples will be added into the first sampled solution set
+    # If time_budget is not None, the algorithm should stop when the time_budget (in seconds)  runs out.
+    # If terminal_value if not None, the algorithm should stop when such value is found
+    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None):
         self.__algorithm = algorithm
         self.__budget = budget
+
+        # common parameters that all algorithm should accept
+        self.__init_samples = init_samples
+        self.__time_budget = time_budget
+        self.__terminal_value = terminal_value
 
         # for racos optimization
         self.__sequential = sequential
@@ -131,11 +140,20 @@ class Parameter:
     def get_isolationFunc(self):
         return self.__isolationFunc
 
+    def set_init_samples(self, init_samples):
+        self.__init_samples = init_samples
 
+    def get_init_samples(self):
+        return self.__init_samples
 
+    def set_time_budget(self, time_budget):
+        self.__time_budget = time_budget
 
+    def get_time_budget(self):
+        return self.__time_budget
 
+    def set_terminal_value(self, terminal_value):
+        self.__terminal_value = terminal_value
 
-
-
-
+    def get_terminal_value(self):
+        return self.__terminal_value
