@@ -35,17 +35,17 @@ class SRacos(RacosCommon):
                 classifier = RacosClassification(
                     self._objective.get_dim(), self._positive_data, self._negative_data, ub)
                 classifier.mixed_classification()
-                ins, distinct_flag = self.distinct_sample_classifier(classifier, True, self._parameter.get_train_size())
+                solution, distinct_flag = self.distinct_sample_classifier(classifier, True, self._parameter.get_train_size())
             else:
-                ins, distinct_flag = self.distinct_sample(self._objective.get_dim())
+                solution, distinct_flag = self.distinct_sample(self._objective.get_dim())
             # panic stop
-            if ins is None:
+            if solution is None:
                 return self._best_solution
             if distinct_flag is False:
                 continue
             # evaluate the solution
-            objective.eval(ins)
-            bad_ele = self.replace(self._positive_data, ins, 'pos')
+            objective.eval(solution)
+            bad_ele = self.replace(self._positive_data, solution, 'pos')
             self.replace(self._negative_data, bad_ele, 'neg', strategy)
             self._best_solution = self._positive_data[0]
             if i == 4:
@@ -121,8 +121,8 @@ class SRacos(RacosCommon):
     def strategy_lm(self, iset, best_sol, x):
         farthest_dis = 0
         farthest_index = 0
-        for i in range(iset):
-            dis = self.distance(iset[i].get_coordinates(), best_sol.get_coordinates())
+        for i in range(len(iset)):
+            dis = self.distance(iset[i].get_x(), best_sol.get_x())
             if dis > farthest_dis:
                 farthest_dis = dis
                 farthest_index = i
