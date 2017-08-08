@@ -56,7 +56,8 @@ class RacosCommon:
         while i < iteration_num:
             # distinct_flag: True means sample is distinct(can be use),
             # False means sample is distinct, you should sample again.
-            x, distinct_flag = self.distinct_sample(self._objective.get_dim())
+            x, distinct_flag = self.distinct_sample_from_set(self._objective.get_dim(), self._data,
+                                                             data_num=iteration_num)
             # panic stop
             if x is None:
                 break
@@ -86,7 +87,7 @@ class RacosCommon:
         times = 1
         distinct_flag = True
         if check_distinct is True:
-            while self.is_distinct(self._positive_data, x) is False and \
+            while self.is_distinct(self._positive_data, x) is False or \
                     self.is_distinct(self._negative_data, x) is False:
                 x = objective.construct_solution(dim.rand_sample())
                 times += 1
@@ -96,7 +97,27 @@ class RacosCommon:
                         if number <= data_num:
                             ToolFunction.log('racos_common.py: WARNING -- sample space has been fully enumerated. Stop early')
                             return None, None
-                            break
+                    if times > 100:
+                        distinct_flag = False
+                        break
+        return x, distinct_flag
+
+    def distinct_sample_from_set(self, dim, set, check_distinct=True, data_num=0):
+        objective = self._objective
+        x = objective.construct_solution(dim.rand_sample())
+        times = 1
+        distinct_flag = True
+        if check_distinct is True:
+            while self.is_distinct(set, x) is False:
+                x = objective.construct_solution(dim.rand_sample())
+                times += 1
+                if times % 10 == 0:
+                    limited, number = dim.limited_space()
+                    if limited is True:
+                        if number <= data_num:
+                            ToolFunction.log(
+                                'racos_common.py: WARNING -- sample space has been fully enumerated. Stop early')
+                            return None, None
                     if times > 100:
                         distinct_flag = False
                         break

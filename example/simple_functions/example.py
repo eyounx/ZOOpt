@@ -42,7 +42,7 @@ if False:
         
         # setup algorithm parameters
         budget = 10*dim_size # number of calls to the objective function
-        parameter = Parameter(budget=budget)  # by default, the algorithm is sequential RACOS
+        parameter = Parameter(budget=budget, sequential=False)  # by default, the algorithm is sequential RACOS
         
         # perform the optimization
         solution = Opt.min(objective, parameter)
@@ -62,7 +62,7 @@ if False:
     print('time costed %f seconds' % (t2 - t1))
 
 # example for minimizing the ackley function
-if True:
+if False:
     # the random seed for zoopt can be set
     gl.set_seed(12345)
     t1 = time.clock()
@@ -101,9 +101,9 @@ if True:
 
 
 # discrete optimization example using minimum set cover instance
-if False:
+if True:
     # repeat of optimization experiments
-    gl.set_seed(12345)
+    # gl.set_seed(12345)
     repeat = 10
     result = []
     for i in range(repeat):
@@ -120,10 +120,11 @@ if False:
 
         # perform the optimization
         solution = Opt.min(objective, parameter)
+        solution.print_solution()
 
         # store the optimization result
         result.append(solution.get_value())
-    result_analysis(result, 100)
+    result_analysis(result, 10)
 
 # mixed optimization
 if False:
