@@ -25,11 +25,12 @@ def result_analysis(result, top):
     return
 
 # example for minimizing the sphere function
-if False:
+if True:
     t1 = time.clock()
     # repeat of optimization experiments
     repeat = 15
     result = []
+    # the random seed for zoopt can be set
     gl.set_seed(12345)
     for i in range(repeat):
         
@@ -42,7 +43,7 @@ if False:
         
         # setup algorithm parameters
         budget = 10*dim_size # number of calls to the objective function
-        parameter = Parameter(budget=budget, sequential=False)  # by default, the algorithm is sequential RACOS
+        parameter = Parameter(budget=budget, sequential=True)  # by default, the algorithm is sequential RACOS
         
         # perform the optimization
         solution = Opt.min(objective, parameter)
@@ -63,7 +64,6 @@ if False:
 
 # example for minimizing the ackley function
 if False:
-    # the random seed for zoopt can be set
     gl.set_seed(12345)
     t1 = time.clock()
     # repeat of optimization experiments
@@ -101,7 +101,7 @@ if False:
 
 
 # discrete optimization example using minimum set cover instance
-if True:
+if False:
     # repeat of optimization experiments
     # gl.set_seed(12345)
     repeat = 10
@@ -151,6 +151,6 @@ if False:
         solution = Opt.min(objective, parameter)
         solution.print_solution()
         result.append(solution.get_value())
-    result_analysis(result, 15)
+    result_analysis(result, 5)
 
 
