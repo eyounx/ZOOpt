@@ -33,6 +33,8 @@ zoopt/algos/racos/racos_classification.py
 zoopt/algos/racos/racos_common.py
 zoopt/algos/racos/racos_optimization.py
 zoopt/algos/racos/sracos.py
+zoopt/algos/asynchronous_racos/__init__.py
+zoopt/algos/asynchronous_racos/calculator_server.py
 zoopt/utils/__init__.py
 zoopt/utils/tool_function.py
 zoopt/utils/zoo_global.py

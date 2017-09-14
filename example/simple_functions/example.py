@@ -42,7 +42,7 @@ if True:
         objective = Objective(sphere, dim)  # form up the objective function
         
         # setup algorithm parameters
-        budget = 10*dim_size # number of calls to the objective function
+        budget = 1000 # number of calls to the objective function
         parameter = Parameter(budget=budget, sequential=True)  # by default, the algorithm is sequential RACOS
         
         # perform the optimization
@@ -58,12 +58,12 @@ if True:
         #plt.plot(objective.get_history_bestsofar())
         #plt.savefig("figure.png")
         
-    result_analysis(result, 5)
+    result_analysis(result, 1)
     t2 = time.clock()
     print('time costed %f seconds' % (t2 - t1))
 
 # example for minimizing the ackley function
-if False:
+if True:
     gl.set_seed(12345)
     t1 = time.clock()
     # repeat of optimization experiments
