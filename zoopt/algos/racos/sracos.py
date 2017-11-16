@@ -15,6 +15,7 @@ Author:
 
 
 class SRacos(RacosCommon):
+
     def __init__(self):
         RacosCommon.__init__(self)
         return
@@ -30,6 +31,8 @@ class SRacos(RacosCommon):
         i = 0
         iteration_num = self._parameter.get_budget() - self._parameter.get_train_size()
         time_log1 = time.time()
+        max_distinct_repeat_times = 100
+        current_not_distinct_times = 0
         while i < iteration_num:
             if gl.rand.random() < self._parameter.get_probability():
                 classifier = RacosClassification(
@@ -42,7 +45,11 @@ class SRacos(RacosCommon):
             if solution is None:
                 return self._best_solution
             if distinct_flag is False:
-                continue
+                current_not_distinct_times += 1
+                if current_not_distinct_times >= max_distinct_repeat_times:
+                    return self._best_solution
+                else:
+                    continue
             # evaluate the solution
             objective.eval(solution)
             bad_ele = self.replace(self._positive_data, solution, 'pos')
