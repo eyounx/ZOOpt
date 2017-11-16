@@ -25,7 +25,7 @@ def result_analysis(result, top):
     return
 
 # example for minimizing the sphere function
-if False:
+if True:
     t1 = time.clock()
     # repeat of optimization experiments
     repeat = 15
@@ -63,7 +63,7 @@ if False:
     print('time costed %f seconds' % (t2 - t1))
 
 # example for minimizing the ackley function
-if True:
+if False:
     gl.set_seed(12345)
     t1 = time.clock()
     # repeat of optimization experiments
