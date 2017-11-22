@@ -24,7 +24,8 @@ class Parameter:
     # If init_samples is not None, the samples will be added into the first sampled solution set
     # If time_budget is not None, the algorithm should stop when the time_budget (in seconds)  runs out.
     # If terminal_value if not None, the algorithm should stop when such value is found
-    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None):
+    # is found
+    def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None):
         self.__algorithm = algorithm
         self.__budget = budget
 
@@ -42,6 +43,11 @@ class Parameter:
         self.__negative_size = 0
         self.__probability = 0.99
 
+        self.__resample_times = 150
+        self._suppression = suppression
+        # temp
+        self.__max_stay = 30
+        self.__max_stay_precision = 0
         # for pareto optimization
         self.__isolationFunc = lambda x: 0
 
@@ -72,6 +78,30 @@ class Parameter:
             self.__train_size = 22
             self.__positive_size = 2
         self.__negative_size = self.__train_size - self.__positive_size
+
+    def get_suppressioin(self):
+        return self._suppression
+
+    def set_suppression(self, suppression):
+        self._suppression = suppression
+
+    def set_resample_times(self, resample_times):
+        self.__resample_times = resample_times
+
+    def get_resample_times(self):
+        return self.__resample_times
+
+    def set_max_stay(self, max_stay):
+        self.__max_stay = max_stay
+
+    def get_max_stay(self):
+        return self.__max_stay
+
+    def set_max_stay_precision(self, max_stay_precision):
+        self.__max_stay_precision = max_stay_precision
+
+    def get_max_stay_precision(self):
+        return self.__max_stay_precision
 
     def set_algorithm(self, algorithm):
         self.__algorithm = algorithm
@@ -134,8 +164,8 @@ class Parameter:
     def get_probability(self):
         return self.__probability
 
-    def set_isolationFunc(self,func):
-        self.__isolationFunc=func
+    def set_isolationFunc(self, func):
+        self.__isolationFunc = func
 
     def get_isolationFunc(self):
         return self.__isolationFunc
