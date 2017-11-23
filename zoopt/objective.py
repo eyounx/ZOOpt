@@ -11,34 +11,45 @@ Author:
 
 
 class Objective:
-    def __init__(self, func=None, dim=None, constraint=None):
+
+    def __init__(self, func=None, dim=None, constraint=None, re_sample_func=None):
         # Objective function defined by the user
         self.__func = func
         # Number of dimensions, dimension bounds are in the dim object
         self.__dim = dim
         # the function for inheriting solution attachment
         self.__inherit = self.default_inherit
+        self.__post_inherit = self.default_post_inherit
         # the constraint function
         self.__constraint = constraint
         # the history of optimization
         self.__history = []
+        self.__re_sample_func = re_sample_func
 
     # Construct a solution from x
     def construct_solution(self, x, parent=None):
         new_solution = Solution()
         new_solution.set_x(x)
         new_solution.set_attach(self.__inherit(parent))
-        # new_solution.set_value(self.__func(new_solution)) # evaluation should be invoked explicitly
+        # new_solution.set_value(self.__func(new_solution)) # evaluation should
+        # be invoked explicitly
         return new_solution
 
     # evaluate the objective function of a solution
     def eval(self, solution):
         solution.set_value(self.__func(solution))
         self.__history.append(solution.get_value())
+        solution.set_post_attach(self.__post_inherit())
+
+    def resample(self, solution, v):
+        solution.set_value(self.__re_sample_func(solution, v))
+        solution.set_post_attach(self.__post_inherit())
 
     def eval_constraint(self, solution):
-        solution.set_value( [self.__func(solution), self.__constraint(solution)])
+        solution.set_value(
+            [self.__func(solution), self.__constraint(solution)])
         self.__history.append(solution.get_value())
+        solution.set_post_attach(self.__post_inherit())
 
     # set the optimization function
     def set_func(self, func):
@@ -58,7 +69,13 @@ class Objective:
 
     # set the attachment inheritance function
     def set_inherit_func(self, inherit_func):
-        self.__inherit=inherit_func
+        self.__inherit = inherit_func
+
+    def set_post_inherit_func(self, inherit_func):
+        self.__post_inherit = inherit_func
+
+    def get_post_inherit_func(self):
+        return self.__post_inherit
 
     # get the attachment inheritance function
     def get_inherit_func(self):
@@ -89,8 +106,12 @@ class Objective:
 
     # clean the optimization history
     def clean_history(self):
-        self.__history=[]
+        self.__history = []
 
     @staticmethod
     def default_inherit(parent=None):
+        return None
+
+    @staticmethod
+    def default_post_inherit(parent=None):
         return None

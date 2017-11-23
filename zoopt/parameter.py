@@ -23,7 +23,7 @@ class Parameter:
     # If uncertain_bits is None, racos will set uncertain_bits automatically
     # If init_samples is not None, the samples will be added into the first sampled solution set
     # If time_budget is not None, the algorithm should stop when the time_budget (in seconds)  runs out.
-    # If terminal_value if not None, the algorithm should stop when such value is found
+    # If terminal_value if not None, the algorithm should stop when such value
     # is found
     def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None):
         self.__algorithm = algorithm

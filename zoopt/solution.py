@@ -16,10 +16,11 @@ Author:
 class Solution:
 
     # value is f(x)
-    def __init__(self, x=[], value=nan, attach=None):
+    def __init__(self, x=[], value=nan, attach=None, post_attach=None):
         self.__x = x
         self.__value = value
         self.__attach = attach
+        self.__post_attach = post_attach
         return
 
     # Deep copy this solution. Note that the attachment is not deeply copied
@@ -67,6 +68,13 @@ class Solution:
     def set_attach(self, attach):
         self.__attach = attach
         return
+
+    def set_post_attach(self, attach):
+        self.__post_attach = attach
+        return
+
+    def get_post_attach(self):
+        return self.__post_attach
 
     def get_x_index(self, index):
         return self.__x[index]
@@ -120,4 +128,3 @@ class Solution:
                 mini = sol_set[i].get_value()
                 mini_index = i
         return mini, mini_index
-
