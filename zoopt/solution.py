@@ -16,11 +16,14 @@ Author:
 class Solution:
 
     # value is f(x)
-    def __init__(self, x=[], value=nan, attach=None, post_attach=None):
+    def __init__(self, x=[], value=nan, resample_value=None, attach=None, post_attach=None, is_in_possible_solution=False):
         self.__x = x
         self.__value = value
+        self.__resample_value = resample_value
         self.__attach = attach
         self.__post_attach = post_attach
+
+        self.is_in_possible_solution = is_in_possible_solution
         return
 
     # Deep copy this solution. Note that the attachment is not deeply copied
@@ -30,7 +33,9 @@ class Solution:
             x.append(x_i)
         value = self.__value
         attach = self.__attach
-        return Solution(x, value, attach)
+        resample_value = self.__resample_value
+        post_attach = self.__post_attach
+        return Solution(x, value, resample_value, attach, post_attach, self.is_in_possible_solution)
 
     # Check if two solutions equal
     def is_equal(self, sol):
@@ -72,6 +77,12 @@ class Solution:
     def set_post_attach(self, attach):
         self.__post_attach = attach
         return
+
+    def set_resample_value(self, resample_value):
+        self.__resample_value = resample_value
+
+    def get_resample_value(self):
+        return self.__resample_value
 
     def get_post_attach(self):
         return self.__post_attach

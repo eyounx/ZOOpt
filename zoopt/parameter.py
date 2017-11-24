@@ -48,6 +48,8 @@ class Parameter:
         # temp
         self.__max_stay = 30
         self.__max_stay_precision = 0
+        self.__non_update_allowed = 0
+
         # for pareto optimization
         self.__isolationFunc = lambda x: 0
 
@@ -94,14 +96,20 @@ class Parameter:
     def set_max_stay(self, max_stay):
         self.__max_stay = max_stay
 
-    def get_max_stay(self):
-        return self.__max_stay
+    def set_non_update_allowed(self, non_update_allowed):
+        self.__non_update_allowed = non_update_allowed
+
+    def get_non_update_allowed(self):
+        return self.__non_update_allowed
 
     def set_max_stay_precision(self, max_stay_precision):
         self.__max_stay_precision = max_stay_precision
 
     def get_max_stay_precision(self):
         return self.__max_stay_precision
+
+    def get_max_stay(self):
+        return self.__max_stay
 
     def set_algorithm(self, algorithm):
         self.__algorithm = algorithm

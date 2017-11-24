@@ -12,7 +12,7 @@ Author:
 
 class Objective:
 
-    def __init__(self, func=None, dim=None, constraint=None, re_sample_func=None):
+    def __init__(self, func=None, dim=None, constraint=None, re_sample_func=None, balance_rate=1):
         # Objective function defined by the user
         self.__func = func
         # Number of dimensions, dimension bounds are in the dim object
@@ -25,6 +25,7 @@ class Objective:
         # the history of optimization
         self.__history = []
         self.__re_sample_func = re_sample_func
+        self.__balance_rate = balance_rate
 
     # Construct a solution from x
     def construct_solution(self, x, parent=None):
@@ -42,8 +43,11 @@ class Objective:
         solution.set_post_attach(self.__post_inherit())
 
     def resample(self, solution, v):
-        solution.set_value(self.__re_sample_func(solution, v))
-        solution.set_post_attach(self.__post_inherit())
+        if solution.get_resample_value() is None:
+            solution.set_resample_value(self.__re_sample_func(solution, v))
+            solution.set_value((1 - self.__balance_rate) * solution.get_value() +
+                               self.__balance_rate * solution.get_resample_value())
+            solution.set_post_attach(self.__post_inherit())
 
     def eval_constraint(self, solution):
         solution.set_value(

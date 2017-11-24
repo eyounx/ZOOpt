@@ -1,4 +1,6 @@
 from zoopt.algos.racos.ssracos import SSRacos
+from zoopt.algos.racos.ssracos2 import SSRacos2
+
 from zoopt.algos.racos.sracos import SRacos
 from zoopt.algos.racos.racos import Racos
 
@@ -35,7 +37,7 @@ class RacosOptimization:
                 self.__best_solution = self.__algorithm.opt(
                     objective, parameter, strategy, ub)
             else:
-                self.__algorithm = SSRacos()
+                self.__algorithm = SSRacos2()
                 self.__best_solution = self.__algorithm.opt(
                     objective, parameter, strategy, ub)
         else:
