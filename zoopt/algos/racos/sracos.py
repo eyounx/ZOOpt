@@ -44,7 +44,7 @@ class SRacos(RacosCommon):
             if distinct_flag is False:
                 continue
             # evaluate the solution
-            objective.eval(solution)
+            objective.eval(solution, parameter.get_intermediate_result())
             bad_ele = self.replace(self._positive_data, solution, 'pos')
             self.replace(self._negative_data, bad_ele, 'neg', strategy)
             self._best_solution = self._positive_data[0]

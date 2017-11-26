@@ -24,7 +24,7 @@ class Parameter:
     # If init_samples is not None, the samples will be added into the first sampled solution set
     # If time_budget is not None, the algorithm should stop when the time_budget (in seconds)  runs out.
     # If terminal_value if not None, the algorithm should stop when such value is found
-    def __init__(self, algorithm=None, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None):
+    def __init__(self, algorithm=None, sequential=True, budget=0, intermediate_result=False, autoset=True, precision=None, uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None):
         self.__algorithm = algorithm
         self.__budget = budget
 
@@ -41,6 +41,7 @@ class Parameter:
         self.__positive_size = 0
         self.__negative_size = 0
         self.__probability = 0.99
+        self.__intermediate_result = intermediate_result
 
         # for pareto optimization
         self.__isolationFunc = lambda x: 0
@@ -157,3 +158,10 @@ class Parameter:
 
     def get_terminal_value(self):
         return self.__terminal_value
+
+    def set_intermediate_result(self, intermediate_result):
+        self.__intermediate_result = intermediate_result
+
+    def get_intermediate_result(self):
+        return self.__intermediate_result
+

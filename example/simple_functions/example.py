@@ -25,10 +25,10 @@ def result_analysis(result, top):
     return
 
 # example for minimizing the sphere function
-if True:
+if False:
     t1 = time.clock()
     # repeat of optimization experiments
-    repeat = 15
+    repeat = 5
     result = []
     # the random seed for zoopt can be set
     gl.set_seed(12345)
@@ -42,8 +42,8 @@ if True:
         objective = Objective(sphere, dim)  # form up the objective function
         
         # setup algorithm parameters
-        budget = 1000 # number of calls to the objective function
-        parameter = Parameter(budget=budget, sequential=True)  # by default, the algorithm is sequential RACOS
+        budget = 2000 # number of calls to the objective function
+        parameter = Parameter(budget=budget, sequential=True, intermediate_result=False)  # by default, the algorithm is sequential RACOS
         
         # perform the optimization
         solution = Opt.min(objective, parameter)
@@ -63,11 +63,11 @@ if True:
     print('time costed %f seconds' % (t2 - t1))
 
 # example for minimizing the ackley function
-if False:
-    gl.set_seed(12345)
+if True:
+    # gl.set_seed(12345)
     t1 = time.clock()
     # repeat of optimization experiments
-    repeat = 15
+    repeat = 1
     result = []
     for i in range(repeat):
 
@@ -77,13 +77,13 @@ if False:
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
         objective = Objective(ackley, dim)  # form up the objective function
-        budget = 20*dim_size  # number of calls to the objective function
+        budget = 100*dim_size  # number of calls to the objective function
         # by setting autoset=false, the algorithm parameters will not be set by default
-        parameter = Parameter(algorithm="racos", budget=budget, autoset=False)
+        parameter = Parameter(algorithm="sracos", budget=budget, autoset=True)
         # so you are allowed to setup algorithm parameters of racos
-        parameter.set_train_size(21)
-        parameter.set_positive_size(1)
-        parameter.set_negative_size(20)
+        # parameter.set_train_size(21)
+        # parameter.set_positive_size(1)
+        # parameter.set_negative_size(20)
         
         # perform the optimization
         solution = Opt.min(objective, parameter)
@@ -95,7 +95,7 @@ if False:
 
         # plt.plot(objective.get_history_bestsofar())
         # plt.savefig("figure.png")
-    result_analysis(result, 5)
+    result_analysis(result, 15)
     t2 = time.clock()
     print('time cost: %f' % (t2 - t1))
 
@@ -103,7 +103,7 @@ if False:
 # discrete optimization example using minimum set cover instance
 if False:
     # repeat of optimization experiments
-    # gl.set_seed(12345)
+    gl.set_seed(12345)
     repeat = 10
     result = []
     for i in range(repeat):

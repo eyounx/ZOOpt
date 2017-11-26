@@ -43,7 +43,7 @@ class Racos(RacosCommon):
                 if distinct_flag is False:
                     continue
                 # evaluate the solution
-                objective.eval(solution)
+                objective.eval(solution, parameter.get_intermediate_result())
                 self._data.append(solution)
                 j += 1
             self.selection()

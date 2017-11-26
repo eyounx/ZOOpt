@@ -5,7 +5,7 @@ import socket
 import multiprocessing
 from zoopt.algos.asynchronous_racos import calculator_server
 from port_conflict import is_open
-
+from zoopt.utils.tool_function import ToolFunction
 
 def run_server(port, work_dir, control_server):
     local_ip = socket.gethostbyname(socket.gethostname())
@@ -35,6 +35,7 @@ def run(configuration):
     lowerb = int(info[1])
     upperb = int(info[2])
     local_ip = socket.gethostbyname(socket.gethostname())  # get local ip
+    ToolFunction.log("calculator server ip: " + local_ip)
     count = 0
     workers = []
     for port in range(lowerb, upperb):

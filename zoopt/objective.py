@@ -1,7 +1,7 @@
 
 from zoopt.solution import Solution
 from zoopt.utils.zoo_global import pos_inf
-
+from zoopt.utils.tool_function import ToolFunction
 """
 The class Objective represents the objective function and its associated variables
 
@@ -32,9 +32,12 @@ class Objective:
         return new_solution
 
     # evaluate the objective function of a solution
-    def eval(self, solution):
-        solution.set_value(self.__func(solution))
+    def eval(self, solution, intermediate_print=False):
+        val = self.__func(solution)
+        solution.set_value(val)
         self.__history.append(solution.get_value())
+        if intermediate_print is True:
+            ToolFunction.log("fx result: " + str(val))
 
     def eval_constraint(self, solution):
         solution.set_value( [self.__func(solution), self.__constraint(solution)])
