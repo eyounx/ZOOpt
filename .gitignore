@@ -6,3 +6,5 @@ test
 /doc-make
 /zoopt/algos/asynchronous_racos/*.py
 /example/simple_funcitions/asynchronous_*.py
+/build/*
+
