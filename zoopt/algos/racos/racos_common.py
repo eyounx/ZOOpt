@@ -44,16 +44,16 @@ class RacosCommon:
     def init_attribute(self):
         # check if the initial solutions have been set
         data_temp = self._parameter.get_init_samples()
+        i = 0
         if data_temp != None and self._best_solution == None:
             for j in range(len(data_temp)):
                 x = self._objective.construct_solution(data_temp[j])
                 self._objective.eval(x)
                 self._data.append(x)
-            self.selection()
-            return
+                print("[zoopt] init solution %s, eval %s" % (i, x.get_value()))
+                i += 1
         # otherwise generate random solutions
         iteration_num = self._parameter.get_train_size()
-        i = 0
         while i < iteration_num:
             # distinct_flag: True means sample is distinct(can be use),
             # False means sample is distinct, you should sample again.
