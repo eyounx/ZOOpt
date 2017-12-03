@@ -25,7 +25,8 @@ class Parameter:
     # If time_budget is not None, the algorithm should stop when the time_budget (in seconds)  runs out.
     # If terminal_value if not None, the algorithm should stop when such value
     # is found
-    def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None):
+    def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None, init_samples=None,
+                 time_budget=None, terminal_value=None, baselines=None, non_update_baselines_allowed=None):
         self.__algorithm = algorithm
         self.__budget = budget
 
@@ -46,9 +47,11 @@ class Parameter:
         self.__resample_times = 150
         self._suppression = suppression
         # temp
-        self.__max_stay = 30
+        self.__max_stay_function = None
         self.__max_stay_precision = 0
         self.__non_update_allowed = 0
+        self.__non_update_baselines_allowed = non_update_baselines_allowed
+        self.__baselines = baselines
 
         # for pareto optimization
         self.__isolationFunc = lambda x: 0
@@ -81,6 +84,12 @@ class Parameter:
             self.__positive_size = 2
         self.__negative_size = self.__train_size - self.__positive_size
 
+    def get_non_update_baselines_allowed(self):
+        return self.__non_update_baselines_allowed
+
+    def set_non_update_baselines_allowed(self, non_update_baselines_allowed):
+        self.__non_update_baselines_allowed = non_update_baselines_allowed
+
     def get_suppressioin(self):
         return self._suppression
 
@@ -93,8 +102,8 @@ class Parameter:
     def get_resample_times(self):
         return self.__resample_times
 
-    def set_max_stay(self, max_stay):
-        self.__max_stay = max_stay
+    def set_max_stay_function(self, max_stay_function):
+        self.__max_stay_function = max_stay_function
 
     def set_non_update_allowed(self, non_update_allowed):
         self.__non_update_allowed = non_update_allowed
@@ -108,8 +117,8 @@ class Parameter:
     def get_max_stay_precision(self):
         return self.__max_stay_precision
 
-    def get_max_stay(self):
-        return self.__max_stay
+    def get_max_stay_function(self):
+        return self.__max_stay_function
 
     def set_algorithm(self, algorithm):
         self.__algorithm = algorithm
@@ -144,6 +153,12 @@ class Parameter:
 
     def get_uncertain_bits(self):
         return self.__uncertain_bits
+
+    def get_baselines(self):
+        return self.__baselines
+
+    def set_baselines(self, baselines):
+        self.__baselines = baselines
 
     def set_train_size(self, size):
         self.__train_size = size
