@@ -72,7 +72,7 @@ class SSRacos(SRacos):
                 else:
                     continue
             # evaluate the solution
-            objective.eval(solution)
+            objective.eval(solution, parameter.get_intermediate_result())
             # suppression
             if self._is_worest(solution):
                 non_update_times += 1

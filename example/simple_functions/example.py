@@ -82,7 +82,7 @@ if True:
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
         objective = Objective(ackley_noise_func, dim, re_sample_func=resample_func, balance_rate=0.5)  # form up the objective function
-        budget = 20000  # 20*dim_size  # number of calls to the objective function
+        budget = 200000  # 20*dim_size  # number of calls to the objective function
         # by setting autoset=false, the algorithm parameters will not be set by default
 
         parameter = Parameter(budget=budget, sequential=True, suppression=True, intermediate_result=True,
