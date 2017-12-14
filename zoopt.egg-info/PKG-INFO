@@ -1,11 +1,12 @@
 Metadata-Version: 1.1
 Name: zoopt
-Version: 0.1
+Version: 0.3
 Summary: A Python Package for Zeroth-Order Optimization
 Home-page: https://github.com/eyounx/ZOOpt
 Author: Yu-Ren Liu, Chao Feng, Yi-Qi Hu, Yang Yu
 Author-email: yuy@nju.edu.cn
 License: MIT License
+Description-Content-Type: UNKNOWN
 Description: UNKNOWN
 Platform: all
 Classifier: Development Status :: 4 - Beta

@@ -24,7 +24,11 @@ class Parameter:
     # If init_samples is not None, the samples will be added into the first sampled solution set
     # If time_budget is not None, the algorithm should stop when the time_budget (in seconds)  runs out.
     # If terminal_value if not None, the algorithm should stop when such value is found
-    def __init__(self, algorithm=None, sequential=True, budget=0, intermediate_result=False, autoset=True, precision=None, uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None):
+    # only if suppression is True, means use SSRACOS algorithm, non_update_allowed and resample_times are useful.
+    # is found
+    def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, intermediate_result=False, autoset=True,
+                 precision=None, uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None,
+                 non_update_allowed=40, resample_times=100):
         self.__algorithm = algorithm
         self.__budget = budget
 
@@ -42,6 +46,11 @@ class Parameter:
         self.__negative_size = 0
         self.__probability = 0.99
         self.__intermediate_result = intermediate_result
+
+        self.__resample_times = resample_times
+        self._suppression = suppression
+        # temp
+        self.__non_update_allowed = non_update_allowed
 
         # for pareto optimization
         self.__isolationFunc = lambda x: 0
@@ -72,7 +81,26 @@ class Parameter:
         else:
             self.__train_size = 22
             self.__positive_size = 2
+
         self.__negative_size = self.__train_size - self.__positive_size
+
+    def get_suppressioin(self):
+        return self._suppression
+
+    def set_suppression(self, suppression):
+        self._suppression = suppression
+
+    def set_resample_times(self, resample_times):
+        self.__resample_times = resample_times
+
+    def get_resample_times(self):
+        return self.__resample_times
+
+    def set_non_update_allowed(self, non_update_allowed):
+        self.__non_update_allowed = non_update_allowed
+
+    def get_non_update_allowed(self):
+        return self.__non_update_allowed
 
     def set_algorithm(self, algorithm):
         self.__algorithm = algorithm
@@ -135,8 +163,8 @@ class Parameter:
     def get_probability(self):
         return self.__probability
 
-    def set_isolationFunc(self,func):
-        self.__isolationFunc=func
+    def set_isolationFunc(self, func):
+        self.__isolationFunc = func
 
     def get_isolationFunc(self):
         return self.__isolationFunc

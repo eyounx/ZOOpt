@@ -1,8 +1,8 @@
 
-#import matplotlib.pyplot as plt  # uncomment this line to plot figures
+# import matplotlib.pyplot as plt  # uncomment this line to plot figures
 import time
 import numpy as np
-from fx import sphere, sphere_integer, setcover, mixed_function
+from fx import sphere, sphere_integer, ackley, setcover, mixed_function, ackley_noise_creator
 from zoopt import Dimension, Objective, Parameter, Opt, Solution
 from zoopt.utils.zoo_global import gl
 
@@ -11,7 +11,7 @@ This file contains some examples about how to use Racos(or SRacos)
 optimization algorithm
 
 Author:
-    Yuren Liu
+    Yuren Liu, Xionghui Chen
 """
 
 
@@ -24,6 +24,7 @@ def result_analysis(result, top):
     print('%f +- %f' % (mean_r, std_r))
     return
 
+
 # example for minimizing the sphere function
 if False:
     t1 = time.clock()
@@ -33,34 +34,76 @@ if False:
     # the random seed for zoopt can be set
     gl.set_seed(12345)
     for i in range(repeat):
-        
-        # setup optimization problem 
+
+        # setup optimization problem
         dim_size = 100  # dimensions
         dim_regs = [[-1, 1]] * dim_size  # dimension range
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
         objective = Objective(sphere, dim)  # form up the objective function
-        
+
         # setup algorithm parameters
         budget = 2000 # number of calls to the objective function
         parameter = Parameter(budget=budget, sequential=True, intermediate_result=False)  # by default, the algorithm is sequential RACOS
-        
         # perform the optimization
         solution = Opt.min(objective, parameter)
-        
+
         # store the optimization result
         print('solved solution is:')
         solution.print_solution()
         result.append(solution.get_value())
 
-        ### to plot the optimization history, uncomment the following codes.
-        ### matplotlib is required
-        #plt.plot(objective.get_history_bestsofar())
-        #plt.savefig("figure.png")
-        
+        # to plot the optimization history, uncomment the following codes.
+        # matplotlib is required
+        # plt.plot(objective.get_history_bestsofar())
+        # plt.savefig("figure.png")
+
     result_analysis(result, 1)
     t2 = time.clock()
     print('time costed %f seconds' % (t2 - t1))
+# ssracos example for minimizing ackley with Gaussian noise
+if True:
+    gl.set_seed(12345)
+    t1 = time.clock()
+    # repeat of optimization experiments
+    repeat = 15
+    result = []
+    for i in range(repeat):
+        def resample_func(solution, iteration_num):
+            result = []
+            for i in range(iteration_num):
+                result.append(ackley(solution))
+            return sum(result) * 1.0 / len(result)
+        ackley_noise_func = ackley_noise_creator(0, 0.1)
+        # setup optimization problem
+        dim_size = 100  # dimensions
+        dim_regs = [[-1, 1]] * dim_size  # dimension range
+        dim_tys = [True] * dim_size  # dimension type : real
+        dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
+        objective = Objective(ackley_noise_func, dim, re_sample_func=resample_func, balance_rate=0.5)  # form up the objective function
+        budget = 200000  # 20*dim_size  # number of calls to the objective function
+        # by setting autoset=false, the algorithm parameters will not be set by default
+
+        parameter = Parameter(budget=budget, sequential=True,
+                              suppression=True, non_update_allowed=500, resample_times=100)
+        solution = Opt.min(objective, parameter)
+        parameter.set_positive_size(5)
+        # so you are allowed to setup algorithm parameters of racos
+        # parameter.set_train_size(21)
+        # parameter.set_positive_size(1)
+        # parameter.set_negative_size(20)
+
+        # perform the optimization
+
+        # store the optimization result
+        print('solved solution is:')
+        solution.print_solution()
+        true_result = ackley(solution)
+        result.append(true_result)
+    result_analysis(result, 5)
+    t2 = time.clock()
+    print('time cost: %f' % (t2 - t1))
+
 
 # example for minimizing the sphere function: integer continuous
 if True:
@@ -108,7 +151,7 @@ if False:
     repeat = 1
     result = []
     for i in range(repeat):
-
+        ackley_noise_func = ackley_noise_creator(0, 0.1)
         # setup optimization problem
         dim_size = 100  # dimensions
         dim_regs = [[-1, 1]] * dim_size  # dimension range
@@ -122,21 +165,58 @@ if False:
         # parameter.set_train_size(21)
         # parameter.set_positive_size(1)
         # parameter.set_negative_size(20)
-        
         # perform the optimization
         solution = Opt.min(objective, parameter)
-        
+
         # store the optimization result
         print('solved solution is:')
         solution.print_solution()
-        result.append(solution.get_value())
+        true_result = ackley(solution)
+        result.append(true_result)
 
         # plt.plot(objective.get_history_bestsofar())
         # plt.savefig("figure.png")
     result_analysis(result, 15)
     t2 = time.clock()
-    print('time cost: %f' % (t2 - t1))
+    print('time cost: %f' % (t2 - t1))  # example for minimizing the ackley function
 
+if False:
+    # gl.set_seed(12345)
+    t1 = time.clock()
+    # repeat of optimization experiments
+    repeat = 1
+    result = []
+    for i in range(repeat):
+        ackley_noise_func = ackley_noise_creator(0, 0.1)
+        # setup optimization problem
+        dim_size = 100  # dimensions
+        dim_regs = [[-1, 1]] * dim_size  # dimension range
+        dim_tys = [True] * dim_size  # dimension type : real
+        dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
+        objective = Objective(ackley_noise_func, dim)  # form up the objective function
+        budget = 200000  # number of calls to the objective function
+        # by setting autoset=false, the algorithm parameters will not be set by default
+
+        parameter = Parameter(algorithm="racos", budget=budget)
+        parameter.set_positive_size(5)
+        # so you are allowed to setup algorithm parameters of racos
+        # parameter.set_train_size(21)
+        # parameter.set_positive_size(1)
+        # parameter.set_negative_size(20)
+        # perform the optimization
+        solution = Opt.min(objective, parameter)
+
+        # store the optimization result
+        print('solved solution is:')
+        solution.print_solution()
+        true_result = ackley(solution)
+        result.append(true_result)
+
+        # plt.plot(objective.get_history_bestsofar())
+        # plt.savefig("figure.png")
+        result_analysis(result, 15)
+        t2 = time.clock()
+        print('time cost: %f' % (t2 - t1))
 
 # discrete optimization example using minimum set cover instance
 if False:
@@ -176,7 +256,7 @@ if False:
         # In this example, dimension is mixed. If dimension index is odd, this dimension if discrete, Otherwise, this
         # dimension is continuous.
         for i in range(dim_size):
-            if i%2 == 0:
+            if i % 2 == 0:
                 dim_regs.append([0, 1])
                 dim_tys.append(True)
             else:
@@ -190,5 +270,3 @@ if False:
         solution.print_solution()
         result.append(solution.get_value())
     result_analysis(result, 5)
-
-

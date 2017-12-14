@@ -26,6 +26,7 @@ class RacosCommon:
         self._negative_data = []
         # Solution
         self._best_solution = None
+        self._possible_solution_list = []
         return
 
     # Clear RacosCommon
@@ -43,16 +44,16 @@ class RacosCommon:
     def init_attribute(self):
         # check if the initial solutions have been set
         data_temp = self._parameter.get_init_samples()
+        i = 0
         if data_temp != None and self._best_solution == None:
             for j in range(len(data_temp)):
                 x = self._objective.construct_solution(data_temp[j])
                 self._objective.eval(x)
                 self._data.append(x)
-            self.selection()
-            return 
+                ToolFunction.log(" init solution %s, eval %s" % (i, x.get_value()))
+                i += 1
         # otherwise generate random solutions
         iteration_num = self._parameter.get_train_size()
-        i = 0
         while i < iteration_num:
             # distinct_flag: True means sample is distinct(can be use),
             # False means sample is distinct, you should sample again.
@@ -71,12 +72,14 @@ class RacosCommon:
     # Sort self._data
     # Choose first-train_size solutions as the new self._data
     # Choose first-positive_size solutions as self._positive_data
-    # Choose [positive_size, train_size) (Include the begin, not include the end) solutions as self._negative_data
+    # Choose [positive_size, train_size) (Include the begin, not include the
+    # end) solutions as self._negative_data
     def selection(self):
         new_data = sorted(self._data, key=lambda x: x.get_value())
         self._data = new_data[0:self._parameter.get_train_size()]
         self._positive_data = new_data[0: self._parameter.get_positive_size()]
-        self._negative_data = new_data[self._parameter.get_positive_size(): self._parameter.get_train_size()]
+        self._negative_data = new_data[
+            self._parameter.get_positive_size(): self._parameter.get_train_size()]
         self._best_solution = self._positive_data[0]
         return
 
@@ -95,7 +98,8 @@ class RacosCommon:
                     limited, number = dim.limited_space()
                     if limited is True:
                         if number <= data_num:
-                            ToolFunction.log('racos_common.py: WARNING -- sample space has been fully enumerated. Stop early')
+                            ToolFunction.log(
+                                'racos_common.py: WARNING -- sample space has been fully enumerated. Stop early')
                             return None, None
                     if times > 100:
                         distinct_flag = False
@@ -142,7 +146,8 @@ class RacosCommon:
                     limited, number = space.limited_space()
                     if limited is True:
                         if number <= data_num:
-                            ToolFunction.log('racos_common: WARNING -- sample space has been fully enumerated. Stop early')
+                            ToolFunction.log(
+                                'racos_common: WARNING -- sample space has been fully enumerated. Stop early')
                             return None, None
                     if times > 100:
                         distinct_flag = False
@@ -184,13 +189,15 @@ class RacosCommon:
     # For debugging
     def print_positive_data(self):
         ToolFunction.log('------print positive_data------')
-        ToolFunction.log('the size of positive_data is: %d' % (len(self._positive_data)))
+        ToolFunction.log('the size of positive_data is: %d' %
+                         (len(self._positive_data)))
         for x in self._positive_data:
             x.print_solution()
 
     def print_negative_data(self):
         ToolFunction.log('------print negative_data------')
-        ToolFunction.log('the size of negative_data is: %d' % (len(self._negative_data)))
+        ToolFunction.log('the size of negative_data is: %d' %
+                         (len(self._negative_data)))
         for x in self._negative_data:
             x.print_solution()
 
