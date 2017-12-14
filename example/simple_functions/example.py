@@ -11,7 +11,7 @@ This file contains some examples about how to use Racos(or SRacos)
 optimization algorithm
 
 Author:
-    Yuren Liu
+    Yuren Liu, Xionghui Chen
 """
 
 

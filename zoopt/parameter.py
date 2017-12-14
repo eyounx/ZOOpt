@@ -24,7 +24,7 @@ class Parameter:
     # If init_samples is not None, the samples will be added into the first sampled solution set
     # If time_budget is not None, the algorithm should stop when the time_budget (in seconds)  runs out.
     # If terminal_value if not None, the algorithm should stop when such value
-    # If suppression is True, use SSRACOS algorithm, you should set non_update_allowed and resample_times then.
+    # only if suppression is True, means use SSRACOS algorithm, non_update_allowed and resample_times are useful.
     # is found
     def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None, init_samples=None,
                  time_budget=None, terminal_value=None, non_update_allowed=40, resample_times=100):
@@ -79,18 +79,6 @@ class Parameter:
         else:
             self.__train_size = 22
             self.__positive_size = 2
-        # elif budget <= 2500:
-        #     self.__train_size = 22
-        #     self.__positive_size = 3
-        # elif budget <= 5000:
-        #     self.__train_size = 36
-        #     self.__positive_size = 4
-        # elif budget < 10000:
-        #     self.__train_size = 56
-        #     self.__positive_size = 6
-        # else:
-        #     self.__train_size = 76
-        #     self.__positive_size = 8
 
         self.__negative_size = self.__train_size - self.__positive_size
 

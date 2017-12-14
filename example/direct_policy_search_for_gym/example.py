@@ -72,10 +72,14 @@ def run_ss_test(task_name, layers, in_budget, max_step, repeat, terminal_value):
     dim_regs = [[-10, 10]] * dim_size
     dim_tys = [True] * dim_size
     dim = Dimension(dim_size, dim_regs, dim_tys)
-
+    def resample_function(solution, iteration_num):
+        eval_list = []
+        for i in range(iteration_num):
+            eval_list.append(gym_task.sum_reward(solution))
+        return sum(eval_list) * 1.0 / len(eval_list)
     # form up the objective function
     objective = Objective(gym_task.sum_reward, dim,
-                          re_sample_func=gym_task.sum_reward)
+                          re_sample_func=resample_function)
     # by default, the algorithm is sequential RACOS
     parameter = Parameter(budget=budget, autoset=True,
                           suppression=True, terminal_value=terminal_value)
@@ -111,6 +115,7 @@ if __name__ == '__main__':
     ant_layers = [111, 15, 8]
     hopper_layers = [11, 9, 5, 3]
     lunarlander_layers = [8, 5, 3, 1]
+
     run_ss_test('MountainCar-v0', mountain_car_layers,
                 1000, 1000, 5, terminal_value=-500)
     print("use sracos")

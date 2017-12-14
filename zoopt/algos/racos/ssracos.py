@@ -2,17 +2,17 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-# Author      :   Xionghui Chen
-# Created     :   2017-11-24
-# Modified    :   2017-11-24
-# Version     :   1.0
+"""
+The class SSRacos represents SSRacos algorithm. It's inherited from SRacos.
 
+Author:
+    Xionghui Chen
+"""
 
 import time
 import numpy
 from zoopt.solution import Solution
 from zoopt.algos.racos.racos_classification import RacosClassification
-from zoopt.algos.racos.racos_common import RacosCommon
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
 from zoopt.algos.racos.sracos import SRacos
@@ -118,10 +118,7 @@ class SSRacos(SRacos):
             self.i += 1
         return self.get_best_solution()
 
-    #
     def update_possible_solution(self):
-        # for solution in self._positive_data:
-        #     ToolFunction.log(" positive sollution list %s" % solution.get_value())
         for solution in self._positive_data:
             if solution.is_in_possible_solution:
                 continue
@@ -129,10 +126,6 @@ class SSRacos(SRacos):
                 solution.is_in_possible_solution = True
                 new_solution = solution.deep_copy()
                 self._possible_solution_list.append(new_solution)
-
-        # for solution in self._possible_solution_list:
-        #     ToolFunction.log(" best possible sollution list %s" %
-        #                      solution.get_resample_value())
 
     # if set for_test as False, this method will resample all of solution in positive data and then add to possible solution.
     # return resample value if for_test is False otherwise return suppression value.
@@ -156,8 +149,8 @@ class SSRacos(SRacos):
 
     def sort_solution_list(self, solution_list, key=lambda x: x.get_value()):
         return sorted(solution_list, key=key)
-    # Find first element larger than x
 
+    # Find first element larger than x
     def binary_search(self, iset, x, begin, end):
         x_value = x.get_value()
         if x_value <= iset[begin].get_value():
@@ -173,9 +166,6 @@ class SSRacos(SRacos):
             return self.binary_search(iset, x, mid, end)
 
     def _positive_data_re_sample(self):
-        # for solution in self._positive_data:
-        #     ToolFunction.log(" [before re sample]: positive sollution list %s" %
-        #                      solution.get_value())
         for data in self._positive_data:
             if not data.is_in_possible_solution:
                 self.i += self._parameter.get_resample_times()
