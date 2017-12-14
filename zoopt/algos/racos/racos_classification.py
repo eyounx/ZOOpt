@@ -46,6 +46,7 @@ class RacosClassification:
         len_negative = len(self.__negative_solution)
         index_set = list(range(self.__solution_space.get_size()))
         types = self.__solution_space.get_types()
+        order = self.__solution_space.get_order()
         while len_negative > 0:
             k = index_set[gl.rand.randint(0, len(index_set) - 1)]
             x_pos_k = self.__x_positive.get_x_index(k)
@@ -69,6 +70,38 @@ class RacosClassification:
                                 i += 1
                 else:
                     r = gl.rand.uniform(x_neg_k, x_pos_k)
+                    if r > self.__sample_region[k][0]:
+                        self.__sample_region[k][0] = r
+                        i = 0
+                        while i < len_negative:
+                            if self.__negative_solution[i].get_x_index(k) <= r:
+                                len_negative -= 1
+                                itemp = self.__negative_solution[i]
+                                self.__negative_solution[i] = self.__negative_solution[len_negative]
+                                self.__negative_solution[len_negative] = itemp
+                            else:
+                                i += 1
+            # integer continuous
+            elif order is True:
+                x_negative = self.__negative_solution[
+                    gl.rand.randint(0, len_negative - 1)]
+                x_neg_k = x_negative.get_x_index(k)
+                if x_pos_k < x_neg_k:
+                    # different from continuous version
+                    r = gl.rand.randint(x_pos_k, x_neg_k-1)
+                    if r < self.__sample_region[k][1]:
+                        self.__sample_region[k][1] = r
+                        i = 0
+                        while i < len_negative:
+                            if self.__negative_solution[i].get_x_index(k) >= r:
+                                len_negative -= 1
+                                itemp = self.__negative_solution[i]
+                                self.__negative_solution[i] = self.__negative_solution[len_negative]
+                                self.__negative_solution[len_negative] = itemp
+                            else:
+                                i += 1
+                else:
+                    r = gl.rand.randint(x_neg_k, x_pos_k)
                     if r > self.__sample_region[k][0]:
                         self.__sample_region[k][0] = r
                         i = 0

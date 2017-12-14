@@ -7,6 +7,7 @@ from zoopt.algos.asynchronous_racos import calculator_server
 from port_conflict import is_open
 from zoopt.utils.tool_function import ToolFunction
 
+
 def run_server(port, work_dir, control_server):
     local_ip = socket.gethostbyname(socket.gethostname())
     data_length = 1024

@@ -12,11 +12,13 @@ Author:
 
 class Dimension:
 
-    def __init__(self, size=0, regs=[], tys=[]):
+    def __init__(self, size=0, regs=[], tys=[], order=False):
         self._size = size
         self._regions = regs
         # True means continuous, False means discrete
         self._types = tys
+        # Order=True matters only when dimensions are discrete and have partial order relations.
+        self._order = order
         return
 
     # Check if the dimensions of regs and tys
@@ -126,6 +128,9 @@ class Dimension:
 
     def get_types(self):
         return self._types
+
+    def get_order(self):
+        return self._order
 
     # for debugging
     def print_dim(self):
