@@ -13,6 +13,7 @@ Author:
 
 
 class Opt:
+
     def __init__(self):
         return
 
@@ -27,11 +28,12 @@ class Opt:
         if constraint is not None and ((algorithm is None) or (algorithm == "poss")):
             optimizer = ParetoOptimization()
             result = optimizer.opt(objective, parameter)
-        elif constraint is None and ((algorithm is None) or (algorithm == "racos") or (algorithm == "sracos")):
+        elif constraint is None and ((algorithm is None) or (algorithm == "racos") or (algorithm == "sracos")) or (algorithm == "ssracos"):
             optimizer = RacosOptimization()
             result = optimizer.opt(objective, parameter)
         else:
-            ToolFunction.log("opt.py: No proper algorithm found for %s" % algorithm)
+            ToolFunction.log(
+                "opt.py: No proper algorithm found for %s" % algorithm)
         return result
 
     @staticmethod

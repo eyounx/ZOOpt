@@ -2,7 +2,7 @@
 import math
 from random import Random
 from zoopt.dimension import Dimension
-
+import numpy as np
 """
 Objective functions can be implemented in this file
 
@@ -37,15 +37,19 @@ def ackley(solution):
     return value
 
 
-# set cover problem for discrete optimization
-# this problem has some extra initialization tasks, thus we define this problem as a class
+def ackley_noise_creator(mu, sigma):
+    return lambda solution: ackley(solution) + np.random.normal(mu, sigma, 1)
+    # set cover problem for discrete optimization
+    # this problem has some extra initialization tasks, thus we define this problem as a class
+
+
 class setcover:
     __weight = None
     __subset = None
 
     def __init__(self):
         self.__weight = [0.8356, 0.5495, 0.4444, 0.7269, 0.9960, 0.6633, 0.5062, 0.8429, 0.1293, 0.7355,
-                  0.7979, 0.2814, 0.7962, 0.1754, 0.0267, 0.9862, 0.1786, 0.5884, 0.6289, 0.3008]
+                         0.7979, 0.2814, 0.7962, 0.1754, 0.0267, 0.9862, 0.1786, 0.5884, 0.6289, 0.3008]
         self.__subset = []
         self.__subset.append([0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0])
         self.__subset.append([0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0])

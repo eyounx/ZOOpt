@@ -1,3 +1,4 @@
+from zoopt.algos.racos.ssracos import SSRacos
 
 from zoopt.algos.racos.sracos import SRacos
 from zoopt.algos.racos.racos import Racos
@@ -8,6 +9,7 @@ The class RacosOptimization will contains best_solution and optimization algorit
 Author:
     Yuren Liu
 """
+
 
 class RacosOptimization:
 
@@ -28,12 +30,20 @@ class RacosOptimization:
         ub = parameter.get_uncertain_bits()
         if ub is None:
             ub = self.set_ub(objective)
-        if parameter.get_sequential() is True:
-            self.__algorithm = SRacos()
-            self.__best_solution = self.__algorithm.opt(objective, parameter, strategy, ub)
-        else :
+        if parameter.get_sequential():
+            if not parameter.get_suppressioin():
+                self.__algorithm = SRacos()
+                self.__best_solution = self.__algorithm.opt(
+                    objective, parameter, strategy, ub)
+            else:
+
+                self.__algorithm = SSRacos()
+                self.__best_solution = self.__algorithm.opt(
+                    objective, parameter, strategy, ub)
+        else:
             self.__algorithm = Racos()
-            self.__best_solution = self.__algorithm.opt(objective, parameter, ub)
+            self.__best_solution = self.__algorithm.opt(
+                objective, parameter, ub)
         return self.__best_solution
 
     def get_best_sol(self):

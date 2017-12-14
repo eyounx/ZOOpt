@@ -10,13 +10,15 @@ Author:
     Yuren Liu
 """
 
+
 class Dimension:
 
-    def __init__(self, size=0, regs=[], tys=[]):
+    def __init__(self, size=0, regs=[], tys=[], include_upper_bound=False):
         self._size = size
         self._regions = regs
         # True means continuous, False means discrete
         self._types = tys
+        self.include_upper_bound = include_upper_bound
         return
 
     # Check if the dimensions of regs and tys
@@ -63,8 +65,12 @@ class Dimension:
         x = []
         for i in range(self._size):
             if self._types[i] is True:
-                value = gl.rand.uniform(
-                    self._regions[i][0], self._regions[i][1])
+                if not self.include_upper_bound:
+                    value = gl.rand.uniform(
+                        self._regions[i][0], self._regions[i][1])
+                else:
+                    value = gl.rand.uniform(
+                        self._regions[i][0], self._regions[i][1]+gl.precision * 2)
             else:
                 rand_index = gl.rand.randint(0, len(self._regions[i]) - 1)
                 value = self._regions[i][rand_index]

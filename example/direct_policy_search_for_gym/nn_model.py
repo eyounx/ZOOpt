@@ -9,7 +9,9 @@ Author:
     Yuren Liu
 """
 
+
 class ActivationFunction:
+
     @staticmethod
     # sigmoid function
     def sigmoid(x):
@@ -23,7 +25,9 @@ class ActivationFunction:
                     x[i] = 1
         return x
 
+
 class Layer(object):
+
     def __init__(self, in_size, out_size, input_w=None, activation_function=None):
         self.__row = in_size
         self.__column = out_size
@@ -49,7 +53,7 @@ class Layer(object):
         interval = self.__column
         begin = 0
         output = []
-        step = len(w) / interval
+        step = int(len(w) / interval)
         for i in range(step):
             output.append(w[begin: begin + interval])
             begin += interval
@@ -64,6 +68,7 @@ class Layer(object):
 
 
 class NNModel:
+
     def __init__(self):
         self.__layers = []
         self.__layer_size = []
@@ -78,7 +83,7 @@ class NNModel:
             self.add_layer(layers[i], layers[i + 1], activation_function=ActivationFunction.sigmoid)
             self.__w_size += layers[i] * layers[i + 1]
 
-    def add_layer(self, in_size, out_size, input_w = None, activation_function=None):
+    def add_layer(self, in_size, out_size, input_w=None, activation_function=None):
         new_layer = Layer(in_size, out_size, input_w, activation_function)
         self.__layers.append(new_layer)
         return
@@ -103,5 +108,3 @@ class NNModel:
 
     def get_w_size(self):
         return self.__w_size
-
-

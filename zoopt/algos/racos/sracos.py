@@ -15,13 +15,15 @@ Author:
 
 
 class SRacos(RacosCommon):
+
     def __init__(self):
         RacosCommon.__init__(self)
         return
 
     # SRacos's optimization function
     # Default strategy is WR(worst replace)
-    # Default uncertain_bits is 1, but actually ub will be set either by user or by RacosOptimization automatically.
+    # Default uncertain_bits is 1, but actually ub will be set either by user
+    # or by RacosOptimization automatically.
     def opt(self, objective, parameter, strategy='WR', ub=1):
         self.clear()
         self.set_objective(objective)
@@ -30,34 +32,49 @@ class SRacos(RacosCommon):
         i = 0
         iteration_num = self._parameter.get_budget() - self._parameter.get_train_size()
         time_log1 = time.time()
+        max_distinct_repeat_times = 100
+        current_not_distinct_times = 0
+        last_best = None
         while i < iteration_num:
             if gl.rand.random() < self._parameter.get_probability():
                 classifier = RacosClassification(
                     self._objective.get_dim(), self._positive_data, self._negative_data, ub)
                 classifier.mixed_classification()
-                solution, distinct_flag = self.distinct_sample_classifier(classifier, True, self._parameter.get_train_size())
+                solution, distinct_flag = self.distinct_sample_classifier(
+                    classifier, True, self._parameter.get_train_size())
             else:
-                solution, distinct_flag = self.distinct_sample(self._objective.get_dim())
+                solution, distinct_flag = self.distinct_sample(
+                    self._objective.get_dim())
             # panic stop
             if solution is None:
+                ToolFunction.log(" [break loop] because solution is None")
                 return self._best_solution
             if distinct_flag is False:
-                continue
+                current_not_distinct_times += 1
+                if current_not_distinct_times >= max_distinct_repeat_times:
+                    ToolFunction.log(
+                        "[break loop] because distinct_flag is false too much times")
+                    return self._best_solution
+                else:
+                    continue
             # evaluate the solution
             objective.eval(solution)
             bad_ele = self.replace(self._positive_data, solution, 'pos')
             self.replace(self._negative_data, bad_ele, 'neg', strategy)
             self._best_solution = self._positive_data[0]
+            last_best = self._best_solution.get_value()
             if i == 4:
                 time_log2 = time.time()
                 expected_time = (self._parameter.get_budget() - self._parameter.get_train_size()) * \
                                 (time_log2 - time_log1) / 5
                 if self._parameter.get_time_budget() is not None:
-                    expected_time = min(expected_time, self._parameter.get_time_budget())
+                    expected_time = min(
+                        expected_time, self._parameter.get_time_budget())
                 if expected_time > 5:
                     m, s = divmod(expected_time, 60)
                     h, m = divmod(m, 60)
-                    ToolFunction.log('expected remaining running time: %02d:%02d:%02d' % (h, m, s))
+                    ToolFunction.log(
+                        'expected remaining running time: %02d:%02d:%02d' % (h, m, s))
             # time budget check
             if self._parameter.get_time_budget() is not None:
                 if (time.time() - time_log1) >= self._parameter.get_time_budget():
