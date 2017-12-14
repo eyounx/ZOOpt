@@ -15,8 +15,6 @@ Author:
 def sphere(solution):
     a = 0
     rd = Random()
-    for i in range(1):
-        a += rd.uniform(0, 1)
     x = solution.get_x()
     value = sum([(i-0.2)*(i-0.2) for i in x])
     return value
@@ -26,8 +24,6 @@ def sphere(solution):
 def sphere_integer(solution):
     a = 0
     rd = Random()
-    for i in range(1):
-        a += rd.uniform(0, 1)
     x = solution.get_x()
     value = sum([(i-2)*(i-2) for i in x])
     return value
@@ -37,8 +33,6 @@ def sphere_integer(solution):
 def ackley(solution):
     a = 0
     rd = Random()
-    for i in range(1000000):
-        a += rd.uniform(0, 1)
     x = solution.get_x()
     bias = 0.2
     value_seq = 0

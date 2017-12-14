@@ -61,6 +61,7 @@ if False:
     result_analysis(result, 1)
     t2 = time.clock()
     print('time costed %f seconds' % (t2 - t1))
+
 # ssracos example for minimizing ackley with Gaussian noise
 if True:
     gl.set_seed(12345)
@@ -81,11 +82,11 @@ if True:
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
         objective = Objective(ackley_noise_func, dim, re_sample_func=resample_func, balance_rate=0.5)  # form up the objective function
-        budget = 200000  # 20*dim_size  # number of calls to the objective function
+        budget = 20000  # 20*dim_size  # number of calls to the objective function
         # by setting autoset=false, the algorithm parameters will not be set by default
 
-        parameter = Parameter(budget=budget, sequential=True,
-                              suppression=True, non_update_allowed=500, resample_times=100)
+        parameter = Parameter(budget=budget, sequential=True, suppression=True, intermediate_result=True,
+                              non_update_allowed=500, resample_times=100)
         solution = Opt.min(objective, parameter)
         parameter.set_positive_size(5)
         # so you are allowed to setup algorithm parameters of racos
@@ -106,7 +107,7 @@ if True:
 
 
 # example for minimizing the sphere function: integer continuous
-if True:
+if False:
     t1 = time.clock()
     # repeat of optimization experiments
     repeat = 5
