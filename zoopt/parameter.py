@@ -24,9 +24,10 @@ class Parameter:
     # If init_samples is not None, the samples will be added into the first sampled solution set
     # If time_budget is not None, the algorithm should stop when the time_budget (in seconds)  runs out.
     # If terminal_value if not None, the algorithm should stop when such value
+    # If suppression is True, use SSRACOS algorithm, you should set non_update_allowed and resample_times then.
     # is found
     def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, autoset=True, precision=None, uncertain_bits=None, init_samples=None,
-                 time_budget=None, terminal_value=None, baselines=None, non_update_baselines_allowed=None):
+                 time_budget=None, terminal_value=None, non_update_allowed=40, resample_times=100):
         self.__algorithm = algorithm
         self.__budget = budget
 
@@ -44,14 +45,10 @@ class Parameter:
         self.__negative_size = 0
         self.__probability = 0.99
 
-        self.__resample_times = 150
+        self.__resample_times = resample_times
         self._suppression = suppression
         # temp
-        self.__max_stay_function = None
-        self.__max_stay_precision = 0
-        self.__non_update_allowed = 0
-        self.__non_update_baselines_allowed = non_update_baselines_allowed
-        self.__baselines = baselines
+        self.__non_update_allowed = non_update_allowed
 
         # for pareto optimization
         self.__isolationFunc = lambda x: 0
@@ -82,13 +79,20 @@ class Parameter:
         else:
             self.__train_size = 22
             self.__positive_size = 2
+        # elif budget <= 2500:
+        #     self.__train_size = 22
+        #     self.__positive_size = 3
+        # elif budget <= 5000:
+        #     self.__train_size = 36
+        #     self.__positive_size = 4
+        # elif budget < 10000:
+        #     self.__train_size = 56
+        #     self.__positive_size = 6
+        # else:
+        #     self.__train_size = 76
+        #     self.__positive_size = 8
+
         self.__negative_size = self.__train_size - self.__positive_size
-
-    def get_non_update_baselines_allowed(self):
-        return self.__non_update_baselines_allowed
-
-    def set_non_update_baselines_allowed(self, non_update_baselines_allowed):
-        self.__non_update_baselines_allowed = non_update_baselines_allowed
 
     def get_suppressioin(self):
         return self._suppression
@@ -102,23 +106,11 @@ class Parameter:
     def get_resample_times(self):
         return self.__resample_times
 
-    def set_max_stay_function(self, max_stay_function):
-        self.__max_stay_function = max_stay_function
-
     def set_non_update_allowed(self, non_update_allowed):
         self.__non_update_allowed = non_update_allowed
 
     def get_non_update_allowed(self):
         return self.__non_update_allowed
-
-    def set_max_stay_precision(self, max_stay_precision):
-        self.__max_stay_precision = max_stay_precision
-
-    def get_max_stay_precision(self):
-        return self.__max_stay_precision
-
-    def get_max_stay_function(self):
-        return self.__max_stay_function
 
     def set_algorithm(self, algorithm):
         self.__algorithm = algorithm
@@ -153,12 +145,6 @@ class Parameter:
 
     def get_uncertain_bits(self):
         return self.__uncertain_bits
-
-    def get_baselines(self):
-        return self.__baselines
-
-    def set_baselines(self, baselines):
-        self.__baselines = baselines
 
     def set_train_size(self, size):
         self.__train_size = size

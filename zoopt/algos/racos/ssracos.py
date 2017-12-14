@@ -18,13 +18,13 @@ from zoopt.utils.tool_function import ToolFunction
 from zoopt.algos.racos.sracos import SRacos
 
 
-class SSRacos2(SRacos):
+class SSRacos(SRacos):
 
     def __init__(self):
         SRacos.__init__(self)
         return
 
-    # SRacos's optimization function
+    # SSRacos's optimization function
     # Default strategy is WR(worst replace)
     # Default uncertain_bits is 1, but actually ub will be set either by user
     # or by RacosOptimization automatically.
@@ -33,15 +33,15 @@ class SSRacos2(SRacos):
         self.set_objective(objective)
         self.set_parameters(parameter)
         self.init_attribute()
-        i = 0
-        iteration_num = (self._parameter.get_budget() -
-                         self._parameter.get_train_size())*10
+        self.i = 0
+        iteration_num = self._parameter.get_budget() - self._parameter.get_train_size()
         time_log1 = time.time()
         max_distinct_repeat_times = 100
         current_not_distinct_times = 0
         last_best = None
-        max_stay_function = parameter.get_max_stay_function()
-        max_stay_times = max_stay_function(0)
+        # max_stay_function = parameter.get_max_stay_function()
+        # precision_function = parameter.get_precision_function()
+        # max_stay_times = max_stay_function(0)
         non_update_allowed = parameter.get_non_update_allowed()
         # baselines = parameter.get_baselines()
         # non_update_baselines_allowed = parameter.get_non_update_baseline_allowed()
@@ -49,7 +49,7 @@ class SSRacos2(SRacos):
         current_stay_times = 0
         non_update_baselines_times = 0
 
-        while i < iteration_num:
+        while self.i < iteration_num:
             if gl.rand.random() < self._parameter.get_probability():
                 classifier = RacosClassification(
                     self._objective.get_dim(), self._positive_data, self._negative_data, ub)
@@ -61,12 +61,12 @@ class SSRacos2(SRacos):
                     self._objective.get_dim())
             # panic stop
             if solution is None:
-                print(" [break loop] because solution is None")
+                ToolFunction.log(" [break loop] because solution is None")
                 return self.get_best_solution()
             if distinct_flag is False:
                 current_not_distinct_times += 1
                 if current_not_distinct_times >= max_distinct_repeat_times:
-                    print(
+                    ToolFunction.log(
                         "[break loop] because distinct_flag is false too much times")
                     return self.get_best_solution()
                 else:
@@ -83,35 +83,16 @@ class SSRacos2(SRacos):
                         self._positive_data)
                     non_update_times = 0
                     best_solution = self.get_best_solution(for_test=True)
-                    # if best_solution stay longer than max_stay_times, break
-                    # loop
-                    if last_best is not None and last_best - best_solution.get_resample_value() < parameter.get_max_stay_precision():
-                        current_stay_times += 1
-                        print("[max stay test] last_best %s, current best %s, stay_times %s, max_stay_times %s" % (
-                            last_best, best_solution.get_resample_value(), current_stay_times, max_stay_times))
-                        if current_stay_times >= max_stay_times:
-                            print(
-                                "[max stay test][break loop] because stay longer than max_stay_times, break loop")
-                            return self.get_best_solution()
-                    else:
-                        current_stay_times = 0
-
-                    # if last_best is not None and baselines is not None and last_best - baselines:
-                    #     non_update_baselines_times += 1
-                    #     if non_update_baselines_times > non_update_baselines_allowed:
-                    #         print("[baselines judgement break] %s, max %s" % (
-                    # non_update_baselines_times,
-                    # non_update_baselines_allowed))
-
-                    #         return self.get_best_solution()
                     last_best = best_solution.get_resample_value()
-                    max_stay_times = max_stay_function(last_best)
+                    # max_stay_times = max_stay_function(last_best)
+            else:
+                non_update_times = 0
 
             bad_ele = self.replace(self._positive_data, solution, 'pos')
             self.replace(self._negative_data, bad_ele, 'neg', strategy)
             self._best_solution = self._positive_data[0]
 
-            if i == 4:
+            if self.i == 4:
                 time_log2 = time.time()
                 expected_time = (self._parameter.get_budget(
                 ) - self._parameter.get_train_size()) * (time_log2 - time_log1) / 5
@@ -134,12 +115,13 @@ class SSRacos2(SRacos):
                 if solution is not None and solution.get_resample_value() <= self._parameter.get_terminal_value():
                     ToolFunction.log('terminal function value reached')
                     return self.get_best_solution()
-            i += 1
+            self.i += 1
         return self.get_best_solution()
 
+    #
     def update_possible_solution(self):
-        for solution in self._positive_data:
-            print(" positive sollution list %s" % solution.get_value())
+        # for solution in self._positive_data:
+        #     ToolFunction.log(" positive sollution list %s" % solution.get_value())
         for solution in self._positive_data:
             if solution.is_in_possible_solution:
                 continue
@@ -148,10 +130,12 @@ class SSRacos2(SRacos):
                 new_solution = solution.deep_copy()
                 self._possible_solution_list.append(new_solution)
 
-        for solution in self._possible_solution_list:
-            print(" best possible sollution list %s" %
-                  solution.get_resample_value())
+        # for solution in self._possible_solution_list:
+        #     ToolFunction.log(" best possible sollution list %s" %
+        #                      solution.get_resample_value())
 
+    # if set for_test as False, this method will resample all of solution in positive data and then add to possible solution.
+    # return resample value if for_test is False otherwise return suppression value.
     def get_best_solution(self, for_test=False):
         if not for_test:
             # update solution in positive data
@@ -169,14 +153,6 @@ class SSRacos2(SRacos):
                 return sort_solution[0]
             else:
                 return sort_solution[0]
-
-    def get_real_positive_solution_list(self):
-        if len(self._possible_solution_list) < self._parameter.get_positive_size():
-            return self._positive_data
-        else:
-            solutions = self.sort_solution_list(
-                self._possible_solution_list, key=lambda x: x.get_resample_value())
-            return solutions[:self._parameter.get_positive_size()]
 
     def sort_solution_list(self, solution_list, key=lambda x: x.get_value()):
         return sorted(solution_list, key=key)
@@ -197,10 +173,12 @@ class SSRacos2(SRacos):
             return self.binary_search(iset, x, mid, end)
 
     def _positive_data_re_sample(self):
-        for solution in self._positive_data:
-            print(" [before re sample]: positive sollution list %s" %
-                  solution.get_value())
+        # for solution in self._positive_data:
+        #     ToolFunction.log(" [before re sample]: positive sollution list %s" %
+        #                      solution.get_value())
         for data in self._positive_data:
+            if not data.is_in_possible_solution:
+                self.i += self._parameter.get_resample_times()
             self._objective.resample(
                 data, self.get_parameters().get_resample_times())
 

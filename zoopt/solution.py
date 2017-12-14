@@ -22,9 +22,16 @@ class Solution:
         self.__resample_value = resample_value
         self.__attach = attach
         self.__post_attach = post_attach
-
-        self.is_in_possible_solution = is_in_possible_solution
+        self.__is_in_possible_solution = is_in_possible_solution
         return
+
+    @property
+    def is_in_possible_solution(self):
+        return self.__is_in_possible_solution
+
+    @is_in_possible_solution.setter
+    def is_in_possible_solution(self, value):
+        self.__is_in_possible_solution = value
 
     # Deep copy this solution. Note that the attachment is not deeply copied
     def deep_copy(self):

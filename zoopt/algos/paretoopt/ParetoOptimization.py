@@ -9,6 +9,7 @@ Author:
 
 """
 
+
 class ParetoOptimization:
 
     def __init__(self):
@@ -19,7 +20,8 @@ class ParetoOptimization:
         self.__best_solution = None
         self.__algorithm = None
 
-    # General optimization function, it will choose concrete optimization algorithm
+    # General optimization function, it will choose concrete optimization
+    # algorithm
     def opt(self, objective, parameter):
         self.clear()
         self.__algorithm = ParetoOpt()
@@ -29,3 +31,6 @@ class ParetoOptimization:
     def get_best_sol(self):
         return self.__best_solution
 
+
+import sys
+print(sys.path)

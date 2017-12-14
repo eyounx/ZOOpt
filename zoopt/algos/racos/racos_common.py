@@ -50,7 +50,7 @@ class RacosCommon:
                 x = self._objective.construct_solution(data_temp[j])
                 self._objective.eval(x)
                 self._data.append(x)
-                print("[zoopt] init solution %s, eval %s" % (i, x.get_value()))
+                ToolFunction.log(" init solution %s, eval %s" % (i, x.get_value()))
                 i += 1
         # otherwise generate random solutions
         iteration_num = self._parameter.get_train_size()

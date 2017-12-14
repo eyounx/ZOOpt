@@ -42,9 +42,9 @@ class Objective:
         self.__history.append(solution.get_value())
         solution.set_post_attach(self.__post_inherit())
 
-    def resample(self, solution, v):
+    def resample(self, solution, repeat_times):
         if solution.get_resample_value() is None:
-            solution.set_resample_value(self.__re_sample_func(solution, v))
+            solution.set_resample_value(self.__re_sample_func(solution, repeat_times))
             solution.set_value((1 - self.__balance_rate) * solution.get_value() +
                                self.__balance_rate * solution.get_resample_value())
             solution.set_post_attach(self.__post_inherit())

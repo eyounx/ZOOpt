@@ -10,6 +10,7 @@ Author:
     Yuren Liu
 """
 
+
 class GymTask:
     __envir = None                      # gym environment
     __envir_name = None                 # environment name
@@ -21,7 +22,8 @@ class GymTask:
     __action_type = []                  # the type of action, false means discrete
     __action_low_bound = []             # action lower bound
     __action_up_bound = []              # action upper bound
-    __policy_model = None               # policy model, it's a neural network in this example
+    # policy model, it's a neural network in this example
+    __policy_model = None
     __max_step = 0                      # maximum stop step
     __stop_step = 0                     # the stop step in recent trajectory
 
@@ -32,8 +34,10 @@ class GymTask:
         self.__obser_size = self.__envir.observation_space.shape[0]
         self.__obser_up_bound = []
         self.__obser_low_bound = []
+        self.total_step = 0
         for i in range(self.__obser_size):
-            self.__obser_low_bound.append(self.__envir.observation_space.high[i])
+            self.__obser_low_bound.append(
+                self.__envir.observation_space.high[i])
             self.__obser_up_bound.append(self.__envir.observation_space.low[i])
 
         # if the dimension of action space is one
@@ -51,8 +55,10 @@ class GymTask:
             self.__action_up_bound = []
             for i in range(self.__action_size):
                 self.__action_type.append(True)
-                self.__action_low_bound.append(self.__envir.action_space.low[i])
-                self.__action_up_bound.append(self.__envir.action_space.high[i])
+                self.__action_low_bound.append(
+                    self.__envir.action_space.low[i])
+                self.__action_up_bound.append(
+                    self.__envir.action_space.high[i])
         # for i in range(self.__action_size):
         #     self.__action_type.append(False)
 
@@ -72,7 +78,8 @@ class GymTask:
         for i in range(self.__action_size):
             # if action is continue
             if self.__action_type[i]:
-                tmp_act = (temp_act[i]+1)*((self.__action_up_bound[i]-self.__action_low_bound[i])/2.0)+self.__action_low_bound[i]
+                tmp_act = (temp_act[i]+1)*((self.__action_up_bound[i] -
+                                            self.__action_low_bound[i])/2.0)+self.__action_low_bound[i]
                 action.append(tmp_act)
             else:
                 sca = 2.0 / self.__action_sca[0]
@@ -124,10 +131,11 @@ class GymTask:
             if done:
                 self.__stop_step = i
                 break
+            self.total_step += 1
         value = sum_re
         name = self.__envir_name
         # turn the direction for minimization
-        if name == 'CartPole-v0' or name == 'MountainCar-v0' or name == 'Acrobot-v1' or name == 'HalfCheetah-v1' \
+        if name == 'CartPole-v0' or name == 'CartPole-v1' or name == 'MountainCar-v0' or name == 'Acrobot-v1' or name == 'HalfCheetah-v1' \
                 or name == 'Humanoid-v1' or name == 'Swimmer-v1' or name == 'Ant-v1' or name == 'Hopper-v1' \
                 or name == 'LunarLander-v2' or name == 'BipedalWalker-v2':
             value = -value

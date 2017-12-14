@@ -2,6 +2,9 @@ README.txt
 setup.cfg
 setup.py
 example/__init__.py
+example/asynchronous_racos/__init__.py
+example/asynchronous_racos/gym_server.py
+example/asynchronous_racos/sphere_server.py
 example/direct_policy_search_for_gym/__init__.py
 example/direct_policy_search_for_gym/example.py
 example/direct_policy_search_for_gym/gym_task.py
@@ -33,8 +36,7 @@ zoopt/algos/racos/racos_classification.py
 zoopt/algos/racos/racos_common.py
 zoopt/algos/racos/racos_optimization.py
 zoopt/algos/racos/sracos.py
-zoopt/algos/asynchronous_racos/__init__.py
-zoopt/algos/asynchronous_racos/calculator_server.py
+zoopt/algos/racos/ssracos.py
 zoopt/utils/__init__.py
 zoopt/utils/tool_function.py
 zoopt/utils/zoo_global.py

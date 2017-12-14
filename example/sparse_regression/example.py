@@ -15,6 +15,7 @@ Author:
     Chao Feng
 """
 
+
 class Sparse_MSE:
     _X = 0
     _Y = 0
@@ -32,35 +33,35 @@ class Sparse_MSE:
         self._C = self._X.T * self._X
         self._b = self._X.T * self._Y
 
-    def position(self,s):
-        n=np.shape(s)[1]
-        result=[]
-        for i in range(0,n):
-            if s[0,i]==1:
+    def position(self, s):
+        n = np.shape(s)[1]
+        result = []
+        for i in range(0, n):
+            if s[0, i] == 1:
                 result.append(i)
         return result
 
     # constraint function returns a zero or positive value mean constraints are satisfied, otherwise negative
-    def constraint(self,solution):
+    def constraint(self, solution):
         x = solution.get_x()
-        return self._k-x[0,:].sum()
+        return self._k-x[0, :].sum()
 
     def set_sparsity(self, k):
         self._k = k
 
     def get_sparsity(self):
         return self._k
-     
-    def loss(self,solution):
+
+    def loss(self, solution):
         x = solution.get_x()
-        if x[0, :].sum()==0.0 or x[0, :].sum()>=2.0*self._k:
+        if x[0, :].sum() == 0.0 or x[0, :].sum() >= 2.0*self._k:
             return float('inf')
         pos = self.position(x)
         alpha = (self._C[pos, :])[:, pos]
         alpha = alpha.I * self._b[pos, :]
         sub = self._Y - self._X[:, pos]*alpha
-        mse= sub.T*sub / np.shape(self._Y)[0]
-        return mse[0,0]
+        mse = sub.T*sub / np.shape(self._Y)[0]
+        return mse[0, 0]
 
     def get_dim(self):
         dim_regs = [[0, 1]] * self._size
@@ -76,24 +77,24 @@ class Sparse_MSE:
         data = dataset['data']
         return self.normlize_data(np.mat(data))
 
-    #normalize data to have mean 0 and variance 1 for each column
+    # normalize data to have mean 0 and variance 1 for each column
     def normlize_data(self, dataMatrix):
         try:
-            matSize=np.shape(dataMatrix)
-            for i in range(0,matSize[1]):
-                theColum=dataMatrix[:,i]
-                columnMean=sum(theColum)/matSize[0]
-                minusColumn=np.mat(theColum-columnMean)
-                std=np.sqrt(np.transpose(minusColumn)*minusColumn/matSize[0])
-                dataMatrix[:,i]=(theColum-columnMean)/std
+            matSize = np.shape(dataMatrix)
+            for i in range(0, matSize[1]):
+                theColum = dataMatrix[:, i]
+                columnMean = sum(theColum)/matSize[0]
+                minusColumn = np.mat(theColum-columnMean)
+                std = np.sqrt(np.transpose(minusColumn)*minusColumn/matSize[0])
+                dataMatrix[:, i] = (theColum-columnMean)/std
             return dataMatrix
-        except  Exception as e:
-            print  e
+        except Exception as e:
+            print(e)
         finally:
             pass
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     # load data file
     mse = Sparse_MSE('sonar.arff')
     mse.set_sparsity(8)

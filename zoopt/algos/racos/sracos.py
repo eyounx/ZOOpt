@@ -35,8 +35,6 @@ class SRacos(RacosCommon):
         max_distinct_repeat_times = 100
         current_not_distinct_times = 0
         last_best = None
-        max_stay_times = parameter.get_max_stay()
-        current_stay_times = 0
         while i < iteration_num:
             if gl.rand.random() < self._parameter.get_probability():
                 classifier = RacosClassification(
@@ -49,12 +47,12 @@ class SRacos(RacosCommon):
                     self._objective.get_dim())
             # panic stop
             if solution is None:
-                print(" [break loop] because solution is None")
+                ToolFunction.log(" [break loop] because solution is None")
                 return self._best_solution
             if distinct_flag is False:
                 current_not_distinct_times += 1
                 if current_not_distinct_times >= max_distinct_repeat_times:
-                    print(
+                    ToolFunction.log(
                         "[break loop] because distinct_flag is false too much times")
                     return self._best_solution
                 else:
@@ -64,16 +62,6 @@ class SRacos(RacosCommon):
             bad_ele = self.replace(self._positive_data, solution, 'pos')
             self.replace(self._negative_data, bad_ele, 'neg', strategy)
             self._best_solution = self._positive_data[0]
-
-            # if best_solution stay longer than max_stay_times, break loop
-            if last_best is not None and last_best - self._best_solution.get_value() < parameter.get_max_stay_precision():
-                current_stay_times += 1
-                if current_stay_times >= max_stay_times:
-                    print(
-                        "[break loop] because stay longer than max_stay_times, break loop")
-                    return self._best_solution
-            else:
-                current_stay_times = 0
             last_best = self._best_solution.get_value()
             if i == 4:
                 time_log2 = time.time()
