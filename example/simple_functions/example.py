@@ -2,7 +2,7 @@
 #import matplotlib.pyplot as plt  # uncomment this line to plot figures
 import time
 import numpy as np
-from fx import sphere, ackley, setcover, mixed_function
+from fx import sphere, sphere_integer, setcover, mixed_function
 from zoopt import Dimension, Objective, Parameter, Opt, Solution
 from zoopt.utils.zoo_global import gl
 
@@ -76,7 +76,7 @@ if True:
         dim_regs = [[-10, 10]] * dim_size  # dimension range
         dim_tys = [False] * dim_size  # dimension type : integer
         dim = Dimension(dim_size, dim_regs, dim_tys, order=True)  # form up the dimension object
-        objective = Objective(sphere, dim)  # form up the objective function
+        objective = Objective(sphere_integer, dim)  # form up the objective function
 
         # setup algorithm parameters
         budget = 100000  # number of calls to the objective function

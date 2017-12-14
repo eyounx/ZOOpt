@@ -23,7 +23,7 @@ def sphere(solution):
 
 
 # Sphere function for integer continuous optimization
-def sphere(solution):
+def sphere_integer(solution):
     a = 0
     rd = Random()
     for i in range(1):
