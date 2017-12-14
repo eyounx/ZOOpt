@@ -13,14 +13,13 @@ Author:
 
 class Dimension:
 
-    def __init__(self, size=0, regs=[], tys=[], order=False, include_upper_bound=False):
+    def __init__(self, size=0, regs=[], tys=[], order=False):
         self._size = size
         self._regions = regs
         # True means continuous, False means discrete
         self._types = tys
         # Order=True matters only when dimensions are discrete and have partial order relations.
         self._order = order
-        self.include_upper_bound = include_upper_bound
         return
 
     # Check if the dimensions of regs and tys
@@ -67,12 +66,8 @@ class Dimension:
         x = []
         for i in range(self._size):
             if self._types[i] is True:
-                if not self.include_upper_bound:
-                    value = gl.rand.uniform(
-                        self._regions[i][0], self._regions[i][1])
-                else:
-                    value = gl.rand.uniform(
-                        self._regions[i][0], self._regions[i][1]+gl.precision * 2)
+                value = gl.rand.uniform(
+                    self._regions[i][0], self._regions[i][1])
             else:
                 rand_index = gl.rand.randint(0, len(self._regions[i]) - 1)
                 value = self._regions[i][rand_index]
