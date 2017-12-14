@@ -84,19 +84,12 @@ if True:
         objective = Objective(ackley_noise_func, dim, re_sample_func=resample_func, balance_rate=0.5)  # form up the objective function
         budget = 200000  # 20*dim_size  # number of calls to the objective function
         # by setting autoset=false, the algorithm parameters will not be set by default
-
-        parameter = Parameter(budget=budget, sequential=True, suppression=True, intermediate_result=True,
+        # so you are allowed to setup algorithm parameters of racos
+        parameter = Parameter(budget=budget, sequential=True, suppression=True, intermediate_result=False,
                               non_update_allowed=500, resample_times=100)
+        # perform the optimization
         solution = Opt.min(objective, parameter)
         parameter.set_positive_size(5)
-        # so you are allowed to setup algorithm parameters of racos
-        # parameter.set_train_size(21)
-        # parameter.set_positive_size(1)
-        # parameter.set_negative_size(20)
-
-        # perform the optimization
-
-        # store the optimization result
         print('solved solution is:')
         solution.print_solution()
         true_result = ackley(solution)
