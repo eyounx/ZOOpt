@@ -6,7 +6,7 @@
 The class SSRacos represents SSRacos algorithm. It's inherited from SRacos.
 
 Author:
-    Xionghui Chen
+    Xionghui Chen, Yuren Liu
 """
 
 import time
