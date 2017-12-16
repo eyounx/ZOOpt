@@ -58,7 +58,10 @@ class SRacos(RacosCommon):
                 else:
                     continue
             # evaluate the solution
-            objective.eval(solution, parameter.get_intermediate_result())
+            objective.eval(solution)
+            # show best solution
+            times = i + self._parameter.get_train_size() + 1
+            self.show_best_solution(parameter.get_intermediate_result(), times, parameter.get_intermediate_freq())
             bad_ele = self.replace(self._positive_data, solution, 'pos')
             self.replace(self._negative_data, bad_ele, 'neg', strategy)
             self._best_solution = self._positive_data[0]

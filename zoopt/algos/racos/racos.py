@@ -43,7 +43,11 @@ class Racos(RacosCommon):
                 if distinct_flag is False:
                     continue
                 # evaluate the solution
-                objective.eval(solution, parameter.get_intermediate_result())
+                objective.eval(solution)
+                # show best solution
+                times = i + self._parameter.get_train_size() + 1
+                self.show_best_solution(parameter.get_intermediate_result(), times,
+                                        parameter.get_intermediate_freq())
                 self._data.append(solution)
                 j += 1
             self.selection()

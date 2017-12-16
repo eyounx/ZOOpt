@@ -12,7 +12,7 @@ Author:
 
 class Objective:
 
-    def __init__(self, func=None, dim=None, constraint=None, re_sample_func=None, balance_rate=1):
+    def __init__(self, func=None, dim=None, constraint=None, resample_func=None, balance_rate=1):
         # Objective function defined by the user
         self.__func = func
         # Number of dimensions, dimension bounds are in the dim object
@@ -24,7 +24,7 @@ class Objective:
         self.__constraint = constraint
         # the history of optimization
         self.__history = []
-        self.__re_sample_func = re_sample_func
+        self.__resample_func = self.resample_func if resample_func is None else resample_func
         self.__balance_rate = balance_rate
 
     # Construct a solution from x
@@ -37,20 +37,27 @@ class Objective:
         return new_solution
 
     # evaluate the objective function of a solution
-    def eval(self, solution, intermediate_print=False):
+    def eval(self, solution, intermediate_print=False, times=0, freq=100):
         val = self.__func(solution)
         solution.set_value(val)
         self.__history.append(solution.get_value())
         solution.set_post_attach(self.__post_inherit())
-        if intermediate_print is True:
-            ToolFunction.log("fx result: " + str(val))
+        if intermediate_print is True and times % freq == 0:
+            ToolFunction.log(("budget %d, fx result: " % times) + str(val))
+            ToolFunction.log("x: " + str(solution.get_x()))
 
     def resample(self, solution, repeat_times):
         if solution.get_resample_value() is None:
-            solution.set_resample_value(self.__re_sample_func(solution, repeat_times))
+            solution.set_resample_value(self.__resample_func(solution, repeat_times))
             solution.set_value((1 - self.__balance_rate) * solution.get_value() +
                                self.__balance_rate * solution.get_resample_value())
             solution.set_post_attach(self.__post_inherit())
+
+    def resample_func(self, solution, iteration_num):
+        result = []
+        for i in range(iteration_num):
+            result.append(self.__func(solution))
+        return sum(result) * 1.0 / len(result)
 
     def eval_constraint(self, solution):
         solution.set_value(

@@ -44,7 +44,7 @@ if False:
 
         # setup algorithm parameters
         budget = 2000 # number of calls to the objective function
-        parameter = Parameter(budget=budget, sequential=True, intermediate_result=False)  # by default, the algorithm is sequential RACOS
+        parameter = Parameter(budget=budget, sequential=False, intermediate_result=True, intermediate_freq=200)  # by default, the algorithm is sequential RACOS
         # perform the optimization
         solution = Opt.min(objective, parameter)
 
@@ -67,25 +67,25 @@ if True:
     gl.set_seed(12345)
     t1 = time.clock()
     # repeat of optimization experiments
-    repeat = 15
+    repeat = 10
     result = []
     for i in range(repeat):
-        def resample_func(solution, iteration_num):
-            result = []
-            for i in range(iteration_num):
-                result.append(ackley(solution))
-            return sum(result) * 1.0 / len(result)
+        # def resample_func(solution, iteration_num):
+        #     result = []
+        #     for i in range(iteration_num):
+        #         result.append(ackley(solution))
+        #     return sum(result) * 1.0 / len(result)
         ackley_noise_func = ackley_noise_creator(0, 0.1)
         # setup optimization problem
         dim_size = 100  # dimensions
         dim_regs = [[-1, 1]] * dim_size  # dimension range
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
-        objective = Objective(ackley_noise_func, dim, re_sample_func=resample_func, balance_rate=0.5)  # form up the objective function
+        objective = Objective(ackley_noise_func, dim, balance_rate=0.5)  # form up the objective function
         budget = 200000  # 20*dim_size  # number of calls to the objective function
         # by setting autoset=false, the algorithm parameters will not be set by default
         # so you are allowed to setup algorithm parameters of racos
-        parameter = Parameter(budget=budget, sequential=True, suppression=True, intermediate_result=False,
+        parameter = Parameter(budget=budget, suppression=True, intermediate_result=False,
                               non_update_allowed=500, resample_times=100)
         # perform the optimization
         solution = Opt.min(objective, parameter)
@@ -94,7 +94,7 @@ if True:
         solution.print_solution()
         true_result = ackley(solution)
         result.append(true_result)
-    result_analysis(result, 5)
+    result_analysis(result, 1)
     t2 = time.clock()
     print('time cost: %f' % (t2 - t1))
 

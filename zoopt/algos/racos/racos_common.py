@@ -154,6 +154,11 @@ class RacosCommon:
                         break
         return ins, distinct_flag
 
+    def show_best_solution(self, intermediate_print=False, times=0, freq=100):
+        if intermediate_print is True and times % freq == 0:
+            ToolFunction.log(("budget %d, fx result: " % times) + str(self._best_solution.get_value()))
+            ToolFunction.log("x: " + str(self._best_solution.get_x()))
+
     # Append setb to seta, deepcopy
     @staticmethod
     def extend(seta, setb):

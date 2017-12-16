@@ -1,5 +1,6 @@
 
 import sys
+import math
 from zoopt.utils.tool_function import ToolFunction
 
 """
@@ -26,7 +27,7 @@ class Parameter:
     # If terminal_value if not None, the algorithm should stop when such value is found
     # only if suppression is True, means use SSRACOS algorithm, non_update_allowed and resample_times are useful.
     # is found
-    def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, intermediate_result=False, autoset=True,
+    def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, intermediate_result=False, intermediate_freq=100, autoset=True,
                  precision=None, uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None,
                  non_update_allowed=40, resample_times=100):
         self.__algorithm = algorithm
@@ -46,6 +47,8 @@ class Parameter:
         self.__negative_size = 0
         self.__probability = 0.99
         self.__intermediate_result = intermediate_result
+        tmp_freq = math.floor(intermediate_freq)
+        self.__intermediate_freq = tmp_freq if tmp_freq >= 1 else 1
 
         self.__resample_times = resample_times
         self._suppression = suppression
@@ -192,4 +195,7 @@ class Parameter:
 
     def get_intermediate_result(self):
         return self.__intermediate_result
+
+    def get_intermediate_freq(self):
+        return self.__intermediate_freq
 

@@ -72,7 +72,11 @@ class SSRacos(SRacos):
                 else:
                     continue
             # evaluate the solution
-            objective.eval(solution, parameter.get_intermediate_result())
+            objective.eval(solution)
+            # show best solution
+            times = self.i + self._parameter.get_train_size() + 1
+            self.show_best_solution(parameter.get_intermediate_result(), times,
+                                    parameter.get_intermediate_freq())
             # suppression
             if self._is_worest(solution):
                 non_update_times += 1
