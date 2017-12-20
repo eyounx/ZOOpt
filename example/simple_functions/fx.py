@@ -24,6 +24,9 @@ def sphere(solution):
 def sphere_integer(solution):
     a = 0
     rd = Random()
+    res = 0
+    for i in range(100000):
+        res += rd.randint(0, 2)
     x = solution.get_x()
     value = sum([(i-2)*(i-2) for i in x])
     return value

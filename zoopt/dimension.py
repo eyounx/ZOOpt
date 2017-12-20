@@ -68,6 +68,8 @@ class Dimension:
             if self._types[i] is True:
                 value = gl.rand.uniform(
                     self._regions[i][0], self._regions[i][1])
+            elif self._order is True:
+                value = gl.rand.randint(self._regions[i][0], self._regions[i][1])
             else:
                 rand_index = gl.rand.randint(0, len(self._regions[i]) - 1)
                 value = self._regions[i][rand_index]

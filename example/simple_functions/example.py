@@ -63,7 +63,7 @@ if False:
     print('time costed %f seconds' % (t2 - t1))
 
 # ssracos example for minimizing ackley with Gaussian noise
-if True:
+if False:
     gl.set_seed(12345)
     t1 = time.clock()
     # repeat of optimization experiments
@@ -100,7 +100,7 @@ if True:
 
 
 # example for minimizing the sphere function: integer continuous
-if False:
+if True:
     t1 = time.clock()
     # repeat of optimization experiments
     repeat = 5
@@ -118,7 +118,7 @@ if False:
         # setup algorithm parameters
         budget = 100000  # number of calls to the objective function
         parameter = Parameter(budget=budget, sequential=True,
-                              intermediate_result=False)  # by default, the algorithm is sequential RACOS
+                              intermediate_result=True, intermediate_freq=1)  # by default, the algorithm is sequential RACOS
 
         # perform the optimization
         solution = Opt.min(objective, parameter)
