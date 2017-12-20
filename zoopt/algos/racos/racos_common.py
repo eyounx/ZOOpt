@@ -159,6 +159,10 @@ class RacosCommon:
             ToolFunction.log(("budget %d, fx result: " % times) + str(self._best_solution.get_value()))
             ToolFunction.log("x: " + str(self._best_solution.get_x()))
 
+    def save_racosc(self, i):
+        if self._parameter.get_save_racosc() is True:
+            # f =
+
     # Append setb to seta, deepcopy
     @staticmethod
     def extend(seta, setb):

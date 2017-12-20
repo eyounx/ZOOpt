@@ -27,9 +27,11 @@ class Parameter:
     # If terminal_value if not None, the algorithm should stop when such value is found
     # only if suppression is True, means use SSRACOS algorithm, non_update_allowed and resample_times are useful.
     # is found
-    def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, intermediate_result=False, intermediate_freq=100, autoset=True,
-                 precision=None, uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None,
-                 non_update_allowed=40, resample_times=100):
+    def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, intermediate_result=False,
+                 intermediate_freq=100, intermediate_output=False, file_output="result.txt", autoset=True, precision=None,
+                 uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None, non_update_allowed=40,
+                 hot_start=False, save_racosc=False, file_racosc="file_racosc.txt", file_racosc_all="file_racosc_all.txt",
+                 resample_times=100):
         self.__algorithm = algorithm
         self.__budget = budget
 
@@ -38,7 +40,7 @@ class Parameter:
         self.__time_budget = time_budget
         self.__terminal_value = terminal_value
 
-        # for racos optimization
+        ## for racos optimization
         self.__sequential = sequential
         self.__precision = precision
         self.__uncertain_bits = uncertain_bits
@@ -46,14 +48,23 @@ class Parameter:
         self.__positive_size = 0
         self.__negative_size = 0
         self.__probability = 0.99
+        # for intermediate result
         self.__intermediate_result = intermediate_result
         tmp_freq = math.floor(intermediate_freq)
         self.__intermediate_freq = tmp_freq if tmp_freq >= 1 else 1
+        self.__intermediate_output = intermediate_output
+        self.__file_output = file_output
 
         self.__resample_times = resample_times
         self._suppression = suppression
         # temp
         self.__non_update_allowed = non_update_allowed
+
+        # for hot start
+        self.__hot_start = hot_start
+        self.__save_racosc = save_racosc
+        self.__file_racosc = file_racosc
+        self.__file_racosc_all = file_racosc_all
 
         # for pareto optimization
         self.__isolationFunc = lambda x: 0
@@ -198,4 +209,20 @@ class Parameter:
 
     def get_intermediate_freq(self):
         return self.__intermediate_freq
+
+# self.__hot_start = hot_start
+#         self.__file_racosc = file_racosc
+#         self.__file_racosc_all = file_racosc_all
+
+    def get_hot_start(self):
+        return self.__hot_start
+
+    def get_save_racosc(self):
+        return self.__save_racosc
+
+    def get_file_racosc(self):
+        return self.__file_racosc
+
+    def get_file_racosc_all(self):
+        return self.__file_racosc_all
 

@@ -64,7 +64,7 @@ if False:
 
 # ssracos example for minimizing ackley with Gaussian noise
 if True:
-    gl.set_seed(12345)
+    gl.set_seed(10001)
     t1 = time.clock()
     # repeat of optimization experiments
     repeat = 10
@@ -100,7 +100,7 @@ if True:
 
 
 # example for minimizing the sphere function: integer continuous
-if False:
+if True:
     t1 = time.clock()
     # repeat of optimization experiments
     repeat = 5
