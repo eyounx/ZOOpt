@@ -1,6 +1,7 @@
 
 import sys
 import math
+from zoopt.dimension import Dimension
 from zoopt.utils.tool_function import ToolFunction
 
 """
@@ -31,7 +32,7 @@ class Parameter:
                  intermediate_freq=100, intermediate_output=False, file_output="result.txt", autoset=True, precision=None,
                  uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None, non_update_allowed=40,
                  hot_start=False, save_racosc=False, file_racosc="file_racosc.txt", file_racosc_all="file_racosc_all.txt",
-                 resample_times=100):
+                 resample_times=100, num_sre=5, low_dimension=None, withdraw_alpha=None, variance_A=None):
         self.__algorithm = algorithm
         self.__budget = budget
 
@@ -71,6 +72,12 @@ class Parameter:
 
         if budget != 0 and autoset is True:
             self.auto_set(budget)
+
+        # for random embedding
+        self.__num_sre = num_sre
+        self.__low_dimension = low_dimension if low_dimension is not None else Dimension(10, [[-1, 1]]*10, [True]*10)
+        self.__withdraw_alpha = withdraw_alpha if withdraw_alpha is not None else Dimension(1, [[-1, 1]], [True])
+        self.__variance_A = variance_A if variance_A is not None else 1/self.__low_dimension.get_size()
         return
 
     # Set train_size, positive_size, negative_size by following rules:
@@ -95,7 +102,6 @@ class Parameter:
         else:
             self.__train_size = 22
             self.__positive_size = 2
-
         self.__negative_size = self.__train_size - self.__positive_size
 
     def get_suppressioin(self):
@@ -226,3 +232,14 @@ class Parameter:
     def get_file_racosc_all(self):
         return self.__file_racosc_all
 
+    def get_num_sre(self):
+        return self.__num_sre
+
+    def get_low_dimension(self):
+        return self.__low_dimension
+
+    def get_variance_A(self):
+        return self.__variance_A
+
+    def get_withdraw_alpha(self):
+        return self.__withdraw_alpha

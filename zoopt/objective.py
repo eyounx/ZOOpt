@@ -2,6 +2,8 @@
 from zoopt.solution import Solution
 from zoopt.utils.zoo_global import pos_inf
 from zoopt.utils.tool_function import ToolFunction
+import numpy as np
+
 """
 The class Objective represents the objective function and its associated variables
 
@@ -12,7 +14,7 @@ Author:
 
 class Objective:
 
-    def __init__(self, func=None, dim=None, constraint=None, resample_func=None, balance_rate=1):
+    def __init__(self, func=None, dim=None, constraint=None, resample_func=None, balance_rate=1, random_embedding=False):
         # Objective function defined by the user
         self.__func = func
         # Number of dimensions, dimension bounds are in the dim object
@@ -26,6 +28,10 @@ class Objective:
         self.__history = []
         self.__resample_func = self.resample_func if resample_func is None else resample_func
         self.__balance_rate = balance_rate
+        # for random embedding
+        self.__random_embedding = False
+        self.__A = None
+        self.__last_x = None
 
     # Construct a solution from x
     def construct_solution(self, x, parent=None):
@@ -38,7 +44,13 @@ class Objective:
 
     # evaluate the objective function of a solution
     def eval(self, solution, intermediate_print=False, times=0, freq=100):
-        val = self.__func(solution)
+        # val = None
+        if self.__random_embedding is False:
+            val = self.__func(solution)
+        else:
+            x = solution.get_x()
+            x_origin = x[0] * self.__last_x.get_x() + np.multiply(self.__A, np.array(x[1:]))
+            val = self.__func(Solution(x=x_origin))
         solution.set_value(val)
         self.__history.append(solution.get_value())
         solution.set_post_attach(self.__post_inherit())
@@ -117,6 +129,15 @@ class Objective:
                 bestsofar = self.__history[i]
             history_bestsofar.append(bestsofar)
         return history_bestsofar
+
+    def get_re(self):
+        return self.__random_embedding
+
+    def set_A(self, A):
+        self.__A = A
+
+    def set_last_x(self, x):
+        self.__last_x = x
 
     # clean the optimization history
     def clean_history(self):

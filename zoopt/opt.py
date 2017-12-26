@@ -3,6 +3,7 @@ from zoopt.algos.paretoopt.ParetoOptimization import ParetoOptimization
 from zoopt.algos.racos.racos_optimization import RacosOptimization
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
+from zoopt.random_embedding.sre_optimization import SequentialRandomEmbedding
 
 """
 The class Opt is the main entrance of using zoopt: Opt.min(objective, parameter)
@@ -27,13 +28,17 @@ class Opt:
         result = None
         if constraint is not None and ((algorithm is None) or (algorithm == "poss")):
             optimizer = ParetoOptimization()
-            result = optimizer.opt(objective, parameter)
         elif constraint is None and ((algorithm is None) or (algorithm == "racos") or (algorithm == "sracos")) or (algorithm == "ssracos"):
             optimizer = RacosOptimization()
-            result = optimizer.opt(objective, parameter)
         else:
             ToolFunction.log(
                 "opt.py: No proper algorithm found for %s" % algorithm)
+            return result
+        if objective.get_re() is True:
+            sre = SequentialRandomEmbedding(objective, parameter, optimizer)
+            result = sre.opt()
+        else:
+            result = optimizer.opt(objective, parameter)
         return result
 
     @staticmethod

@@ -32,6 +32,14 @@ class Dimension:
         else:
             return True
 
+    @staticmethod
+    def merge_dim(dim1, dim2):
+        new_size = dim1.get_size() + dim2.get_size()
+        new_regions = dim1.get_regions().extend(dim2.get_regions())
+        new_types = dim1.get_types().extend(dim2.get_types)
+        new_order = True if dim1.get_order() is True or dim2.get_order() is True else False
+        return Dimension(new_size, new_regions, new_types, new_order)
+
     # Set all the attributes
     def set_all(self, size, regs, tys):
         if self.judge_match(size, regs, tys) is False:
