@@ -11,14 +11,12 @@ Author:
 """
 
 
-# Sphere function for continuous optimization
 def sphere(solution):
     a = 0
     rd = Random()
     x = solution.get_x()
     value = sum([(i-0.2)*(i-0.2) for i in x])
     return value
-
 
 # Sphere function for integer continuous optimization
 def sphere_integer(solution):

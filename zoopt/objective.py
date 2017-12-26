@@ -29,7 +29,7 @@ class Objective:
         self.__resample_func = self.resample_func if resample_func is None else resample_func
         self.__balance_rate = balance_rate
         # for random embedding
-        self.__random_embedding = False
+        self.__random_embedding = random_embedding
         self.__A = None
         self.__last_x = None
 
@@ -49,7 +49,7 @@ class Objective:
             val = self.__func(solution)
         else:
             x = solution.get_x()
-            x_origin = x[0] * self.__last_x.get_x() + np.multiply(self.__A, np.array(x[1:]))
+            x_origin = x[0] * np.array(self.__last_x.get_x()) + np.dot(self.__A, np.array(x[1:]))
             val = self.__func(Solution(x=x_origin))
         solution.set_value(val)
         self.__history.append(solution.get_value())
@@ -57,6 +57,7 @@ class Objective:
         if intermediate_print is True and times % freq == 0:
             ToolFunction.log(("budget %d, fx result: " % times) + str(val))
             ToolFunction.log("x: " + str(solution.get_x()))
+        return val
 
     def resample(self, solution, repeat_times):
         if solution.get_resample_value() is None:
@@ -68,12 +69,12 @@ class Objective:
     def resample_func(self, solution, iteration_num):
         result = []
         for i in range(iteration_num):
-            result.append(self.__func(solution))
+            result.append(self.eval(solution))
         return sum(result) * 1.0 / len(result)
 
     def eval_constraint(self, solution):
         solution.set_value(
-            [self.__func(solution), self.__constraint(solution)])
+            [self.eval(solution), self.__constraint(solution)])
         self.__history.append(solution.get_value())
         solution.set_post_attach(self.__post_inherit())
 
@@ -132,6 +133,12 @@ class Objective:
 
     def get_re(self):
         return self.__random_embedding
+
+    def get_last_x(self):
+        return self.__last_x
+
+    def get_A(self):
+        return self.__A
 
     def set_A(self, A):
         self.__A = A

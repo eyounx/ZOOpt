@@ -77,7 +77,7 @@ class Parameter:
         self.__num_sre = num_sre
         self.__low_dimension = low_dimension if low_dimension is not None else Dimension(10, [[-1, 1]]*10, [True]*10)
         self.__withdraw_alpha = withdraw_alpha if withdraw_alpha is not None else Dimension(1, [[-1, 1]], [True])
-        self.__variance_A = variance_A if variance_A is not None else 1/self.__low_dimension.get_size()
+        self.__variance_A = variance_A if variance_A is not None else 1.0/self.__low_dimension.get_size()
         return
 
     # Set train_size, positive_size, negative_size by following rules:

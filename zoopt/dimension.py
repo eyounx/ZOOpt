@@ -1,6 +1,7 @@
 
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
+import copy
 """
 The class Dimension was implemented in this file.
 
@@ -34,11 +35,13 @@ class Dimension:
 
     @staticmethod
     def merge_dim(dim1, dim2):
-        new_size = dim1.get_size() + dim2.get_size()
-        new_regions = dim1.get_regions().extend(dim2.get_regions())
-        new_types = dim1.get_types().extend(dim2.get_types)
+        res_dim = copy.deepcopy(dim1)
+        res_dim.set_size(dim1.get_size() + dim2.get_size())
+        res_dim.get_regions().extend(dim2.get_regions())
+        res_dim.get_types().extend(dim2.get_types())
         new_order = True if dim1.get_order() is True or dim2.get_order() is True else False
-        return Dimension(new_size, new_regions, new_types, new_order)
+        res_dim.set_order(new_order)
+        return res_dim
 
     # Set all the attributes
     def set_all(self, size, regs, tys):
@@ -140,6 +143,12 @@ class Dimension:
 
     def get_order(self):
         return self._order
+
+    def set_size(self, size):
+        self._size = size
+
+    def set_order(self, order):
+        self._order = order
 
     # for debugging
     def print_dim(self):
