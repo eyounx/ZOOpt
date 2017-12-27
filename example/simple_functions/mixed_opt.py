@@ -1,37 +1,10 @@
 import matplotlib.pyplot as plt
 import time
 import numpy as np
-from fx import sphere, ackley, setcover, sphere_mixed, ackley_noise_creator
+from fx import sphere_mixed
 from zoopt import Dimension, Objective, Parameter, Opt, Solution
 from zoopt.utils.zoo_global import gl
 from quick_start import result_analysis
-
-# # mixed optimization
-# if False:
-#     repeat = 15
-#     result = []
-#     gl.set_seed(12345)
-#     for j in range(repeat):
-#         dim_size = 10
-#         dim_regs = []
-#         dim_tys = []
-#         # In this example, the search space is discrete if this dimension index is odd, Otherwise, the search space
-#         # is continuous.
-#         for i in range(dim_size):
-#             if i % 2 == 0:
-#                 dim_regs.append([0, 1])
-#                 dim_tys.append(True)
-#             else:
-#                 dim_regs.append([0, 100])
-#                 dim_tys.append(False)
-#         dim = Dimension(dim_size, dim_regs, dim_tys)
-#         objective = Objective(mixed_function, dim)
-#         budget = 2000
-#         parameter = Parameter(budget=budget, autoset=True)
-#         solution = Opt.min(objective, parameter)
-#         solution.print_solution()
-#         result.append(solution.get_value())
-#     result_analysis(result, 5)
 
 
 # mixed optimization
@@ -74,7 +47,7 @@ def minimize_sphere_mixed():
     average_regret = reduce(lambda x, y: np.array(x) + np.array(y), history) / repeat  # get average regret
     plt.plot(average_regret)
     # plt.show()
-    plt.savefig("sphere_mixed_figure.png")  # uncomment this line to save figures
+    plt.savefig("img/sphere_mixed_figure.png")  # uncomment this line and comment last line to save figures
     result_analysis(result, 5)
     t2 = time.clock()
     print('time cost: %f' % (t2 - t1))

@@ -38,7 +38,7 @@ def minimize_ackley_continuous():
     average_regret = reduce(lambda x, y: np.array(x) + np.array(y), history) / repeat  # get average regret
     plt.plot(average_regret)
     plt.show()
-    # plt.savefig("ackley_continuous_figure.png")  # uncomment this line to save figures
+    # plt.savefig("img/ackley_continuous_figure.png")  # uncomment this line and comment last line to save figures
     result_analysis(result, 1)
     t2 = time.clock()
     print('time cost: %f' % (t2 - t1))
@@ -71,7 +71,7 @@ def minimize_sphere_continuous():
     average_regret = reduce(lambda x, y: np.array(x) + np.array(y), history) / repeat  # get average regret
     plt.plot(average_regret)
     # plt.show()
-    plt.savefig("sphere_continuous_figure.png")  # uncomment this line to save figures
+    plt.savefig("img/sphere_continuous_figure.png")  # uncomment this line and comment last line to save figures
     result_analysis(result, 5)
     t2 = time.clock()
     print('time cost: %f' % (t2 - t1))
