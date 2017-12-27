@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import time
 import numpy as np
-from fx import sphere, ackley, setcover, ackley_noise_creator
+from fx import sphere, ackley
 from zoopt import Dimension, Objective, Parameter, Opt, Solution
 from zoopt.utils.zoo_global import gl
 from quick_start import result_analysis
@@ -77,5 +77,5 @@ def minimize_sphere_continuous():
     print('time cost: %f' % (t2 - t1))
 
 if __name__ == '__main__':
-    # minimize_ackley_continuous()
-    minimize_sphere_continuous()
+    minimize_ackley_continuous()
+    # minimize_sphere_continuous()

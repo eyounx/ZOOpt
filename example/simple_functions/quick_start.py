@@ -12,13 +12,14 @@ from fx import ackley
 import numpy as np
 
 
-def result_analysis(result, top):
-    limit = top if top < len(result) else len(result)
-    result.sort()
-    top_k = result[0:limit]
-    mean_r = np.mean(top_k)
-    std_r = np.std(top_k)
-    print('%f +- %f' % (mean_r, std_r))
+# get mean value and standard deviation of best 'top' results.
+def result_analysis(results, top):
+    limit = top if top < len(results) else len(results)
+    results.sort()
+    top_k = results[0:limit]
+    mean_r = np.mean(top_k, dtype=np.float64)
+    std_r = np.std(top_k, dtype=np.float64)
+    print('%f +- %f' % (float(mean_r), float(std_r)))
     return
 
 if __name__ == '__main__':

@@ -49,7 +49,7 @@ def ackley_noise_creator(mu, sigma):
     # this problem has some extra initialization tasks, thus we define this problem as a class
 
 
-class setcover:
+class SetCover:
     __weight = None
     __subset = None
 

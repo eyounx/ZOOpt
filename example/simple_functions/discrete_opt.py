@@ -1,7 +1,7 @@
-import matplotlib.pyplot as plt  # uncomment this line to plot figures
+import matplotlib.pyplot as plt
 import time
 import numpy as np
-from fx import sphere, ackley, setcover, ackley_noise_creator
+from fx import SetCover
 from zoopt import Dimension, Objective, Parameter, Opt, Solution
 from zoopt.utils.zoo_global import gl
 from quick_start import result_analysis
@@ -15,7 +15,7 @@ def minimize_setcover_discrete():
     result = []
     history = []
     for i in range(repeat):
-        problem = setcover()
+        problem = SetCover()
         dim = problem.dim  # the dim is prepared by the class
         objective = Objective(problem.fx, dim)  # form up the objective function
         budget = 100 * dim.get_size()  # number of calls to the objective function
