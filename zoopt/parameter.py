@@ -28,7 +28,7 @@ class Parameter:
     # If terminal_value if not None, the algorithm should stop when such value is found
     # only if suppression is True, means use SSRACOS algorithm, non_update_allowed and resample_times are useful.
     # is found
-    def __init__(self, algorithm=None, suppression=False, sequential=True, budget=0, intermediate_result=False,
+    def __init__(self, algorithm=None, budget=0, suppression=False, sequential=True, intermediate_result=False,
                  intermediate_freq=100, intermediate_output=False, file_output="result.txt", autoset=True, precision=None,
                  uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None, non_update_allowed=40,
                  hot_start=False, save_racosc=False, file_racosc="file_racosc.txt", file_racosc_all="file_racosc_all.txt",

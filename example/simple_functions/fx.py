@@ -12,14 +12,20 @@ Author:
 
 
 def sphere(solution):
-    a = 0
-    rd = Random()
     x = solution.get_x()
     value = sum([(i-0.2)*(i-0.2) for i in x])
     return value
 
+
+# A test function for mixed optimization
+def sphere_mixed(solution):
+    x = solution.get_x()
+    value = sum([i*i for i in x])
+    return value
+
+
 # Sphere function for integer continuous optimization
-def sphere_integer(solution):
+def sphere_discrete_order(solution):
     a = 0
     rd = Random()
     x = solution.get_x()
@@ -29,18 +35,11 @@ def sphere_integer(solution):
 
 # Ackley function for continuous optimization
 def ackley(solution):
-    a = 0
-    rd = Random()
     x = solution.get_x()
     bias = 0.2
-    value_seq = 0
-    value_cos = 0
-    for i in range(len(x)):
-        value_seq += (x[i]-bias)*(x[i]-bias)
-        value_cos += math.cos(2.0*math.pi*(x[i]-bias))
-    ave_seq = value_seq/len(x)
-    ave_cos = value_cos/len(x)
-    value = -20 * math.exp(-0.2 * math.sqrt(ave_seq)) - math.exp(ave_cos) + 20.0 + math.e
+    ave_seq = sum([(i - bias) * (i - bias) for i in x]) / len(x)
+    ave_cos = sum([np.cos(2.0*np.pi*(i-bias)) for i in x]) / len(x)
+    value = -20 * np.exp(-0.2 * np.sqrt(ave_seq)) - np.exp(ave_cos) + 20.0 + np.e
     return value
 
 
@@ -114,8 +113,4 @@ class setcover:
         return Dimension(dim_size, dim_regs, dim_tys)
 
 
-# A test function for mixed optimization
-def mixed_function(solution):
-    x = solution.get_x()
-    value = sum([i*i for i in x])
-    return value
+

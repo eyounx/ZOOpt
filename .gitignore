@@ -7,4 +7,5 @@ test
 /zoopt/algos/asynchronous_racos/*.py
 /example/simple_funcitions/asynchronous_*.py
 /build/*
-
+/tutorial/*
+/example/simple_functions/*.png

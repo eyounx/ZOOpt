@@ -13,7 +13,6 @@ class Global:
     def __init__(self):
         # rand is the random object used by all files
         self.rand = Random()
-        self.set_seed(100)
         self.precision = 1e-17
         # rand.seed(100)
 
