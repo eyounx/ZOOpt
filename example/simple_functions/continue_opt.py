@@ -11,7 +11,7 @@ from quick_start import result_analysis
 def minimize_ackley_continuous():
     t1 = time.clock()
     gl.set_seed(12345)  # set random seed
-    repeat = 1  # repeat of optimization experiments
+    repeat = 1  # repeat number of optimization
     result = []
     history = []
     for i in range(repeat):

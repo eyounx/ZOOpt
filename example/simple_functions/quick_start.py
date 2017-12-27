@@ -12,7 +12,7 @@ from fx import ackley
 import numpy as np
 
 
-# get mean value and standard deviation of best 'top' results.
+# get mean value and standard deviation of best 'top' results
 def result_analysis(results, top):
     limit = top if top < len(results) else len(results)
     results.sort()

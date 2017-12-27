@@ -9,9 +9,9 @@ from quick_start import result_analysis
 
 # discrete optimization example using minimum set cover instance
 def minimize_setcover_discrete():
-    gl.set_seed(12345)
+    gl.set_seed(12345)  # set random seed
     t1 = time.clock()
-    repeat = 1
+    repeat = 1  # repeat number of optimization
     result = []
     history = []
     for i in range(repeat):
