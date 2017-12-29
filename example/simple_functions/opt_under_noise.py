@@ -37,10 +37,8 @@ def minimize_ackley_continuous_noisy():
 
         # for plotting the optimization history
         if i == 0:
-            history.append([0 for k in range(budget)])  # init for reducing
-        history.append(objective.get_history_bestsofar())
-    average_regret = reduce(lambda x, y: np.array(x) + np.array(y), history) / repeat  # get average regret
-    plt.plot(average_regret)
+            history = np.array(objective.get_history_bestsofar())  # init for reducing
+    plt.plot(history)
     # plt.show()
     plt.savefig("img/ackley_continuous_noisy_figure.png")  # uncomment this line and comment last line to save figures
     result_analysis(result, 1)

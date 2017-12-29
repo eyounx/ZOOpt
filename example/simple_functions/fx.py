@@ -10,14 +10,14 @@ Author:
     Yuren Liu
 """
 
-
+# Sphere function for continuous optimization
 def sphere(solution):
     x = solution.get_x()
     value = sum([(i-0.2)*(i-0.2) for i in x])
     return value
 
 
-# A test function for mixed optimization
+# Sphere function for mixed optimization
 def sphere_mixed(solution):
     x = solution.get_x()
     value = sum([i*i for i in x])
