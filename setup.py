@@ -11,7 +11,7 @@ setup(
     ),
     author='Yang Yu',
     author_email='yuy@nju.edu.cn',
-    maintainer='Yu-Ren Liu, Chao Feng, Yi-Qi Hu, Yang Yu',
+    maintainer='Yu-Ren Liu, Chao Feng, Yi-Qi Hu, Xiong-Hui Chen, Yang Yu',
     license='MIT License',
     packages=find_packages(),
     platforms=["all"],
