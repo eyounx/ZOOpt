@@ -1,17 +1,19 @@
+"""
+The class GymTask sets a gym runtime environment.
+
+Author:
+    Yu-Ren Liu
+"""
 
 import gym
 from gym.spaces.discrete import Discrete
 from nn_model import NNModel
 
-"""
-the class GymTask constructs a gym runtime environment.
-
-Author:
-    Yuren Liu
-"""
-
 
 class GymTask:
+    """
+    This class sets a gym runtime environment.
+    """
     __envir = None                      # gym environment
     __envir_name = None                 # environment name
     __obser_size = None                 # the number of parameters in observation
@@ -28,6 +30,11 @@ class GymTask:
     __stop_step = 0                     # the stop step in recent trajectory
 
     def __init__(self, name):
+        """
+        Init function.
+
+        :param name: gym task name
+        """
         self.reset_task()
         self.__envir = gym.make(name)
         self.__envir_name = name
@@ -63,6 +70,11 @@ class GymTask:
         #     self.__action_type.append(False)
 
     def reset_task(self):
+        """
+        Reset gym runtime environment.
+
+        :return: no return
+        """
         self.__envir = None
         self.__envir_name = None
         self.__obser_size = None
@@ -72,8 +84,14 @@ class GymTask:
         self.__policy_model = None
         self.__max_step = 0
 
-    # Transform action from neural network into true action.
+    #
     def transform_action(self, temp_act):
+        """
+        Transform action from neural network into true action.
+
+        :param temp_act: output of the neural network
+        :return: action
+        """
         action = []
         for i in range(self.__action_size):
             # if action is continue
@@ -99,23 +117,38 @@ class GymTask:
             action = action[0]
         return action
 
-    # generate a new model
     def new_nnmodel(self, layers):
+        """
+        Generate a new model
+
+        :param layers: layer information
+        :return: no return
+        """
         # initialize NN model as policy
         self.__policy_model = NNModel()
         self.__policy_model.construct_nnmodel(layers)
 
         return
 
-    # generate action from observation using neuron network policy
+    #
     def nn_policy_sample(self, observation):
-        # action = []
+        """
+        Generate action from observation using neuron network policy
+
+        :param observation: observation is the output of gym task environment
+        :return: action to choose
+        """
         output = self.__policy_model.cal_output(observation)
         action = self.transform_action(output)
         return action
 
-    # objective function of racos by summation of reward in a trajectory
     def sum_reward(self, solution):
+        """
+        Objective function of racos by summation of reward in a trajectory
+
+        :param solution: a data structure containing x and fx
+        :return: value of fx
+        """
         x = solution.get_x()
         sum_re = 0
         # reset stop step

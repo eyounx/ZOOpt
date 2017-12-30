@@ -1,9 +1,22 @@
+"""
+This file contains objective functions for asynchronous racos.
+
+Author:
+    Yu-Ren Liu
+"""
+
 from random import Random
-import math
-# Sphere function for continue optimization
+import numpy as np
+
 
 
 def sphere(solution):
+    """
+    Sphere function for continuous optimization
+
+    :param solution: a data structure containing x and fx
+    :return: value of fx
+    """
     a = 0
     rd = Random()
     for i in range(100000):
@@ -14,18 +27,19 @@ def sphere(solution):
 
 
 def ackley(solution):
+    """
+        Ackley function for continuous optimization
+
+        :param solution: a data structure containing x and fx
+        :return: value of fx
+    """
     # a = 0
     # rd = Random()
     # for i in range(100000):
     #     a += rd.uniform(0, 1)
     x = solution.get_x()
     bias = 0.2
-    value_seq = 0
-    value_cos = 0
-    for i in range(len(x)):
-        value_seq += (x[i]-bias)*(x[i]-bias)
-        value_cos += math.cos(2.0*math.pi*(x[i]-bias))
-    ave_seq = value_seq/len(x)
-    ave_cos = value_cos/len(x)
-    value = -20 * math.exp(-0.2 * math.sqrt(ave_seq)) - math.exp(ave_cos) + 20.0 + math.e
+    ave_seq = sum([(i - bias) * (i - bias) for i in x]) / len(x)
+    ave_cos = sum([np.cos(2.0 * np.pi * (i - bias)) for i in x]) / len(x)
+    value = -20 * np.exp(-0.2 * np.sqrt(ave_seq)) - np.exp(ave_cos) + 20.0 + np.e
     return value

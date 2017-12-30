@@ -1,25 +1,27 @@
-
-from gym_task import GymTask
-from zoopt import Dimension, Objective, Parameter, Opt, Solution
-
 """
 Function run_test is defined in this file. You can run this file to get results of this example.
 
 Author:
-    Yuren Liu
+    Yu-Ren Liu
 """
+from gym_task import GymTask
+from zoopt import Dimension, Objective, Parameter, Opt, Solution
 
 
-# test function
-
-
-# in_layers means layers information. eg. [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5,
-# output layer has 1.
-# in_budget means budget
-# maxstep means stop step in gym
-# repeat means repeat number in a test.
 def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value):
+    """
+    Api of running direct policy search for gym task.
 
+    :param task_name: gym task name
+    :param layers:
+        layer information of the neural network
+        e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 and output layer has 1.
+    :param in_budget:  number of calls to the objective function
+    :param max_step: max step in gym
+    :param repeat:  repeat number in a test
+    :param terminal_value: algorithm should stop when such value is reached
+    :return: no return
+    """
     gym_task = GymTask(task_name)  # choose a task by name
     gym_task.new_nnmodel(layers)  # construct a neural network
     gym_task.set_max_step(max_step)  # set max step in gym

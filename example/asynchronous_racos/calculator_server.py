@@ -1,3 +1,10 @@
+"""
+This file contains example of running calculator server.
+
+Author:
+    Yu-Ren Liu
+"""
+
 import sys
 sys.path.append("/Users/liu/Desktop/CS/github/ZOO/")
 
@@ -9,6 +16,14 @@ from zoopt.utils.tool_function import ToolFunction
 
 
 def run_server(port, work_dir, control_server):
+    """
+    Api of running calculator server.
+
+    :param port: port of calculator server
+    :param work_dir: working directory
+    :param control_server: ip:port of control server
+    :return: no return
+    """
     local_ip = socket.gethostbyname(socket.gethostname())
     data_length = 1024
     server_ip = local_ip
@@ -20,13 +35,19 @@ def run_server(port, work_dir, control_server):
     server.start_server(control_server=control_server, working_dir=work_dir)
 
 
-# configuration is a file name
-# configuration  has three lines
-# the first line is the working directory this server works on
-# the second line is the address of control server
-# the third line has three numbers, for example, 2 50000 50002
-# 2 means opening 2 server, 50000 50002 means these servers can use port between 50000 and 50002([50000, 50002])
 def run(configuration):
+    """
+    Api of running calculator servers from configuration file.
+
+    :param configuration:
+        configuration is a file name
+        configuration  has three lines
+        he first line is the working directory this server works on
+        the second line is the address of control server
+        the third line has three numbers, for example, 2 50000 50002
+        2 means opening 2 server, 50000 50002 means these servers can use port between 50000 and 50002([50000, 50002])
+    :return: no return
+    """
     file_obj = open(configuration)
     list_of_all_lines = file_obj.readlines()
     working_dir = list_of_all_lines[0][:-1]

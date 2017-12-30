@@ -1,8 +1,3 @@
-
-import math
-from random import Random
-from zoopt.dimension import Dimension
-import numpy as np
 """
 Objective functions can be implemented in this file
 
@@ -10,22 +5,28 @@ Author:
     Yuren Liu
 """
 
-# Sphere function for continuous optimization
+import math
+from random import Random
+from zoopt.dimension import Dimension
+import numpy as np
+
+
 def sphere(solution):
+    """Sphere function for continuous optimization"""
     x = solution.get_x()
     value = sum([(i-0.2)*(i-0.2) for i in x])
     return value
 
 
-# Sphere function for mixed optimization
 def sphere_mixed(solution):
+    """Sphere function for mixed optimization"""
     x = solution.get_x()
     value = sum([i*i for i in x])
     return value
 
 
-# Sphere function for integer continuous optimization
 def sphere_discrete_order(solution):
+    """Sphere function for integer continuous optimization"""
     a = 0
     rd = Random()
     x = solution.get_x()
@@ -33,8 +34,8 @@ def sphere_discrete_order(solution):
     return value
 
 
-# Ackley function for continuous optimization
 def ackley(solution):
+    """Ackley function for continuous optimization"""
     x = solution.get_x()
     bias = 0.2
     ave_seq = sum([(i - bias) * (i - bias) for i in x]) / len(x)
@@ -44,12 +45,16 @@ def ackley(solution):
 
 
 def ackley_noise_creator(mu, sigma):
+    """Ackley function under noise"""
     return lambda solution: ackley(solution) + np.random.normal(mu, sigma, 1)
-    # set cover problem for discrete optimization
-    # this problem has some extra initialization tasks, thus we define this problem as a class
+
 
 
 class SetCover:
+    """
+    set cover problem for discrete optimization
+    this problem has some extra initialization tasks, thus we define this problem as a class
+    """
     __weight = None
     __subset = None
 
