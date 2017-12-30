@@ -1,3 +1,11 @@
+"""
+This file contains an example of optimizing a function under noise.
+
+Author:
+    Xiong-Hui chen, Yu-Ren Liu
+"""
+
+
 import matplotlib.pyplot as plt
 import time
 import numpy as np
@@ -7,8 +15,12 @@ from zoopt.utils.zoo_global import gl
 from quick_start import result_analysis
 
 
-# ssracos example for minimizing ackley with Gaussian noise
 def minimize_ackley_continuous_noisy():
+    """
+    SSRacos example of minimizing ackley function under Gaussian noise
+
+    :return: no return
+    """
     gl.set_seed(10001)  # set random seed
     t1 = time.clock()
     repeat = 10  # repeat of optimization experiments
@@ -22,7 +34,7 @@ def minimize_ackley_continuous_noisy():
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
         objective = Objective(ackley_noise_func, dim, balance_rate=0.5)  # form up the objective function
-        budget = 500  # 20*dim_size  # number of calls to the objective function
+        budget = 5000  # 20*dim_size  # number of calls to the objective function
         # suppression=True means optimize with value suppression, which is a noise handling method
         # non_update_allowed=500 and resample_times=100 means if the best solution doesn't change for 500 budgets,
         # the best solution will be evaluated repeatedly for 100 times
@@ -43,8 +55,8 @@ def minimize_ackley_continuous_noisy():
         plt.plot(history)
         print(history)
         print("len history %s" % len(objective.get_history()))
-    plt.show()
-    # plt.savefig("img/ackley_continuous_noisy_figure.png")  # uncomment this line and comment last line to save figures
+    # plt.show()
+    plt.savefig("img/ackley_continuous_noisy_figure.png")  # uncomment this line and comment last line to save figures
     result_analysis(result, repeat)
     t2 = time.clock()
     print('time cost: %f' % (t2 - t1))

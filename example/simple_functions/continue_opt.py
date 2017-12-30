@@ -1,3 +1,10 @@
+"""
+This file contains examples of optimizing continuous objective function.
+
+Author:
+    Yu-Ren Liu, Xiong-Hui Chen
+"""
+
 import matplotlib.pyplot as plt
 import time
 import numpy as np
@@ -7,8 +14,12 @@ from zoopt.utils.zoo_global import gl
 from quick_start import result_analysis
 
 
-# example for minimizing the ackley function
 def minimize_ackley_continuous():
+    """
+    Continuous optimization example of minimizing the ackley function.
+
+    :return: no return
+    """
     t1 = time.clock()
     gl.set_seed(12345)  # set random seed
     repeat = 1  # repeat number of optimization
@@ -44,8 +55,12 @@ def minimize_ackley_continuous():
     print('time cost: %f' % (t2 - t1))
 
 
-# example for minimizing the sphere function
 def minimize_sphere_continuous():
+    """
+    Example of minimizing the sphere function
+
+    :return: no return
+    """
     gl.set_seed(12345)
     t1 = time.clock()
     repeat = 10

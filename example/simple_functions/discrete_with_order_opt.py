@@ -1,3 +1,10 @@
+"""
+This file contains examples of optimizing discrete objective function with ordered search space.
+
+Author:
+    Yu-Ren Liu
+"""
+
 import matplotlib.pyplot as plt
 import time
 import numpy as np
@@ -6,8 +13,12 @@ from zoopt import Dimension, Objective, Parameter, Opt, Solution
 from zoopt.utils.zoo_global import gl
 from quick_start import result_analysis
 
-# example for minimizing the ackley function
+
 def minimize_sphere_discrete_order():
+    """
+    Discrete optimization example of minimizing the sphere function, which has ordered search space.
+    :return: no return
+    """
     t1 = time.clock()
     gl.set_seed(12345)  # set random seed
     repeat = 1  # repeat of optimization experiments

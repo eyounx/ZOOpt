@@ -1,9 +1,8 @@
 """
-This file contains some examples about how to use Racos(or SRacos)
-optimization algorithm
+This file contains an example of how to optimize continuous ackley function.
 
 Author:
-    Yuren Liu, Xionghui Chen
+    Yu-Ren Liu, Xiong-Hui Chen
 """
 
 from zoopt import Dimension, Objective, Parameter, Opt, Solution
@@ -12,8 +11,15 @@ from fx import ackley
 import numpy as np
 
 
-# get mean value and standard deviation of best 'top' results
+#
 def result_analysis(results, top):
+    """
+    Get mean value and standard deviation of best 'top' results.
+
+    :param results: a list of results
+    :param top: the number of best results used to calculate mean value and standard deviation
+    :return: no return
+    """
     limit = top if top < len(results) else len(results)
     results.sort()
     top_k = results[0:limit]
@@ -24,7 +30,7 @@ def result_analysis(results, top):
 
 if __name__ == '__main__':
     dim = 100 # dimension
-    obj = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim)) # setup objective
+    obj = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
     # perform optimization
     solution = Opt.min(obj, Parameter(budget=100 * dim))
     # print result

@@ -1,3 +1,10 @@
+"""
+This file contains an example of optimizing a function with the mixed search space(continuous and discrete).
+
+Author:
+    Yu-Ren Liu
+"""
+
 import matplotlib.pyplot as plt
 import time
 import numpy as np
@@ -9,6 +16,11 @@ from quick_start import result_analysis
 
 # mixed optimization
 def minimize_sphere_mixed():
+    """
+    Mixed optimization example of minimizing sphere function, which has mixed search search space.
+
+    :return: no return
+    """
     t1 = time.clock()
     gl.set_seed(12345)  # set random seed
     repeat = 11  # repeat of optimization experiments

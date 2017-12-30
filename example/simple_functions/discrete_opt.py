@@ -1,3 +1,10 @@
+"""
+This file contains examples of optimizing discrete objective function.
+
+Author:
+    Yu-Ren Liu
+"""
+
 import matplotlib.pyplot as plt
 import time
 import numpy as np
@@ -7,8 +14,12 @@ from zoopt.utils.zoo_global import gl
 from quick_start import result_analysis
 
 
-# discrete optimization example using minimum set cover instance
 def minimize_setcover_discrete():
+    """
+    Discrete optimization example of minimizing setcover problem.
+
+    :return: no return
+    """
     gl.set_seed(12345)  # set random seed
     t1 = time.clock()
     repeat = 1  # repeat number of optimization
