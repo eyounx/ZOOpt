@@ -11,7 +11,7 @@ from quick_start import result_analysis
 def minimize_sphere_mixed():
     t1 = time.clock()
     gl.set_seed(12345)  # set random seed
-    repeat = 10  # repeat of optimization experiments
+    repeat = 11  # repeat of optimization experiments
     result = []
     history = []
     for i in range(repeat):
@@ -46,8 +46,8 @@ def minimize_sphere_mixed():
         history.append(objective.get_history_bestsofar())
     average_regret = reduce(lambda x, y: np.array(x) + np.array(y), history) / repeat  # get average regret
     plt.plot(average_regret)
-    # plt.show()
-    plt.savefig("img/sphere_mixed_figure.png")  # uncomment this line and comment last line to save figures
+    plt.show()
+    # plt.savefig("img/sphere_mixed_figure.png")  # uncomment this line and comment last line to save figures
     result_analysis(result, 5)
     t2 = time.clock()
     print('time cost: %f' % (t2 - t1))

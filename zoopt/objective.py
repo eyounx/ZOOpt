@@ -65,6 +65,9 @@ class Objective:
             solution.set_value((1 - self.__balance_rate) * solution.get_value() +
                                self.__balance_rate * solution.get_resample_value())
             solution.set_post_attach(self.__post_inherit())
+            return repeat_times
+        else:
+            return 0
 
     def resample_func(self, solution, iteration_num):
         result = []

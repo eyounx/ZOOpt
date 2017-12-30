@@ -71,6 +71,8 @@ class SSRacos(SRacos):
                     return self.get_best_solution()
                 else:
                     continue
+            else:
+                current_not_distinct_times = 0
             # evaluate the solution
             objective.eval(solution)
             # show best solution
@@ -171,10 +173,9 @@ class SSRacos(SRacos):
 
     def _positive_data_re_sample(self):
         for data in self._positive_data:
-            if not data.is_in_possible_solution:
-                self.i += self._parameter.get_resample_times()
-            self._objective.resample(
+            iter_times = self._objective.resample(
                 data, self.get_parameters().get_resample_times())
+            self.i += iter_times
 
     def _is_worest(self, solution):
         return self._positive_data[-1].get_value() <= solution.get_value()
