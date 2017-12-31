@@ -23,7 +23,7 @@ class Opt:
         """
         Minimization function.
 
-        :param objective: objective function
+        :param objective: objective
         :param parameter: parameter
         :return: result of optimization
         """

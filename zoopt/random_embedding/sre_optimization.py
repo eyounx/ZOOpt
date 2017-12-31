@@ -1,10 +1,8 @@
 """
-The class Dimension was implemented in this file.
-
-This class describes dimension messages.
+This module contains the class SequentialRandomEmbedding.
 
 Author:
-    Yuren Liu
+    Yu-Ren Liu
 """
 
 from zoopt.solution import Solution
@@ -15,12 +13,27 @@ import math
 
 
 class SequentialRandomEmbedding:
+    """
+    Sequential random embedding is implemented in this class.
+    """
     def __init__(self, objective, parameter, optimizer):
+        """
+
+        :param objective: objective
+        :param parameter: parameter
+        :param optimizer: optimization algorithm
+        """
         self.__objective = objective
         self.__parameter = parameter
         self.__optimizer = optimizer
 
     def opt(self):
+        """
+        Sequential random embedding optimization.
+
+        :return: the best solution of the optimization
+        """
+
         dim = self.__objective.get_dim()
         res = []
         iteration = self.__parameter.get_num_sre()
