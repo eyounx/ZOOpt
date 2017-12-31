@@ -1,23 +1,32 @@
+"""
+This module contains the class Objective
+
+Author:
+    Yu-Ren Liu, Xiong-Hui Chen
+"""
 
 from zoopt.solution import Solution
 from zoopt.utils.zoo_global import pos_inf
 from zoopt.utils.tool_function import ToolFunction
 import numpy as np
 
-"""
-The class Objective represents the objective function and its associated variables
-
-Author:
-    Yuren Liu
-"""
-
 
 class Objective:
+    """
+    The class Objective represents the objective function and its associated variables
+    """
+    def __init__(self, func=None, dim=None, constraint=None, resample_func=None, balance_rate=1, sre=False):
+        """
+        Initialization.
 
-    def __init__(self, func=None, dim=None, constraint=None, resample_func=None, balance_rate=1, random_embedding=False):
-        # Objective function defined by the user
+        :param func: objective function defined by the user
+        :param dim: a Dimension instance, which describes the search space.
+        :param constraint: constraint function for POSS
+        :param resample_func: resample function for SSRacos
+        :param balance_rate: a parameter of SSRacos
+        :param sre: whether to use sequential random embedding
+        """
         self.__func = func
-        # Number of dimensions, dimension bounds are in the dim object
         self.__dim = dim
         # the function for inheriting solution attachment
         self.__inherit = self.default_inherit
@@ -28,24 +37,33 @@ class Objective:
         self.__history = []
         self.__resample_func = self.resample_func if resample_func is None else resample_func
         self.__balance_rate = balance_rate
-        # for random embedding
-        self.__random_embedding = random_embedding
+        # for sequential random embedding
+        self.__sre = sre
         self.__A = None
         self.__last_x = None
 
-    # Construct a solution from x
     def construct_solution(self, x, parent=None):
+        """
+        Construct a solution from x
+
+        :param x: a list
+        :param parent: attached structure
+        :return: solution
+        """
         new_solution = Solution()
         new_solution.set_x(x)
         new_solution.set_attach(self.__inherit(parent))
-        # new_solution.set_value(self.__func(new_solution)) # evaluation should
-        # be invoked explicitly
         return new_solution
 
-    # evaluate the objective function of a solution
-    def eval(self, solution, intermediate_print=False, times=0, freq=100):
-        # val = None
-        if self.__random_embedding is False:
+    def eval(self, solution):
+        """
+        Use objective function to evaluate a solution.
+
+        :param solution:
+        :return: value of fx(evaluation result) will be returned
+        """
+
+        if self.__sre is False:
             val = self.__func(solution)
         else:
             x = solution.get_x()
@@ -54,9 +72,6 @@ class Objective:
         solution.set_value(val)
         self.__history.append(solution.get_value())
         solution.set_post_attach(self.__post_inherit())
-        if intermediate_print is True and times % freq == 0:
-            ToolFunction.log(("budget %d, fx result: " % times) + str(val))
-            ToolFunction.log("x: " + str(solution.get_x()))
         return val
 
     def resample(self, solution, repeat_times):
@@ -134,8 +149,8 @@ class Objective:
             history_bestsofar.append(bestsofar)
         return history_bestsofar
 
-    def get_re(self):
-        return self.__random_embedding
+    def get_sre(self):
+        return self.__sre
 
     def get_last_x(self):
         return self.__last_x
@@ -155,8 +170,21 @@ class Objective:
 
     @staticmethod
     def default_inherit(parent=None):
+        """
+        Default inherited function.
+
+        :param parent: parent structure
+        :return: None
+        """
         return None
 
     @staticmethod
     def default_post_inherit(parent=None):
+        """
+        Default post inherited function.
+
+        :param parent: parent structure
+        :return: None
+        """
+
         return None

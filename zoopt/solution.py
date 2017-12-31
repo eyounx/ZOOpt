@@ -1,22 +1,30 @@
+"""
+This module contains the class Solution.
+
+Author:
+    Yu-Ren Liu
+"""
 
 from zoopt.utils.zoo_global import pos_inf, neg_inf, nan, gl
 from zoopt.utils.tool_function import ToolFunction
 
-"""
-The class Solution was implemented in this file.
-
-A solution encapsulates a solution vector with attached properties, including dimension information, objective value,
-and attachment
-
-Author:
-    Yuren Liu
-"""
-
 
 class Solution:
-
-    # value is f(x)
+    """
+    A solution encapsulates a solution vector with attached properties, including dimension information, objective value,
+and attachment
+    """
     def __init__(self, x=[], value=nan, resample_value=None, attach=None, post_attach=None, is_in_possible_solution=False):
+        """
+        Initialization.
+
+        :param x: a list
+        :param value: objective value
+        :param resample_value: reevaluated value
+        :param attach: attached structure
+        :param post_attach:
+        :param is_in_possible_solution:
+        """
         self.__x = x
         self.__value = value
         self.__resample_value = resample_value
@@ -33,8 +41,12 @@ class Solution:
     def is_in_possible_solution(self, value):
         self.__is_in_possible_solution = value
 
-    # Deep copy this solution. Note that the attachment is not deeply copied
     def deep_copy(self):
+        """
+        Deep copy this solution. Note that the attachment is not deeply copied
+        :return: a new solution
+        """
+
         x = []
         for x_i in self.__x:
             x.append(x_i)
@@ -44,8 +56,13 @@ class Solution:
         post_attach = self.__post_attach
         return Solution(x, value, resample_value, attach, post_attach, self.is_in_possible_solution)
 
-    # Check if two solutions equal
     def is_equal(self, sol):
+        """
+        Check if two solutions equal
+
+        :param sol: another solution
+        :return: True or False
+        """
         sol_x = sol.get_x()
         sol_value = sol.get_value()
         if sol_value != nan and self.__value != nan:
@@ -58,8 +75,13 @@ class Solution:
                 return False
         return True
 
-    # Check if exists another solution in sol_set ths same as this one
     def exist_equal(self, sol_set):
+        """
+        Check if exists another solution in sol_set the same as this one
+
+        :param sol_set: solution set
+        :return: True or False
+        """
         for sol in sol_set:
             if self.is_equal(self, sol):
                 return True
@@ -110,24 +132,39 @@ class Solution:
         ToolFunction.log('x: ' + repr(self.__x))
         ToolFunction.log('value: ' + repr(self.__value))
 
-    # Deep copy an solution set
     @staticmethod
     def deep_copy_set(sol_set):
+        """
+        Deep copy an solution set
+
+        :param sol_set: solution set
+        :return: copied solution set
+        """
         result_set = []
         for sol in sol_set:
             result_set.append(sol.deep_copy())
         return result_set
 
-    # print the value of each solution in an solution set
     @staticmethod
     def print_solution_set(sol_set):
+        """
+        Print the value of each solution in an solution set.
+
+        :param sol_set: solution set
+        :return: no return
+        """
         for sol in sol_set:
             ToolFunction.log('value: %f' % (sol.get_value()))
         return
 
-    # Find the maximum-valued solution from the solution set
     @staticmethod
     def find_maximum(sol_set):
+        """
+        Find the solution having maximum value from the solution set
+
+        :param sol_set: solution set
+        :return: solution, index
+        """
         maxi = neg_inf
         max_index = 0
         for i in range(len(sol_set)):
@@ -136,9 +173,14 @@ class Solution:
                 max_index = i
         return sol_set[max_index], max_index
 
-    # Find the minimum-valued solution from the solution set
     @staticmethod
     def find_minimum(sol_set):
+        """
+        Find the solution having minimum value from the solution set
+
+        :param sol_set: solution set
+        :return: solution, index
+        """
         mini = pos_inf
         mini_index = 0
         for i in range(len(sol_set)):

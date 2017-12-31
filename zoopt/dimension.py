@@ -1,20 +1,29 @@
+"""
+This module contains class Dimension, which describes dimension information of the search space.
+
+Author:
+    Yu-Ren Liu
+"""
 
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
 import copy
-"""
-The class Dimension was implemented in this file.
-
-This class describes dimension messages.
-
-Author:
-    Yuren Liu
-"""
 
 
 class Dimension:
-
+    """
+    This class describes dimension information of the search space.
+    """
     def __init__(self, size=0, regs=[], tys=[], order=False):
+        """
+        Initialization.
+
+        :param size: dimension size
+        :param regs: search space of each dimension
+        :param tys: continuous or discrete for each dimension
+        :param order:
+            this parameter matters if this dimension is discrete, and it means this dimension has partial order relation
+        """
         self._size = size
         self._regions = regs
         # True means continuous, False means discrete
@@ -23,10 +32,14 @@ class Dimension:
         self._order = order
         return
 
-    # Check if the dimensions of regs and tys
-    # are both the same as size
+
     @staticmethod
     def judge_match(size, regs, tys):
+        """
+        Check if the dimensions of regs and tys are both the same as size.
+
+        :return: True or False
+        """
         if size != len(regs) or size != len(tys):
             ToolFunction.log('dimension.py: dimensions do not match')
             return False
@@ -35,6 +48,11 @@ class Dimension:
 
     @staticmethod
     def merge_dim(dim1, dim2):
+        """
+        Merge two Dimension instance.
+
+        :return: a new merged Dimension instance
+        """
         res_dim = copy.deepcopy(dim1)
         res_dim.set_size(dim1.get_size() + dim2.get_size())
         res_dim.get_regions().extend(dim2.get_regions())
@@ -43,8 +61,12 @@ class Dimension:
         res_dim.set_order(new_order)
         return res_dim
 
-    # Set all the attributes
     def set_all(self, size, regs, tys):
+        """
+        Set all the attributes
+
+        :return: no return
+        """
         if self.judge_match(size, regs, tys) is False:
             return
         self._size = size
@@ -71,9 +93,12 @@ class Dimension:
         self._types = tys
         return
 
-    # random sample from dimension messages.
-    # this algos returns a list.
     def rand_sample(self):
+        """
+        Random sample in dimension described search space.
+
+        :return: a sampled x
+        """
         x = []
         for i in range(self._size):
             if self._types[i] is True:
@@ -85,9 +110,14 @@ class Dimension:
             x.append(value)
         return x
 
-    # This algos will return True and the number of dimension value if each dimension is discrete.
-    # Otherwise, return False and zero
     def limited_space(self):
+        """
+        Judge if the dimension described search space is limited.
+
+        :return:
+            return True and the number of dimension value if each dimension is discrete.
+            Otherwise, return False and zero
+        """
         number = 1
         for i in range(self._size):
             if self._types[i] is True:
@@ -96,8 +126,12 @@ class Dimension:
                 number *= self._regions[i][1] - self._regions[i][0] + 1
         return True, number
 
-    # deep copy this instance
     def deep_copy(self):
+        """
+        Deep copy this instance.
+
+        :return: a new instance
+        """
         size = self._size
         regions = []
         tys = []
@@ -110,8 +144,12 @@ class Dimension:
             tys.append(x)
         return Dimension(size, regions, tys)
 
-    # deep copy the instance's regions information
     def copy_region(self):
+        """
+        Deep copy the instance's search regions.
+
+        :return: a new search region
+        """
         regions = []
         for reg in self._regions:
             interval = []
@@ -121,6 +159,11 @@ class Dimension:
         return regions
 
     def is_discrete(self):
+        """
+        Whether search space in all dimensions is Discrete.
+
+        :return: True or False
+        """
         for i in range(len(self._types)):
             if self._types[i] is True:
                 return False
@@ -152,6 +195,11 @@ class Dimension:
 
     # for debugging
     def print_dim(self):
+        """
+        Print dimension.
+        :return: no return
+        """
+
         ToolFunction.log('dim size: %d' % self._size)
         ToolFunction.log('dim regions is:')
         ToolFunction.log(self._regions)

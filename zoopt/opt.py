@@ -1,25 +1,32 @@
+"""
+This module contains the class Opt.
 
+Author:
+    Yu-Ren Liu
+"""
 from zoopt.algos.paretoopt.ParetoOptimization import ParetoOptimization
 from zoopt.algos.racos.racos_optimization import RacosOptimization
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
 from zoopt.random_embedding.sre_optimization import SequentialRandomEmbedding
 
-"""
-The class Opt is the main entrance of using zoopt: Opt.min(objective, parameter)
-
-Author:
-    Yuren Liu
-"""
-
 
 class Opt:
-
+    """
+    Main entrance of optimization.
+    """
     def __init__(self):
         return
 
     @staticmethod
     def min(objective, parameter):
+        """
+        Minimization function.
+
+        :param objective: objective function
+        :param parameter: parameter
+        :return: result of optimization
+        """
         Opt.set_global(parameter)
         constraint = objective.get_constraint()
         algorithm = parameter.get_algorithm()
@@ -34,7 +41,7 @@ class Opt:
             ToolFunction.log(
                 "opt.py: No proper algorithm found for %s" % algorithm)
             return result
-        if objective.get_re() is True:
+        if objective.get_sre() is True:
             sre = SequentialRandomEmbedding(objective, parameter, optimizer)
             result = sre.opt()
         else:
@@ -43,6 +50,13 @@ class Opt:
 
     @staticmethod
     def set_global(parameter):
+        """
+        Set global variables.
+
+        :param parameter: parameter
+        :return: no return
+        """
+
         precision = parameter.get_precision()
         if precision:
             gl.set_precision(precision)

@@ -1,20 +1,22 @@
+"""
+This module contains the class Parameter, which includes all parameters used for optimization.
+
+Author:
+    Yu-Ren Liu, Yang Yu
+"""
 
 import sys
 import math
 from zoopt.dimension import Dimension
 from zoopt.utils.tool_function import ToolFunction
 
-"""
-The class Parameter was implemented in this file.
-A Parameter instance should be a necessary parameter to opt in RacosOptimization
 
-Author:
-    Yuren Liu, Yang Yu
-"""
 
 
 class Parameter:
-
+    """
+        This class contains all parameters used for optimization.
+    """
     # Users should set at least algorithm and budget
     # algorithm can be 'racos' or 'poss'
     # If algorithm is 'racos' and sequential is True, opt will invoke SRacos.opt(default)
@@ -29,10 +31,33 @@ class Parameter:
     # only if suppression is True, means use SSRACOS algorithm, non_update_allowed and resample_times are useful.
     # is found
     def __init__(self, algorithm=None, budget=0, suppression=False, sequential=True, intermediate_result=False,
-                 intermediate_freq=100, intermediate_output=False, file_output="result.txt", autoset=True, precision=None,
+                 intermediate_freq=100, autoset=True, precision=None,
                  uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None, non_update_allowed=40,
-                 hot_start=False, save_racosc=False, file_racosc="file_racosc.txt", file_racosc_all="file_racosc_all.txt",
                  resample_times=100, num_sre=5, low_dimension=None, withdraw_alpha=None, variance_A=None):
+        """
+        Initialization.
+
+        :param algorithm: 'racos' or 'poss', 'racos' in defalut
+        :param budget: number of calls to the objective function
+        :param suppression: whether to use SSRacos(noise handling) to optimize objective function, False in default
+        :param sequential: whether to use SRacos, True in default
+        :param intermediate_result: whether to show intermediate result, False in default
+        :param intermediate_freq: frequency of showing intermediate result, it matters only when intermediate_result is True
+        :param autoset: whether to set train_size, positive_size, negative_size automatically, True in default
+        :param precision: precision of the result
+        :param uncertain_bits: uncertain bits
+        :param init_samples:
+            Initial samples provided by user. If init_samples is not None, the samples will be added
+            into the first sampled solution set
+        :param time_budget: If running time exceeds this value, optimization algorithm will return best solution immediately
+        :param terminal_value: if best_solution
+        :param non_update_allowed:
+        :param resample_times:
+        :param num_sre: number of sequential random embedding.
+        :param low_dimension: low dimension size of sequential random embedding
+        :param withdraw_alpha: a parameter for random embedding
+        :param variance_A: matrix to map high-dimensional input x to low-dimensional x'
+        """
         self.__algorithm = algorithm
         self.__budget = budget
 
@@ -53,19 +78,11 @@ class Parameter:
         self.__intermediate_result = intermediate_result
         tmp_freq = math.floor(intermediate_freq)
         self.__intermediate_freq = tmp_freq if tmp_freq >= 1 else 1
-        self.__intermediate_output = intermediate_output
-        self.__file_output = file_output
 
         self.__resample_times = resample_times
         self._suppression = suppression
         # temp
         self.__non_update_allowed = non_update_allowed
-
-        # for hot start
-        self.__hot_start = hot_start
-        self.__save_racosc = save_racosc
-        self.__file_racosc = file_racosc
-        self.__file_racosc_all = file_racosc_all
 
         # for pareto optimization
         self.__isolationFunc = lambda x: 0
@@ -73,7 +90,7 @@ class Parameter:
         if budget != 0 and autoset is True:
             self.auto_set(budget)
 
-        # for random embedding
+        # for sequential random embedding
         self.__num_sre = num_sre
         self.__low_dimension = low_dimension if low_dimension is not None else Dimension(10, [[-1, 1]]*10, [True]*10)
         self.__withdraw_alpha = withdraw_alpha if withdraw_alpha is not None else Dimension(1, [[-1, 1]], [True])
@@ -87,6 +104,18 @@ class Parameter:
     # budget: 101-1000 ->> train_size = 12, positive_size = 2
     # budget > 1001 ->> train_size = 22, positive_size = 2
     def auto_set(self, budget):
+        """
+        Set train_size, positive_size, negative_size by following rules:
+            budget < 3 --> error
+            budget: 4-50 --> train_size = 4, positive_size = 1
+            budget: 51-100 --> train_size = 6, positive_size = 1
+            budget: 101-1000 --> train_size = 12, positive_size = 2
+            budget > 1001 --> train_size = 22, positive_size = 2
+
+        :param budget: number of calls to the objective function
+        :return: no return
+        """
+
         if budget < 3:
             ToolFunction.log('parameter.py: budget too small')
             sys.exit(1)
@@ -215,22 +244,6 @@ class Parameter:
 
     def get_intermediate_freq(self):
         return self.__intermediate_freq
-
-# self.__hot_start = hot_start
-#         self.__file_racosc = file_racosc
-#         self.__file_racosc_all = file_racosc_all
-
-    def get_hot_start(self):
-        return self.__hot_start
-
-    def get_save_racosc(self):
-        return self.__save_racosc
-
-    def get_file_racosc(self):
-        return self.__file_racosc
-
-    def get_file_racosc_all(self):
-        return self.__file_racosc_all
 
     def get_num_sre(self):
         return self.__num_sre

@@ -29,7 +29,7 @@ if True:
         dim_regs = [[-1, 1]] * dim_size  # dimension range
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
-        objective = Objective(sphere_re, dim, random_embedding=True)  # form up the objective function
+        objective = Objective(sphere_re, dim, sre=True)  # form up the objective function
 
         # setup algorithm parameters
         budget = 10000 # number of calls to the objective function
