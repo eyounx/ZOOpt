@@ -6,20 +6,22 @@ Author:
 """
 from gym_task import GymTask
 from zoopt import Dimension, Objective, Parameter, Opt, Solution
+import matplotlib.pyplot as plt
+import numpy as np
 
 
-def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value):
+def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value=None):
     """
     Api of running direct policy search for gym task.
 
     :param task_name: gym task name
     :param layers:
         layer information of the neural network
-        e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 and output layer has 1.
+        e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 and output layer has 1
     :param in_budget:  number of calls to the objective function
     :param max_step: max step in gym
     :param repeat:  repeat number in a test
-    :param terminal_value: algorithm should stop when such value is reached
+    :param terminal_value: early stop, algorithm should stop when such value is reached
     :return: no return
     """
     gym_task = GymTask(task_name)  # choose a task by name
@@ -54,11 +56,15 @@ def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value):
         print("total step %s" % gym_task.total_step)
         total_step.append(gym_task.total_step)
         gym_task.total_step = 0
+        history = np.array(objective.get_history_bestsofar())  # init for reducing
+        plt.plot(history)
+        objective.clean_history()  # clean history
+    # plt.show()
+    plt.savefig("img/direct_policy_search_for_gym.png")  # uncomment this line and comment last line to save figures
     print(result)  # results in repeat times
     print(total_sum/len(result))  # average result
     print(total_step)
-    print("------------------------avg total step %s" %
-          (sum(total_step)/len(total_step)))
+    print("------------------------avg total step %s" % (sum(total_step)/len(total_step)))
 
 
 def run_ss_test(task_name, layers, in_budget, max_step, repeat, terminal_value):
@@ -118,11 +124,8 @@ if __name__ == '__main__':
     hopper_layers = [11, 9, 5, 3]
     lunarlander_layers = [8, 5, 3, 1]
 
-    run_ss_test('MountainCar-v0', mountain_car_layers,
-                1000, 1000, 5, terminal_value=-500)
-    print("use sracos")
-    run_test('MountainCar-v0', mountain_car_layers,
-             1000, 1000, 5, terminal_value=-500)
+    run_test('MountainCar-v0', mountain_car_layers, 2000, 1000, 1)
+    # run_ss_test('MountainCar-v0', mountain_car_layers,  1000, 1000, 5, terminal_value=-500)
     # run_ss_test('MountainCar-v0', mountain_car_layers, 1000, 1000, 10)
     # run_test('MountainCar-v0', mountain_car_layers, 10000, 10000, 10)
     # run_test('Acrobot-v1', acrobot_layers, 2000, 500, 10)

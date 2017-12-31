@@ -14,20 +14,6 @@ class GymTask:
     """
     This class sets a gym runtime environment.
     """
-    __envir = None                      # gym environment
-    __envir_name = None                 # environment name
-    __obser_size = None                 # the number of parameters in observation
-    __obser_low_bound = []              # the lower bound of parameters in observation
-    __obser_up_bound = []               # the upper bound of parameters in observation
-    __action_size = None                # the number of parameters in action
-    __action_sca = []                   # environment action space, specified by gym
-    __action_type = []                  # the type of action, false means discrete
-    __action_low_bound = []             # action lower bound
-    __action_up_bound = []              # action upper bound
-    # policy model, it's a neural network in this example
-    __policy_model = None
-    __max_step = 0                      # maximum stop step
-    __stop_step = 0                     # the stop step in recent trajectory
 
     def __init__(self, name):
         """
@@ -36,12 +22,22 @@ class GymTask:
         :param name: gym task name
         """
         self.reset_task()
-        self.__envir = gym.make(name)
-        self.__envir_name = name
-        self.__obser_size = self.__envir.observation_space.shape[0]
-        self.__obser_up_bound = []
-        self.__obser_low_bound = []
-        self.total_step = 0
+        self.__envir = gym.make(name)  # gym environment
+        self.__envir_name = name  # environment name
+        self.__obser_size = self.__envir.observation_space.shape[0]  # the number of parameters in observation
+        self.__obser_up_bound = []  # the upper bound of parameters in observation
+        self.__obser_low_bound = []  # the lower bound of parameters in observation
+        self.total_step = 0  # total s
+        self.__action_size = None  # the number of parameters in action
+        self.__action_sca = []  # environment action space, specified by gym
+        self.__action_type = []  # the type of action, false means discrete
+        self.__action_low_bound = []  # action lower bound
+        self.__action_up_bound = []  # action upper bound
+        # policy model, it's a neural network in this example
+        self.__policy_model = None
+        self.__max_step = 0  # maximum stop step
+        self.__stop_step = 0  # the stop step in recent trajectory
+
         for i in range(self.__obser_size):
             self.__obser_low_bound.append(
                 self.__envir.observation_space.high[i])
@@ -66,8 +62,6 @@ class GymTask:
                     self.__envir.action_space.low[i])
                 self.__action_up_bound.append(
                     self.__envir.action_space.high[i])
-        # for i in range(self.__action_size):
-        #     self.__action_type.append(False)
 
     def reset_task(self):
         """
@@ -130,7 +124,6 @@ class GymTask:
 
         return
 
-    #
     def nn_policy_sample(self, observation):
         """
         Generate action from observation using neuron network policy
