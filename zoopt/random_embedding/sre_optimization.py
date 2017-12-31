@@ -10,7 +10,7 @@ from zoopt.dimension import Dimension
 import numpy as np
 import copy
 import math
-
+from zoopt.utils.tool_function import ToolFunction
 
 class SequentialRandomEmbedding:
     """
@@ -42,6 +42,7 @@ class SequentialRandomEmbedding:
         new_par.set_budget(math.floor(self.__parameter.get_budget()/iteration))
         new_obj.set_last_x(Solution(x=[0]))
         for i in range(iteration):
+            ToolFunction.log('sequential random embedding %d' % i)
             new_obj.set_A(np.sqrt(self.__parameter.get_variance_A()) *
                                    np.random.randn(dim.get_size(), self.__parameter.get_low_dimension().get_size()))
             new_dim = Dimension.merge_dim(self.__parameter.get_withdraw_alpha(), self.__parameter.get_low_dimension())

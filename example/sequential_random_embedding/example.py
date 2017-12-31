@@ -5,12 +5,12 @@ Author:
     Yu-Ren Liu
 """
 
-import time
 import numpy as np
 from fx import sphere_sre
 from zoopt import Dimension, Objective, Parameter, Opt, Solution
 from zoopt.utils.zoo_global import gl
 import matplotlib.pyplot as plt
+
 
 def result_analysis(results, top):
     """
@@ -35,7 +35,6 @@ def sphere_continuous_sre():
 
     :return: no result
     """
-    t1 = time.clock()
     # repeat of optimization experiments
     repeat = 1
     result = []
@@ -50,7 +49,7 @@ def sphere_continuous_sre():
         objective = Objective(sphere_sre, dim, sre=True)  # form up the objective function
 
         # setup algorithm parameters
-        budget = 5000  # number of calls to the objective function
+        budget = 2000  # number of calls to the objective function
         parameter = Parameter(budget=budget, num_sre=5, low_dimension=Dimension(10, [[-1, 1]] * 10, [True] * 10),
                               withdraw_alpha=Dimension(1, [[-1, 1]], [True]), intermediate_result=False, intermediate_freq=100)
         # perform the optimization
@@ -66,8 +65,6 @@ def sphere_continuous_sre():
     # plt.show()
     plt.savefig("img/sphere_continuous_sre.png")  # uncomment this line and comment last line to save figures
     result_analysis(result, 1)
-    t2 = time.clock()
-    print('time costed %f seconds' % (t2 - t1))
 
 
 if __name__ == "__main__":

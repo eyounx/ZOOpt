@@ -7,6 +7,9 @@ Author:
 
 
 def sphere_sre(solution):
+    """
+    Variant of the sphere function. Dimensions except the first 10 ones have limited impact on the function value.
+    """
     a = 0
     bias = 0.2
     x = solution.get_x()
