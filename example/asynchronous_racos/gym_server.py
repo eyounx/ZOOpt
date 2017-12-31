@@ -2,7 +2,7 @@ import sys
 sys.path.append("/Users/liu/Desktop/CS/github/ZOO/")
 
 from example.direct_policy_search_for_gym.gym_task import GymTask
-from zoopt.algos.asynchronous_racos import calculator_server
+from zoopt.algos.asynchronous_racos import evaluation_server
 from sys import argv
 from random import Random
 
@@ -20,7 +20,7 @@ def run_server(ip, port, task_name, layers, max_step, repeat):
 
 
         # set server ip, port and longest data length in initialization
-        server = calculator_server.CalculatorServer(server_ip, server_port, data_length)
+        server = evaluation_server.CalculatorServer(server_ip, server_port, data_length)
 
         server.start_server(func=gym_task.sum_reward)
 

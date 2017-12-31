@@ -1,23 +1,33 @@
+"""
+This module contains the class Racos, which is a optimization algorithm provided in ZOOpt.
+
+Author:
+    Yu-Ren Liu
+"""
+
 import time
 from zoopt.algos.racos.racos_classification import RacosClassification
 from zoopt.algos.racos.racos_common import RacosCommon
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
-"""
-The class Racos represents Racos algorithm. It's inherited from RacosCommon.
-
-Author:
-    Yuren Liu
-"""
 
 
 class Racos(RacosCommon):
-
+    """
+    The class Racos represents Racos algorithm. It's inherited from RacosCommon.
+    """
     def __init__(self):
         RacosCommon.__init__(self)
 
-    # racos optimization function
     def opt(self, objective, parameter, ub=1):
+        """
+        Racos optimization.
+
+        :param objective: objective function
+        :param parameter: parameters of Racos
+        :param ub: uncertain bits, which is a parameter of Racos
+        :return: the best solution of the optimization
+        """
         self.clear()
         self.set_objective(objective)
         self.set_parameters(parameter)

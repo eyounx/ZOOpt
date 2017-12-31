@@ -1,35 +1,49 @@
-from zoopt.algos.racos.ssracos import SSRacos
+"""
+This module contains the class RacosOptimization, which will choose the optimization algorithm and get the best solution.
 
+Author:
+    Yu-Ren Liu
+"""
+
+from zoopt.algos.racos.ssracos import SSRacos
 from zoopt.algos.racos.sracos import SRacos
 from zoopt.algos.racos.racos import Racos
 
-"""
-The class RacosOptimization will contains best_solution and optimization algorithm(Racos or SRacos)
-
-Author:
-    Yuren Liu
-"""
-
 
 class RacosOptimization:
-
+    """
+    This class will choose the optimization algorithm and get the best solution.
+    """
     def __init__(self):
+        """
+        Initialization.
+        """
         self.__best_solution = None
         self.__algorithm = None
 
     def clear(self):
+        """
+        Clear the instance.
+
+        :return: no return
+        """
         self.__best_solution = None
         self.__algorithm = None
 
-    # General optimization function, it will choose optimization algorithm according to parameter.get_sequential()
-    # Default replace strategy is 'WR'
-    # If user hasn't define uncertain_bits in parameter, set_ub() will set uncertain_bits automatically according to dim
-    # in objective
     def opt(self, objective, parameter, strategy='WR'):
+        """
+        This function will choose optimization algorithm and use it to optimize.
+
+        :param objective: objective function
+        :param parameter: parameter
+        :param strategy: replace strategy, used by SRacos and SSRacos
+        :return:
+        """
+
         self.clear()
         ub = parameter.get_uncertain_bits()
         if ub is None:
-            ub = self.set_ub(objective)
+            ub = self.choose_ub(objective)
         if parameter.get_sequential():
             if not parameter.get_suppressioin():
                 self.__algorithm = SRacos()
@@ -46,12 +60,14 @@ class RacosOptimization:
                 objective, parameter, ub)
         return self.__best_solution
 
-    def get_best_sol(self):
-        return self.__best_solution
-
     @staticmethod
-    # Set uncertain_bits
-    def set_ub(objective):
+    def choose_ub(objective):
+        """
+        Choose uncertain_bits according to dimension size automatically.
+
+        :param objective: objective function
+        :return: uncertain bits
+        """
         dim = objective.get_dim()
         dim_size = dim.get_size()
         is_discrete = dim.is_discrete()
@@ -74,3 +90,7 @@ class RacosOptimization:
             else:
                 ub = 5
         return ub
+
+    def get_best_sol(self):
+        return self.__best_solution
+

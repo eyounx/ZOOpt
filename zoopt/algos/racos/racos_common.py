@@ -1,20 +1,22 @@
-
-import copy
-import sys
-from zoopt.utils.tool_function import ToolFunction
-
 """
-The class RacosCommon contains common attributes and methods between Racos and SRacos.
-Class Racos and SRacos both inherit from RacosCommon.
+This module contains the class RacosCommon, which is a common part in Racos, SRacos and SSRacos.
 
 Author:
-    Yuren Liu
+    Yu-Ren Liu
 """
+
+import copy
+from zoopt.utils.tool_function import ToolFunction
 
 
 class RacosCommon:
-
+    """
+    This class contains common attributes and methods shared by Racos, SRacos and SSRacos.
+    """
     def __init__(self):
+        """
+        Initialization.
+        """
         self._parameter = None
         self._objective = None
         # Solution set
@@ -29,8 +31,12 @@ class RacosCommon:
         self._possible_solution_list = []
         return
 
-    # Clear RacosCommon
     def clear(self):
+        """
+        Clear RacosCommon
+
+        :return: no return
+        """
         self._parameter = None
         self._objective = None
         # Solution
@@ -40,12 +46,16 @@ class RacosCommon:
         # value
         self._best_solution = None
 
-    # Construct self._data, self._positive_data, self._negative_data
     def init_attribute(self):
+        """
+        Init self._data, self._positive_data, self._negative_data by sampling.
+
+        :return: no return
+        """
         # check if the initial solutions have been set
         data_temp = self._parameter.get_init_samples()
         i = 0
-        if data_temp != None and self._best_solution == None:
+        if data_temp is not None and self._best_solution is None:
             for j in range(len(data_temp)):
                 x = self._objective.construct_solution(data_temp[j])
                 self._objective.eval(x)
@@ -69,12 +79,17 @@ class RacosCommon:
         self.selection()
         return
 
-    # Sort self._data
-    # Choose first-train_size solutions as the new self._data
-    # Choose first-positive_size solutions as self._positive_data
-    # Choose [positive_size, train_size) (Include the begin, not include the
-    # end) solutions as self._negative_data
     def selection(self):
+        """
+        This function sequentially does as follows:
+            Sort self._data
+            Choose [first, train_size )solutions as the new self._data
+            Choose first-positive_size solutions as self._positive_data
+            Choose [positive_size, train_size) solutions as self._negative_data
+
+        :return: no return
+        """
+
         new_data = sorted(self._data, key=lambda x: x.get_value())
         self._data = new_data[0:self._parameter.get_train_size()]
         self._positive_data = new_data[0: self._parameter.get_positive_size()]
@@ -83,8 +98,16 @@ class RacosCommon:
         self._best_solution = self._positive_data[0]
         return
 
-    # Distinct sample from dim, return a solution
+    #
     def distinct_sample(self, dim, check_distinct=True, data_num=0):
+        """
+        Sample a distinct(compared with solutions in self._data) solution from dim.
+
+        :param dim: dimension
+        :param check_distinct: whether to check the sampled solution is distinct
+        :param data_num: the maximum number to sample
+        :return: sampled solution and distinct_flag(True if distinct)
+        """
         objective = self._objective
         x = objective.construct_solution(dim.rand_sample())
         times = 1
@@ -107,6 +130,15 @@ class RacosCommon:
         return x, distinct_flag
 
     def distinct_sample_from_set(self, dim, set, check_distinct=True, data_num=0):
+        """
+        Sample a distinct solution(compared with solutions in set) from dim.
+
+        :param dim: dimension
+        :param set: a list containing other solutions
+        :param check_distinct: whether to check the sampled solution is distinct
+        :param data_num: the maximum number to sample
+        :return: sampled solution and distinct_flag(True if distinct)
+        """
         objective = self._objective
         x = objective.construct_solution(dim.rand_sample())
         times = 1
@@ -130,6 +162,10 @@ class RacosCommon:
     # Distinct sample from a classifier, return a solution
     # if check_distinct is False, you don't need to sample distinctly
     def distinct_sample_classifier(self, classifier, check_distinct=True, data_num=0):
+        """
+        Sample a distinct solution from a classifier.
+        """
+
         x = classifier.rand_sample()
         ins = self._objective.construct_solution(x)
         times = 1
@@ -155,27 +191,37 @@ class RacosCommon:
         return ins, distinct_flag
 
     def show_best_solution(self, intermediate_print=False, times=0, freq=100):
+        """
+        Show intermediate best solutions every 'freq' evaluation.
+
+        :param intermediate_print: whether to show
+        :param times: current iteration time
+        :param freq: frequency
+        :return: no return
+        """
         if intermediate_print is True and times % freq == 0:
             ToolFunction.log(("budget %d, fx result: " % times) + str(self._best_solution.get_value()))
             ToolFunction.log("x: " + str(self._best_solution.get_x()))
 
-    # def save_racosc(self, i):
-    #     if self._parameter.get_save_racosc() is True:
-    #         # f =
-
-    # Append setb to seta, deepcopy
     @staticmethod
     def extend(seta, setb):
+        """
+        Concatenate two list.
+        """
         result = copy.deepcopy(seta)
         for x in setb:
             result.append(copy.deepcopy(x))
         return result
 
-    # Check if x is distinct from each solution in seta
-    # return False if there exists a solution the same as x,
-    # otherwise return True
     @staticmethod
     def is_distinct(seta, x):
+        """
+        Check if x is distinct from each solution in seta.
+
+        :param seta: a list
+        :param x: solution
+        :return: True or False
+        """
         for ins in seta:
             if x.is_equal(ins):
                 return False

@@ -1,3 +1,9 @@
+"""
+This module contains the class SRacos, which is the sequential version of Racos(a classification based optimization algorithm).
+
+Author:
+    Yu-ren Liu
+"""
 
 import time
 import numpy
@@ -6,25 +12,29 @@ from zoopt.algos.racos.racos_classification import RacosClassification
 from zoopt.algos.racos.racos_common import RacosCommon
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
-"""
-The class SRacos represents SRacos algorithm. It's inherited from RacosCommon.
-
-Author:
-    Yuren Liu
-"""
 
 
 class SRacos(RacosCommon):
-
+    """
+    The class SRacos represents Sequential Racos algorithm. It's inherited from RacosCommon.
+    """
     def __init__(self):
+        """
+        Initialization.
+        """
         RacosCommon.__init__(self)
         return
 
-    # SRacos's optimization function
-    # Default strategy is WR(worst replace)
-    # Default uncertain_bits is 1, but actually ub will be set either by user
-    # or by RacosOptimization automatically.
     def opt(self, objective, parameter, strategy='WR', ub=1):
+        """
+        SRacos optimization.
+
+        :param objective: objective function
+        :param parameter: parameters of Racos
+        :param strategy: replace strategy
+        :param ub: uncertain bits, which is a parameter of SRacos
+        :return: the best solution of the optimization
+        """
         self.clear()
         self.set_objective(objective)
         self.set_parameters(parameter)
@@ -92,6 +102,15 @@ class SRacos(RacosCommon):
         return self._best_solution
 
     def replace(self, iset, x, iset_type, strategy='WR'):
+        """
+        Replace a solution(chosen by strategy) in iset with x.
+
+        :param iset: a solution list
+        :param x: a solution
+        :param iset_type: 'pos' or 'neg'
+        :param strategy: 'WR': worst replace or 'RR': random replace or 'LM': replace the farthest solution
+        :return: the replaced solution
+        """
         if strategy == 'WR':
             return self.strategy_wr(iset, x, iset_type)
         elif strategy == 'RR':
@@ -100,8 +119,16 @@ class SRacos(RacosCommon):
             best_sol = min(iset, key=lambda x: x.get_value())
             return self.strategy_lm(iset, best_sol, x)
 
-    # Find first element larger than x
     def binary_search(self, iset, x, begin, end):
+        """
+        Find the first element larger than x.
+
+        :param iset: solution set
+        :param x: solution
+        :param begin: begin position
+        :param end: end position
+        :return: the index of the first element larger than x
+        """
         x_value = x.get_value()
         if x_value <= iset[begin].get_value():
             return begin
@@ -115,8 +142,15 @@ class SRacos(RacosCommon):
         else:
             return self.binary_search(iset, x, mid, end)
 
-    # Worst replace
     def strategy_wr(self, iset, x, iset_type):
+        """
+        Replace the worst solution in iset.
+
+        :param iset: solution set
+        :param x: solution
+        :param iset_type: 'pos' or 'neg'
+        :return: the worst solution
+        """
         if iset_type == 'pos':
             index = self.binary_search(iset, x, 0, len(iset) - 1)
             iset.insert(index, x)
@@ -129,16 +163,30 @@ class SRacos(RacosCommon):
                 worst_ele = x
         return worst_ele
 
-    # Random replace
     def strategy_rr(self, iset, x):
+        """
+        Replace a random solution in iset.
+
+        :param iset: solution set
+        :param x: solution
+        :return: the replaced solution
+        """
         len_iset = len(iset)
         replace_index = gl.rand.randint(0, len_iset - 1)
         replace_ele = iset[replace_index]
         iset[replace_index] = x
         return replace_ele
 
-    # replace the farthest solution from best_sol
+    #
     def strategy_lm(self, iset, best_sol, x):
+        """
+        Replace the farthest solution from best_sol
+
+        :param iset: solution set
+        :param best_sol: the best solution, distance between solution in iset and best_sol will be computed
+        :param x: solution
+        :return: the farthest solution in iset
+        """
         farthest_dis = 0
         farthest_index = 0
         for i in range(len(iset)):
@@ -152,6 +200,12 @@ class SRacos(RacosCommon):
 
     @staticmethod
     def distance(x, y):
+        """
+        Get distance between list x and y
+        :param x: list
+        :param y: list
+        :return: Euclidean distance
+        """
         dis = 0
         for i in range(len(x)):
             dis += (x[i] - y[i])**2

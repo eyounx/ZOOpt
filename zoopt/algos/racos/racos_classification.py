@@ -1,19 +1,29 @@
+"""
+This module contains the class RacosClassification, which provides a classifier for all Racos algorithms.
+
+Author:
+    Yu-Ren Liu
+"""
 
 from zoopt.dimension import Dimension
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
 
-"""
-The class RacosClassification contains a classifier generation algorithm
-
-Author:
-    Yuren Liu
-"""
-
 
 class RacosClassification:
+    """
+    This class implements a classifier used by all Racos algorithms.
+    """
 
     def __init__(self, dim, positive, negative, ub=1):
+        """
+        Initialization
+
+        :param dim: dimension information
+        :param positive: positive population
+        :param negative: negative population
+        :param ub: uncertain bits, which is a parameter for Racos
+        """
         self.__solution_space = dim
         self.__sample_region = []
         self.__label = []
@@ -31,6 +41,11 @@ class RacosClassification:
         return
 
     def reset_classifier(self):
+        """
+        Reset this classifier.
+
+        :return: no return
+        """
         regions = self.__solution_space.get_regions()
         for i in range(self.__solution_space.get_size()):
             self.__sample_region[i][0] = regions[i][0]
@@ -41,6 +56,11 @@ class RacosClassification:
 
     # This algos always works, whether discrete or continuous, we always use this function.
     def mixed_classification(self):
+        """
+        Process to train this classifier, which can handle mixed search space(continuous and discrete).
+        :return: no return
+        """
+
         self.__x_positive = self.__positive_solution[gl.rand.randint(
             0, len(self.__positive_solution) - 1)]
         len_negative = len(self.__negative_solution)
@@ -131,8 +151,12 @@ class RacosClassification:
         self.set_uncertain_bit(index_set)
         return
 
-    # Choose uncertain bits from iset
     def set_uncertain_bit(self, iset):
+        """
+        Choose uncertain bits from iset
+        :param iset: index set
+        :return: no return
+        """
         index_set = iset
         for i in range(self.__uncertain_bit):
             index = index_set[gl.rand.randint(0, len(index_set) - 1)]
@@ -140,8 +164,12 @@ class RacosClassification:
             index_set.remove(index)
         return
 
-    # Random sample from self.__solution_space.get_dim()
     def rand_sample(self):
+        """
+        Random sample from self.__solution_space.get_dim().
+
+        :return: sampled x
+        """
         x = []
         for i in range(self.__solution_space.get_size()):
             if self.__label[i] is True:
@@ -176,15 +204,31 @@ class RacosClassification:
 
     # for debugging
     def print_neg(self):
+        """
+        Print negative population.
+
+        :return: no return
+        """
         ToolFunction.log('------print neg------')
         for x in self.__negative_solution:
             x.print_solution()
 
     def print_pos(self):
+        """
+        Print positive population.
+
+        :return: no return
+        """
+
         ToolFunction.log('------print pos------')
         for x in self.__positive_solution:
             x.print_solution()
 
     def print_sample_region(self):
+        """
+        Print sample region.
+
+        :return: no return
+        """
         ToolFunction.log('------print sample region------')
         ToolFunction.log(self.__sample_region)
