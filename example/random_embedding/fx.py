@@ -1,4 +1,12 @@
-def sphere_re(solution):
+"""
+This module contains an objective function sphere
+
+Author:
+    Yu-Ren Liu
+"""
+
+
+def sphere_sre(solution):
     a = 0
     bias = 0.2
     x = solution.get_x()

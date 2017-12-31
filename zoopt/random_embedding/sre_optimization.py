@@ -56,4 +56,5 @@ class SequentialRandomEmbedding:
         for i in range(len(res)):
             if res[i].get_value() < best_sol.get_value():
                 best_sol = res[i]
+        self.__objective.get_history().extend(new_obj.get_history())
         return best_sol

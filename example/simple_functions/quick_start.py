@@ -11,7 +11,6 @@ from fx import ackley
 import numpy as np
 
 
-#
 def result_analysis(results, top):
     """
     Get mean value and standard deviation of best 'top' results.
