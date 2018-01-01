@@ -10,7 +10,7 @@ sys.path.append("/Users/liu/Desktop/CS/github/ZOO/")
 
 import socket
 import multiprocessing
-from zoopt.algos.asynchronous_racos import evaluation_server
+from zoopt.opt_algorithms.asynchronous_racos import evaluation_server
 from port_conflict import is_open
 from zoopt.utils.tool_function import ToolFunction
 

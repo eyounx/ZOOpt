@@ -5,9 +5,9 @@ Author:
     Yu-Ren Liu
 """
 
-from zoopt.algos.racos.ssracos import SSRacos
-from zoopt.algos.racos.sracos import SRacos
-from zoopt.algos.racos.racos import Racos
+from zoopt.opt_algorithms.racos.racos import Racos
+from zoopt.opt_algorithms.racos.sracos import SRacos
+from zoopt.noise_handling.ssracos import SSRacos
 
 
 class RacosOptimization:
