@@ -8,8 +8,8 @@ Author:
 import time
 import numpy
 from zoopt.solution import Solution
-from zoopt.algos.racos.racos_classification import RacosClassification
-from zoopt.algos.racos.racos_common import RacosCommon
+from zoopt.opt_algorithms.racos.racos_classification import RacosClassification
+from zoopt.opt_algorithms.racos.racos_common import RacosCommon
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
 

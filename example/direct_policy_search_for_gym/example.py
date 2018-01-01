@@ -39,9 +39,7 @@ def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value=None
 
     # form up the objective function
     objective = Objective(gym_task.sum_reward, dim)
-    # by default, the algorithm is sequential RACOS
-    parameter = Parameter(budget=budget, autoset=True,
-                          terminal_value=terminal_value)
+    parameter = Parameter(budget=budget, terminal_value=terminal_value)
     parameter.set_probability(rand_probability)
 
     result = []

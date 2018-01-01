@@ -1,5 +1,5 @@
 
-from zoopt.algos.paretoopt.paretoopt import ParetoOpt
+from zoopt.opt_algorithms.paretoopt.paretoopt import ParetoOpt
 
 """
 The class ParetoOptimization is a wrapper of Pareto optimization methods, even though currently there is only the canonical Pareto optimization method

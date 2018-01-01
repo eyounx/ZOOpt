@@ -2,7 +2,7 @@ import sys
 sys.path.append("/Users/liu/Desktop/CS/github/ZOO/")
 
 from example.direct_policy_search_for_gym.gym_task import GymTask
-from zoopt.algos.asynchronous_racos import evaluation_server
+from zoopt.opt_algorithms.asynchronous_racos import evaluation_server
 from sys import argv
 from random import Random
 

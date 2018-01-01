@@ -32,7 +32,7 @@ def minimize_ackley_continuous():
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
         objective = Objective(ackley, dim)  # form up the objective function
-        budget = 100 * dim_size  # number of calls to the objective function
+        budget = 50 * dim_size  # number of calls to the objective function
         parameter = Parameter(budget=budget)
         # perform the optimization
         solution = Opt.min(objective, parameter)
@@ -47,8 +47,8 @@ def minimize_ackley_continuous():
             history.append([0 for k in range(budget)])  # init for reducing
         history.append(objective.get_history_bestsofar())
     average_regret = reduce(lambda x, y: np.array(x) + np.array(y), history) / repeat  # get average regret
-    plt.plot(average_regret)
-    plt.show()
+    # plt.plot(average_regret)
+    # plt.show()
     # plt.savefig("img/ackley_continuous_figure.png")  # uncomment this line and comment last line to save figures
     result_analysis(result, 1)
     t2 = time.clock()
