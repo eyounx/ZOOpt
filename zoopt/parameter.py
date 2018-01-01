@@ -2,15 +2,13 @@
 This module contains the class Parameter, which includes all parameters used for optimization.
 
 Author:
-    Yu-Ren Liu, Yang Yu
+    Yu-Ren Liu, Xiong-Hui Chen, Yang Yu
 """
 
 import sys
 import math
 from zoopt.dimension import Dimension
 from zoopt.utils.tool_function import ToolFunction
-
-
 
 
 class Parameter:
@@ -30,6 +28,7 @@ class Parameter:
     # If terminal_value if not None, the algorithm should stop when such value is found
     # only if suppression is True, means use SSRACOS algorithm, non_update_allowed and resample_times are useful.
     # is found
+
     def __init__(self, algorithm=None, budget=0, suppression=False, sequential=True, intermediate_result=False,
                  intermediate_freq=100, autoset=True, precision=None,
                  uncertain_bits=None, init_samples=None, time_budget=None, terminal_value=None, non_update_allowed=40,
@@ -66,7 +65,7 @@ class Parameter:
         self.__time_budget = time_budget
         self.__terminal_value = terminal_value
 
-        ## for racos optimization
+        # for racos optimization
         self.__sequential = sequential
         self.__precision = precision
         self.__uncertain_bits = uncertain_bits

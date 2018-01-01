@@ -2,7 +2,7 @@
 This module contains the class Solution.
 
 Author:
-    Yu-Ren Liu
+    Yu-Ren Liu, Xiong-Hui Chen
 """
 
 from zoopt.utils.zoo_global import pos_inf, neg_inf, nan, gl
@@ -14,6 +14,7 @@ class Solution:
     A solution encapsulates a solution vector with attached properties, including dimension information, objective value,
 and attachment
     """
+
     def __init__(self, x=[], value=nan, resample_value=None, attach=None, post_attach=None, is_in_possible_solution=False):
         """
         Initialization.

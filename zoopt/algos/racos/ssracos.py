@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 # coding=utf-8
 
@@ -6,7 +5,7 @@
 The class SSRacos represents SSRacos algorithm. It's inherited from SRacos.
 
 Author:
-    Xionghui Chen, Yuren Liu
+    Xiong-Hui Chen, Yu-Ren Liu
 """
 
 import time
@@ -24,11 +23,16 @@ class SSRacos(SRacos):
         SRacos.__init__(self)
         return
 
-    # SSRacos's optimization function
-    # Default strategy is WR(worst replace)
-    # Default uncertain_bits is 1, but actually ub will be set either by user
-    # or by RacosOptimization automatically.
     def opt(self, objective, parameter, strategy='WR', ub=1):
+        """
+        SSRacos optimization.
+
+        :param objective: objective function
+        :param parameter: parameters of Racos
+        :param strategy: replace strategy
+        :param ub: uncertain bits, which is a parameter of SRacos
+        :return: the best solution of the optimization
+        """
         self.clear()
         self.set_objective(objective)
         self.set_parameters(parameter)
@@ -39,12 +43,7 @@ class SSRacos(SRacos):
         max_distinct_repeat_times = 100
         current_not_distinct_times = 0
         last_best = None
-        # max_stay_function = parameter.get_max_stay_function()
-        # precision_function = parameter.get_precision_function()
-        # max_stay_times = max_stay_function(0)
         non_update_allowed = parameter.get_non_update_allowed()
-        # baselines = parameter.get_baselines()
-        # non_update_baselines_allowed = parameter.get_non_update_baseline_allowed()
         non_update_times = 0
         current_stay_times = 0
         non_update_baselines_times = 0
@@ -90,7 +89,6 @@ class SSRacos(SRacos):
                     non_update_times = 0
                     best_solution = self.get_best_solution(for_test=True)
                     last_best = best_solution.get_resample_value()
-                    # max_stay_times = max_stay_function(last_best)
             else:
                 non_update_times = 0
 
@@ -125,6 +123,9 @@ class SSRacos(SRacos):
         return self.get_best_solution()
 
     def update_possible_solution(self):
+        """
+        Search all of solutions in self._positive_data, add it to self._possible_solution_list if not exist.
+        """
         for solution in self._positive_data:
             if solution.is_in_possible_solution:
                 continue
@@ -133,9 +134,13 @@ class SSRacos(SRacos):
                 new_solution = solution.deep_copy()
                 self._possible_solution_list.append(new_solution)
 
-    # if set for_test as False, this method will resample all of solution in positive data and then add to possible solution.
-    # return resample value if for_test is False otherwise return suppression value.
     def get_best_solution(self, for_test=False):
+        """
+        Find the best solution.
+
+        :param for_test: if set for_test as False, this method will resample all of solutions in positive data and then add them to possible solution before search the best solution.
+        :return: return resample value if for_test is False otherwise return suppression value.
+        """
         if not for_test:
             # update solution in positive data
             self._positive_data_re_sample()
@@ -154,28 +159,28 @@ class SSRacos(SRacos):
                 return sort_solution[0]
 
     def sort_solution_list(self, solution_list, key=lambda x: x.get_value()):
+        """
+        Sort a solution list (eg. self._positive_data, self._possible_solution_list) with key
+
+        :param solution_list: the solution list to be sorted.
+        :param key: a function which input a solution and return its key.
+        :return: return a copy of sorted list(without change origin solution list).
+        """
         return sorted(solution_list, key=key)
 
-    # Find first element larger than x
-    def binary_search(self, iset, x, begin, end):
-        x_value = x.get_value()
-        if x_value <= iset[begin].get_value():
-            return begin
-        if x_value >= iset[end].get_value():
-            return end + 1
-        if end == begin + 1:
-            return end
-        mid = (begin + end) // 2
-        if x_value <= iset[mid].get_value():
-            return self.binary_search(iset, x, begin, mid)
-        else:
-            return self.binary_search(iset, x, mid, end)
-
     def _positive_data_re_sample(self):
+        """
+        Re-sample all of solutions in positive data(ignore solutions which have re-sampled before).
+        """
         for data in self._positive_data:
             iter_times = self._objective.resample(
                 data, self.get_parameters().get_resample_times())
             self.i += iter_times
 
     def _is_worest(self, solution):
+        """
+        Judge if the solution is the worest solution in positive data.
+        :param solution: the solution to be judged.
+        :return: True if the solution is the worest False otherwise.
+        """
         return self._positive_data[-1].get_value() <= solution.get_value()
