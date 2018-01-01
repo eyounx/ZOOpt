@@ -9,7 +9,6 @@ from fx import SetCover
 from zoopt import Dimension, Objective, Parameter, ExpOpt
 
 
-
 def minimize_setcover_discrete():
     """
     Discrete optimization example of minimizing setcover problem.

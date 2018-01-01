@@ -13,4 +13,4 @@ if __name__ == '__main__':
     dim = 100  # dimension
     objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
     parameter = Parameter(budget=100 * dim)
-    ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/quick_start.png")
+    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/quick_start.png")

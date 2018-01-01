@@ -8,7 +8,7 @@ Author:
 """
 
 import arff, codecs
-from zoopt import Dimension, Objective, Parameter, Opt, Solution
+from zoopt import Dimension, Objective, Parameter, ExpOpt
 
 
 class RampLoss:
@@ -124,16 +124,7 @@ class RampLoss:
 if __name__=='__main__':
     # read data
     loss = RampLoss('ionosphere.arff')
-    # optimization
-    repeat = 1
-    result = []
-    for i in range(repeat):
-        objective = Objective(loss.eval, loss.dim())
-        budget = 100 * loss.get_dim_size()
-        parameter = Parameter(budget=budget)
-        # perform optimization
-        ins = Opt.min(objective, parameter)
-
-        print('solved solution is:')
-        ins.print_solution()
-        print('training error: %f' % loss.training_error(ins.get_x()))
+    objective = Objective(loss.eval, loss.dim())
+    budget = 100 * loss.get_dim_size()
+    parameter = Parameter(budget=budget)
+    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/ramploss.png")

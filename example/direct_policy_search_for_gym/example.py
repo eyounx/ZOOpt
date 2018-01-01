@@ -5,9 +5,7 @@ Author:
     Yu-Ren Liu
 """
 from gym_task import GymTask
-from zoopt import Dimension, Objective, Parameter, Opt, Solution
-import matplotlib.pyplot as plt
-import numpy as np
+from zoopt import Dimension, Objective, Parameter, ExpOpt
 
 
 def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value=None):
@@ -42,27 +40,7 @@ def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value=None
     parameter = Parameter(budget=budget, terminal_value=terminal_value)
     parameter.set_probability(rand_probability)
 
-    result = []
-    total_sum = 0
-    total_step = []
-    print('solved solution is:')
-    for i in range(repeat):
-        ins = Opt.min(objective, parameter)
-        result.append(ins.get_value())
-        total_sum += ins.get_value()
-        ins.print_solution()
-        print("total step %s" % gym_task.total_step)
-        total_step.append(gym_task.total_step)
-        gym_task.total_step = 0
-        history = np.array(objective.get_history_bestsofar())  # init for reducing
-        plt.plot(history)
-        objective.clean_history()  # clean history
-    # plt.show()
-    plt.savefig("img/direct_policy_search_for_gym.png")  # uncomment this line and comment last line to save figures
-    print(result)  # results in repeat times
-    print(total_sum/len(result))  # average result
-    print(total_step)
-    print("------------------------avg total step %s" % (sum(total_step)/len(total_step)))
+    solution_list = ExpOpt.min(objective, parameter, repeat=repeat)
 
 
 def run_ss_test(task_name, layers, in_budget, max_step, repeat, terminal_value):
