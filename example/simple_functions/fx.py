@@ -49,7 +49,6 @@ def ackley_noise_creator(mu, sigma):
     return lambda solution: ackley(solution) + np.random.normal(mu, sigma, 1)
 
 
-
 class SetCover:
     """
     set cover problem for discrete optimization
@@ -112,6 +111,10 @@ class SetCover:
 
     @property
     def dim(self):
+        """
+        Dimension of set cover problem.
+        :return: Dimension instance
+        """
         dim_size = 20
         dim_regs = [[0, 1]] * dim_size
         dim_tys = [False] * dim_size
