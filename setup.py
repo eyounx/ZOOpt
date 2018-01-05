@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='zoopt',
-    version=0.3,
+    version=0.1,
     description=(
         'A Python Package for Zeroth-Order Optimization'
     ),
