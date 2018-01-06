@@ -18,7 +18,7 @@ class Parameter:
 
     def __init__(self, algorithm=None, budget=0, init_samples=None, time_budget=None, terminal_value=None, sequential=True,
                  precision=None, uncertain_bits=None, intermediate_result=False, intermediate_freq=100, autoset=True,
-                 noise_handling=False, resampling=False, suppression=False, non_update_allowed=500, resample_times=100,
+                 noise_handling=False, resampling=False, suppression=False, ponss=False, ponss_theta=None, ponss_b=None, non_update_allowed=500, resample_times=100,
                  high_dim_handling=False, sre=False, num_sre=5, low_dimension=None, withdraw_alpha=None, variance_A=None):
         """
         Initialization.
@@ -80,6 +80,11 @@ class Parameter:
         # for noise handling
         self.__noise_handling = noise_handling
         self.__resampling = resampling
+        # for paretoopt noise handling
+        self.__ponss = ponss
+        self.__ponss_theta = ponss_theta
+        self.__ponss_b = ponss_b
+        # for value suppression
         self.__suppression = suppression
         self.__non_update_allowed = non_update_allowed
         self.__resample_times = resample_times
@@ -134,6 +139,15 @@ class Parameter:
 
     def get_resampling(self):
         return self.__resampling
+
+    def get_ponss(self):
+        return self.__ponss
+
+    def get_ponss_theta(self):
+        return self.__ponss_theta
+
+    def get_ponss_b(self):
+        return self.__ponss_b
 
     def get_suppressioin(self):
         return self.__suppression

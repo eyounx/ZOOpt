@@ -25,10 +25,10 @@ def minimize_ackley_continuous_noisy():
     # suppression=True means optimize with value suppression, which is a noise handling method
     # non_update_allowed=500 and resample_times=100 means if the best solution doesn't change for 500 budgets,
     # the best solution will be evaluated repeatedly for 100 times
-    # parameter = Parameter(budget=budget, noise_handling=True, suppression=True, non_update_allowed=500, resample_times=100)
+    parameter = Parameter(budget=budget, noise_handling=True, suppression=True, non_update_allowed=500, resample_times=100)
 
-    parameter = Parameter(budget=budget, noise_handling=True, resampling=True, resample_times=10)
-    # parameter.set_positive_size(5)
+    # parameter = Parameter(budget=budget, noise_handling=True, resampling=True, resample_times=10)
+    parameter.set_positive_size(5)
 
     ExpOpt.min(objective, parameter, repeat=5, plot=True, plot_file="img/ackley_continuous_noisy_figure.png")
 

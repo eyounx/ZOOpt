@@ -50,8 +50,6 @@ class ParetoOpt:
         :param parameter: Parameters object
         :return: the best solution of the optimization
         """
-        evaluationFunc = objective.get_func()
-        constraint = objective.get_constraint()
         isolationFunc = parameter.get_isolationFunc()
         n = objective.get_dim().get_size()
 
