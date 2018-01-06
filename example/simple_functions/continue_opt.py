@@ -26,7 +26,7 @@ def minimize_ackley_continuous():
     budget = 100 * dim_size  # number of calls to the objective function
     parameter = Parameter(budget=budget)
 
-    ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/ackley_continuous_figure.png")
+    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/ackley_continuous_figure.png")
 
 
 def minimize_sphere_continuous():
@@ -46,5 +46,5 @@ def minimize_sphere_continuous():
     ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/sphere_continuous_figure.png")
 
 if __name__ == '__main__':
-    # minimize_ackley_continuous()
-    minimize_sphere_continuous()
+    minimize_ackley_continuous()
+   #  minimize_sphere_continuous()

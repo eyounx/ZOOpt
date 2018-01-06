@@ -14,7 +14,7 @@ class Dimension:
     """
     This class describes dimension information of the search space.
     """
-    def __init__(self, size=0, regs=[], tys=[], order=False):
+    def __init__(self, size=0, regs=[], tys=[], order=[]):
         """
         Initialization.
 
@@ -22,14 +22,16 @@ class Dimension:
         :param regs: search space of each dimension
         :param tys: continuous or discrete for each dimension
         :param order:
-            this parameter matters if this dimension is discrete, and it means this dimension has partial order relation
+            this parameter matters if this dimension is discrete, it means this dimension has partial order relation
         """
         self._size = size
         self._regions = regs
         # True means continuous, False means discrete
         self._types = tys
-        # Order=True matters only when dimensions are discrete and have partial order relations.
-        self._order = order
+        if len(order) == 0:
+            self._order = [False] * self._size
+        else:
+            self._order = order
         return
 
 

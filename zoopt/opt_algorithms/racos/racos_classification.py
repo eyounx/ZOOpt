@@ -101,53 +101,53 @@ class RacosClassification:
                                 self.__negative_solution[len_negative] = itemp
                             else:
                                 i += 1
-            # integer continuous
-            elif order is True:
-                x_negative = self.__negative_solution[
-                    gl.rand.randint(0, len_negative - 1)]
-                x_neg_k = x_negative.get_x_index(k)
-                if x_pos_k < x_neg_k:
-                    # different from continuous version
-                    r = gl.rand.randint(x_pos_k, x_neg_k-1)
-                    if r < self.__sample_region[k][1]:
-                        self.__sample_region[k][1] = r
-                        i = 0
-                        while i < len_negative:
-                            if self.__negative_solution[i].get_x_index(k) >= r:
-                                len_negative -= 1
-                                itemp = self.__negative_solution[i]
-                                self.__negative_solution[i] = self.__negative_solution[len_negative]
-                                self.__negative_solution[len_negative] = itemp
-                            else:
-                                i += 1
-                else:
-                    r = gl.rand.randint(x_neg_k, x_pos_k)
-                    if r > self.__sample_region[k][0]:
-                        self.__sample_region[k][0] = r
-                        i = 0
-                        while i < len_negative:
-                            if self.__negative_solution[i].get_x_index(k) <= r:
-                                len_negative -= 1
-                                itemp = self.__negative_solution[i]
-                                self.__negative_solution[i] = self.__negative_solution[len_negative]
-                                self.__negative_solution[len_negative] = itemp
-                            else:
-                                i += 1
             # discrete
             else:
-                delete = 0
-                i = 0
-                while i < len_negative:
-                    if self.__negative_solution[i].get_x_index(k) != x_pos_k:
-                        len_negative -= 1
-                        delete += 1
-                        itemp = self.__negative_solution[i]
-                        self.__negative_solution[i] = self.__negative_solution[len_negative]
-                        self.__negative_solution[len_negative] = itemp
+                if order[k] is True:
+                    x_negative = self.__negative_solution[
+                        gl.rand.randint(0, len_negative - 1)]
+                    x_neg_k = x_negative.get_x_index(k)
+                    if x_pos_k < x_neg_k:
+                        # different from continuous version
+                        r = gl.rand.randint(x_pos_k, x_neg_k - 1)
+                        if r < self.__sample_region[k][1]:
+                            self.__sample_region[k][1] = r
+                            i = 0
+                            while i < len_negative:
+                                if self.__negative_solution[i].get_x_index(k) >= r:
+                                    len_negative -= 1
+                                    itemp = self.__negative_solution[i]
+                                    self.__negative_solution[i] = self.__negative_solution[len_negative]
+                                    self.__negative_solution[len_negative] = itemp
+                                else:
+                                    i += 1
                     else:
-                        i += 1
-                if delete != 0:
-                    index_set.remove(k)
+                        r = gl.rand.randint(x_neg_k, x_pos_k)
+                        if r > self.__sample_region[k][0]:
+                            self.__sample_region[k][0] = r
+                            i = 0
+                            while i < len_negative:
+                                if self.__negative_solution[i].get_x_index(k) <= r:
+                                    len_negative -= 1
+                                    itemp = self.__negative_solution[i]
+                                    self.__negative_solution[i] = self.__negative_solution[len_negative]
+                                    self.__negative_solution[len_negative] = itemp
+                                else:
+                                    i += 1
+                else:
+                    delete = 0
+                    i = 0
+                    while i < len_negative:
+                        if self.__negative_solution[i].get_x_index(k) != x_pos_k:
+                            len_negative -= 1
+                            delete += 1
+                            itemp = self.__negative_solution[i]
+                            self.__negative_solution[i] = self.__negative_solution[len_negative]
+                            self.__negative_solution[len_negative] = itemp
+                        else:
+                            i += 1
+                    if delete != 0:
+                        index_set.remove(k)
         self.set_uncertain_bit(index_set)
         return
 

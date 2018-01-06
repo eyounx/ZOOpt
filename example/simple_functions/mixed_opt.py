@@ -34,7 +34,7 @@ def minimize_sphere_mixed():
     budget = 100 * dim_size  # number of calls to the objective function
     parameter = Parameter(budget=budget)
 
-    ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/sphere_mixed_figure.png")
+    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/sphere_mixed_figure.png")
 
 if __name__ == '__main__':
     minimize_sphere_mixed()

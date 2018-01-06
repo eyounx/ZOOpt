@@ -93,7 +93,6 @@ class Objective:
     def eval_constraint(self, solution):
         solution.set_value(
             [self.eval(solution), self.__constraint(solution)])
-        self.__history.append(solution.get_value())
         solution.set_post_attach(self.__post_inherit())
 
     # set the optimization function

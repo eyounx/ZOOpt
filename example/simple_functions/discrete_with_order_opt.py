@@ -18,14 +18,15 @@ def minimize_sphere_discrete_order():
     dim_size = 100  # dimensions
     dim_regs = [[-10, 10]] * dim_size  # dimension range
     dim_tys = [False] * dim_size  # dimension type : integer
-    dim = Dimension(dim_size, dim_regs, dim_tys, order=True)  # form up the dimension object
+    dim_order = [True] * dim_size
+    dim = Dimension(dim_size, dim_regs, dim_tys, order=dim_order)  # form up the dimension object
     objective = Objective(sphere_discrete_order, dim)  # form up the objective function
 
     # setup algorithm parameters
     budget = 10000  # number of calls to the objective function
     parameter = Parameter(budget=budget)
 
-    ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/sphere_discrete_order_figure.png")
+    ExpOpt.min(objective, parameter, repeat=1, plot=False, plot_file="img/sphere_discrete_order_figure.png")
 
 if __name__ == '__main__':
     minimize_sphere_discrete_order()

@@ -16,7 +16,16 @@ class ExpOpt:
         """
         Continuous optimization example of minimizing the ackley function.
 
-        :return: best
+        :param objective: an Objective object
+        :param parameter: a Parameter object
+        :param repeat: integer, repeat times of the optimization
+        :param best_n:
+            integer, ExpOpt.min will print average value and standard deviation of best_n optimal results among
+            returned solution list.
+        :param plot: whether to plot regret curve during the optimization
+        :param plot_file: the file name to output the figure
+        :param seed: random seed of the optimization
+        :return:
         """
         ret = []
         if best_n is None:

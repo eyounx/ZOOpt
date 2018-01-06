@@ -5,14 +5,8 @@ Author:
     Xiong-Hui chen, Yu-Ren Liu
 """
 
-
-import matplotlib.pyplot as plt
-import time
-import numpy as np
 from fx import ackley, ackley_noise_creator
 from zoopt import Dimension, Objective, Parameter, ExpOpt, Solution
-from zoopt.utils.zoo_global import gl
-from quick_start import result_analysis
 
 
 def minimize_ackley_continuous_noisy():

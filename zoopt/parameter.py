@@ -15,19 +15,6 @@ class Parameter:
     """
         This class contains all parameters used for optimization.
     """
-    # Users should set at least algorithm and budget
-    # algorithm can be 'racos' or 'poss'
-    # If algorithm is 'racos' and sequential is True, opt will invoke SRacos.opt(default)
-    # if algorithm is 'racos' and sequential is False, opt will invoke Racos.opt
-    # budget cannot be None. It is the number of samples.
-    # If autoset is True, train_size, positive_size, negative_size will be set automatically
-    # If precision is None, we will set precision as 1e-17 in default. Otherwise, set precision
-    # If uncertain_bits is None, racos will set uncertain_bits automatically
-    # If init_samples is not None, the samples will be added into the first sampled solution set
-    # If time_budget is not None, the algorithm should stop when the time_budget (in seconds)  runs out.
-    # If terminal_value if not None, the algorithm should stop when such value is found
-    # only if suppression is True, means use SSRACOS algorithm, non_update_allowed and resample_times are useful.
-    # is found
 
     def __init__(self, algorithm=None, budget=0, suppression=False, sequential=True, intermediate_result=False,
                  intermediate_freq=100, autoset=True, precision=None,
@@ -49,9 +36,9 @@ class Parameter:
             Initial samples provided by user. If init_samples is not None, the samples will be added
             into the first sampled solution set
         :param time_budget: If running time exceeds this value, optimization algorithm will return best solution immediately
-        :param terminal_value: if best_solution
-        :param non_update_allowed:
-        :param resample_times:
+        :param terminal_value: for early stop, procedure will stop in advance if this value is reached
+        :param non_update_allowed: suppress solutions in positive set if positive set doesn't change for this period
+        :param resample_times: re-sample times in value suppression
         :param num_sre: number of sequential random embedding.
         :param low_dimension: low dimension size of sequential random embedding
         :param withdraw_alpha: a parameter for random embedding
