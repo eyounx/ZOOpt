@@ -45,15 +45,12 @@ class RacosOptimization:
         if ub is None:
             ub = self.choose_ub(objective)
         if parameter.get_sequential():
-            if not parameter.get_suppressioin():
-                self.__algorithm = SRacos()
-                self.__best_solution = self.__algorithm.opt(
-                    objective, parameter, strategy, ub)
-            else:
-
+            if parameter.get_noise_handling() is True and parameter.get_suppressioin() is True:
                 self.__algorithm = SSRacos()
-                self.__best_solution = self.__algorithm.opt(
-                    objective, parameter, strategy, ub)
+            else:
+                self.__algorithm = SRacos()
+            self.__best_solution = self.__algorithm.opt(
+                objective, parameter, strategy, ub)
         else:
             self.__algorithm = Racos()
             self.__best_solution = self.__algorithm.opt(

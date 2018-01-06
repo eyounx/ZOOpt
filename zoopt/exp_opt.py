@@ -27,6 +27,7 @@ class ExpOpt:
         :param seed: random seed of the optimization
         :return:
         """
+        objective.parameter_set(parameter)
         ret = []
         if best_n is None:
             best_n = repeat

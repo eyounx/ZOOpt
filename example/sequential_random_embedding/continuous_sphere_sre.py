@@ -20,11 +20,11 @@ def sphere_continuous_sre():
     dim_regs = [[-1, 1]] * dim_size  # dimension range
     dim_tys = [True] * dim_size  # dimension type : real
     dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
-    objective = Objective(sphere_sre, dim, sre=True)  # form up the objective function
+    objective = Objective(sphere_sre, dim)  # form up the objective function
 
     # setup algorithm parameters
     budget = 2000  # number of calls to the objective function
-    parameter = Parameter(budget=budget, num_sre=5, low_dimension=Dimension(10, [[-1, 1]] * 10, [True] * 10),
+    parameter = Parameter(budget=budget, high_dim_handling=True, sre=True, num_sre=5, low_dimension=Dimension(10, [[-1, 1]] * 10, [True] * 10),
                           withdraw_alpha=Dimension(1, [[-1, 1]], [True]), intermediate_result=False,
                           intermediate_freq=100)
     solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/sphere_continuous_sre.png")

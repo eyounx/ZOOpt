@@ -27,6 +27,7 @@ class Opt:
         :param parameter: parameter
         :return: result of optimization
         """
+        objective.parameter_set(parameter)
         Opt.set_global(parameter)
         constraint = objective.get_constraint()
         algorithm = parameter.get_algorithm()

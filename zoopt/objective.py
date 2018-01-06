@@ -15,7 +15,7 @@ class Objective:
     """
     The class Objective represents the objective function and its associated variables
     """
-    def __init__(self, func=None, dim=None, constraint=None, resample_func=None, balance_rate=1, sre=False):
+    def __init__(self, func=None, dim=None, constraint=None, resample_func=None, balance_rate=1):
         """
         Initialization.
 
@@ -35,12 +35,26 @@ class Objective:
         self.__constraint = constraint
         # the history of optimization
         self.__history = []
+
+        self.__resample_times = 1
         self.__resample_func = self.resample_func if resample_func is None else resample_func
         self.__balance_rate = balance_rate
         # for sequential random embedding
-        self.__sre = sre
+        self.__sre = False
         self.__A = None
         self.__last_x = None
+
+    def parameter_set(self, parameter):
+        """
+        Use a Parameter object to set attributes in Objective object.
+
+        :param parameter: a Parameter object
+        :return: no return
+        """
+        if parameter.get_noise_handling() is True and parameter.get_resampling() is True:
+            self.__resample_times = parameter.get_resample_times()
+        if parameter.get_high_dim_handling() is True and parameter.get_sre() is True:
+            self.__sre = True
 
     def construct_solution(self, x, parent=None):
         """
@@ -62,19 +76,28 @@ class Objective:
         :param solution:
         :return: value of fx(evaluation result) will be returned
         """
-
-        if self.__sre is False:
-            val = self.__func(solution)
-        else:
-            x = solution.get_x()
-            x_origin = x[0] * np.array(self.__last_x.get_x()) + np.dot(self.__A, np.array(x[1:]))
-            val = self.__func(Solution(x=x_origin))
-        solution.set_value(val)
-        self.__history.append(solution.get_value())
+        res = []
+        for i in range(self.__resample_times):
+            if self.__sre is False:
+                val = self.__func(solution)
+            else:
+                x = solution.get_x()
+                x_origin = x[0] * np.array(self.__last_x.get_x()) + np.dot(self.__A, np.array(x[1:]))
+                val = self.__func(Solution(x=x_origin))
+            res.append(val)
+            self.__history.append(val)
+        value = sum(res) / float(len(res))
+        solution.set_value(value)
         solution.set_post_attach(self.__post_inherit())
-        return val
+        return value
 
     def resample(self, solution, repeat_times):
+        """
+        resample function for value suppression
+        :param solution: a Solution object
+        :param repeat_times: repeat times
+        :return: repeat times
+        """
         if solution.get_resample_value() is None:
             solution.set_resample_value(self.__resample_func(solution, repeat_times))
             solution.set_value((1 - self.__balance_rate) * solution.get_value() +
