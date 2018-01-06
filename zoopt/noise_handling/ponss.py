@@ -21,7 +21,7 @@ class PONSS(ParetoOpt):
                 :return: the best solution of the optimization
                 """
         isolationFunc = parameter.get_isolationFunc()
-        theta = parameter.get_theta()
+        theta = parameter.get_ponss_theta()
         b = parameter.get_ponss_b()
         n = objective.get_dim().get_size()
 
@@ -30,7 +30,6 @@ class PONSS(ParetoOpt):
         objective.eval_constraint(sol)
 
         population = [sol]
-        fitness = [sol.get_value()]
         pop_size = 1
         # iteration count
         t = 0
@@ -52,7 +51,7 @@ class PONSS(ParetoOpt):
                 if isolationFunc(offspring_x) != isolationFunc(population[i].get_x()):
                     continue
                 else:
-                    if self.theta_dominate(theta, fitness[i], offspring):
+                    if self.theta_dominate(theta, population[i], offspring):
                         has_better = True
                         break
             # there is no better individual than offspring
@@ -60,10 +59,11 @@ class PONSS(ParetoOpt):
                 P = []
                 Q = []
                 for j in range(0, pop_size):
-                    if self.theta_weak_dominate(offspring, population[i]):
+                    if self.theta_weak_dominate(theta, offspring, population[i]):
                         continue
                     else:
                         P.append(population[j])
+                P.append(offspring)
                 population = P
                 for sol in population:
                     if sol.get_value()[1] == offspring.get_value()[1]:
@@ -73,16 +73,16 @@ class PONSS(ParetoOpt):
                         population.remove(sol)
                     j = 0
                     while j < b:
-                        sols = gl.random.sample(Q, 2)
+                        sols = gl.rand.sample(Q, 2)
                         Q.remove(sols[0])
                         Q.remove(sols[1])
                         objective.eval_constraint(sols[0])
                         objective.eval_constraint(sols[1])
                         if sols[0].get_value()[0] < sols[1].get_value()[0]:
-                            P.append(sols[0])
+                            population.append(sols[0])
                             Q.append(sols[1])
                         else:
-                            P.append(sols[1])
+                            population.append(sols[1])
                             Q.append(sols[0])
                         j += 1
                         t += 2

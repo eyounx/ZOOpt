@@ -8,7 +8,7 @@ Author:
 """
 
 from zoopt.opt_algorithms.paretoopt.paretoopt import ParetoOpt
-
+from zoopt.noise_handling.ponss import PONSS
 
 class ParetoOptimization:
 
@@ -29,7 +29,10 @@ class ParetoOptimization:
         :return: best solution
         """
         self.clear()
-        self.__algorithm = ParetoOpt()
+        if parameter.get_noise_handling() is True and parameter.get_ponss() is True:
+            self.__algorithm = PONSS()
+        else:
+            self.__algorithm = ParetoOpt()
         self.__best_solution = self.__algorithm.opt(objective, parameter)
         return self.__best_solution
 

@@ -7,7 +7,6 @@ Author:
 
 import numpy as np
 from zoopt import Opt, Parameter, Objective, Dimension, ExpOpt
-from math import exp
 import codecs
 import arff
 
@@ -122,18 +121,5 @@ class SparseMSE:
         finally:
             pass
 
-
-if __name__ == '__main__':
-    # load data file
-    mse = SparseMSE('sonar.arff')
-    mse.set_sparsity(8)
-
-    # setup objective
-    objective = Objective(func=mse.loss, dim=mse.get_dim(), constraint=mse.constraint)
-    parameter = Parameter(algorithm='poss', budget=2 * exp(1) * (mse.get_sparsity() ** 2) * mse.get_dim().get_size())
-
-    # perform sparse regression with constraint |w|_0 <= k
-    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True)
-    # result = Opt.min(objective, parameter)
-    # print('the best solution is:', np.array(result.get_x())[0].tolist())
-    # print('with objective value:', result.get_value()[0], 'and sparsity:', result.get_value()[1] + mse.get_sparsity())
+    def get_k(self):
+        return self._k
