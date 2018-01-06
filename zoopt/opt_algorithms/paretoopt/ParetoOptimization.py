@@ -20,9 +20,14 @@ class ParetoOptimization:
         self.__best_solution = None
         self.__algorithm = None
 
-    # General optimization function, it will choose concrete optimization
-    # algorithm
     def opt(self, objective, parameter):
+        """
+        Optimization function for pareto optimization.
+
+        :param objective: Objective object
+        :param parameter: Parameter object
+        :return: best solution
+        """
         self.clear()
         self.__algorithm = ParetoOpt()
         self.__best_solution = self.__algorithm.opt(objective, parameter)

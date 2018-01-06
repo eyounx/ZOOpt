@@ -20,14 +20,21 @@ class ParetoOpt:
     def __init__(self):
         pass
 
-    # every bit will be flipped with probability 1/n
-    def mutation(self, s, n):
+    @staticmethod
+    def mutation(s, n):
+        """
+        Every bit of s will be flipped with probability 1/n
+
+        :param s: s is a list
+        :param n: probability represents as 1/n
+        :return: flipped s
+        """
         s_temp = deepcopy(s)
         threshold = 1.0 / n
         flipped = False
         for i in range(0,n):
             # the probability is 1/n
-            if gl.rand.uniform(0,1) <= threshold:
+            if gl.rand.uniform(0, 1) <= threshold:
                 s_temp[0, i] = (s[0, i] + 1) % 2
                 flipped = True
         if not flipped:
@@ -35,16 +42,23 @@ class ParetoOpt:
             s_temp[0, mustflip] = (s[0, mustflip] + 1) % 2
         return s_temp
 
-    # This function is to find the index of s where element is 1
-    def position(self, s):
-        n = np.shape(s)[1]
-        result = []
-        for i in range(0,n):
-            if s[0, i] == 1:
-                result.append(i)
-        return result   
+    # # This function is to find the index of s where element is 1
+    # def position(self, s):
+    #     n = np.shape(s)[1]
+    #     result = []
+    #     for i in range(0,n):
+    #         if s[0, i] == 1:
+    #             result.append(i)
+    #     return result
 
     def opt(self, objective, parameter):
+        """
+        pareto optimization.
+
+        :param objective: Objective object
+        :param parameter: Parameters object
+        :return: the best solution of the optimization
+        """
         evaluationFunc = objective.get_func()
         constraint = objective.get_constraint()
         isolationFunc = parameter.get_isolationFunc()
