@@ -44,6 +44,19 @@ def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value=None
 
 
 def run_ss_test(task_name, layers, in_budget, max_step, repeat, terminal_value):
+    """
+    Api of running direct policy search with ssracos algorithm for gym task.
+
+    :param task_name: gym task name
+    :param layers:
+        layer information of the neural network
+        e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 and output layer has 1
+    :param in_budget:  number of calls to the objective function
+    :param max_step: max step in gym
+    :param repeat:  repeat number in a test
+    :param terminal_value: early stop, algorithm should stop when such value is reached
+    :return: no return
+    """
     gym_task = GymTask(task_name)  # choose a task by name
     gym_task.new_nnmodel(layers)  # construct a neural network
     gym_task.set_max_step(max_step)  # set max step in gym
