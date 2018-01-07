@@ -24,8 +24,8 @@ class Racos(RacosCommon):
         """
         Racos optimization.
 
-        :param objective: objective function
-        :param parameter: parameters of Racos
+        :param objective: a Objective object
+        :param parameter: a Parameter object
         :param ub: uncertain bits, which is a parameter of Racos
         :return: the best solution of the optimization
         """

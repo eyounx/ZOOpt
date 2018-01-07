@@ -17,16 +17,19 @@ from zoopt.utils.tool_function import ToolFunction
 
 class ParetoOpt:
 
+    """
+    Pareto optimization.
+    """
     def __init__(self):
         pass
 
     @staticmethod
     def mutation(s, n):
         """
-        Every bit of s will be flipped with probability 1/n
+        Every bit of s will be flipped with probability 1/n.
 
         :param s: s is a list
-        :param n: probability represents as 1/n
+        :param n: the probability of flipping is set to 1/n
         :return: flipped s
         """
         s_temp = deepcopy(s)
@@ -44,10 +47,10 @@ class ParetoOpt:
 
     def opt(self, objective, parameter):
         """
-        pareto optimization.
+        Pareto optimization.
 
-        :param objective: Objective object
-        :param parameter: Parameters object
+        :param objective: an Objective object
+        :param parameter: a Parameters object
         :return: the best solution of the optimization
         """
         isolationFunc = parameter.get_isolationFunc()
@@ -111,7 +114,6 @@ class ParetoOpt:
                     m, s = divmod(expected_time, 60)
                     h, m = divmod(m, 60)
                     ToolFunction.log('expected remaining running time: %02d:%02d:%02d' % (h, m, s))
-
         result_index = -1
         max_value=float('inf')
         for p in range(0, pop_size):

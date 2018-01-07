@@ -10,13 +10,13 @@ from random import Random
 
 class Global:
     """
-    This class defines global variables used in the algorithm.
+    This class defines global variables used in all algorithms.
     """
     rand = None
 
     def __init__(self):
         """
-        Initialization, includes rand and precision.
+        Initialize rand and precision.
         """
         # rand is the random object used by all files
         self.rand = Random()
@@ -28,7 +28,7 @@ class Global:
         Set random seed.
 
         :param seed: random seed
-        :return: no return
+        :return: no return value
         """
         self.rand.seed(seed)
         return
@@ -38,7 +38,7 @@ class Global:
         Set precision, precision is used to judge whether two floats are equal.
 
         :param my_precision: precision
-        :return: no return
+        :return: no return value
         """
         self.precision = my_precision
         return

@@ -12,6 +12,9 @@ import numpy as np
 
 
 class ExpOpt:
+    """
+    The experiment entrance of the optimization.
+    """
 
     def __init__(self):
         """

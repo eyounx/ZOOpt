@@ -1,5 +1,5 @@
 """
-This module contains the class SRacos, which is the sequential version of Racos(a classification based optimization algorithm).
+This module contains the class SRacos, which is the sequential version of Racos (a classification based optimization algorithm).
 
 Author:
     Yu-ren Liu
@@ -31,11 +31,11 @@ class SRacos(RacosCommon):
         """
         SRacos optimization.
 
-        :param objective: objective function
-        :param parameter: parameters of Racos
+        :param objective: an Objective object
+        :param parameter: a Parameter object
         :param strategy: replace strategy
         :param ub: uncertain bits, which is a parameter of SRacos
-        :return: the best solution of the optimization
+        :return: Optimization result
         """
         self.clear()
         self.set_objective(objective)
@@ -108,7 +108,7 @@ class SRacos(RacosCommon):
         Replace a solution(chosen by strategy) in iset with x.
 
         :param iset: a solution list
-        :param x: a solution
+        :param x: a Solution object
         :param iset_type: 'pos' or 'neg'
         :param strategy: 'WR': worst replace or 'RR': random replace or 'LM': replace the farthest solution
         :return: the replaced solution
@@ -125,8 +125,8 @@ class SRacos(RacosCommon):
         """
         Find the first element larger than x.
 
-        :param iset: solution set
-        :param x: solution
+        :param iset: a solution set
+        :param x: a Solution object
         :param begin: begin position
         :param end: end position
         :return: the index of the first element larger than x
@@ -148,8 +148,8 @@ class SRacos(RacosCommon):
         """
         Replace the worst solution in iset.
 
-        :param iset: solution set
-        :param x: solution
+        :param iset: a solution set
+        :param x: a Solution object
         :param iset_type: 'pos' or 'neg'
         :return: the worst solution
         """
@@ -169,8 +169,8 @@ class SRacos(RacosCommon):
         """
         Replace a random solution in iset.
 
-        :param iset: solution set
-        :param x: solution
+        :param iset: a solution set
+        :param x: a Solution object
         :return: the replaced solution
         """
         len_iset = len(iset)
@@ -184,10 +184,10 @@ class SRacos(RacosCommon):
         """
         Replace the farthest solution from best_sol
 
-        :param iset: solution set
+        :param iset: a solution set
         :param best_sol: the best solution, distance between solution in iset and best_sol will be computed
-        :param x: solution
-        :return: the farthest solution in iset
+        :param x: a Solution object
+        :return: the farthest solution (has the largest margin) in iset
         """
         farthest_dis = 0
         farthest_index = 0
@@ -203,9 +203,9 @@ class SRacos(RacosCommon):
     @staticmethod
     def distance(x, y):
         """
-        Get distance between list x and y
-        :param x: list
-        :param y: list
+        Get the distance between the list x and y
+        :param x: a list
+        :param y: a list
         :return: Euclidean distance
         """
         dis = 0

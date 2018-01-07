@@ -19,7 +19,7 @@ class RacosClassification:
         """
         Initialization
 
-        :param dim: dimension information
+        :param dim: a Dimension object
         :param positive: positive population
         :param negative: negative population
         :param ub: uncertain bits, which is a parameter for Racos
@@ -57,7 +57,8 @@ class RacosClassification:
     # This algos always works, whether discrete or continuous, we always use this function.
     def mixed_classification(self):
         """
-        Process to train this classifier, which can handle mixed search space(continuous and discrete).
+        The process to train this classifier, which can handle mixed search space(continuous and discrete).
+
         :return: no return value
         """
 
@@ -153,7 +154,8 @@ class RacosClassification:
 
     def set_uncertain_bit(self, iset):
         """
-        Choose uncertain bits from iset
+        Choose uncertain bits from iset.
+
         :param iset: index set
         :return: no return value
         """

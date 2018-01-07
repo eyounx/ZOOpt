@@ -19,6 +19,12 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../../zoopt'))
+sys.path.insert(0, os.path.abspath('../../zoopt/utils'))
+sys.path.insert(0, os.path.abspath('../../zoopt/algos/opt_algorithms/paretoopt'))
+sys.path.insert(0, os.path.abspath('../../zoopt/algos/opt_algorithms/racos'))
+sys.path.insert(0, os.path.abspath('../../zoopt/algos/noise_handling'))
+sys.path.insert(0, os.path.abspath('../../zoopt/algos/high_dimensionality_handling'))
+sys.path.insert(0, os.path.abspath('../../zoopt/algos/racos'))
 sys.path.insert(0, os.path.abspath('../../'))
 
 

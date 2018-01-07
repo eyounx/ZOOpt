@@ -1,0 +1,440 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sracos &mdash; ZOOpt 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ZOOpt 0.2 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../dimension.html">dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objective.html">objective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameter.html">parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solution.html">solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opt.html">opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exp_opt.html">exp_opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algos.html">algos</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../zoopt.html">ZOOpt</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>sracos</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sracos</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains the class SRacos, which is the sequential version of Racos (a classification based optimization algorithm).</span>
+
+<span class="sd">Author:</span>
+<span class="sd">    Yu-ren Liu</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="kn">from</span> <span class="nn">racos_classification</span> <span class="k">import</span> <span class="n">RacosClassification</span>
+<span class="kn">from</span> <span class="nn">racos_common</span> <span class="k">import</span> <span class="n">RacosCommon</span>
+<span class="kn">from</span> <span class="nn">zoopt.solution</span> <span class="k">import</span> <span class="n">Solution</span>
+<span class="kn">from</span> <span class="nn">zoopt.utils.tool_function</span> <span class="k">import</span> <span class="n">ToolFunction</span>
+<span class="kn">from</span> <span class="nn">zoopt.utils.zoo_global</span> <span class="k">import</span> <span class="n">gl</span>
+
+
+<div class="viewcode-block" id="SRacos"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/sracos.html#sracos.SRacos">[docs]</a><span class="k">class</span> <span class="nc">SRacos</span><span class="p">(</span><span class="n">RacosCommon</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The class SRacos represents Sequential Racos algorithm. It&#39;s inherited from RacosCommon.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="SRacos.__init__"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/sracos.html#sracos.SRacos.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialization.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">RacosCommon</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span></div>
+
+<div class="viewcode-block" id="SRacos.opt"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/sracos.html#sracos.SRacos.opt">[docs]</a>    <span class="k">def</span> <span class="nf">opt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;WR&#39;</span><span class="p">,</span> <span class="n">ub</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        SRacos optimization.</span>
+
+<span class="sd">        :param objective: an Objective object</span>
+<span class="sd">        :param parameter: a Parameter object</span>
+<span class="sd">        :param strategy: replace strategy</span>
+<span class="sd">        :param ub: uncertain bits, which is a parameter of SRacos</span>
+<span class="sd">        :return: Optimization result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_objective</span><span class="p">(</span><span class="n">objective</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_attribute</span><span class="p">()</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">iteration_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_budget</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_train_size</span><span class="p">()</span>
+        <span class="n">time_log1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">max_distinct_repeat_times</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">current_not_distinct_times</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">last_best</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">iteration_num</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">gl</span><span class="o">.</span><span class="n">rand</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_probability</span><span class="p">():</span>
+                <span class="n">classifier</span> <span class="o">=</span> <span class="n">RacosClassification</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_objective</span><span class="o">.</span><span class="n">get_dim</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_positive_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_negative_data</span><span class="p">,</span> <span class="n">ub</span><span class="p">)</span>
+                <span class="n">classifier</span><span class="o">.</span><span class="n">mixed_classification</span><span class="p">()</span>
+                <span class="n">solution</span><span class="p">,</span> <span class="n">distinct_flag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distinct_sample_classifier</span><span class="p">(</span>
+                    <span class="n">classifier</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_train_size</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">solution</span><span class="p">,</span> <span class="n">distinct_flag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distinct_sample</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_objective</span><span class="o">.</span><span class="n">get_dim</span><span class="p">())</span>
+            <span class="c1"># panic stop</span>
+            <span class="k">if</span> <span class="n">solution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot; [break loop] because solution is None&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span>
+            <span class="k">if</span> <span class="n">distinct_flag</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="n">current_not_distinct_times</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">current_not_distinct_times</span> <span class="o">&gt;=</span> <span class="n">max_distinct_repeat_times</span><span class="p">:</span>
+                    <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+                        <span class="s2">&quot;[break loop] because distinct_flag is false too much times&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+            <span class="c1"># evaluate the solution</span>
+            <span class="n">objective</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
+            <span class="c1"># show best solution</span>
+            <span class="n">times</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_train_size</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">show_best_solution</span><span class="p">(</span><span class="n">parameter</span><span class="o">.</span><span class="n">get_intermediate_result</span><span class="p">(),</span> <span class="n">times</span><span class="p">,</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get_intermediate_freq</span><span class="p">())</span>
+            <span class="n">bad_ele</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_positive_data</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="s1">&#39;pos&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_negative_data</span><span class="p">,</span> <span class="n">bad_ele</span><span class="p">,</span> <span class="s1">&#39;neg&#39;</span><span class="p">,</span> <span class="n">strategy</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_positive_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">last_best</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">time_log2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                <span class="n">expected_time</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_budget</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_train_size</span><span class="p">())</span> <span class="o">*</span> \
+                                <span class="p">(</span><span class="n">time_log2</span> <span class="o">-</span> <span class="n">time_log1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_time_budget</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">expected_time</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
+                        <span class="n">expected_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_time_budget</span><span class="p">())</span>
+                <span class="k">if</span> <span class="n">expected_time</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+                    <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">expected_time</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+                    <span class="n">h</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+                    <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+                        <span class="s1">&#39;expected remaining running time: </span><span class="si">%02d</span><span class="s1">:</span><span class="si">%02d</span><span class="s1">:</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+            <span class="c1"># time budget check</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_time_budget</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">time_log1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_time_budget</span><span class="p">():</span>
+                    <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;time_budget runs out&#39;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span>
+            <span class="c1"># terminal_value check</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_terminal_value</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_terminal_value</span><span class="p">():</span>
+                    <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;terminal function value reached&#39;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span></div>
+
+<div class="viewcode-block" id="SRacos.replace"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/sracos.html#sracos.SRacos.replace">[docs]</a>    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iset</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">iset_type</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;WR&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Replace a solution(chosen by strategy) in iset with x.</span>
+
+<span class="sd">        :param iset: a solution list</span>
+<span class="sd">        :param x: a Solution object</span>
+<span class="sd">        :param iset_type: &#39;pos&#39; or &#39;neg&#39;</span>
+<span class="sd">        :param strategy: &#39;WR&#39;: worst replace or &#39;RR&#39;: random replace or &#39;LM&#39;: replace the farthest solution</span>
+<span class="sd">        :return: the replaced solution</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">strategy</span> <span class="o">==</span> <span class="s1">&#39;WR&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">strategy_wr</span><span class="p">(</span><span class="n">iset</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">iset_type</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">strategy</span> <span class="o">==</span> <span class="s1">&#39;RR&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">strategy_rr</span><span class="p">(</span><span class="n">iset</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">strategy</span> <span class="o">==</span> <span class="s1">&#39;LM&#39;</span><span class="p">:</span>
+            <span class="n">best_sol</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">iset</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">get_value</span><span class="p">())</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">strategy_lm</span><span class="p">(</span><span class="n">iset</span><span class="p">,</span> <span class="n">best_sol</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SRacos.binary_search"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/sracos.html#sracos.SRacos.binary_search">[docs]</a>    <span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iset</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Find the first element larger than x.</span>
+
+<span class="sd">        :param iset: a solution set</span>
+<span class="sd">        :param x: a Solution object</span>
+<span class="sd">        :param begin: begin position</span>
+<span class="sd">        :param end: end position</span>
+<span class="sd">        :return: the index of the first element larger than x</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x_value</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">x_value</span> <span class="o">&lt;=</span> <span class="n">iset</span><span class="p">[</span><span class="n">begin</span><span class="p">]</span><span class="o">.</span><span class="n">get_value</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">begin</span>
+        <span class="k">if</span> <span class="n">x_value</span> <span class="o">&gt;=</span> <span class="n">iset</span><span class="p">[</span><span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">get_value</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">end</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">end</span> <span class="o">==</span> <span class="n">begin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">end</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">begin</span> <span class="o">+</span> <span class="n">end</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">x_value</span> <span class="o">&lt;=</span> <span class="n">iset</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="o">.</span><span class="n">get_value</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary_search</span><span class="p">(</span><span class="n">iset</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">begin</span><span class="p">,</span> <span class="n">mid</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary_search</span><span class="p">(</span><span class="n">iset</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SRacos.strategy_wr"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/sracos.html#sracos.SRacos.strategy_wr">[docs]</a>    <span class="k">def</span> <span class="nf">strategy_wr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iset</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">iset_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Replace the worst solution in iset.</span>
+
+<span class="sd">        :param iset: a solution set</span>
+<span class="sd">        :param x: a Solution object</span>
+<span class="sd">        :param iset_type: &#39;pos&#39; or &#39;neg&#39;</span>
+<span class="sd">        :return: the worst solution</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">iset_type</span> <span class="o">==</span> <span class="s1">&#39;pos&#39;</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary_search</span><span class="p">(</span><span class="n">iset</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">iset</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">iset</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+            <span class="n">worst_ele</span> <span class="o">=</span> <span class="n">iset</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">worst_ele</span><span class="p">,</span> <span class="n">worst_index</span> <span class="o">=</span> <span class="n">Solution</span><span class="o">.</span><span class="n">find_maximum</span><span class="p">(</span><span class="n">iset</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">worst_ele</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">get_value</span><span class="p">():</span>
+                <span class="n">iset</span><span class="p">[</span><span class="n">worst_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">worst_ele</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">return</span> <span class="n">worst_ele</span></div>
+
+<div class="viewcode-block" id="SRacos.strategy_rr"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/sracos.html#sracos.SRacos.strategy_rr">[docs]</a>    <span class="k">def</span> <span class="nf">strategy_rr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iset</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Replace a random solution in iset.</span>
+
+<span class="sd">        :param iset: a solution set</span>
+<span class="sd">        :param x: a Solution object</span>
+<span class="sd">        :return: the replaced solution</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">len_iset</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">iset</span><span class="p">)</span>
+        <span class="n">replace_index</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">rand</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">len_iset</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">replace_ele</span> <span class="o">=</span> <span class="n">iset</span><span class="p">[</span><span class="n">replace_index</span><span class="p">]</span>
+        <span class="n">iset</span><span class="p">[</span><span class="n">replace_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">return</span> <span class="n">replace_ele</span></div>
+
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SRacos.strategy_lm"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/sracos.html#sracos.SRacos.strategy_lm">[docs]</a>    <span class="k">def</span> <span class="nf">strategy_lm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iset</span><span class="p">,</span> <span class="n">best_sol</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Replace the farthest solution from best_sol</span>
+
+<span class="sd">        :param iset: a solution set</span>
+<span class="sd">        :param best_sol: the best solution, distance between solution in iset and best_sol will be computed</span>
+<span class="sd">        :param x: a Solution object</span>
+<span class="sd">        :return: the farthest solution (has the largest margin) in iset</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">farthest_dis</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">farthest_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">iset</span><span class="p">)):</span>
+            <span class="n">dis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">iset</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_x</span><span class="p">(),</span> <span class="n">best_sol</span><span class="o">.</span><span class="n">get_x</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">dis</span> <span class="o">&gt;</span> <span class="n">farthest_dis</span><span class="p">:</span>
+                <span class="n">farthest_dis</span> <span class="o">=</span> <span class="n">dis</span>
+                <span class="n">farthest_index</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="n">farthest_ele</span> <span class="o">=</span> <span class="n">iset</span><span class="p">[</span><span class="n">farthest_index</span><span class="p">]</span>
+        <span class="n">iset</span><span class="p">[</span><span class="n">farthest_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">return</span> <span class="n">farthest_ele</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="SRacos.distance"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/sracos.html#sracos.SRacos.distance">[docs]</a>    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the distance between the list x and y</span>
+<span class="sd">        :param x: a list</span>
+<span class="sd">        :param y: a list</span>
+<span class="sd">        :return: Euclidean distance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dis</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+            <span class="n">dis</span> <span class="o">+=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dis</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui chen, Chao Feng, Yang Yu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

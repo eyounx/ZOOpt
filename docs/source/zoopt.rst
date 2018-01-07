@@ -28,6 +28,8 @@ Reference
    solution
    opt
    exp_opt
+   utils
+   algos
 
 Indices and tables
 ==================

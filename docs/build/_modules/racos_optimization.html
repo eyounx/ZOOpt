@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>racos_optimization &mdash; ZOOpt 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ZOOpt 0.2 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../dimension.html">dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objective.html">objective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameter.html">parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solution.html">solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opt.html">opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exp_opt.html">exp_opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algos.html">algos</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../zoopt.html">ZOOpt</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>racos_optimization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for racos_optimization</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains the class RacosOptimization, which will choose the optimization algorithm and get the best solution.</span>
+
+<span class="sd">Author:</span>
+<span class="sd">    Yu-Ren Liu</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">zoopt.algos.noise_handling.ssracos</span> <span class="k">import</span> <span class="n">SSRacos</span>
+<span class="kn">from</span> <span class="nn">racos</span> <span class="k">import</span> <span class="n">Racos</span>
+<span class="kn">from</span> <span class="nn">sracos</span> <span class="k">import</span> <span class="n">SRacos</span>
+
+
+<div class="viewcode-block" id="RacosOptimization"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/racos_optimization.html#racos_optimization.RacosOptimization">[docs]</a><span class="k">class</span> <span class="nc">RacosOptimization</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class will choose the optimization algorithm and get the best solution.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="RacosOptimization.__init__"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/racos_optimization.html#racos_optimization.RacosOptimization.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialization.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__best_solution</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__algorithm</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="RacosOptimization.clear"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/racos_optimization.html#racos_optimization.RacosOptimization.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Clear the instance.</span>
+
+<span class="sd">        :return: no return value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__best_solution</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__algorithm</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="RacosOptimization.opt"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/racos_optimization.html#racos_optimization.RacosOptimization.opt">[docs]</a>    <span class="k">def</span> <span class="nf">opt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;WR&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function will choose optimization algorithm and use it to optimize.</span>
+
+<span class="sd">        :param objective: a Objective object</span>
+<span class="sd">        :param parameter: a Parameter object</span>
+<span class="sd">        :param strategy: replace strategy, used by SRacos and SSRacos</span>
+<span class="sd">        :return: the best solution</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">ub</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get_uncertain_bits</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">ub</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">choose_ub</span><span class="p">(</span><span class="n">objective</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get_sequential</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get_noise_handling</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get_suppressioin</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__algorithm</span> <span class="o">=</span> <span class="n">SSRacos</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__algorithm</span> <span class="o">=</span> <span class="n">SRacos</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__best_solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__algorithm</span><span class="o">.</span><span class="n">opt</span><span class="p">(</span>
+                <span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">strategy</span><span class="p">,</span> <span class="n">ub</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__algorithm</span> <span class="o">=</span> <span class="n">Racos</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__best_solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__algorithm</span><span class="o">.</span><span class="n">opt</span><span class="p">(</span>
+                <span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">ub</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_solution</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="RacosOptimization.choose_ub"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/racos_optimization.html#racos_optimization.RacosOptimization.choose_ub">[docs]</a>    <span class="k">def</span> <span class="nf">choose_ub</span><span class="p">(</span><span class="n">objective</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Choose uncertain_bits according to the dimension size automatically.</span>
+
+<span class="sd">        :param objective: an Objective object</span>
+<span class="sd">        :return: uncertain bits</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dim</span> <span class="o">=</span> <span class="n">objective</span><span class="o">.</span><span class="n">get_dim</span><span class="p">()</span>
+        <span class="n">dim_size</span> <span class="o">=</span> <span class="n">dim</span><span class="o">.</span><span class="n">get_size</span><span class="p">()</span>
+        <span class="n">is_discrete</span> <span class="o">=</span> <span class="n">dim</span><span class="o">.</span><span class="n">is_discrete</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">is_discrete</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dim_size</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
+                <span class="n">ub</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">dim_size</span> <span class="o">&lt;=</span> <span class="mi">1000</span><span class="p">:</span>
+                <span class="n">ub</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ub</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dim_size</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+                <span class="n">ub</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">dim_size</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">:</span>
+                <span class="n">ub</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="k">elif</span> <span class="n">dim_size</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
+                <span class="n">ub</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="k">elif</span> <span class="n">dim_size</span> <span class="o">&lt;=</span> <span class="mi">1000</span><span class="p">:</span>
+                <span class="n">ub</span> <span class="o">=</span> <span class="mi">4</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ub</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="k">return</span> <span class="n">ub</span></div>
+
+    <span class="k">def</span> <span class="nf">get_best_sol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_solution</span></div>
+
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui chen, Chao Feng, Yang Yu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

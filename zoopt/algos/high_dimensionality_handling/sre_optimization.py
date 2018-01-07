@@ -20,9 +20,9 @@ class SequentialRandomEmbedding:
     def __init__(self, objective, parameter, optimizer):
         """
 
-        :param objective: objective
-        :param parameter: parameter
-        :param optimizer: optimization algorithm
+        :param objective: an Objective object
+        :param parameter: an Parameter object
+        :param optimizer: the optimization algorithm
         """
         self.__objective = objective
         self.__parameter = parameter

@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sre_optimization &mdash; ZOOpt 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ZOOpt 0.2 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../dimension.html">dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objective.html">objective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameter.html">parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solution.html">solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opt.html">opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exp_opt.html">exp_opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algos.html">algos</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../zoopt.html">ZOOpt</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>sre_optimization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sre_optimization</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains the class SequentialRandomEmbedding.</span>
+
+<span class="sd">Author:</span>
+<span class="sd">    Yu-Ren Liu</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">zoopt.solution</span> <span class="k">import</span> <span class="n">Solution</span>
+<span class="kn">from</span> <span class="nn">zoopt.dimension</span> <span class="k">import</span> <span class="n">Dimension</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">zoopt.utils.tool_function</span> <span class="k">import</span> <span class="n">ToolFunction</span>
+
+
+<div class="viewcode-block" id="SequentialRandomEmbedding"><a class="viewcode-back" href="../algos/high_dimensionality_handling/sre_optimization.html#sre_optimization.SequentialRandomEmbedding">[docs]</a><span class="k">class</span> <span class="nc">SequentialRandomEmbedding</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sequential random embedding is implemented in this class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="SequentialRandomEmbedding.__init__"><a class="viewcode-back" href="../algos/high_dimensionality_handling/sre_optimization.html#sre_optimization.SequentialRandomEmbedding.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param objective: an Objective object</span>
+<span class="sd">        :param parameter: an Parameter object</span>
+<span class="sd">        :param optimizer: the optimization algorithm</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__objective</span> <span class="o">=</span> <span class="n">objective</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__parameter</span> <span class="o">=</span> <span class="n">parameter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__optimizer</span> <span class="o">=</span> <span class="n">optimizer</span></div>
+
+<div class="viewcode-block" id="SequentialRandomEmbedding.opt"><a class="viewcode-back" href="../algos/high_dimensionality_handling/sre_optimization.html#sre_optimization.SequentialRandomEmbedding.opt">[docs]</a>    <span class="k">def</span> <span class="nf">opt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sequential random embedding optimization.</span>
+
+<span class="sd">        :return: the best solution of the optimization</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__objective</span><span class="o">.</span><span class="n">get_dim</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">iteration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parameter</span><span class="o">.</span><span class="n">get_num_sre</span><span class="p">()</span>
+        <span class="n">new_obj</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__objective</span><span class="p">)</span>
+        <span class="n">new_par</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__parameter</span><span class="p">)</span>
+        <span class="n">new_par</span><span class="o">.</span><span class="n">set_budget</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__parameter</span><span class="o">.</span><span class="n">get_budget</span><span class="p">()</span><span class="o">/</span><span class="n">iteration</span><span class="p">))</span>
+        <span class="n">new_obj</span><span class="o">.</span><span class="n">set_last_x</span><span class="p">(</span><span class="n">Solution</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iteration</span><span class="p">):</span>
+            <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;sequential random embedding </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+            <span class="n">new_obj</span><span class="o">.</span><span class="n">set_A</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__parameter</span><span class="o">.</span><span class="n">get_variance_A</span><span class="p">())</span> <span class="o">*</span>
+                                   <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">dim</span><span class="o">.</span><span class="n">get_size</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parameter</span><span class="o">.</span><span class="n">get_low_dimension</span><span class="p">()</span><span class="o">.</span><span class="n">get_size</span><span class="p">()))</span>
+            <span class="n">new_dim</span> <span class="o">=</span> <span class="n">Dimension</span><span class="o">.</span><span class="n">merge_dim</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__parameter</span><span class="o">.</span><span class="n">get_withdraw_alpha</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parameter</span><span class="o">.</span><span class="n">get_low_dimension</span><span class="p">())</span>
+            <span class="n">new_obj</span><span class="o">.</span><span class="n">set_dim</span><span class="p">(</span><span class="n">new_dim</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__optimizer</span><span class="o">.</span><span class="n">opt</span><span class="p">(</span><span class="n">new_obj</span><span class="p">,</span> <span class="n">new_par</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span>
+            <span class="n">x_origin</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">new_obj</span><span class="o">.</span><span class="n">get_last_x</span><span class="p">()</span><span class="o">.</span><span class="n">get_x</span><span class="p">())</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">new_obj</span><span class="o">.</span><span class="n">get_A</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+            <span class="n">sol</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_origin</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">get_value</span><span class="p">())</span>
+            <span class="n">new_obj</span><span class="o">.</span><span class="n">set_last_x</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+        <span class="n">best_sol</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">best_sol</span><span class="o">.</span><span class="n">get_value</span><span class="p">():</span>
+                <span class="n">best_sol</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__objective</span><span class="o">.</span><span class="n">get_history</span><span class="p">()</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_obj</span><span class="o">.</span><span class="n">get_history</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">best_sol</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui chen, Chao Feng, Yang Yu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

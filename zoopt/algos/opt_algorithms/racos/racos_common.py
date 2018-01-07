@@ -33,7 +33,7 @@ class RacosCommon:
 
     def clear(self):
         """
-        Clear RacosCommon
+        Clear RacosCommon.
 
         :return: no return value
         """
@@ -81,7 +81,7 @@ class RacosCommon:
 
     def selection(self):
         """
-        This function sequentially does as follows:
+        This function sequentially does:
             Sort self._data
             Choose [first, train_size )solutions as the new self._data
             Choose first-positive_size solutions as self._positive_data
@@ -103,10 +103,10 @@ class RacosCommon:
         """
         Sample a distinct(compared with solutions in self._data) solution from dim.
 
-        :param dim: dimension
+        :param dim: a Dimension object
         :param check_distinct: whether to check the sampled solution is distinct
         :param data_num: the maximum number to sample
-        :return: sampled solution and distinct_flag(True if distinct)
+        :return: sampled solution and distinct_flag (True if it's distinct)
         """
         objective = self._objective
         x = objective.construct_solution(dim.rand_sample())
@@ -133,7 +133,7 @@ class RacosCommon:
         """
         Sample a distinct solution(compared with solutions in set) from dim.
 
-        :param dim: dimension
+        :param dim: a Dimension object
         :param set: a list containing other solutions
         :param check_distinct: whether to check the sampled solution is distinct
         :param data_num: the maximum number to sample
@@ -219,7 +219,7 @@ class RacosCommon:
         Check if x is distinct from each solution in seta.
 
         :param seta: a list
-        :param x: solution
+        :param x: a Solution object
         :return: True or False
         """
         for ins in seta:

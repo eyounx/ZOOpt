@@ -34,10 +34,10 @@ class RacosOptimization:
         """
         This function will choose optimization algorithm and use it to optimize.
 
-        :param objective: objective function
-        :param parameter: parameter
+        :param objective: a Objective object
+        :param parameter: a Parameter object
         :param strategy: replace strategy, used by SRacos and SSRacos
-        :return: best solution
+        :return: the best solution
         """
 
         self.clear()
@@ -60,9 +60,9 @@ class RacosOptimization:
     @staticmethod
     def choose_ub(objective):
         """
-        Choose uncertain_bits according to dimension size automatically.
+        Choose uncertain_bits according to the dimension size automatically.
 
-        :param objective: objective function
+        :param objective: an Objective object
         :return: uncertain bits
         """
         dim = objective.get_dim()

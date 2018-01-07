@@ -12,7 +12,9 @@ from paretoopt import ParetoOpt
 
 
 class ParetoOptimization:
-
+    """
+    Pareto optimization.
+    """
     def __init__(self):
         self.__best_solution = None
         self.__algorithm = None
@@ -23,11 +25,11 @@ class ParetoOptimization:
 
     def opt(self, objective, parameter):
         """
-        Optimization function for pareto optimization.
+        The optimization procedure.
 
-        :param objective: Objective object
-        :param parameter: Parameter object
-        :return: best solution
+        :param objective: an Objective object
+        :param parameter: a Parameter object
+        :return: the best solution
         """
         self.clear()
         if parameter.get_noise_handling() is True and parameter.get_ponss() is True:

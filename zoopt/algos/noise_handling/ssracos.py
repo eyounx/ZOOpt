@@ -2,7 +2,7 @@
 # coding=utf-8
 
 """
-The class SSRacos represents SSRacos algorithm. It's inherited from SRacos.
+This module contains the class SSRacos, which combines the noise handling method value suppression with SRacos.
 
 Author:
     Xiong-Hui Chen, Yu-Ren Liu
@@ -16,6 +16,9 @@ from zoopt.utils.zoo_global import gl
 
 
 class SSRacos(SRacos):
+    """
+    This class implements SSRacos algorithm, which combines the noise handling method value suppression with SRacos.
+    """
 
     def __init__(self):
         SRacos.__init__(self)
@@ -25,8 +28,8 @@ class SSRacos(SRacos):
         """
         SSRacos optimization.
 
-        :param objective: objective function
-        :param parameter: parameters of Racos
+        :param objective: a Objective object
+        :param parameter: a Parameter object
         :param strategy: replace strategy
         :param ub: uncertain bits, which is a parameter of SRacos
         :return: the best solution of the optimization
@@ -136,7 +139,7 @@ class SSRacos(SRacos):
         """
         Find the best solution.
 
-        :param for_test: if set for_test as False, this method will resample all of solutions in positive data and then add them to possible solution before search the best solution.
+        :param for_test: if set for_test as False, this method will re-sample all of the solutions in positive data and then add them to possible solution before search the best solution.
         :return: return resample value if for_test is False otherwise return suppression value.
         """
         if not for_test:
@@ -168,7 +171,7 @@ class SSRacos(SRacos):
 
     def _positive_data_re_sample(self):
         """
-        Re-sample all of solutions in positive data(ignore solutions which have re-sampled before).
+        Re-sample all of the solutions in positive data(ignore solutions which have re-sampled before).
         """
         for data in self._positive_data:
             iter_times = self._objective.resample(
@@ -177,8 +180,9 @@ class SSRacos(SRacos):
 
     def _is_worest(self, solution):
         """
-        Judge if the solution is the worest solution in positive data.
+        Judge if the solution is the worst solution in positive data.
+
         :param solution: the solution to be judged.
-        :return: True if the solution is the worest False otherwise.
+        :return: True if the solution is the worst False otherwise.
         """
         return self._positive_data[-1].get_value() <= solution.get_value()

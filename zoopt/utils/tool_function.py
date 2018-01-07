@@ -10,7 +10,7 @@ import pickle
 
 class ToolFunction:
     """
-    Class ToolFunction defines some tool function used in project.
+    This class defines some tool functions used in the project.
     """
     def __init__(self):
         pass
@@ -18,9 +18,9 @@ class ToolFunction:
     @staticmethod
     def list_compare(list1, list2):
         """
-        Compare two lists. If lists are same, return True.
+        Compare two lists.
 
-        :return: True or False
+        :return: True if the two lists are the same else False.
         """
         if len(list1) != len(list2):
             return False
@@ -34,17 +34,17 @@ class ToolFunction:
         """
         Deep copy an object.
 
-        :param obj: object
+        :param obj: an object
         :return: a new object
         """
-        return pickle.loads(pickle.dumps(obj));
+        return pickle.loads(pickle.dumps(obj))
 
     @staticmethod
     def log(text):
         """
-        Log output in ZOOpt.
+        Output logs in ZOOpt.
 
-        :param text: text to output
-        :return: no return
+        :param text: the text content
+        :return: no return value
         """
         print('[zoopt] '+text)

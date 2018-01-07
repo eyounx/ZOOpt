@@ -1,3 +1,6 @@
+"""
+This module contains the class PONSS, which is a variant of POSS to solve noisy subset selection problems.
+"""
 import time
 
 import numpy as np
@@ -8,6 +11,9 @@ from zoopt.utils.zoo_global import gl
 
 
 class PONSS(ParetoOpt):
+    """
+    This class implements PONSS algorithm, which is a variant of POSS to solve noisy subset selection problems.
+    """
 
     def __init__(self):
         ParetoOpt.__init__(self)
@@ -15,12 +21,12 @@ class PONSS(ParetoOpt):
 
     def opt(self, objective, parameter):
         """
-                pareto optimization.
+        Pareto optimization under noise.
 
-                :param objective: Objective object
-                :param parameter: Parameters object
-                :return: the best solution of the optimization
-                """
+        :param objective: an Objective object
+        :param parameter:  a Parameters object
+        :return: the best solution of the optimization
+        """
         isolationFunc = parameter.get_isolationFunc()
         theta = parameter.get_ponss_theta()
         b = parameter.get_ponss_b()
@@ -111,7 +117,7 @@ class PONSS(ParetoOpt):
     @staticmethod
     def theta_dominate(theta, solution1, solution2):
         """
-        Judge if solution1 theta dominate solution2
+        Judge if solution1 theta dominates solution2.
         :param theta: threshold
         :param solution1: a Solution object
         :param solution2: a Solution object
@@ -126,6 +132,13 @@ class PONSS(ParetoOpt):
 
     @staticmethod
     def theta_weak_dominate(theta, solution1, solution2):
+        """
+        Judge if solution1 theta weakly dominates solution2.
+        :param theta: threshold
+        :param solution1: a Solution object
+        :param solution2: a Solution object
+        :return: True or False
+        """
         fit1 = solution1.get_value()
         fit2 = solution2.get_value()
         if fit1[0] + theta <= fit2[0] and fit1[1] >= fit2[1]:

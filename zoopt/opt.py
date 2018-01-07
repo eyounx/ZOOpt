@@ -4,7 +4,7 @@ This module contains the class Opt.
 Author:
     Yu-Ren Liu
 """
-from zoopt.algos.opt_algorithms.paretoopt.ParetoOptimization import ParetoOptimization
+from zoopt.algos.opt_algorithms.paretoopt.pareto_optimization import ParetoOptimization
 
 from zoopt.algos.high_dimensionality_handling.sre_optimization import SequentialRandomEmbedding
 from zoopt.algos.opt_algorithms.racos.racos_optimization import RacosOptimization
@@ -14,7 +14,7 @@ from zoopt.utils.zoo_global import gl
 
 class Opt:
     """
-    Main entrance of the optimization.
+    The main entrance of the optimization.
     """
     def __init__(self):
         return
