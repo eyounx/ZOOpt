@@ -9,7 +9,7 @@ import sys
 sys.path.append("/Users/liu/Desktop/CS/github/ZOO/")
 
 import socket
-from zoopt.opt_algorithms.asynchronous_racos.control_server import ControlServer
+from zoopt.algos.opt_algorithms.asynchronous_racos import ControlServer
 from zoopt.utils.tool_function import ToolFunction
 
 def run(port):

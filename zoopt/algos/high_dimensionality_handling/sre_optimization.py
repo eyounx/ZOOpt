@@ -12,6 +12,7 @@ import copy
 import math
 from zoopt.utils.tool_function import ToolFunction
 
+
 class SequentialRandomEmbedding:
     """
     Sequential random embedding is implemented in this class.

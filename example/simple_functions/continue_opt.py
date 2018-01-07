@@ -14,7 +14,7 @@ def minimize_ackley_continuous():
     """
     Continuous optimization example of minimizing the ackley function.
 
-    :return: no return
+    :return: no return value
     """
     dim_size = 100  # dimensions
     dim_regs = [[-1, 1]] * dim_size  # dimension range
@@ -33,7 +33,7 @@ def minimize_sphere_continuous():
     """
     Example of minimizing the sphere function
 
-    :return: no return
+    :return: no return value
     """
     dim_size = 100
     # form up the objective function

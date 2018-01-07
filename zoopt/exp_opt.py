@@ -1,3 +1,10 @@
+"""
+This module contains the class ExpOpt, which provides a experiment interface for users.
+
+Author:
+    Yu-Ren Liu
+"""
+
 from zoopt.objective import Objective
 from zoopt.utils.zoo_global import gl
 from zoopt.opt import Opt
@@ -14,7 +21,7 @@ class ExpOpt:
     @staticmethod
     def min(objective, parameter, repeat=1, best_n=None, plot=False, plot_file=None, seed=None):
         """
-        Continuous optimization example of minimizing the ackley function.
+        Minimization function.
 
         :param objective: an Objective object
         :param parameter: a Parameter object

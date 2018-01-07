@@ -1,9 +1,10 @@
-from zoopt.opt_algorithms.paretoopt.paretoopt import ParetoOpt
-import numpy as np
-from zoopt.utils.zoo_global import gl
-from copy import deepcopy
 import time
+
+import numpy as np
+
+from zoopt.algos.opt_algorithms.paretoopt.paretoopt import ParetoOpt
 from zoopt.utils.tool_function import ToolFunction
+from zoopt.utils.zoo_global import gl
 
 
 class PONSS(ParetoOpt):

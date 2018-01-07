@@ -13,7 +13,7 @@ def minimize_sphere_discrete_order():
     """
     Discrete optimization example of minimizing the sphere function, which has ordered search space.
 
-    :return: no return
+    :return: no return value
     """
     dim_size = 100  # dimensions
     dim_regs = [[-10, 10]] * dim_size  # dimension range
@@ -26,7 +26,7 @@ def minimize_sphere_discrete_order():
     budget = 10000  # number of calls to the objective function
     parameter = Parameter(budget=budget)
 
-    ExpOpt.min(objective, parameter, repeat=1, plot=False, plot_file="img/sphere_discrete_order_figure.png")
+    ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/sphere_discrete_order_figure.png")
 
 if __name__ == '__main__':
     minimize_sphere_discrete_order()

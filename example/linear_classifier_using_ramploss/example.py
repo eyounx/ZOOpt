@@ -88,7 +88,6 @@ class RampLoss:
     def eval(self, solution):
         """
         Objectve function to calculate the ramploss.
-
         """
         weight = solution.get_x()
         H1 = 0

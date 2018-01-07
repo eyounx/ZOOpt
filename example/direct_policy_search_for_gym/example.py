@@ -5,7 +5,7 @@ Author:
     Yu-Ren Liu
 """
 from gym_task import GymTask
-from zoopt import Dimension, Objective, Parameter, ExpOpt
+from zoopt import Dimension, Objective, Parameter, ExpOpt, Opt
 
 
 def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value=None):
@@ -20,7 +20,7 @@ def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value=None
     :param max_step: max step in gym
     :param repeat:  repeat number in a test
     :param terminal_value: early stop, algorithm should stop when such value is reached
-    :return: no return
+    :return: no return value
     """
     gym_task = GymTask(task_name)  # choose a task by name
     gym_task.new_nnmodel(layers)  # construct a neural network
@@ -55,7 +55,7 @@ def run_ss_test(task_name, layers, in_budget, max_step, repeat, terminal_value):
     :param max_step: max step in gym
     :param repeat:  repeat number in a test
     :param terminal_value: early stop, algorithm should stop when such value is reached
-    :return: no return
+    :return: no return value
     """
     gym_task = GymTask(task_name)  # choose a task by name
     gym_task.new_nnmodel(layers)  # construct a neural network
@@ -69,37 +69,15 @@ def run_ss_test(task_name, layers, in_budget, max_step, repeat, terminal_value):
     dim_regs = [[-10, 10]] * dim_size
     dim_tys = [True] * dim_size
     dim = Dimension(dim_size, dim_regs, dim_tys)
-    def resample_function(solution, iteration_num):
-        eval_list = []
-        for i in range(iteration_num):
-            eval_list.append(gym_task.sum_reward(solution))
-        return sum(eval_list) * 1.0 / len(eval_list)
     # form up the objective function
-    objective = Objective(gym_task.sum_reward, dim,
-                          re_sample_func=resample_function)
+    objective = Objective(gym_task.sum_reward, dim)
     # by default, the algorithm is sequential RACOS
     parameter = Parameter(budget=budget, autoset=True,
                           suppression=True, terminal_value=terminal_value)
     parameter.set_resample_times(70)
     parameter.set_probability(rand_probability)
 
-    result = []
-    total_sum = 0
-    total_step = []
-    print('solved solution is:')
-    for i in range(repeat):
-        ins = Opt.min(objective, parameter)
-        result.append(ins.get_value())
-        total_sum += ins.get_value()
-        ins.print_solution()
-        print("total step %s" % gym_task.total_step)
-        total_step.append(gym_task.total_step)
-        gym_task.total_step = 0
-    print(result)  # results in repeat times
-    print(total_sum/len(result))  # average result
-    print(total_step)
-    print("------------------------avg total step %s" %
-          (sum(total_step)/len(total_step)))
+    solution_list = ExpOpt.min(objective, parameter, repeat=repeat)
 
 
 if __name__ == '__main__':
@@ -114,7 +92,7 @@ if __name__ == '__main__':
     lunarlander_layers = [8, 5, 3, 1]
 
     run_test('MountainCar-v0', mountain_car_layers, 2000, 1000, 1)
-    # run_ss_test('MountainCar-v0', mountain_car_layers,  1000, 1000, 5, terminal_value=-500)
+    run_ss_test('MountainCar-v0', mountain_car_layers,  1000, 1000, 5, terminal_value=-500)
     # run_ss_test('MountainCar-v0', mountain_car_layers, 1000, 1000, 10)
     # run_test('MountainCar-v0', mountain_car_layers, 10000, 10000, 10)
     # run_test('Acrobot-v1', acrobot_layers, 2000, 500, 10)

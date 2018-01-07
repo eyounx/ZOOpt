@@ -7,8 +7,9 @@ Author:
 
 """
 
-from zoopt.opt_algorithms.paretoopt.paretoopt import ParetoOpt
-from zoopt.noise_handling.ponss import PONSS
+from zoopt.algos.noise_handling.ponss import PONSS
+from paretoopt import ParetoOpt
+
 
 class ParetoOptimization:
 

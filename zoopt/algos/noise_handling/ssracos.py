@@ -9,12 +9,10 @@ Author:
 """
 
 import time
-import numpy
-from zoopt.solution import Solution
-from zoopt.opt_algorithms.racos.racos_classification import RacosClassification
-from zoopt.utils.zoo_global import gl
+from zoopt.algos.opt_algorithms.racos.racos_classification import RacosClassification
+from zoopt.algos.opt_algorithms.racos.sracos import SRacos
 from zoopt.utils.tool_function import ToolFunction
-from zoopt.opt_algorithms.racos.sracos import SRacos
+from zoopt.utils.zoo_global import gl
 
 
 class SSRacos(SRacos):

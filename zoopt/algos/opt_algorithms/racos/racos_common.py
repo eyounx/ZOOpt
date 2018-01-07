@@ -35,7 +35,7 @@ class RacosCommon:
         """
         Clear RacosCommon
 
-        :return: no return
+        :return: no return value
         """
         self._parameter = None
         self._objective = None
@@ -50,7 +50,7 @@ class RacosCommon:
         """
         Init self._data, self._positive_data, self._negative_data by sampling.
 
-        :return: no return
+        :return: no return value
         """
         # check if the initial solutions have been set
         data_temp = self._parameter.get_init_samples()
@@ -87,7 +87,7 @@ class RacosCommon:
             Choose first-positive_size solutions as self._positive_data
             Choose [positive_size, train_size) solutions as self._negative_data
 
-        :return: no return
+        :return: no return value
         """
 
         new_data = sorted(self._data, key=lambda x: x.get_value())
@@ -197,7 +197,7 @@ class RacosCommon:
         :param intermediate_print: whether to show
         :param times: current iteration time
         :param freq: frequency
-        :return: no return
+        :return: no return value
         """
         if intermediate_print is True and times % freq == 0:
             ToolFunction.log(("budget %d, fx result: " % times) + str(self._best_solution.get_value()))

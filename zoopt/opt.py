@@ -4,11 +4,12 @@ This module contains the class Opt.
 Author:
     Yu-Ren Liu
 """
-from zoopt.opt_algorithms.paretoopt.ParetoOptimization import ParetoOptimization
-from zoopt.opt_algorithms.racos.racos_optimization import RacosOptimization
-from zoopt.utils.zoo_global import gl
+from zoopt.algos.opt_algorithms.paretoopt.ParetoOptimization import ParetoOptimization
+
+from zoopt.algos.high_dimensionality_handling.sre_optimization import SequentialRandomEmbedding
+from zoopt.algos.opt_algorithms.racos.racos_optimization import RacosOptimization
 from zoopt.utils.tool_function import ToolFunction
-from zoopt.high_dimensionality_handling.sre_optimization import SequentialRandomEmbedding
+from zoopt.utils.zoo_global import gl
 
 
 class Opt:

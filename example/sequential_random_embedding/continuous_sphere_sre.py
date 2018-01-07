@@ -13,7 +13,7 @@ def sphere_continuous_sre():
     """
     Example of minimizing high-dimensional sphere function with sequential random embedding.
 
-    :return: unused return
+    :return: no return value
     """
 
     dim_size = 10000  # dimensions

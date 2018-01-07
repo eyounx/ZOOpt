@@ -6,12 +6,14 @@ Author:
 """
 
 import time
+
 import numpy
+
+from racos_classification import RacosClassification
+from racos_common import RacosCommon
 from zoopt.solution import Solution
-from zoopt.opt_algorithms.racos.racos_classification import RacosClassification
-from zoopt.opt_algorithms.racos.racos_common import RacosCommon
-from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
+from zoopt.utils.zoo_global import gl
 
 
 class SRacos(RacosCommon):

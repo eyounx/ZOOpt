@@ -5,9 +5,9 @@ Author:
     Yu-Ren Liu
 """
 
-from zoopt.opt_algorithms.racos.racos import Racos
-from zoopt.opt_algorithms.racos.sracos import SRacos
-from zoopt.noise_handling.ssracos import SSRacos
+from zoopt.algos.noise_handling.ssracos import SSRacos
+from racos import Racos
+from sracos import SRacos
 
 
 class RacosOptimization:
@@ -25,7 +25,7 @@ class RacosOptimization:
         """
         Clear the instance.
 
-        :return: no return
+        :return: no return value
         """
         self.__best_solution = None
         self.__algorithm = None
@@ -37,7 +37,7 @@ class RacosOptimization:
         :param objective: objective function
         :param parameter: parameter
         :param strategy: replace strategy, used by SRacos and SSRacos
-        :return:
+        :return: best solution
         """
 
         self.clear()

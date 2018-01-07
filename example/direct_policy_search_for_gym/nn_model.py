@@ -114,7 +114,7 @@ class NNModel:
         :param layers:
             layers is a list, each element is the number of neurons in each layer
             len(layers) is at least 2, including input layer and output layer
-        :return: no return
+        :return: no return value
         """
         self.__layer_size = layers
         for i in range(len(layers) - 1):
@@ -129,7 +129,7 @@ class NNModel:
         :param out_size: output size of this layer
         :param input_w: initial weight matrix
         :param activation_function: activation function of this layer
-        :return: no return
+        :return: no return value
         """
         new_layer = Layer(in_size, out_size, input_w, activation_function)
         self.__layers.append(new_layer)
@@ -143,7 +143,7 @@ class NNModel:
         vectors are flattened weight matrices.
 
         :param w: concatenation of all flattened weight matrices
-        :return: no return
+        :return: no return value
         """
         begin = 0
         for i in range(len(self.__layers)):

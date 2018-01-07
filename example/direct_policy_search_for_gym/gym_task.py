@@ -67,7 +67,7 @@ class GymTask:
         """
         Reset gym runtime environment.
 
-        :return: no return
+        :return: no return value
         """
         self.__envir = None
         self.__envir_name = None

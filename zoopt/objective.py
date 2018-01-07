@@ -119,23 +119,23 @@ class Objective:
             [self.eval(solution), self.__constraint(solution)])
         solution.set_post_attach(self.__post_inherit())
 
-    # set the optimization function
     def set_func(self, func):
+        """
+        Set the optimization function
+        :param func: optimization function
+        :return: no return value
+        """
         self.__func = func
 
-    # get the optimization function
     def get_func(self):
         return self.__func
 
-    # set the dimension object
     def set_dim(self, dim):
         self.__dim = dim
 
-    # get the dimension object
     def get_dim(self):
         return self.__dim
 
-    # set the attachment inheritance function
     def set_inherit_func(self, inherit_func):
         self.__inherit = inherit_func
 
@@ -145,25 +145,23 @@ class Objective:
     def get_post_inherit_func(self):
         return self.__post_inherit
 
-    # get the attachment inheritance function
     def get_inherit_func(self):
         return self.__inherit
 
-    # set the constraint function
     def set_constraint(self, constraint):
         self.__constraint = constraint
         return
 
-    # return the constraint function
     def get_constraint(self):
         return self.__constraint
 
-    # get the optimization history
     def get_history(self):
         return self.__history
 
-    # get the best-so-far history
     def get_history_bestsofar(self):
+        """
+        Get the best-so-far history.
+        """
         history_bestsofar = []
         bestsofar = pos_inf
         for i in range(len(self.__history)):
@@ -187,8 +185,10 @@ class Objective:
     def set_last_x(self, x):
         self.__last_x = x
 
-    # clean the optimization history
     def clean_history(self):
+        """
+        clean the optimization history
+        """
         self.__history = []
 
     @staticmethod

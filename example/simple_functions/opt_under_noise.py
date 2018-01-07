@@ -13,7 +13,7 @@ def minimize_ackley_continuous_noisy():
     """
     SSRacos example of minimizing ackley function under Gaussian noise
 
-    :return: no return
+    :return: no return value
     """
     ackley_noise_func = ackley_noise_creator(0, 0.1)
     dim_size = 100  # dimensions

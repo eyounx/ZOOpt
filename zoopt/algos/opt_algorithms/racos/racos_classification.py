@@ -44,7 +44,7 @@ class RacosClassification:
         """
         Reset this classifier.
 
-        :return: no return
+        :return: no return value
         """
         regions = self.__solution_space.get_regions()
         for i in range(self.__solution_space.get_size()):
@@ -58,7 +58,7 @@ class RacosClassification:
     def mixed_classification(self):
         """
         Process to train this classifier, which can handle mixed search space(continuous and discrete).
-        :return: no return
+        :return: no return value
         """
 
         self.__x_positive = self.__positive_solution[gl.rand.randint(
@@ -155,7 +155,7 @@ class RacosClassification:
         """
         Choose uncertain bits from iset
         :param iset: index set
-        :return: no return
+        :return: no return value
         """
         index_set = iset
         for i in range(self.__uncertain_bit):
@@ -207,7 +207,7 @@ class RacosClassification:
         """
         Print negative population.
 
-        :return: no return
+        :return: no return value
         """
         ToolFunction.log('------print neg------')
         for x in self.__negative_solution:
@@ -217,7 +217,7 @@ class RacosClassification:
         """
         Print positive population.
 
-        :return: no return
+        :return: no return value
         """
 
         ToolFunction.log('------print pos------')
@@ -228,7 +228,7 @@ class RacosClassification:
         """
         Print sample region.
 
-        :return: no return
+        :return: no return value
         """
         ToolFunction.log('------print sample region------')
         ToolFunction.log(self.__sample_region)

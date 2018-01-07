@@ -13,7 +13,7 @@ def minimize_setcover_discrete():
     """
     Discrete optimization example of minimizing setcover problem.
 
-    :return: no return
+    :return: no return value
     """
     problem = SetCover()
     dim = problem.dim  # the dim is prepared by the class
@@ -25,7 +25,7 @@ def minimize_setcover_discrete():
     parameter.set_positive_size(1)
     parameter.set_negative_size(5)
 
-    ExpOpt.min(objective, parameter, repeat=10, best_n=5, plot=False, plot_file="img/setcover_discrete_figure.png")
+    ExpOpt.min(objective, parameter, repeat=10, best_n=5, plot=True, plot_file="img/setcover_discrete_figure.png")
 
 if __name__ == '__main__':
     minimize_setcover_discrete()

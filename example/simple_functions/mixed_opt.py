@@ -13,7 +13,7 @@ def minimize_sphere_mixed():
     """
     Mixed optimization example of minimizing sphere function, which has mixed search search space.
 
-    :return: no return
+    :return: no return value
     """
 
     # setup optimization problem
