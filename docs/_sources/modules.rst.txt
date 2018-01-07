@@ -1,8 +1,0 @@
-zoo
-===
-
-.. toctree::
-   :maxdepth: 5
-
-   zoo
-   example
