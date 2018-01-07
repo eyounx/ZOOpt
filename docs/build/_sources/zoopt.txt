@@ -17,10 +17,17 @@ derivative-free optimization algorithms. Second, ZOOpt focuses on optimization p
 in machine learning, e.g., high-dimensional, noisy, and large-scale optimizations.
 Third, ZOOpt tries to be a ready-to-use tool for accomplishing real-world machine learning tasks.
 
+Reference
+=========
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 10
 
-
+   dimension
+   objective
+   parameter
+   solution
+   opt
+   exp_opt
 
 Indices and tables
 ==================

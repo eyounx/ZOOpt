@@ -23,7 +23,7 @@ and attachment
         :param value: objective value
         :param resample_value: reevaluated value
         :param attach: attached structure
-        :param post_attach:
+        :param post_attach: the attachment to the solution
         :param is_in_possible_solution:
         """
         self.__x = x
@@ -44,10 +44,10 @@ and attachment
 
     def deep_copy(self):
         """
-        Deep copy this solution. Note that the attachment is not deeply copied
+        Deep copy this solution. Note that the attachment is not deeply copied.
+
         :return: a new solution
         """
-
         x = []
         for x_i in self.__x:
             x.append(x_i)
@@ -59,7 +59,7 @@ and attachment
 
     def is_equal(self, sol):
         """
-        Check if two solutions equal
+        Check if two solutions equal.
 
         :param sol: another solution
         :return: True or False
@@ -78,9 +78,9 @@ and attachment
 
     def exist_equal(self, sol_set):
         """
-        Check if exists another solution in sol_set the same as this one
+        Check if exists another solution in sol_set the same as this one.
 
-        :param sol_set: solution set
+        :param sol_set: a solution set
         :return: True or False
         """
         for sol in sol_set:
@@ -136,10 +136,10 @@ and attachment
     @staticmethod
     def deep_copy_set(sol_set):
         """
-        Deep copy an solution set
+        Deep copy a solution set.
 
-        :param sol_set: solution set
-        :return: copied solution set
+        :param sol_set: a solution set
+        :return: the copied solution set
         """
         result_set = []
         for sol in sol_set:
@@ -152,7 +152,7 @@ and attachment
         Print the value of each solution in an solution set.
 
         :param sol_set: solution set
-        :return: no return
+        :return: no return value
         """
         for sol in sol_set:
             ToolFunction.log('value: %f' % (sol.get_value()))
@@ -161,7 +161,7 @@ and attachment
     @staticmethod
     def find_maximum(sol_set):
         """
-        Find the solution having maximum value from the solution set
+        Find the solution having maximum value from the solution set.
 
         :param sol_set: solution set
         :return: solution, index
@@ -177,7 +177,7 @@ and attachment
     @staticmethod
     def find_minimum(sol_set):
         """
-        Find the solution having minimum value from the solution set
+        Find the solution having minimum value from the solution set.
 
         :param sol_set: solution set
         :return: solution, index

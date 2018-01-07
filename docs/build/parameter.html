@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>parameter &mdash; ZOOpt 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ZOOpt 0.2 documentation" href="index.html"/>
+        <link rel="next" title="solution" href="solution.html"/>
+        <link rel="prev" title="objective" href="objective.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="zoopt.html" class="icon icon-home"> ZOOpt
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dimension.html">dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objective.html">objective</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solution.html">solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opt.html">opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp_opt.html">exp_opt</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="zoopt.html">ZOOpt</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="zoopt.html">Docs</a> &raquo;</li>
+        
+      <li>parameter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/parameter.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-parameter">
+<span id="parameter"></span><h1>parameter<a class="headerlink" href="#module-parameter" title="Permalink to this headline">¶</a></h1>
+<p>This module contains the class Parameter, which includes all parameters used for optimization.</p>
+<dl class="docutils">
+<dt>Author:</dt>
+<dd>Yu-Ren Liu, Xiong-Hui Chen, Yang Yu</dd>
+</dl>
+<dl class="class">
+<dt id="parameter.Parameter">
+<em class="property">class </em><code class="descclassname">parameter.</code><code class="descname">Parameter</code><span class="sig-paren">(</span><em>algorithm=None</em>, <em>budget=0</em>, <em>init_samples=None</em>, <em>time_budget=None</em>, <em>terminal_value=None</em>, <em>sequential=True</em>, <em>precision=None</em>, <em>uncertain_bits=None</em>, <em>intermediate_result=False</em>, <em>intermediate_freq=100</em>, <em>autoset=True</em>, <em>noise_handling=False</em>, <em>resampling=False</em>, <em>suppression=False</em>, <em>ponss=False</em>, <em>ponss_theta=None</em>, <em>ponss_b=None</em>, <em>non_update_allowed=500</em>, <em>resample_times=100</em>, <em>balance_rate=0.5</em>, <em>high_dim_handling=False</em>, <em>sre=False</em>, <em>num_sre=5</em>, <em>low_dimension=None</em>, <em>withdraw_alpha=None</em>, <em>variance_A=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/parameter.html#Parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parameter.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class contains all parameters used for optimization.</p>
+<dl class="method">
+<dt id="parameter.Parameter.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>algorithm=None</em>, <em>budget=0</em>, <em>init_samples=None</em>, <em>time_budget=None</em>, <em>terminal_value=None</em>, <em>sequential=True</em>, <em>precision=None</em>, <em>uncertain_bits=None</em>, <em>intermediate_result=False</em>, <em>intermediate_freq=100</em>, <em>autoset=True</em>, <em>noise_handling=False</em>, <em>resampling=False</em>, <em>suppression=False</em>, <em>ponss=False</em>, <em>ponss_theta=None</em>, <em>ponss_b=None</em>, <em>non_update_allowed=500</em>, <em>resample_times=100</em>, <em>balance_rate=0.5</em>, <em>high_dim_handling=False</em>, <em>sre=False</em>, <em>num_sre=5</em>, <em>low_dimension=None</em>, <em>withdraw_alpha=None</em>, <em>variance_A=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/parameter.html#Parameter.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parameter.Parameter.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialization.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>algorithm</strong> &#8211; &#8216;racos&#8217; or &#8216;poss&#8217;, &#8216;racos&#8217; by defalut</li>
+<li><strong>budget</strong> &#8211; number of calls to the objective function. If noise_handling and resampling is True, resample_times
+calls to the objective function count as one budget</li>
+<li><strong>init_samples</strong> &#8211; Initial samples provided by user. If init_samples is not None, the samples will be added
+into the first sampled solution set</li>
+<li><strong>time_budget</strong> &#8211; If running time exceeds this value, optimization algorithm will return best solution immediately</li>
+<li><strong>terminal_value</strong> &#8211; for early stop, the optimization procedure will stop in advance if this value is reached</li>
+<li><strong>sequential</strong> &#8211; whether to use SRacos, True in default</li>
+<li><strong>precision</strong> &#8211; precision of the result</li>
+<li><strong>uncertain_bits</strong> &#8211; uncertain bits</li>
+<li><strong>intermediate_result</strong> &#8211; whether to show intermediate result, False in default</li>
+<li><strong>intermediate_freq</strong> &#8211; frequency of showing intermediate result, it matters only when intermediate_result is True</li>
+<li><strong>autoset</strong> &#8211; whether to set train_size, positive_size, negative_size automatically, True in default</li>
+<li><strong>noise_handling</strong> &#8211; whether to use noise handling method</li>
+<li><strong>resampling</strong> &#8211; resampling noise handling method</li>
+<li><strong>suppression</strong> &#8211; value suppression noise handling method</li>
+<li><strong>non_update_allowed</strong> &#8211; suppress solutions in positive set if positive set doesn&#8217;t change for this period</li>
+<li><strong>resample_times</strong> &#8211; re-sample times in value suppression</li>
+<li><strong>balance_rate</strong> &#8211; a parameter of SSRacos, for exponential weight average of several evaluations of one sample</li>
+<li><strong>high_dim_handling</strong> &#8211; whether to use high-dimensionality handling method</li>
+<li><strong>sre</strong> &#8211; whether to use sequential random embedding</li>
+<li><strong>num_sre</strong> &#8211; the number of sequential random embedding.</li>
+<li><strong>low_dimension</strong> &#8211; low dimension of sequential random embedding</li>
+<li><strong>withdraw_alpha</strong> &#8211; a parameter for random embedding</li>
+<li><strong>variance_A</strong> &#8211; matrix to map high-dimensional input x to low-dimensional x&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="parameter.Parameter.auto_set">
+<code class="descname">auto_set</code><span class="sig-paren">(</span><em>budget</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/parameter.html#Parameter.auto_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parameter.Parameter.auto_set" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Set train_size, positive_size, negative_size by following rules:</dt>
+<dd>budget &lt; 3 &#8211;&gt; error
+budget: 4-50 &#8211;&gt; train_size = 4, positive_size = 1
+budget: 51-100 &#8211;&gt; train_size = 6, positive_size = 1
+budget: 101-1000 &#8211;&gt; train_size = 12, positive_size = 2
+budget &gt; 1001 &#8211;&gt; train_size = 22, positive_size = 2</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>budget</strong> &#8211; number of calls to the objective function</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">no return value</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="solution.html" class="btn btn-neutral float-right" title="solution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="objective.html" class="btn btn-neutral" title="objective" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui chen, Chao Feng, Yang Yu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

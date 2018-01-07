@@ -20,7 +20,7 @@ class Objective:
         Initialization.
 
         :param func: objective function defined by the user
-        :param dim: a Dimension instance, which describes the search space.
+        :param dim: a Dimension object, which describes the search space.
         :param constraint: constraint function for POSS
         :param resample_func: resample function for SSRacos
         :param sre: whether to use sequential random embedding
@@ -62,7 +62,7 @@ class Objective:
         Construct a solution from x
 
         :param x: a list
-        :param parent: attached structure
+        :param parent: the attached structure
         :return: solution
         """
         new_solution = Solution()
@@ -72,7 +72,7 @@ class Objective:
 
     def eval(self, solution):
         """
-        Use objective function to evaluate a solution.
+        Use the objective function to evaluate a solution.
 
         :param solution:
         :return: value of fx(evaluation result) will be returned
@@ -94,7 +94,8 @@ class Objective:
 
     def resample(self, solution, repeat_times):
         """
-        resample function for value suppression
+        Resample function for value suppression.
+
         :param solution: a Solution object
         :param repeat_times: repeat times
         :return: repeat times
@@ -121,8 +122,8 @@ class Objective:
 
     def set_func(self, func):
         """
-        Set the optimization function
-        :param func: optimization function
+        Set the objective function
+        :param func: the objective function
         :return: no return value
         """
         self.__func = func
@@ -196,7 +197,7 @@ class Objective:
         """
         Default inherited function.
 
-        :param parent: parent structure
+        :param parent: the parent structure
         :return: None
         """
         return None
@@ -206,8 +207,7 @@ class Objective:
         """
         Default post inherited function.
 
-        :param parent: parent structure
+        :param parent: the parent structure
         :return: None
         """
-
         return None

@@ -14,7 +14,7 @@ from zoopt.utils.zoo_global import gl
 
 class Opt:
     """
-    Main entrance of optimization.
+    Main entrance of the optimization.
     """
     def __init__(self):
         return
@@ -24,9 +24,9 @@ class Opt:
         """
         Minimization function.
 
-        :param objective: objective
-        :param parameter: parameter
-        :return: result of optimization
+        :param objective: an Objective object
+        :param parameter: a Parameter object
+        :return: the result of the optimization
         """
         objective.parameter_set(parameter)
         Opt.set_global(parameter)
@@ -55,8 +55,8 @@ class Opt:
         """
         Set global variables.
 
-        :param parameter: parameter
-        :return: no return
+        :param parameter: a Parameter object
+        :return: no return value
         """
 
         precision = parameter.get_precision()

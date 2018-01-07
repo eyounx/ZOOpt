@@ -4,8 +4,6 @@ This module contains the class ExpOpt, which provides a experiment interface for
 Author:
     Yu-Ren Liu
 """
-
-from zoopt.objective import Objective
 from zoopt.utils.zoo_global import gl
 from zoopt.opt import Opt
 import matplotlib.pyplot as plt
@@ -16,6 +14,9 @@ import numpy as np
 class ExpOpt:
 
     def __init__(self):
+        """
+        Initialization.
+        """
         return
 
     @staticmethod
@@ -32,7 +33,7 @@ class ExpOpt:
         :param plot: whether to plot regret curve during the optimization
         :param plot_file: the file name to output the figure
         :param seed: random seed of the optimization
-        :return:
+        :return: a best_solution set
         """
         objective.parameter_set(parameter)
         ret = []

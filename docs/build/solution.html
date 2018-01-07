@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>solution &mdash; ZOOpt 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ZOOpt 0.2 documentation" href="index.html"/>
+        <link rel="next" title="opt" href="opt.html"/>
+        <link rel="prev" title="parameter" href="parameter.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="zoopt.html" class="icon icon-home"> ZOOpt
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dimension.html">dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objective.html">objective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameter.html">parameter</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opt.html">opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp_opt.html">exp_opt</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="zoopt.html">ZOOpt</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="zoopt.html">Docs</a> &raquo;</li>
+        
+      <li>solution</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/solution.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-solution">
+<span id="solution"></span><h1>solution<a class="headerlink" href="#module-solution" title="Permalink to this headline">¶</a></h1>
+<p>This module contains the class Solution.</p>
+<dl class="docutils">
+<dt>Author:</dt>
+<dd>Yu-Ren Liu, Xiong-Hui Chen</dd>
+</dl>
+<dl class="class">
+<dt id="solution.Solution">
+<em class="property">class </em><code class="descclassname">solution.</code><code class="descname">Solution</code><span class="sig-paren">(</span><em>x=[]</em>, <em>value=nan</em>, <em>resample_value=None</em>, <em>attach=None</em>, <em>post_attach=None</em>, <em>is_in_possible_solution=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>A solution encapsulates a solution vector with attached properties, including dimension information, objective value,</div></blockquote>
+<p>and attachment</p>
+<dl class="method">
+<dt id="solution.Solution.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>x=[]</em>, <em>value=nan</em>, <em>resample_value=None</em>, <em>attach=None</em>, <em>post_attach=None</em>, <em>is_in_possible_solution=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialization.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> &#8211; a list</li>
+<li><strong>value</strong> &#8211; objective value</li>
+<li><strong>resample_value</strong> &#8211; reevaluated value</li>
+<li><strong>attach</strong> &#8211; attached structure</li>
+<li><strong>post_attach</strong> &#8211; the attachment to the solution</li>
+<li><strong>is_in_possible_solution</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="solution.Solution.deep_copy">
+<code class="descname">deep_copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.deep_copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.deep_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deep copy this solution. Note that the attachment is not deeply copied.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a new solution</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="solution.Solution.deep_copy_set">
+<em class="property">static </em><code class="descname">deep_copy_set</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.deep_copy_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.deep_copy_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deep copy a solution set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol_set</strong> &#8211; a solution set</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the copied solution set</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="solution.Solution.exist_equal">
+<code class="descname">exist_equal</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.exist_equal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.exist_equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if exists another solution in sol_set the same as this one.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol_set</strong> &#8211; a solution set</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="solution.Solution.find_maximum">
+<em class="property">static </em><code class="descname">find_maximum</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.find_maximum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.find_maximum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the solution having maximum value from the solution set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol_set</strong> &#8211; solution set</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">solution, index</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="solution.Solution.find_minimum">
+<em class="property">static </em><code class="descname">find_minimum</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.find_minimum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.find_minimum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the solution having minimum value from the solution set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol_set</strong> &#8211; solution set</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">solution, index</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="solution.Solution.is_equal">
+<code class="descname">is_equal</code><span class="sig-paren">(</span><em>sol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.is_equal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.is_equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if two solutions equal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol</strong> &#8211; another solution</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="solution.Solution.print_solution_set">
+<em class="property">static </em><code class="descname">print_solution_set</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.print_solution_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.print_solution_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the value of each solution in an solution set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol_set</strong> &#8211; solution set</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">no return value</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="opt.html" class="btn btn-neutral float-right" title="opt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="parameter.html" class="btn btn-neutral" title="parameter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui chen, Chao Feng, Yang Yu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

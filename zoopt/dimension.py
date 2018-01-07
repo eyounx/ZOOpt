@@ -1,5 +1,5 @@
 """
-This module contains class Dimension, which describes dimension information of the search space.
+This module contains the class Dimension, which describes the dimension information of the search space.
 
 Author:
     Yu-Ren Liu
@@ -12,8 +12,9 @@ import copy
 
 class Dimension:
     """
-    This class describes dimension information of the search space.
+    This class describes the dimension information of the search space.
     """
+
     def __init__(self, size=0, regs=[], tys=[], order=[]):
         """
         Initialization.
@@ -38,7 +39,7 @@ class Dimension:
     @staticmethod
     def judge_match(size, regs, tys):
         """
-        Check if the dimensions of regs and tys are both the same as size.
+        Check if the size of regs and tys are both the same as self._size.
 
         :return: True or False
         """
@@ -51,9 +52,9 @@ class Dimension:
     @staticmethod
     def merge_dim(dim1, dim2):
         """
-        Merge two Dimension instance.
+        Merge two Dimension object.
 
-        :return: a new merged Dimension instance
+        :return: a new merged Dimension object
         """
         res_dim = copy.deepcopy(dim1)
         res_dim.set_size(dim1.get_size() + dim2.get_size())
@@ -65,9 +66,9 @@ class Dimension:
 
     def set_all(self, size, regs, tys):
         """
-        Set all the attributes
+        Set all attributes
 
-        :return: no return
+        :return: no return value
         """
         if self.judge_match(size, regs, tys) is False:
             return
@@ -97,7 +98,7 @@ class Dimension:
 
     def rand_sample(self):
         """
-        Random sample in dimension described search space.
+        Random sample in the search space.
 
         :return: a sampled x
         """
@@ -162,7 +163,7 @@ class Dimension:
 
     def is_discrete(self):
         """
-        Whether search space in all dimensions is Discrete.
+        Whether the search space of all dimensions is discrete.
 
         :return: True or False
         """
@@ -198,8 +199,8 @@ class Dimension:
     # for debugging
     def print_dim(self):
         """
-        Print dimension.
-        :return: no return
+        Print the dimension information.
+        :return: no return value
         """
 
         ToolFunction.log('dim size: %d' % self._size)

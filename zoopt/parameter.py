@@ -24,9 +24,9 @@ class Parameter:
         Initialization.
 
         :param algorithm: 'racos' or 'poss', 'racos' by defalut
-        :param budget: number of calls to the objective function. If noise_handling and resampling is True, resample_times
-        calls to the objective function count as one budget
-
+        :param budget:
+            number of calls to the objective function. If noise_handling and resampling is True, resample_times
+            calls to the objective function count as one budget
         :param init_samples:
             Initial samples provided by user. If init_samples is not None, the samples will be added
             into the first sampled solution set
@@ -36,7 +36,6 @@ class Parameter:
         :param sequential: whether to use SRacos, True in default
         :param precision: precision of the result
         :param uncertain_bits: uncertain bits
-
 
         :param intermediate_result: whether to show intermediate result, False in default
         :param intermediate_freq: frequency of showing intermediate result, it matters only when intermediate_result is True
@@ -116,7 +115,7 @@ class Parameter:
             budget > 1001 --> train_size = 22, positive_size = 2
 
         :param budget: number of calls to the objective function
-        :return: no return
+        :return: no return value
         """
 
         if budget < 3:
