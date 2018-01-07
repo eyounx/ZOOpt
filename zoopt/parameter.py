@@ -19,11 +19,11 @@ class Parameter:
     def __init__(self, algorithm=None, budget=0, init_samples=None, time_budget=None, terminal_value=None, sequential=True,
                  precision=None, uncertain_bits=None, intermediate_result=False, intermediate_freq=100, autoset=True,
                  noise_handling=False, resampling=False, suppression=False, ponss=False, ponss_theta=None, ponss_b=None, non_update_allowed=500, resample_times=100,
-                 high_dim_handling=False, sre=False, num_sre=5, low_dimension=None, withdraw_alpha=None, variance_A=None):
+                 balance_rate=0.5, high_dim_handling=False, sre=False, num_sre=5, low_dimension=None, withdraw_alpha=None, variance_A=None):
         """
         Initialization.
 
-        :param algorithm: 'racos' or 'poss', 'racos' in defalut
+        :param algorithm: 'racos' or 'poss', 'racos' by defalut
         :param budget: number of calls to the objective function. If noise_handling and resampling is True, resample_times
         calls to the objective function count as one budget
 
@@ -31,7 +31,7 @@ class Parameter:
             Initial samples provided by user. If init_samples is not None, the samples will be added
             into the first sampled solution set
         :param time_budget: If running time exceeds this value, optimization algorithm will return best solution immediately
-        :param terminal_value: for early stop, procedure will stop in advance if this value is reached
+        :param terminal_value: for early stop, the optimization procedure will stop in advance if this value is reached
 
         :param sequential: whether to use SRacos, True in default
         :param precision: precision of the result
@@ -47,11 +47,12 @@ class Parameter:
         :param suppression: value suppression noise handling method
         :param non_update_allowed: suppress solutions in positive set if positive set doesn't change for this period
         :param resample_times: re-sample times in value suppression
+        :param balance_rate: a parameter of SSRacos, for exponential weight average of several evaluations of one sample
 
         :param high_dim_handling: whether to use high-dimensionality handling method
         :param sre: whether to use sequential random embedding
-        :param num_sre: number of sequential random embedding.
-        :param low_dimension: low dimension size of sequential random embedding
+        :param num_sre: the number of sequential random embedding.
+        :param low_dimension: low dimension of sequential random embedding
         :param withdraw_alpha: a parameter for random embedding
         :param variance_A: matrix to map high-dimensional input x to low-dimensional x'
         """
@@ -88,6 +89,7 @@ class Parameter:
         self.__suppression = suppression
         self.__non_update_allowed = non_update_allowed
         self.__resample_times = resample_times
+        self.__balance_rate = balance_rate
 
         # for pareto optimization
         self.__isolationFunc = lambda x: 0
@@ -166,6 +168,9 @@ class Parameter:
 
     def get_non_update_allowed(self):
         return self.__non_update_allowed
+
+    def get_balance_rate(self):
+        return self.__balance_rate
 
     def set_algorithm(self, algorithm):
         self.__algorithm = algorithm

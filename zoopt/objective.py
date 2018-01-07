@@ -13,9 +13,9 @@ import numpy as np
 
 class Objective:
     """
-    The class Objective represents the objective function and its associated variables
+    This class represents the objective function and its associated variables
     """
-    def __init__(self, func=None, dim=None, constraint=None, resample_func=None, balance_rate=1):
+    def __init__(self, func=None, dim=None, constraint=None, resample_func=None):
         """
         Initialization.
 
@@ -23,7 +23,6 @@ class Objective:
         :param dim: a Dimension instance, which describes the search space.
         :param constraint: constraint function for POSS
         :param resample_func: resample function for SSRacos
-        :param balance_rate: a parameter of SSRacos
         :param sre: whether to use sequential random embedding
         """
         self.__func = func
@@ -38,7 +37,7 @@ class Objective:
 
         self.__resample_times = 1
         self.__resample_func = self.resample_func if resample_func is None else resample_func
-        self.__balance_rate = balance_rate
+        self.__balance_rate = 1
         # for sequential random embedding
         self.__sre = False
         self.__A = None
@@ -51,6 +50,8 @@ class Objective:
         :param parameter: a Parameter object
         :return: no return
         """
+        if parameter.get_noise_handling() is True and parameter.get_suppressioin() is True:
+            self.__balance_rate = parameter.get_balance_rate()
         if parameter.get_noise_handling() is True and parameter.get_resampling() is True:
             self.__resample_times = parameter.get_resample_times()
         if parameter.get_high_dim_handling() is True and parameter.get_sre() is True:
