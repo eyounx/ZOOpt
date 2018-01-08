@@ -21,10 +21,21 @@ and attachment
 
         :param x: a list
         :param value: objective value
-        :param resample_value: reevaluated value
-        :param attach: attached structure
-        :param post_attach: the attachment to the solution
-        :param is_in_possible_solution:
+        :param resample_value: re-evaluated value.
+            This is a meaningful parameter only when using the SSRACOS algorithm. 
+            In SSRACOS algorithm, we record the noise reduction result in this parameter.
+        :param attach: attached structure.
+            self.set_attach() will be called after constructed a solution.
+            You can define the behavior through rewrite Objecttive.__inherit function (just do nothing as default).
+            See more details in Objective.set_inherit_func()
+        :param post_attach: the attachment to the solution.
+            self.set_post_attach() will be called after evaluated a solution.
+            You can define the behavior through rewrite Objecttive.__post_inherit function (just do nothing as default).
+            See more details in Objective.set_post_inherit_func()
+        :param is_in_possible_solution: 
+            This is a meaningful parameter only when using the SSRACOS algorithm. 
+            In SSRACOS algorithm, a solution will be added to "possible solution list" after being re-sampling.
+            This parameter is to mark if a solution has been added to "possible solution list".
         """
         self.__x = x
         self.__value = value
