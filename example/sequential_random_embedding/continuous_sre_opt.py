@@ -5,11 +5,11 @@ Author:
     Yu-Ren Liu
 """
 
-from fx import sphere_sre
+from sphere_sre import sphere_sre
 from zoopt import Dimension, Objective, Parameter, ExpOpt
 
 
-def sphere_continuous_sre():
+def minimize_sphere_sre():
     """
     Example of minimizing high-dimensional sphere function with sequential random embedding.
 
@@ -24,10 +24,10 @@ def sphere_continuous_sre():
 
     # setup algorithm parameters
     budget = 2000  # number of calls to the objective function
-    parameter = Parameter(budget=budget, high_dim_handling=True, sre=True, num_sre=5, low_dimension=Dimension(10, [[-1, 1]] * 10, [True] * 10),
+    parameter = Parameter(budget=budget, high_dim_handling=True, reducedim=True, num_sre=5, low_dimension=Dimension(10, [[-1, 1]] * 10, [True] * 10),
                           withdraw_alpha=Dimension(1, [[-1, 1]], [True]), intermediate_result=False,
                           intermediate_freq=100)
-    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/sphere_continuous_sre.png")
+    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/minimize_sphere_sre.png")
 
 if __name__ == "__main__":
-    sphere_continuous_sre()
+    minimize_sphere_sre()

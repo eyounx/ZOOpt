@@ -1,5 +1,5 @@
 """
-Objective functions can be implemented in this file
+This module contains the implementation of Sparse MSE problem.
 
 Author:
     Chao Feng
@@ -12,6 +12,9 @@ import arff
 
 
 class SparseMSE:
+    """
+    This class implements the Sparse MSE problem.
+    """
     _X = 0
     _Y = 0
     _C = 0

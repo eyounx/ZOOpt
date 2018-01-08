@@ -5,7 +5,7 @@ Author:
     Yu-Ren Liu
 """
 
-from fx import SetCover
+from simple_function import SetCover
 from zoopt import Dimension, Objective, Parameter, ExpOpt
 
 

@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nn_model &mdash; ZOOpt 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ZOOpt 0.2 documentation" href="../../index.html"/>
+        <link rel="up" title="direct_policy_search_for_gym" href="../direct_policy_search_for_gym.html"/>
+        <link rel="next" title="linear_classifier_using_ramploss" href="../linear_classifier_using_ramploss.html"/>
+        <link rel="prev" title="gym_task" href="gym_task.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../zoopt.html" class="icon icon-home"> ZOOpt
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../dimension.html">dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../objective.html">objective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parameter.html">parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solution.html">solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../opt.html">opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exp_opt.html">exp_opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utils.html">utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../utils/tool_function.html">tool_function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils/zoo_global.html">zoo_global</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../algos.html">algos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../algos/high_dimensionality_handling.html">high_dimensionality_handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../algos/high_dimensionality_handling/sre_optimization.html">sre_optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../algos/noise_handling.html">noise_handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../algos/noise_handling/ponss.html">ponss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../algos/noise_handling/ssracos.html">ssracos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../algos/opt_algorithms.html">opt_algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../algos/opt_algorithms/racos_all.html">racos_all</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../algos/opt_algorithms/racos_all/racos.html">racos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../algos/opt_algorithms/racos_all/racos_classification.html">racos_classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../algos/opt_algorithms/racos_all/racos_common.html">racos_common</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../algos/opt_algorithms/racos_all/racos_optimization.html">racos_optimization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../algos/opt_algorithms/racos_all/sracos.html">sracos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../algos/opt_algorithms/paretoopt.html">paretoopt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../algos/opt_algorithms/paretoopt/paretoopt.html">paretoopt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../algos/opt_algorithms/paretoopt/pareto_optimization.html">pareto_optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../example.html">example</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../direct_policy_search_for_gym.html">direct_policy_search_for_gym</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="example.html">example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gym_task.html">gym_task</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">nn_model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_classifier_using_ramploss.html">linear_classifier_using_ramploss</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../linear_classifier_using_ramploss/ramploss.html">ramploss</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sequential_random_embedding.html">sequential_random_embedding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sequential_random_embedding/continuous_sre_opt.html">continuous_sre_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sequential_random_embedding/sphere_sre.html">sphere_sre</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../simple_functions.html">simple_functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../simple_functions/continuous_opt.html">continuous_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simple_functions/discrete_opt.html">discrete_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simple_functions/discrete_with_order_opt.html">discrete_with_order_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simple_functions/mixed_opt.html">mixed_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simple_functions/opt_under_noise.html">opt_under_noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simple_functions/quick_start.html">quick_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simple_functions/simple_functions_file.html">simple_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sparse_regression.html">sparse_regression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sparse_regression/ponss_opt.html">ponss_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sparse_regression/poss_opt.html">poss_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sparse_regression/sparse_mse.html">sparse_mse</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../zoopt.html">ZOOpt</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../zoopt.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../example.html">example</a> &raquo;</li>
+        
+          <li><a href="../direct_policy_search_for_gym.html">direct_policy_search_for_gym</a> &raquo;</li>
+        
+      <li>nn_model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/example/direct_policy_search_for_gym/nn_model.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-nn_model">
+<span id="nn-model"></span><h1>nn_model<a class="headerlink" href="#module-nn_model" title="Permalink to this headline">¶</a></h1>
+<p>This file contains a class which defines a simple neural network model.</p>
+<dl class="docutils">
+<dt>Author:</dt>
+<dd>Yu-Ren Liu</dd>
+</dl>
+<dl class="class">
+<dt id="nn_model.ActivationFunction">
+<em class="property">class </em><code class="descclassname">nn_model.</code><code class="descname">ActivationFunction</code><a class="reference internal" href="../../_modules/nn_model.html#ActivationFunction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.ActivationFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class defines activation functions in neural network.</p>
+<dl class="staticmethod">
+<dt id="nn_model.ActivationFunction.sigmoid">
+<em class="property">static </em><code class="descname">sigmoid</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nn_model.html#ActivationFunction.sigmoid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.ActivationFunction.sigmoid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sigmoid function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> &#8211; input of the sigmoid function</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">value of sigmoid(x)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nn_model.Layer">
+<em class="property">class </em><code class="descclassname">nn_model.</code><code class="descname">Layer</code><span class="sig-paren">(</span><em>in_size</em>, <em>out_size</em>, <em>input_w=None</em>, <em>activation_function=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nn_model.html#Layer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.Layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class defines a layer in neural network.</p>
+<dl class="method">
+<dt id="nn_model.Layer.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>in_size</em>, <em>out_size</em>, <em>input_w=None</em>, <em>activation_function=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nn_model.html#Layer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.Layer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Init function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>in_size</strong> &#8211; input size of this layer</li>
+<li><strong>out_size</strong> &#8211; output size of this layer</li>
+<li><strong>input_w</strong> &#8211; initial weight matrix</li>
+<li><strong>activation_function</strong> &#8211; activation function of this layer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nn_model.Layer.cal_output">
+<code class="descname">cal_output</code><span class="sig-paren">(</span><em>inputs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nn_model.html#Layer.cal_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.Layer.cal_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward prop of one layer. In this example, we ignore bias.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputs</strong> &#8211; input of this layer</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">output of this layer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nn_model.Layer.decode_w">
+<code class="descname">decode_w</code><span class="sig-paren">(</span><em>w</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nn_model.html#Layer.decode_w"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.Layer.decode_w" title="Permalink to this definition">¶</a></dt>
+<dd><p>The input x is a vector and this function decompose w into a matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>w</strong> &#8211; input weight vector</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">weight matrix</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nn_model.NNModel">
+<em class="property">class </em><code class="descclassname">nn_model.</code><code class="descname">NNModel</code><a class="reference internal" href="../../_modules/nn_model.html#NNModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.NNModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class defines neural network.</p>
+<dl class="method">
+<dt id="nn_model.NNModel.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nn_model.html#NNModel.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.NNModel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nn_model.NNModel.add_layer">
+<code class="descname">add_layer</code><span class="sig-paren">(</span><em>in_size</em>, <em>out_size</em>, <em>input_w=None</em>, <em>activation_function=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nn_model.html#NNModel.add_layer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.NNModel.add_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add one layer in neural network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>in_size</strong> &#8211; input size of this layer</li>
+<li><strong>out_size</strong> &#8211; output size of this layer</li>
+<li><strong>input_w</strong> &#8211; initial weight matrix</li>
+<li><strong>activation_function</strong> &#8211; activation function of this layer</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">no return value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nn_model.NNModel.cal_output">
+<code class="descname">cal_output</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nn_model.html#NNModel.cal_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.NNModel.cal_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward prop of the neural network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> &#8211; input of the neural network</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">output of the network</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nn_model.NNModel.construct_nnmodel">
+<code class="descname">construct_nnmodel</code><span class="sig-paren">(</span><em>layers</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nn_model.html#NNModel.construct_nnmodel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.NNModel.construct_nnmodel" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function constructs a neural network from a list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>layers</strong> &#8211; layers is a list, each element is the number of neurons in each layer
+len(layers) is at least 2, including input layer and output layer</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">no return value</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nn_model.NNModel.decode_w">
+<code class="descname">decode_w</code><span class="sig-paren">(</span><em>w</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nn_model.html#NNModel.decode_w"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nn_model.NNModel.decode_w" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function decomposes a big vector into several vectors and assign them to weight matrices of the neural network.
+In the direct policy search example, big vector is the concatenation of all flattened weight matrices and small
+vectors are flattened weight matrices.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>w</strong> &#8211; concatenation of all flattened weight matrices</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">no return value</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../linear_classifier_using_ramploss.html" class="btn btn-neutral float-right" title="linear_classifier_using_ramploss" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gym_task.html" class="btn btn-neutral" title="gym_task" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui chen, Yi-Qi Hu, Chao Feng, Yang Yu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+   
+
+</body>
+</html>

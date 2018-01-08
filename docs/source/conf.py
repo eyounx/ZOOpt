@@ -25,6 +25,12 @@ sys.path.insert(0, os.path.abspath('../../zoopt/algos/opt_algorithms/racos'))
 sys.path.insert(0, os.path.abspath('../../zoopt/algos/noise_handling'))
 sys.path.insert(0, os.path.abspath('../../zoopt/algos/high_dimensionality_handling'))
 sys.path.insert(0, os.path.abspath('../../zoopt/algos/racos'))
+# sys.path.insert(0, os.path.abspath('../../example'))
+sys.path.insert(0, os.path.abspath('../../example/direct_policy_search_for_gym'))
+sys.path.insert(0, os.path.abspath('../../example/linear_classifier_using_ramploss'))
+sys.path.insert(0, os.path.abspath('../../example/sequential_random_embedding'))
+sys.path.insert(0, os.path.abspath('../../example/simple_functions'))
+sys.path.insert(0, os.path.abspath('../../example/sparse_regression'))
 sys.path.insert(0, os.path.abspath('../../'))
 
 
@@ -61,8 +67,8 @@ master_doc = 'zoopt'
 
 # General information about the project.
 project = u'ZOOpt'
-copyright = u'2018, Yu-Ren Liu, Xiong-Hui chen, Chao Feng, Yang Yu'
-author = u'Yu-Ren Liu, Xiong-Hui chen, Chao Feng, Yang Yu'
+copyright = u'2018, Yu-Ren Liu, Xiong-Hui chen, Yi-Qi Hu, Chao Feng, Yang Yu'
+author = u'Yu-Ren Liu, Xiong-Hui chen, Yi-Qi Hu, Chao Feng, Yang Yu'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -139,6 +145,12 @@ html_theme = 'sphinx_rtd_theme'
 #
 # html_theme_options = {}
 
+html_theme_options = {
+    'collapse_navigation': False,
+    'sticky_navigation': False,
+    'navigation_depth': 4,
+    'display_version': True
+}
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
 

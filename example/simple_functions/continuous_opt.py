@@ -6,7 +6,7 @@ Author:
 """
 
 
-from fx import sphere, ackley
+from simple_function import sphere, ackley
 from zoopt import Dimension, Objective, Parameter, ExpOpt
 
 

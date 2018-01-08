@@ -4,7 +4,7 @@ This file contains an example of optimizing a function with the mixed search spa
 Author:
     Yu-Ren Liu
 """
-from fx import sphere_mixed
+from simple_function import sphere_mixed
 from zoopt import Dimension, Objective, Parameter, ExpOpt
 
 

@@ -95,10 +95,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../solution.html">solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../opt.html">opt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../exp_opt.html">exp_opt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../utils.html">utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utils.html">utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../utils/tool_function.html">tool_function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../utils/zoo_global.html">zoo_global</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../algos.html">algos</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../high_dimensionality_handling.html">high_dimensionality_handling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../noise_handling.html">noise_handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../high_dimensionality_handling.html">high_dimensionality_handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../high_dimensionality_handling/sre_optimization.html">sre_optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../noise_handling.html">noise_handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../noise_handling/ponss.html">ponss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../noise_handling/ssracos.html">ssracos</a></li>
+</ul>
+</li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../opt_algorithms.html">opt_algorithms</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../racos_all.html">racos_all</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="racos.html">racos</a></li>
@@ -108,7 +119,45 @@
 <li class="toctree-l4"><a class="reference internal" href="sracos.html">sracos</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../paretoopt.html">paretoopt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../paretoopt.html">paretoopt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../paretoopt/paretoopt.html">paretoopt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../paretoopt/pareto_optimization.html">pareto_optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example.html">example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/direct_policy_search_for_gym.html">direct_policy_search_for_gym</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/direct_policy_search_for_gym/example.html">example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/direct_policy_search_for_gym/gym_task.html">gym_task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/direct_policy_search_for_gym/nn_model.html">nn_model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/linear_classifier_using_ramploss.html">linear_classifier_using_ramploss</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/linear_classifier_using_ramploss/ramploss.html">ramploss</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/sequential_random_embedding.html">sequential_random_embedding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/sequential_random_embedding/continuous_sre_opt.html">continuous_sre_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/sequential_random_embedding/sphere_sre.html">sphere_sre</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/simple_functions.html">simple_functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/simple_functions/continuous_opt.html">continuous_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/simple_functions/discrete_opt.html">discrete_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/simple_functions/discrete_with_order_opt.html">discrete_with_order_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/simple_functions/mixed_opt.html">mixed_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/simple_functions/opt_under_noise.html">opt_under_noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/simple_functions/quick_start.html">quick_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/simple_functions/simple_functions_file.html">simple_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/sparse_regression.html">sparse_regression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/sparse_regression/ponss_opt.html">ponss_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/sparse_regression/poss_opt.html">poss_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../example/sparse_regression/sparse_mse.html">sparse_mse</a></li>
 </ul>
 </li>
 </ul>
@@ -277,7 +326,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui chen, Chao Feng, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui chen, Yi-Qi Hu, Chao Feng, Yang Yu.
 
     </p>
   </div>
@@ -318,12 +367,6 @@
   
 
   
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
    
 
 </body>

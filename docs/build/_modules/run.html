@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>run &mdash; ZOOpt 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ZOOpt 0.2 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../dimension.html">dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objective.html">objective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameter.html">parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solution.html">solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opt.html">opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exp_opt.html">exp_opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../utils/tool_function.html">tool_function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/zoo_global.html">zoo_global</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../algos.html">algos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../algos/high_dimensionality_handling.html">high_dimensionality_handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algos/high_dimensionality_handling/sre_optimization.html">sre_optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../algos/noise_handling.html">noise_handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algos/noise_handling/ponss.html">ponss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algos/noise_handling/ssracos.html">ssracos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../algos/opt_algorithms.html">opt_algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algos/opt_algorithms/racos_all.html">racos_all</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/racos_all/racos.html">racos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/racos_all/racos_classification.html">racos_classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/racos_all/racos_common.html">racos_common</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/racos_all/racos_optimization.html">racos_optimization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/racos_all/sracos.html">sracos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../algos/opt_algorithms/paretoopt.html">paretoopt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/paretoopt/paretoopt.html">paretoopt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/paretoopt/pareto_optimization.html">pareto_optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../example/direct_policy_search_for_gym.html">direct_policy_search_for_gym</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../example/direct_policy_search_for_gym/example.html">example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/direct_policy_search_for_gym/gym_task.html">gym_task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/direct_policy_search_for_gym/nn_model.html">nn_model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../example/linear_classifier_using_ramploss.html">linear_classifier_using_ramploss</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../example/linear_classifier_using_ramploss/ramploss.html">ramploss</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../example/sequential_random_embedding.html">sequential_random_embedding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../example/sequential_random_embedding/continuous_sre_opt.html">continuous_sre_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/sequential_random_embedding/sphere_sre.html">sphere_sre</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../example/simple_functions.html">simple_functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/continuous_opt.html">continuous_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/discrete_opt.html">discrete_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/discrete_with_order_opt.html">discrete_with_order_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/mixed_opt.html">mixed_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/opt_under_noise.html">opt_under_noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/quick_start.html">quick_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/simple_functions_file.html">simple_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../example/sparse_regression.html">sparse_regression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../example/sparse_regression/ponss_opt.html">ponss_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/sparse_regression/poss_opt.html">poss_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/sparse_regression/sparse_mse.html">sparse_mse</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../zoopt.html">ZOOpt</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>run</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for run</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Function run_test is defined in this file. You can run this file to get results of this example.</span>
+
+<span class="sd">Author:</span>
+<span class="sd">    Yu-Ren Liu</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">gym_task</span> <span class="k">import</span> <span class="n">GymTask</span>
+<span class="kn">from</span> <span class="nn">zoopt</span> <span class="k">import</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">Objective</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">ExpOpt</span><span class="p">,</span> <span class="n">Opt</span>
+
+
+<div class="viewcode-block" id="run_test"><a class="viewcode-back" href="../example/direct_policy_search_for_gym/example.html#run.run_test">[docs]</a><span class="k">def</span> <span class="nf">run_test</span><span class="p">(</span><span class="n">task_name</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">in_budget</span><span class="p">,</span> <span class="n">max_step</span><span class="p">,</span> <span class="n">repeat</span><span class="p">,</span> <span class="n">terminal_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Api of running direct policy search for gym task.</span>
+
+<span class="sd">    :param task_name: gym task name</span>
+<span class="sd">    :param layers:</span>
+<span class="sd">        layer information of the neural network</span>
+<span class="sd">        e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 and output layer has 1</span>
+<span class="sd">    :param in_budget:  number of calls to the objective function</span>
+<span class="sd">    :param max_step: max step in gym</span>
+<span class="sd">    :param repeat:  repeat number in a test</span>
+<span class="sd">    :param terminal_value: early stop, algorithm should stop when such value is reached</span>
+<span class="sd">    :return: no return value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">gym_task</span> <span class="o">=</span> <span class="n">GymTask</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>  <span class="c1"># choose a task by name</span>
+    <span class="n">gym_task</span><span class="o">.</span><span class="n">new_nnmodel</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>  <span class="c1"># construct a neural network</span>
+    <span class="n">gym_task</span><span class="o">.</span><span class="n">set_max_step</span><span class="p">(</span><span class="n">max_step</span><span class="p">)</span>  <span class="c1"># set max step in gym</span>
+
+    <span class="n">budget</span> <span class="o">=</span> <span class="n">in_budget</span>  <span class="c1"># number of calls to the objective function</span>
+    <span class="n">rand_probability</span> <span class="o">=</span> <span class="mf">0.95</span>  <span class="c1"># the probability of sample in model</span>
+
+    <span class="c1"># set dimension</span>
+    <span class="n">dim_size</span> <span class="o">=</span> <span class="n">gym_task</span><span class="o">.</span><span class="n">get_w_size</span><span class="p">()</span>
+    <span class="n">dim_regs</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dim_size</span>
+    <span class="n">dim_tys</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim_size</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">dim_size</span><span class="p">,</span> <span class="n">dim_regs</span><span class="p">,</span> <span class="n">dim_tys</span><span class="p">)</span>
+
+    <span class="c1"># form up the objective function</span>
+    <span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">gym_task</span><span class="o">.</span><span class="n">sum_reward</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+    <span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">,</span> <span class="n">terminal_value</span><span class="o">=</span><span class="n">terminal_value</span><span class="p">)</span>
+    <span class="n">parameter</span><span class="o">.</span><span class="n">set_probability</span><span class="p">(</span><span class="n">rand_probability</span><span class="p">)</span>
+
+    <span class="n">solution_list</span> <span class="o">=</span> <span class="n">ExpOpt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="run_ss_test"><a class="viewcode-back" href="../example/direct_policy_search_for_gym/example.html#run.run_ss_test">[docs]</a><span class="k">def</span> <span class="nf">run_ss_test</span><span class="p">(</span><span class="n">task_name</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">in_budget</span><span class="p">,</span> <span class="n">max_step</span><span class="p">,</span> <span class="n">repeat</span><span class="p">,</span> <span class="n">terminal_value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Api of running direct policy search with ssracos algorithm for gym task.</span>
+
+<span class="sd">    :param task_name: gym task name</span>
+<span class="sd">    :param layers:</span>
+<span class="sd">        layer information of the neural network</span>
+<span class="sd">        e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 and output layer has 1</span>
+<span class="sd">    :param in_budget:  number of calls to the objective function</span>
+<span class="sd">    :param max_step: max step in gym</span>
+<span class="sd">    :param repeat:  repeat number in a test</span>
+<span class="sd">    :param terminal_value: early stop, algorithm should stop when such value is reached</span>
+<span class="sd">    :return: no return value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">gym_task</span> <span class="o">=</span> <span class="n">GymTask</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>  <span class="c1"># choose a task by name</span>
+    <span class="n">gym_task</span><span class="o">.</span><span class="n">new_nnmodel</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>  <span class="c1"># construct a neural network</span>
+    <span class="n">gym_task</span><span class="o">.</span><span class="n">set_max_step</span><span class="p">(</span><span class="n">max_step</span><span class="p">)</span>  <span class="c1"># set max step in gym</span>
+
+    <span class="n">budget</span> <span class="o">=</span> <span class="n">in_budget</span>  <span class="c1"># number of calls to the objective function</span>
+    <span class="n">rand_probability</span> <span class="o">=</span> <span class="mf">0.95</span>  <span class="c1"># the probability of sample in model</span>
+
+    <span class="c1"># set dimension</span>
+    <span class="n">dim_size</span> <span class="o">=</span> <span class="n">gym_task</span><span class="o">.</span><span class="n">get_w_size</span><span class="p">()</span>
+    <span class="n">dim_regs</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dim_size</span>
+    <span class="n">dim_tys</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim_size</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">dim_size</span><span class="p">,</span> <span class="n">dim_regs</span><span class="p">,</span> <span class="n">dim_tys</span><span class="p">)</span>
+    <span class="c1"># form up the objective function</span>
+    <span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">gym_task</span><span class="o">.</span><span class="n">sum_reward</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+    <span class="c1"># by default, the algorithm is sequential RACOS</span>
+    <span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">,</span> <span class="n">autoset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                          <span class="n">suppression</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">terminal_value</span><span class="o">=</span><span class="n">terminal_value</span><span class="p">)</span>
+    <span class="n">parameter</span><span class="o">.</span><span class="n">set_resample_times</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
+    <span class="n">parameter</span><span class="o">.</span><span class="n">set_probability</span><span class="p">(</span><span class="n">rand_probability</span><span class="p">)</span>
+
+    <span class="n">solution_list</span> <span class="o">=</span> <span class="n">ExpOpt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">CartPole_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">mountain_car_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">acrobot_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">halfcheetah_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+    <span class="n">humanoid_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">376</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">17</span><span class="p">]</span>
+    <span class="n">swimmer_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">ant_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">111</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+    <span class="n">hopper_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="n">lunarlander_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">run_test</span><span class="p">(</span><span class="s1">&#39;MountainCar-v0&#39;</span><span class="p">,</span> <span class="n">mountain_car_layers</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">run_ss_test</span><span class="p">(</span><span class="s1">&#39;MountainCar-v0&#39;</span><span class="p">,</span> <span class="n">mountain_car_layers</span><span class="p">,</span>  <span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">terminal_value</span><span class="o">=-</span><span class="mi">500</span><span class="p">)</span>
+    <span class="c1"># run_ss_test(&#39;MountainCar-v0&#39;, mountain_car_layers, 1000, 1000, 10)</span>
+    <span class="c1"># run_test(&#39;MountainCar-v0&#39;, mountain_car_layers, 10000, 10000, 10)</span>
+    <span class="c1"># run_test(&#39;Acrobot-v1&#39;, acrobot_layers, 2000, 500, 10)</span>
+    <span class="c1"># If you want to run the following examples, you may need to install more libs(mujoco, Box2D).</span>
+    <span class="c1"># run_test(&#39;HalfCheetah-v1&#39;, halfcheetah_layers, 2000, 10000, 10)</span>
+    <span class="c1"># run_test(&#39;Humanoid-v1&#39;, humanoid_layers, 2000, 50000, 10)</span>
+    <span class="c1"># run_test(&#39;Swimmer-v1&#39;, swimmer_layers, 2000, 10000, 10)</span>
+    <span class="c1"># run_test(&#39;Ant-v1&#39;, ant_layers, 2000, 10000, 10)</span>
+    <span class="c1"># run_test(&#39;Hopper-v1&#39;, hopper_layers, 2000, 10000, 10)</span>
+    <span class="c1"># run_test(&#39;LunarLander-v2&#39;, lunarlander_layers, 2000, 10000, 10)</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui chen, Yi-Qi Hu, Chao Feng, Yang Yu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+   
+
+</body>
+</html>

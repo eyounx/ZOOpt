@@ -23,7 +23,7 @@ class Objective:
         :param dim: a Dimension object, which describes the search space.
         :param constraint: constraint function for POSS
         :param resample_func: resample function for SSRacos
-        :param sre: whether to use sequential random embedding
+        :param reducedim: whether to use sequential random embedding
         """
         self.__func = func
         self.__dim = dim
@@ -39,7 +39,7 @@ class Objective:
         self.__resample_func = self.resample_func if resample_func is None else resample_func
         self.__balance_rate = 1
         # for sequential random embedding
-        self.__sre = False
+        self.__reducedim = False
         self.__A = None
         self.__last_x = None
 
@@ -54,8 +54,8 @@ class Objective:
             self.__balance_rate = parameter.get_balance_rate()
         if parameter.get_noise_handling() is True and parameter.get_resampling() is True:
             self.__resample_times = parameter.get_resample_times()
-        if parameter.get_high_dim_handling() is True and parameter.get_sre() is True:
-            self.__sre = True
+        if parameter.get_high_dim_handling() is True and parameter.get_reducedim() is True:
+            self.__reducedim = True
 
     def construct_solution(self, x, parent=None):
         """
@@ -79,7 +79,7 @@ class Objective:
         """
         res = []
         for i in range(self.__resample_times):
-            if self.__sre is False:
+            if self.__reducedim is False:
                 val = self.__func(solution)
             else:
                 x = solution.get_x()
@@ -171,8 +171,8 @@ class Objective:
             history_bestsofar.append(bestsofar)
         return history_bestsofar
 
-    def get_sre(self):
-        return self.__sre
+    def get_reducedim(self):
+        return self.__reducedim
 
     def get_last_x(self):
         return self.__last_x

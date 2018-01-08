@@ -1,52 +1,13 @@
 """
-Objective functions can be implemented in this file
+Objective functions can be implemented in this file.
 
 Author:
-    Yuren Liu
+    Yu-Ren Liu
 """
 
-import math
 from random import Random
 from zoopt.dimension import Dimension
 import numpy as np
-
-
-def sphere(solution):
-    """Sphere function for continuous optimization"""
-    x = solution.get_x()
-    value = sum([(i-0.2)*(i-0.2) for i in x])
-    return value
-
-
-def sphere_mixed(solution):
-    """Sphere function for mixed optimization"""
-    x = solution.get_x()
-    value = sum([i*i for i in x])
-    return value
-
-
-def sphere_discrete_order(solution):
-    """Sphere function for integer continuous optimization"""
-    a = 0
-    rd = Random()
-    x = solution.get_x()
-    value = sum([(i-2)*(i-2) for i in x])
-    return value
-
-
-def ackley(solution):
-    """Ackley function for continuous optimization"""
-    x = solution.get_x()
-    bias = 0.2
-    ave_seq = sum([(i - bias) * (i - bias) for i in x]) / len(x)
-    ave_cos = sum([np.cos(2.0*np.pi*(i-bias)) for i in x]) / len(x)
-    value = -20 * np.exp(-0.2 * np.sqrt(ave_seq)) - np.exp(ave_cos) + 20.0 + np.e
-    return value
-
-
-def ackley_noise_creator(mu, sigma):
-    """Ackley function under noise"""
-    return lambda solution: ackley(solution) + np.random.normal(mu, sigma, 1)
 
 
 class SetCover:
@@ -83,6 +44,12 @@ class SetCover:
         self.__subset.append([0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1])
 
     def fx(self, solution):
+        """
+        Objective function.
+
+        :param solution: a Solution object
+        :return: the value of f(x)
+        """
         x = solution.get_x()
         allweight = 0
         countw = 0
@@ -119,6 +86,57 @@ class SetCover:
         dim_regs = [[0, 1]] * dim_size
         dim_tys = [False] * dim_size
         return Dimension(dim_size, dim_regs, dim_tys)
+
+
+def sphere(solution):
+    """
+    Sphere function for continuous optimization
+    """
+    x = solution.get_x()
+    value = sum([(i-0.2)*(i-0.2) for i in x])
+    return value
+
+
+def sphere_mixed(solution):
+    """
+    Sphere function for mixed optimization
+    """
+    x = solution.get_x()
+    value = sum([i*i for i in x])
+    return value
+
+
+def sphere_discrete_order(solution):
+    """
+    Sphere function for integer continuous optimization
+    """
+    a = 0
+    rd = Random()
+    x = solution.get_x()
+    value = sum([(i-2)*(i-2) for i in x])
+    return value
+
+
+def ackley(solution):
+    """
+    Ackley function for continuous optimization
+    """
+    x = solution.get_x()
+    bias = 0.2
+    ave_seq = sum([(i - bias) * (i - bias) for i in x]) / len(x)
+    ave_cos = sum([np.cos(2.0*np.pi*(i-bias)) for i in x]) / len(x)
+    value = -20 * np.exp(-0.2 * np.sqrt(ave_seq)) - np.exp(ave_cos) + 20.0 + np.e
+    return value
+
+
+def ackley_noise_creator(mu, sigma):
+    """
+    Ackley function under noise
+    """
+    return lambda solution: ackley(solution) + np.random.normal(mu, sigma, 1)
+
+
+
 
 
 

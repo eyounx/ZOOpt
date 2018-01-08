@@ -30,6 +30,7 @@ Reference
    exp_opt
    utils
    algos
+   example
 
 Indices and tables
 ==================

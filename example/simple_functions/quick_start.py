@@ -6,7 +6,7 @@ Author:
 """
 
 from zoopt import Dimension, Objective, Parameter, ExpOpt
-from fx import ackley
+from simple_function import ackley
 
 
 if __name__ == '__main__':

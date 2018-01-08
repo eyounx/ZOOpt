@@ -2,7 +2,7 @@ algos
 =====
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 10
 
    algos/high_dimensionality_handling
    algos/noise_handling

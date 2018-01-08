@@ -5,7 +5,7 @@ Author:
     Yu-Ren Liu
 """
 
-from fx import sphere_discrete_order
+from simple_function import sphere_discrete_order
 from zoopt import Dimension, Objective, Parameter, ExpOpt
 
 

@@ -2,7 +2,7 @@ utils
 =====
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 10
 
    utils/tool_function
    utils/zoo_global

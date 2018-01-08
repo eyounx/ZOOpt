@@ -19,7 +19,7 @@ class Parameter:
     def __init__(self, algorithm=None, budget=0, init_samples=None, time_budget=None, terminal_value=None, sequential=True,
                  precision=None, uncertain_bits=None, intermediate_result=False, intermediate_freq=100, autoset=True,
                  noise_handling=False, resampling=False, suppression=False, ponss=False, ponss_theta=None, ponss_b=None, non_update_allowed=500, resample_times=100,
-                 balance_rate=0.5, high_dim_handling=False, sre=False, num_sre=5, low_dimension=None, withdraw_alpha=None, variance_A=None):
+                 balance_rate=0.5, high_dim_handling=False, reducedim=False, num_sre=5, low_dimension=None, withdraw_alpha=None, variance_A=None):
         """
         Initialization.
 
@@ -49,7 +49,7 @@ class Parameter:
         :param balance_rate: a parameter of SSRacos, for exponential weight average of several evaluations of one sample
 
         :param high_dim_handling: whether to use high-dimensionality handling method
-        :param sre: whether to use sequential random embedding
+        :param reducedim: whether to use sequential random embedding
         :param num_sre: the number of sequential random embedding.
         :param low_dimension: low dimension of sequential random embedding
         :param withdraw_alpha: a parameter for random embedding
@@ -98,7 +98,7 @@ class Parameter:
 
         # for high-dimensionality handling: sequential random embedding
         self.__high_dim_handling = high_dim_handling
-        self.__sre = sre
+        self.__reducedim = reducedim
         self.__num_sre = num_sre
         self.__low_dimension = low_dimension if low_dimension is not None else Dimension(10, [[-1, 1]]*10, [True]*10)
         self.__withdraw_alpha = withdraw_alpha if withdraw_alpha is not None else Dimension(1, [[-1, 1]], [True])
@@ -268,8 +268,8 @@ class Parameter:
     def get_high_dim_handling(self):
         return self.__high_dim_handling
 
-    def get_sre(self):
-        return self.__sre
+    def get_reducedim(self):
+        return self.__reducedim
 
     def get_num_sre(self):
         return self.__num_sre

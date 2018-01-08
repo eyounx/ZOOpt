@@ -43,7 +43,7 @@ class Opt:
             ToolFunction.log(
                 "opt.py: No proper algorithm found for %s" % algorithm)
             return result
-        if objective.get_sre() is True:
+        if objective.get_reducedim() is True:
             sre = SequentialRandomEmbedding(objective, parameter, optimizer)
             result = sre.opt()
         else:

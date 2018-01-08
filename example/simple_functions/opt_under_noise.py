@@ -5,7 +5,7 @@ Author:
     Xiong-Hui chen, Yu-Ren Liu
 """
 
-from fx import ackley, ackley_noise_creator
+from simple_function import ackley, ackley_noise_creator
 from zoopt import Dimension, Objective, Parameter, ExpOpt, Solution
 
 

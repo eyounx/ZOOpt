@@ -1,3 +1,7 @@
+"""
+An example of using PONSS to optimize a noisy subset selection problem.
+"""
+
 from sparse_mse import SparseMSE
 from zoopt import Objective, Parameter, ExpOpt
 from math import exp

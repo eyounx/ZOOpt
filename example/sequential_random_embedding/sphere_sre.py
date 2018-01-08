@@ -1,5 +1,5 @@
 """
-This module contains an objective function sphere
+This module contains an objective function sphere.
 
 Author:
     Yu-Ren Liu
