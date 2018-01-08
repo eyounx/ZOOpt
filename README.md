@@ -7,6 +7,14 @@ Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimiz
 
 **Install**: `pip install zoopt`
 
+**Documents**: [Wiki of ZOOpt](https://github.com/eyounx/ZOOpt/wiki)
+
+**Citation**: 
+> **Yu-Ren Liu, Yi-Qi Hu, Hong Qian, Yang Yu, Chao Qian. ZOOpt/ZOOjl: Toolbox for Derivative-Free Optimization**. [CORR abs/1801.00329](https://arxiv.org/abs/1801.00329)**
+
+(Features in this artile is for version 0.2)
+
+
 ## A quick example
 We define the Ackley function for minimization using Theano
 ```python
