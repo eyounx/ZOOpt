@@ -18,8 +18,9 @@ class Parameter:
 
     def __init__(self, algorithm=None, budget=0, init_samples=None, time_budget=None, terminal_value=None, sequential=True,
                  precision=None, uncertain_bits=None, intermediate_result=False, intermediate_freq=100, autoset=True,
-                 noise_handling=False, resampling=False, suppression=False, ponss=False, ponss_theta=None, ponss_b=None, non_update_allowed=500, resample_times=100,
-                 balance_rate=0.5, high_dim_handling=False, reducedim=False, num_sre=5, low_dimension=None, withdraw_alpha=None, variance_A=None):
+                 noise_handling=False, resampling=False, suppression=False, ponss=False, ponss_theta=None, ponss_b=None,
+                 non_update_allowed=500, resample_times=100, balance_rate=0.5, high_dim_handling=False, reducedim=False,
+                 num_sre=5, low_dimension=None, withdraw_alpha=Dimension(1, [[-1, 1]], [True]), variance_A=None):
         """
         Initialization.
 
@@ -108,11 +109,11 @@ class Parameter:
     def auto_set(self, budget):
         """
         Set train_size, positive_size, negative_size by following rules:
-            budget < 3 --> error
-            budget: 4-50 --> train_size = 4, positive_size = 1
-            budget: 51-100 --> train_size = 6, positive_size = 1
-            budget: 101-1000 --> train_size = 12, positive_size = 2
-            budget > 1001 --> train_size = 22, positive_size = 2
+            budget < 3 --> error;
+            budget: 4-50 --> train_size = 4, positive_size = 1;
+            budget: 51-100 --> train_size = 6, positive_size = 1;
+            budget: 101-1000 --> train_size = 12, positive_size = 2;
+            budget > 1001 --> train_size = 22, positive_size = 2;
 
         :param budget: number of calls to the objective function
         :return: no return value

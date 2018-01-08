@@ -129,7 +129,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="example.html">example</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="example/direct_policy_search_for_gym.html">direct_policy_search_for_gym</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="example/direct_policy_search_for_gym/example.html">example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example/direct_policy_search_for_gym/run.html">run</a></li>
 <li class="toctree-l3"><a class="reference internal" href="example/direct_policy_search_for_gym/gym_task.html">gym_task</a></li>
 <li class="toctree-l3"><a class="reference internal" href="example/direct_policy_search_for_gym/nn_model.html">nn_model</a></li>
 </ul>
@@ -233,11 +233,11 @@
 </dl>
 <dl class="class">
 <dt id="parameter.Parameter">
-<em class="property">class </em><code class="descclassname">parameter.</code><code class="descname">Parameter</code><span class="sig-paren">(</span><em>algorithm=None</em>, <em>budget=0</em>, <em>init_samples=None</em>, <em>time_budget=None</em>, <em>terminal_value=None</em>, <em>sequential=True</em>, <em>precision=None</em>, <em>uncertain_bits=None</em>, <em>intermediate_result=False</em>, <em>intermediate_freq=100</em>, <em>autoset=True</em>, <em>noise_handling=False</em>, <em>resampling=False</em>, <em>suppression=False</em>, <em>ponss=False</em>, <em>ponss_theta=None</em>, <em>ponss_b=None</em>, <em>non_update_allowed=500</em>, <em>resample_times=100</em>, <em>balance_rate=0.5</em>, <em>high_dim_handling=False</em>, <em>reducedim=False</em>, <em>num_sre=5</em>, <em>low_dimension=None</em>, <em>withdraw_alpha=None</em>, <em>variance_A=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/parameter.html#Parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parameter.Parameter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">parameter.</code><code class="descname">Parameter</code><span class="sig-paren">(</span><em>algorithm=None</em>, <em>budget=0</em>, <em>init_samples=None</em>, <em>time_budget=None</em>, <em>terminal_value=None</em>, <em>sequential=True</em>, <em>precision=None</em>, <em>uncertain_bits=None</em>, <em>intermediate_result=False</em>, <em>intermediate_freq=100</em>, <em>autoset=True</em>, <em>noise_handling=False</em>, <em>resampling=False</em>, <em>suppression=False</em>, <em>ponss=False</em>, <em>ponss_theta=None</em>, <em>ponss_b=None</em>, <em>non_update_allowed=500</em>, <em>resample_times=100</em>, <em>balance_rate=0.5</em>, <em>high_dim_handling=False</em>, <em>reducedim=False</em>, <em>num_sre=5</em>, <em>low_dimension=None</em>, <em>withdraw_alpha=&lt;zoopt.dimension.Dimension instance&gt;</em>, <em>variance_A=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/parameter.html#Parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parameter.Parameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class contains all parameters used for optimization.</p>
 <dl class="method">
 <dt id="parameter.Parameter.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>algorithm=None</em>, <em>budget=0</em>, <em>init_samples=None</em>, <em>time_budget=None</em>, <em>terminal_value=None</em>, <em>sequential=True</em>, <em>precision=None</em>, <em>uncertain_bits=None</em>, <em>intermediate_result=False</em>, <em>intermediate_freq=100</em>, <em>autoset=True</em>, <em>noise_handling=False</em>, <em>resampling=False</em>, <em>suppression=False</em>, <em>ponss=False</em>, <em>ponss_theta=None</em>, <em>ponss_b=None</em>, <em>non_update_allowed=500</em>, <em>resample_times=100</em>, <em>balance_rate=0.5</em>, <em>high_dim_handling=False</em>, <em>reducedim=False</em>, <em>num_sre=5</em>, <em>low_dimension=None</em>, <em>withdraw_alpha=None</em>, <em>variance_A=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/parameter.html#Parameter.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parameter.Parameter.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>algorithm=None</em>, <em>budget=0</em>, <em>init_samples=None</em>, <em>time_budget=None</em>, <em>terminal_value=None</em>, <em>sequential=True</em>, <em>precision=None</em>, <em>uncertain_bits=None</em>, <em>intermediate_result=False</em>, <em>intermediate_freq=100</em>, <em>autoset=True</em>, <em>noise_handling=False</em>, <em>resampling=False</em>, <em>suppression=False</em>, <em>ponss=False</em>, <em>ponss_theta=None</em>, <em>ponss_b=None</em>, <em>non_update_allowed=500</em>, <em>resample_times=100</em>, <em>balance_rate=0.5</em>, <em>high_dim_handling=False</em>, <em>reducedim=False</em>, <em>num_sre=5</em>, <em>low_dimension=None</em>, <em>withdraw_alpha=&lt;zoopt.dimension.Dimension instance&gt;</em>, <em>variance_A=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/parameter.html#Parameter.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parameter.Parameter.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialization.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -281,11 +281,11 @@ into the first sampled solution set</li>
 <code class="descname">auto_set</code><span class="sig-paren">(</span><em>budget</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/parameter.html#Parameter.auto_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parameter.Parameter.auto_set" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Set train_size, positive_size, negative_size by following rules:</dt>
-<dd>budget &lt; 3 &#8211;&gt; error
-budget: 4-50 &#8211;&gt; train_size = 4, positive_size = 1
-budget: 51-100 &#8211;&gt; train_size = 6, positive_size = 1
-budget: 101-1000 &#8211;&gt; train_size = 12, positive_size = 2
-budget &gt; 1001 &#8211;&gt; train_size = 22, positive_size = 2</dd>
+<dd>budget &lt; 3 &#8211;&gt; error;
+budget: 4-50 &#8211;&gt; train_size = 4, positive_size = 1;
+budget: 51-100 &#8211;&gt; train_size = 6, positive_size = 1;
+budget: 101-1000 &#8211;&gt; train_size = 12, positive_size = 2;
+budget &gt; 1001 &#8211;&gt; train_size = 22, positive_size = 2;</dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -325,7 +325,7 @@ budget &gt; 1001 &#8211;&gt; train_size = 22, positive_size = 2</dd>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui chen, Yi-Qi Hu, Chao Feng, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Chao Feng, Yang Yu.
 
     </p>
   </div>

@@ -52,6 +52,7 @@ class RacosCommon:
 
         :return: no return value
         """
+        self._parameter.set_negative_size(self._parameter.get_train_size() - self._parameter.get_positive_size())
         # check if the initial solutions have been set
         data_temp = self._parameter.get_init_samples()
         i = 0

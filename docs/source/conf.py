@@ -67,8 +67,8 @@ master_doc = 'zoopt'
 
 # General information about the project.
 project = u'ZOOpt'
-copyright = u'2018, Yu-Ren Liu, Xiong-Hui chen, Yi-Qi Hu, Chao Feng, Yang Yu'
-author = u'Yu-Ren Liu, Xiong-Hui chen, Yi-Qi Hu, Chao Feng, Yang Yu'
+copyright = u'2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Chao Feng, Yang Yu'
+author = u'Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Chao Feng, Yang Yu'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -284,7 +284,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'ZOOpt.tex', u'ZOOpt Documentation',
-     u'Yu-Ren Liu, Xiong-Hui chen, Chao Fent, Yang Yu', 'manual'),
+     u'Yu-Ren Liu, Xiong-Hui Chen, Chao Feng, Yi-Qi Hu, Yang Yu', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

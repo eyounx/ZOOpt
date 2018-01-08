@@ -24,9 +24,8 @@ def minimize_sphere_sre():
 
     # setup algorithm parameters
     budget = 2000  # number of calls to the objective function
-    parameter = Parameter(budget=budget, high_dim_handling=True, reducedim=True, num_sre=5, low_dimension=Dimension(10, [[-1, 1]] * 10, [True] * 10),
-                          withdraw_alpha=Dimension(1, [[-1, 1]], [True]), intermediate_result=False,
-                          intermediate_freq=100)
+    parameter = Parameter(budget=budget, high_dim_handling=True, reducedim=True, num_sre=5,
+                          low_dimension=Dimension(10, [[-1, 1]] * 10, [True] * 10))
     solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/minimize_sphere_sre.png")
 
 if __name__ == "__main__":

@@ -128,7 +128,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../example.html">example</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../example/direct_policy_search_for_gym.html">direct_policy_search_for_gym</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../example/direct_policy_search_for_gym/example.html">example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/direct_policy_search_for_gym/run.html">run</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../example/direct_policy_search_for_gym/gym_task.html">gym_task</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../example/direct_policy_search_for_gym/nn_model.html">nn_model</a></li>
 </ul>
@@ -249,14 +249,16 @@
     <span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">ackley_noise_func</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>  <span class="c1"># form up the objective function</span>
     <span class="n">budget</span> <span class="o">=</span> <span class="mi">200000</span>  <span class="c1"># 20*dim_size  # number of calls to the objective function</span>
     <span class="c1"># suppression=True means optimize with value suppression, which is a noise handling method</span>
+    <span class="c1"># resampling=True means optimize with re-sampling, which is another common used noise handling method</span>
     <span class="c1"># non_update_allowed=500 and resample_times=100 means if the best solution doesn&#39;t change for 500 budgets,</span>
     <span class="c1"># the best solution will be evaluated repeatedly for 100 times</span>
+    <span class="c1"># balance_rate is a parameter for exponential weight average of several evaluations of one sample.</span>
     <span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">,</span> <span class="n">noise_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">suppression</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">non_update_allowed</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">resample_times</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">balance_rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
     <span class="c1"># parameter = Parameter(budget=budget, noise_handling=True, resampling=True, resample_times=10)</span>
     <span class="n">parameter</span><span class="o">.</span><span class="n">set_positive_size</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="n">ExpOpt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_file</span><span class="o">=</span><span class="s2">&quot;img/ackley_continuous_noisy_figure.png&quot;</span><span class="p">)</span></div>
+    <span class="n">ExpOpt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_file</span><span class="o">=</span><span class="s2">&quot;img/ackley_continuous_noisy_figure.png&quot;</span><span class="p">)</span></div>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">minimize_ackley_continuous_noisy</span><span class="p">()</span>
@@ -274,7 +276,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui chen, Yi-Qi Hu, Chao Feng, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Chao Feng, Yang Yu.
 
     </p>
   </div>

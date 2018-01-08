@@ -47,4 +47,4 @@ def minimize_sphere_continuous():
 
 if __name__ == '__main__':
     minimize_ackley_continuous()
-   #  minimize_sphere_continuous()
+    minimize_sphere_continuous()
