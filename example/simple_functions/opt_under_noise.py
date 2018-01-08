@@ -2,7 +2,7 @@
 This file contains an example of optimizing a function under noise.
 
 Author:
-    Xiong-Hui chen, Yu-Ren Liu
+    Xiong-Hui Chen, Yu-Ren Liu
 """
 
 from simple_function import ackley, ackley_noise_creator

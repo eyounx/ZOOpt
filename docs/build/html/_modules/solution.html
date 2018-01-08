@@ -247,10 +247,21 @@
 
 <span class="sd">        :param x: a list</span>
 <span class="sd">        :param value: objective value</span>
-<span class="sd">        :param resample_value: reevaluated value</span>
-<span class="sd">        :param attach: attached structure</span>
-<span class="sd">        :param post_attach: the attachment to the solution</span>
-<span class="sd">        :param is_in_possible_solution:</span>
+<span class="sd">        :param resample_value: re-evaluated value.</span>
+<span class="sd">            This is a meaningful parameter only when using the SSRACOS algorithm. </span>
+<span class="sd">            In SSRACOS algorithm, we record the noise reduction result in this parameter.</span>
+<span class="sd">        :param attach: attached structure.</span>
+<span class="sd">            self.set_attach() will be called after constructed a solution.</span>
+<span class="sd">            You can define the behavior through rewrite Objecttive.__inherit function (just do nothing as default).</span>
+<span class="sd">            See more details in Objective.set_inherit_func()</span>
+<span class="sd">        :param post_attach: the attachment to the solution.</span>
+<span class="sd">            self.set_post_attach() will be called after evaluated a solution.</span>
+<span class="sd">            You can define the behavior through rewrite Objecttive.__post_inherit function (just do nothing as default).</span>
+<span class="sd">            See more details in Objective.set_post_inherit_func()</span>
+<span class="sd">        :param is_in_possible_solution: </span>
+<span class="sd">            This is a meaningful parameter only when using the SSRACOS algorithm. </span>
+<span class="sd">            In SSRACOS algorithm, a solution will be added to &quot;possible solution list&quot; after being re-sampling.</span>
+<span class="sd">            This parameter is to mark if a solution has been added to &quot;possible solution list&quot;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__x</span> <span class="o">=</span> <span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__value</span> <span class="o">=</span> <span class="n">value</span>

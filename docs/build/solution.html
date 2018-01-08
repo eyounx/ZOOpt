@@ -248,10 +248,20 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>x</strong> &#8211; a list</li>
 <li><strong>value</strong> &#8211; objective value</li>
-<li><strong>resample_value</strong> &#8211; reevaluated value</li>
-<li><strong>attach</strong> &#8211; attached structure</li>
-<li><strong>post_attach</strong> &#8211; the attachment to the solution</li>
-<li><strong>is_in_possible_solution</strong> &#8211; </li>
+<li><strong>resample_value</strong> &#8211; re-evaluated value.
+This is a meaningful parameter only when using the SSRACOS algorithm. 
+In SSRACOS algorithm, we record the noise reduction result in this parameter.</li>
+<li><strong>attach</strong> &#8211; attached structure.
+self.set_attach() will be called after constructed a solution.
+You can define the behavior through rewrite Objecttive.__inherit function (just do nothing as default).
+See more details in Objective.set_inherit_func()</li>
+<li><strong>post_attach</strong> &#8211; the attachment to the solution.
+self.set_post_attach() will be called after evaluated a solution.
+You can define the behavior through rewrite Objecttive.__post_inherit function (just do nothing as default).
+See more details in Objective.set_post_inherit_func()</li>
+<li><strong>is_in_possible_solution</strong> &#8211; This is a meaningful parameter only when using the SSRACOS algorithm. 
+In SSRACOS algorithm, a solution will be added to &#8220;possible solution list&#8221; after being re-sampling.
+This parameter is to mark if a solution has been added to &#8220;possible solution list&#8221;.</li>
 </ul>
 </td>
 </tr>
