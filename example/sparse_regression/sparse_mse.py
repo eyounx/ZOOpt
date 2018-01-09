@@ -51,10 +51,11 @@ class SparseMSE:
 
     def constraint(self, solution):
         """
-        Constraint function returns a zero or positive value mean constraints are satisfied, otherwise negative
+        If the constraints are satisfied, the constraint function will return a zero or positive value. Otherwise a
+        negative value will be returned.
 
         :param solution: a Solution object
-        :return: a zero or positive value mean constraints are satisfied, otherwise negative
+        :return: a zero or positive value which means constraints are satisfied, otherwise a negative value
         """
         x = solution.get_x()
         return self._k-x[0, :].sum()
