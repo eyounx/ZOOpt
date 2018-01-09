@@ -1,93 +1,94 @@
-- # ZOOpt
+- - # ZOOpt
 
-  [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/eyounx/ZOOpt/blob/master/LICENSE.txt)A python package of Zeroth-Order Optimization (ZOOpt). 
+    [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/eyounx/ZOOpt/blob/master/LICENSE.txt)
 
-  Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimization) does not rely on the gradient of the objective function, but instead, learns from samples of the search space. It is suitable for optimizing functions that are nondifferentiable, with many local minima, or even unknown but only testable.
+    A python package of Zeroth-Order Optimization (ZOOpt). 
 
-  **Documents**: [Wiki of ZOOpt](https://github.com/eyounx/ZOOpt/wiki)
+    Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimization) does not rely on the gradient of the objective function, but instead, learns from samples of the search space. It is suitable for optimizing functions that are nondifferentiable, with many local minima, or even unknown but only testable.
 
-  **Citation**: 
+    **Documents**: [Wiki of ZOOpt](https://github.com/eyounx/ZOOpt/wiki)
 
-  > **Yu-Ren Liu, Yi-Qi Hu, Hong Qian, Yang Yu, Chao Qian. ZOOpt/ZOOjl: Toolbox for Derivative-Free Optimization**. [CORR abs/1801.00329](https://arxiv.org/abs/1801.00329)
+    **Citation**: 
 
-  ## Required packages
+    > **Yu-Ren Liu, Yi-Qi Hu, Hong Qian, Yang Yu, Chao Qian. ZOOpt/ZOOjl: Toolbox for Derivative-Free Optimization**. [CORR abs/1801.00329](https://arxiv.org/abs/1801.00329)
 
-  This package requires the following packages:
+    ## Required packages
 
-  - Python version 2.7 or 3.4 +
-  - `numpy` http://www.numpy.org
-  - `matplotlib`  http://matplotlib.org/ (optional for plot drawing)
+    This package requires the following packages:
 
-  The easiest way to get these is to use [pip](https://pypi.python.org/pypi/pip) or [conda](https://www.anaconda.com/what-is-anaconda/) environment manager. Typing the following command in your terminal will install all required packages in your Python environment.
+    - Python version 2.7 or 3.4 +
+    - `numpy` http://www.numpy.org
+    - `matplotlib`  http://matplotlib.org/ (optional for plot drawing)
 
-  ```
-  $ conda install numpy matplotlib
-  ```
+    The easiest way to get these is to use [pip](https://pypi.python.org/pypi/pip) or [conda](https://www.anaconda.com/what-is-anaconda/) environment manager. Typing the following command in your terminal will install all required packages in your Python environment.
 
-  or 
+    ```
+    $ conda install numpy matplotlib
+    ```
 
-  ```
-  $ pip install numpy matplotlib
-  ```
+    or 
 
-  ## Getting and installing ZOOpt
+    ```
+    $ pip install numpy matplotlib
+    ```
 
-  The easiest way to get ZOOpt is to type `pip install zoopt` in you terminal/command line.
+    ## Getting and installing ZOOpt
 
-  If you want to install ZOOpt by source code, download this project and sequentially run following commands in your terminal/command line.
+    The easiest way to get ZOOpt is to type `pip install zoopt` in you terminal/command line.
 
-  ```
-  $ python setup.py build
-  $ python setup.py install
-  ```
+    If you want to install ZOOpt by source code, download this project and sequentially run following commands in your terminal/command line.
 
-  ## A quick example
+    ```
+    $ python setup.py build
+    $ python setup.py install
+    ```
 
-  We define the Ackley function for minimization (note that this function is for arbitrary dimensions, determined by the solution)
+    ## A quick example
 
-  ```python
-  def ackley(solution):
-      """Ackley function for continuous optimization"""
-      x = solution.get_x()
-      value = -20 * np.exp(-0.2 * np.sqrt(sum([(i - 0.2) * (i - 0.2) for i in x]) / len(x))) - np.exp(sum([np.cos(2.0*np.pi*(i-bias)) for i in x]) / len(x)) + 20.0 + np.e
-      return value
-  ```
+    We define the Ackley function for minimization (note that this function is for arbitrary dimensions, determined by the solution)
 
-  Ackley function is a classical function with many local minima. In 2-dimension, it looks like (from wikipedia)
+    ```python
+    def ackley(solution):
+        x = solution.get_x()
+        value = -20 * np.exp(-0.2 * np.sqrt(sum([(i - 0.2) * (i - 0.2) for i in x]) / len(x))) - np.exp(sum([np.cos(2.0*np.pi*(i-bias)) for i in x]) / len(x)) + 20.0 + np.e
+        return value
+    ```
 
-  <table border=0><tr><td width="400px"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Ackley%27s_function.pdf/page1-400px-Ackley%27s_function.pdf.jpg" alt="Expeirment results"/></td></tr></table>
+    Ackley function is a classical function with many local minima. In 2-dimension, it looks like (from wikipedia)
 
-   Then, use ZOOpt to optimize a 100-dimension Ackley function:
+    <table border=0><tr><td width="400px"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Ackley%27s_function.pdf/page1-400px-Ackley%27s_function.pdf.jpg" alt="Expeirment results"/></td></tr></table>
 
-  ```python
-  from zoopt import Dimension, Objective, Parameter, Opt
+     Then, use ZOOpt to optimize a 100-dimension Ackley function:
 
-  dim = 100  # dimension
-  obj = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))
-  # perform optimization
-  solution = Opt.min(obj, Parameter(budget=100 * dim))
-  # print result
-  solution.print_solution()
-  ```
+    ```python
+    from zoopt import Dimension, Objective, Parameter, Opt
 
-  For a few seconds, the optimization is done. Then, we can visualize the optimization progress
+    dim = 100  # dimension
+    obj = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))
+    # perform optimization
+    solution = Opt.min(obj, Parameter(budget=100 * dim))
+    # print result
+    solution.print_solution()
+    ```
 
-  ```python
-  from matplotlib import pyplot
-  pyplot.plot(obj.get_history_bestsofar())
-  pyplot.savefig('figure.png')
-  ```
+    For a few seconds, the optimization is done. Then, we can visualize the optimization progress
 
-  which looks like
+    ```python
+    import matplotlib.pyplot as plt
+    plt.plot(obj.get_history_bestsofar())
+    plt.savefig('figure.png')
+    ```
 
-  <table border=0><tr><td width="400px"><img src="https://github.com/eyounx/ZOOpt/blob/dev/img/quick_start.png?raw=true" alt="Expeirment results"/></td></tr></table>
+    which looks like
 
-  More examples are available in the `example` fold.
+    <table border=0><tr><td width="400px"><img src="https://github.com/eyounx/ZOOpt/blob/dev/img/quick_start.png?raw=true" alt="Expeirment results"/></td></tr></table>
 
-  ## release 0.2
+    More examples are available in the `example` fold.
 
-  - Include the general optimization method RACOS (AAAI'16) and Sequential RACOS (AAAI'17), and the subset selection method POSS (NIPS'15).
-  - Include general noise handling method Value Suppression (AAAI'18) and Re-sampling, and the subset selection method with noise handling PONSS (NIPS'17)
-  - Include high-dimensionality handling method Sequential Random Embedding (IJCAI'16)
-  - The algorithm selection is automatic. See examples in the `example` fold.
-  - Default parameters work well on many problems, while parameters are fully controllable- Running speed optmized for Python
+    ## release 0.2
+
+    - Include the general optimization method RACOS (AAAI'16) and Sequential RACOS (AAAI'17), and the subset selection method POSS (NIPS'15).
+    - Include the general noise handling method Value Suppression (AAAI'18) and Re-sampling, and the subset selection method with noise handling PONSS (NIPS'17)
+    - Include high-dimensionality handling method Sequential Random Embedding (IJCAI'16)
+    - The algorithm selection is automatic. See examples in the `example` fold.
+    - Default parameters work well on many problems, while parameters are fully controllable- Running speed optmized for Python
