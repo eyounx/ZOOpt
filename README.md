@@ -12,26 +12,6 @@ Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimiz
 
 > **Yu-Ren Liu, Yi-Qi Hu, Hong Qian, Yang Yu, Chao Qian. ZOOpt/ZOOjl: Toolbox for Derivative-Free Optimization**. [CORR abs/1801.00329](https://arxiv.org/abs/1801.00329)
 
-## Required packages
-
-This package requires the following packages:
-
-- Python version 2.7 or 3.4 +
-- `numpy` http://www.numpy.org
-- `matplotlib`  http://matplotlib.org/ (optional for plot drawing)
-
-The easiest way to get these is to use [pip](https://pypi.python.org/pypi/pip) or [conda](https://www.anaconda.com/what-is-anaconda/) environment manager. Typing the following command in your terminal will install all required packages in your Python environment.
-
-```
-$ conda install numpy matplotlib
-```
-
-or 
-
-```
-$ pip install numpy matplotlib
-```
-
 ## Getting and installing ZOOpt
 
 The easiest way to get ZOOpt is to type `pip install zoopt` in you terminal/command line.
