@@ -12,6 +12,8 @@ Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimiz
 
 > **Yu-Ren Liu, Yi-Qi Hu, Hong Qian, Yang Yu, Chao Qian. ZOOpt/ZOOjl: Toolbox for Derivative-Free Optimization**. [CORR abs/1801.00329](https://arxiv.org/abs/1801.00329)
 
+(Features in this article is for version 0.2)
+
 ## Getting and installing ZOOpt
 
 The easiest way to get ZOOpt is to type `pip install zoopt` in you terminal/command line.
@@ -22,13 +24,6 @@ If you want to install ZOOpt by source code, download this project and sequentia
 $ python setup.py build
 $ python setup.py install
 ```
-
-**Documents**: [Wiki of ZOOpt](https://github.com/eyounx/ZOOpt/wiki)
-
-**Citation**: 
-> **Yu-Ren Liu, Yi-Qi Hu, Hong Qian, Yang Yu, Chao Qian. ZOOpt/ZOOjl: Toolbox for Derivative-Free Optimization**. [CORR abs/1801.00329](https://arxiv.org/abs/1801.00329)
-
-(Features in this article is for version 0.2)
 
 
 ## A quick example
