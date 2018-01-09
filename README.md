@@ -43,6 +43,14 @@ $ python setup.py build
 $ python setup.py install
 ```
 
+**Documents**: [Wiki of ZOOpt](https://github.com/eyounx/ZOOpt/wiki)
+
+**Citation**: 
+> **Yu-Ren Liu, Yi-Qi Hu, Hong Qian, Yang Yu, Chao Qian. ZOOpt/ZOOjl: Toolbox for Derivative-Free Optimization**. [CORR abs/1801.00329](https://arxiv.org/abs/1801.00329)
+
+(Features in this article is for version 0.2)
+
+
 ## A quick example
 
 We define the Ackley function for minimization (note that this function is for arbitrary dimensions, determined by the solution)
