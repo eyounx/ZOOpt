@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ssracos &mdash; ZOOpt 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ZOOpt 0.2 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../dimension.html">dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objective.html">objective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameter.html">parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solution.html">solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opt.html">opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exp_opt.html">exp_opt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../utils/tool_function.html">tool_function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/zoo_global.html">zoo_global</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../algos.html">algos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../algos/high_dimensionality_handling.html">high_dimensionality_handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algos/high_dimensionality_handling/sre_optimization.html">sre_optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../algos/noise_handling.html">noise_handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algos/noise_handling/ponss.html">ponss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algos/noise_handling/ssracos.html">ssracos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../algos/opt_algorithms.html">opt_algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algos/opt_algorithms/racos_all.html">racos_all</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/racos_all/racos.html">racos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/racos_all/racos_classification.html">racos_classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/racos_all/racos_common.html">racos_common</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/racos_all/racos_optimization.html">racos_optimization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/racos_all/sracos.html">sracos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../algos/opt_algorithms/paretoopt.html">paretoopt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/paretoopt/paretoopt.html">paretoopt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../algos/opt_algorithms/paretoopt/pareto_optimization.html">pareto_optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../example.html">example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../example/direct_policy_search_for_gym.html">direct_policy_search_for_gym</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../example/direct_policy_search_for_gym/run.html">run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/direct_policy_search_for_gym/gym_task.html">gym_task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/direct_policy_search_for_gym/nn_model.html">nn_model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../example/linear_classifier_using_ramploss.html">linear_classifier_using_ramploss</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../example/linear_classifier_using_ramploss/ramploss.html">ramploss</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../example/sequential_random_embedding.html">sequential_random_embedding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../example/sequential_random_embedding/continuous_sre_opt.html">continuous_sre_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/sequential_random_embedding/sphere_sre.html">sphere_sre</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../example/simple_functions.html">simple_functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/continuous_opt.html">continuous_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/discrete_opt.html">discrete_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/discrete_with_order_opt.html">discrete_with_order_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/mixed_opt.html">mixed_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/opt_under_noise.html">opt_under_noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/quick_start.html">quick_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/simple_functions/simple_functions_file.html">simple_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../example/sparse_regression.html">sparse_regression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../example/sparse_regression/ponss_opt.html">ponss_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/sparse_regression/poss_opt.html">poss_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../example/sparse_regression/sparse_mse.html">sparse_mse</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../zoopt.html">ZOOpt</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>ssracos</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ssracos</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># coding=utf-8</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains the class SSRacos, which combines the noise handling method value suppression with SRacos.</span>
+
+<span class="sd">Author:</span>
+<span class="sd">    Xiong-Hui Chen, Yu-Ren Liu</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">zoopt.algos.opt_algorithms.racos.racos_classification</span> <span class="k">import</span> <span class="n">RacosClassification</span>
+<span class="kn">from</span> <span class="nn">zoopt.algos.opt_algorithms.racos.sracos</span> <span class="k">import</span> <span class="n">SRacos</span>
+<span class="kn">from</span> <span class="nn">zoopt.utils.tool_function</span> <span class="k">import</span> <span class="n">ToolFunction</span>
+<span class="kn">from</span> <span class="nn">zoopt.utils.zoo_global</span> <span class="k">import</span> <span class="n">gl</span>
+
+
+<div class="viewcode-block" id="SSRacos"><a class="viewcode-back" href="../algos/noise_handling/ssracos.html#ssracos.SSRacos">[docs]</a><span class="k">class</span> <span class="nc">SSRacos</span><span class="p">(</span><span class="n">SRacos</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class implements SSRacos algorithm, which combines the noise handling method value suppression with SRacos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SSRacos.__init__"><a class="viewcode-back" href="../algos/noise_handling/ssracos.html#ssracos.SSRacos.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">SRacos</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span></div>
+
+<div class="viewcode-block" id="SSRacos.opt"><a class="viewcode-back" href="../algos/noise_handling/ssracos.html#ssracos.SSRacos.opt">[docs]</a>    <span class="k">def</span> <span class="nf">opt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;WR&#39;</span><span class="p">,</span> <span class="n">ub</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        SSRacos optimization.</span>
+
+<span class="sd">        :param objective: a Objective object</span>
+<span class="sd">        :param parameter: a Parameter object</span>
+<span class="sd">        :param strategy: replace strategy</span>
+<span class="sd">        :param ub: uncertain bits, which is a parameter of SRacos</span>
+<span class="sd">        :return: the best solution of the optimization</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_objective</span><span class="p">(</span><span class="n">objective</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_attribute</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">iteration_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_budget</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_train_size</span><span class="p">()</span>
+        <span class="n">time_log1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">max_distinct_repeat_times</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">current_not_distinct_times</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">last_best</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">non_update_allowed</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get_non_update_allowed</span><span class="p">()</span>
+        <span class="n">non_update_times</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">current_stay_times</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">non_update_baselines_times</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">iteration_num</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">gl</span><span class="o">.</span><span class="n">rand</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_probability</span><span class="p">():</span>
+                <span class="n">classifier</span> <span class="o">=</span> <span class="n">RacosClassification</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_objective</span><span class="o">.</span><span class="n">get_dim</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_positive_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_negative_data</span><span class="p">,</span> <span class="n">ub</span><span class="p">)</span>
+                <span class="n">classifier</span><span class="o">.</span><span class="n">mixed_classification</span><span class="p">()</span>
+                <span class="n">solution</span><span class="p">,</span> <span class="n">distinct_flag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distinct_sample_classifier</span><span class="p">(</span>
+                    <span class="n">classifier</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_train_size</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">solution</span><span class="p">,</span> <span class="n">distinct_flag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distinct_sample</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_objective</span><span class="o">.</span><span class="n">get_dim</span><span class="p">())</span>
+            <span class="c1"># panic stop</span>
+            <span class="k">if</span> <span class="n">solution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot; [break loop] because solution is None&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_best_solution</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">distinct_flag</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="n">current_not_distinct_times</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">current_not_distinct_times</span> <span class="o">&gt;=</span> <span class="n">max_distinct_repeat_times</span><span class="p">:</span>
+                    <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+                        <span class="s2">&quot;[break loop] because distinct_flag is false too much times&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_best_solution</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">current_not_distinct_times</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># evaluate the solution</span>
+            <span class="n">objective</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
+            <span class="c1"># show best solution</span>
+            <span class="n">times</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_train_size</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">show_best_solution</span><span class="p">(</span><span class="n">parameter</span><span class="o">.</span><span class="n">get_intermediate_result</span><span class="p">(),</span> <span class="n">times</span><span class="p">,</span>
+                                    <span class="n">parameter</span><span class="o">.</span><span class="n">get_intermediate_freq</span><span class="p">())</span>
+            <span class="c1"># suppression</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_worest</span><span class="p">(</span><span class="n">solution</span><span class="p">):</span>
+                <span class="n">non_update_times</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">non_update_times</span> <span class="o">&gt;=</span> <span class="n">non_update_allowed</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_positive_data_re_sample</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">update_possible_solution</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_positive_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sort_solution_list</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_positive_data</span><span class="p">)</span>
+                    <span class="n">non_update_times</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">best_solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_best_solution</span><span class="p">(</span><span class="n">for_test</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                    <span class="n">last_best</span> <span class="o">=</span> <span class="n">best_solution</span><span class="o">.</span><span class="n">get_resample_value</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">non_update_times</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="n">bad_ele</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_positive_data</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="s1">&#39;pos&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_negative_data</span><span class="p">,</span> <span class="n">bad_ele</span><span class="p">,</span> <span class="s1">&#39;neg&#39;</span><span class="p">,</span> <span class="n">strategy</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_positive_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">time_log2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                <span class="n">expected_time</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_budget</span><span class="p">(</span>
+                <span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_train_size</span><span class="p">())</span> <span class="o">*</span> <span class="p">(</span><span class="n">time_log2</span> <span class="o">-</span> <span class="n">time_log1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_time_budget</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">expected_time</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
+                        <span class="n">expected_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_time_budget</span><span class="p">())</span>
+                <span class="k">if</span> <span class="n">expected_time</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+                    <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">expected_time</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+                    <span class="n">h</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+                    <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+                        <span class="s1">&#39;expected remaining running time: </span><span class="si">%02d</span><span class="s1">:</span><span class="si">%02d</span><span class="s1">:</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+            <span class="c1"># time budget check</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_time_budget</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">time_log1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_time_budget</span><span class="p">():</span>
+                    <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;time_budget runs out&#39;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_best_solution</span><span class="p">()</span>
+            <span class="c1"># terminal_value check</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_terminal_value</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_best_solution</span><span class="p">(</span><span class="n">for_test</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">solution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">solution</span><span class="o">.</span><span class="n">get_resample_value</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_terminal_value</span><span class="p">():</span>
+                    <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;terminal function value reached&#39;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_best_solution</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_best_solution</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SSRacos.update_possible_solution"><a class="viewcode-back" href="../algos/noise_handling/ssracos.html#ssracos.SSRacos.update_possible_solution">[docs]</a>    <span class="k">def</span> <span class="nf">update_possible_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Search all of solutions in self._positive_data, add it to self._possible_solution_list if not exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">solution</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_positive_data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">solution</span><span class="o">.</span><span class="n">is_in_possible_solution</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">solution</span><span class="o">.</span><span class="n">is_in_possible_solution</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">new_solution</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">deep_copy</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_possible_solution_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_solution</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SSRacos.get_best_solution"><a class="viewcode-back" href="../algos/noise_handling/ssracos.html#ssracos.SSRacos.get_best_solution">[docs]</a>    <span class="k">def</span> <span class="nf">get_best_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">for_test</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Find the best solution.</span>
+
+<span class="sd">        :param for_test: if set for_test as False, this method will re-sample all of the solutions in positive data and then add them to possible solution before search the best solution.</span>
+<span class="sd">        :return: return resample value if for_test is False otherwise return suppression value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">for_test</span><span class="p">:</span>
+            <span class="c1"># update solution in positive data</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_positive_data_re_sample</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_possible_solution</span><span class="p">()</span>
+        <span class="c1"># sort</span>
+        <span class="n">sort_solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sort_solution_list</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_possible_solution_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">get_resample_value</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">sort_solution</span> <span class="o">==</span> <span class="p">[]:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">for_test</span><span class="p">:</span>
+                <span class="n">sort_solution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span>
+                    <span class="n">sort_solution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_resample_value</span><span class="p">())</span>
+                <span class="k">return</span> <span class="n">sort_solution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">sort_solution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="SSRacos.sort_solution_list"><a class="viewcode-back" href="../algos/noise_handling/ssracos.html#ssracos.SSRacos.sort_solution_list">[docs]</a>    <span class="k">def</span> <span class="nf">sort_solution_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">get_value</span><span class="p">()):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sort a solution list (eg. self._positive_data, self._possible_solution_list) with key</span>
+
+<span class="sd">        :param solution_list: the solution list to be sorted.</span>
+<span class="sd">        :param key: a function which input a solution and return its key.</span>
+<span class="sd">        :return: return a copy of sorted list(without change origin solution list).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">solution_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_positive_data_re_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Re-sample all of the solutions in positive data(ignore solutions which have re-sampled before).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_positive_data</span><span class="p">:</span>
+            <span class="n">iter_times</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objective</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span>
+                <span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">()</span><span class="o">.</span><span class="n">get_resample_times</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">+=</span> <span class="n">iter_times</span>
+
+    <span class="k">def</span> <span class="nf">_is_worest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Judge if the solution is the worst solution in positive data.</span>
+
+<span class="sd">        :param solution: the solution to be judged.</span>
+<span class="sd">        :return: True if the solution is the worst False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_positive_data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">solution</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Chao Feng, Yang Yu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+   
+
+</body>
+</html>

@@ -5,13 +5,13 @@ from setuptools import setup, find_packages
 
 setup(
     name='zoopt',
-    version=0.3,
+    version=0.2,
     description=(
         'A Python Package for Zeroth-Order Optimization'
     ),
     author='Yang Yu',
     author_email='yuy@nju.edu.cn',
-    maintainer='Yu-Ren Liu, Chao Feng, Yi-Qi Hu, Yang Yu',
+    maintainer='Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Chao Feng, Yang Yu',
     license='MIT License',
     packages=find_packages(),
     platforms=["all"],
@@ -31,4 +31,8 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries'
     ],
+    install_requires=[
+        'numpy',
+        'matplotlib',
+    ]
 )

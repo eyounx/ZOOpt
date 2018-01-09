@@ -1,39 +1,75 @@
+"""
+This module contains the class Dimension, which describes the dimension information of the search space.
+
+Author:
+    Yu-Ren Liu
+"""
 
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
-"""
-The class Dimension was implemented in this file.
-
-This class describes dimension messages.
-
-Author:
-    Yuren Liu
-"""
+import copy
 
 
 class Dimension:
+    """
+    This class describes the dimension information of the search space.
+    """
 
-    def __init__(self, size=0, regs=[], tys=[], order=False):
+    def __init__(self, size=0, regs=[], tys=[], order=[]):
+        """
+        Initialization.
+
+        :param size: dimension size
+        :param regs: search space of each dimension
+        :param tys: continuous or discrete for each dimension
+        :param order:
+            this parameter matters if this dimension is discrete, it means this dimension has partial order relation
+        """
         self._size = size
         self._regions = regs
         # True means continuous, False means discrete
         self._types = tys
-        # Order=True matters only when dimensions are discrete and have partial order relations.
-        self._order = order
+        if len(order) == 0:
+            self._order = [False] * self._size
+        else:
+            self._order = order
         return
 
-    # Check if the dimensions of regs and tys
-    # are both the same as size
+
     @staticmethod
     def judge_match(size, regs, tys):
+        """
+        Check if the size of regs and tys are both the same as self._size.
+
+        :return: True or False
+        """
         if size != len(regs) or size != len(tys):
             ToolFunction.log('dimension.py: dimensions do not match')
             return False
         else:
             return True
 
-    # Set all the attributes
+    @staticmethod
+    def merge_dim(dim1, dim2):
+        """
+        Merge two Dimension object.
+
+        :return: a new merged Dimension object
+        """
+        res_dim = copy.deepcopy(dim1)
+        res_dim.set_size(dim1.get_size() + dim2.get_size())
+        res_dim.get_regions().extend(dim2.get_regions())
+        res_dim.get_types().extend(dim2.get_types())
+        new_order = True if dim1.get_order() is True or dim2.get_order() is True else False
+        res_dim.set_order(new_order)
+        return res_dim
+
     def set_all(self, size, regs, tys):
+        """
+        Set all attributes
+
+        :return: no return value
+        """
         if self.judge_match(size, regs, tys) is False:
             return
         self._size = size
@@ -60,9 +96,12 @@ class Dimension:
         self._types = tys
         return
 
-    # random sample from dimension messages.
-    # this algos returns a list.
     def rand_sample(self):
+        """
+        Random sample in the search space.
+
+        :return: a sampled x
+        """
         x = []
         for i in range(self._size):
             if self._types[i] is True:
@@ -76,9 +115,14 @@ class Dimension:
             x.append(value)
         return x
 
-    # This algos will return True and the number of dimension value if each dimension is discrete.
-    # Otherwise, return False and zero
     def limited_space(self):
+        """
+        Judge if the dimension described search space is limited.
+
+        :return:
+            return True and the number of dimension value if each dimension is discrete.
+            Otherwise, return False and zero
+        """
         number = 1
         for i in range(self._size):
             if self._types[i] is True:
@@ -87,8 +131,12 @@ class Dimension:
                 number *= self._regions[i][1] - self._regions[i][0] + 1
         return True, number
 
-    # deep copy this instance
     def deep_copy(self):
+        """
+        Deep copy this instance.
+
+        :return: a new instance
+        """
         size = self._size
         regions = []
         tys = []
@@ -101,8 +149,12 @@ class Dimension:
             tys.append(x)
         return Dimension(size, regions, tys)
 
-    # deep copy the instance's regions information
     def copy_region(self):
+        """
+        Deep copy the instance's search regions.
+
+        :return: a new search region
+        """
         regions = []
         for reg in self._regions:
             interval = []
@@ -112,6 +164,11 @@ class Dimension:
         return regions
 
     def is_discrete(self):
+        """
+        Whether the search space of all dimensions is discrete.
+
+        :return: True or False
+        """
         for i in range(len(self._types)):
             if self._types[i] is True:
                 return False
@@ -135,8 +192,19 @@ class Dimension:
     def get_order(self):
         return self._order
 
+    def set_size(self, size):
+        self._size = size
+
+    def set_order(self, order):
+        self._order = order
+
     # for debugging
     def print_dim(self):
+        """
+        Print the dimension information.
+        :return: no return value
+        """
+
         ToolFunction.log('dim size: %d' % self._size)
         ToolFunction.log('dim regions is:')
         ToolFunction.log(self._regions)

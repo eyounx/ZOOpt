@@ -1,29 +1,45 @@
+"""
+This module contains the class Global.
+
+Author:
+    Yu-Ren Liu
+"""
 
 from random import Random
 
-"""
-This file records Global variables used in the algorithm
-Author:
-    Yuren Liu
-"""
 
 class Global:
+    """
+    This class defines global variables used in all algorithms.
+    """
     rand = None
 
     def __init__(self):
+        """
+        Initialize rand and precision.
+        """
         # rand is the random object used by all files
         self.rand = Random()
-        self.set_seed(100)
         self.precision = 1e-17
         # rand.seed(100)
 
-    # Set random seed
     def set_seed(self, seed):
+        """
+        Set random seed.
+
+        :param seed: random seed
+        :return: no return value
+        """
         self.rand.seed(seed)
         return
 
-    # Set precision, precision is used to judge whether two floats are equal
     def set_precision(self, my_precision):
+        """
+        Set precision, precision is used to judge whether two floats are equal.
+
+        :param my_precision: precision
+        :return: no return value
+        """
         self.precision = my_precision
         return
 

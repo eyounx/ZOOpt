@@ -1,0 +1,5 @@
+paretoopt
+=========
+
+.. automodule:: paretoopt
+   :members:

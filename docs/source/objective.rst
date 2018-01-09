@@ -1,0 +1,5 @@
+objective
+=========
+
+.. automodule:: objective
+   :members:
