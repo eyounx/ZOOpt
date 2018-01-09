@@ -48,9 +48,12 @@
     We define the Ackley function for minimization (note that this function is for arbitrary dimensions, determined by the solution)
 
     ```python
+    import numpy as np
     def ackley(solution):
         x = solution.get_x()
-        value = -20 * np.exp(-0.2 * np.sqrt(sum([(i - 0.2) * (i - 0.2) for i in x]) / len(x))) - np.exp(sum([np.cos(2.0*np.pi*(i-bias)) for i in x]) / len(x)) + 20.0 + np.e
+        bias = 0.2
+        value = -20 * np.exp(-0.2 * np.sqrt(sum([(i - bias) * (i - bias) for i in x]) / len(x))) - \
+                np.exp(sum([np.cos(2.0*np.pi*(i-bias)) for i in x]) / len(x)) + 20.0 + np.e
         return value
     ```
 

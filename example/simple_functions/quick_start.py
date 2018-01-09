@@ -8,7 +8,6 @@ Author:
 from zoopt import Dimension, Objective, Parameter, ExpOpt
 from simple_function import ackley
 
-
 if __name__ == '__main__':
     dim = 100  # dimension
     objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
