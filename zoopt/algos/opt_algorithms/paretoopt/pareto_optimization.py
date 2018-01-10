@@ -8,13 +8,14 @@ Author:
 """
 
 from zoopt.algos.noise_handling.ponss import PONSS
-from paretoopt import ParetoOpt
+from zoopt.algos.opt_algorithms.paretoopt.paretoopt import ParetoOpt
 
 
 class ParetoOptimization:
     """
     Pareto optimization.
     """
+
     def __init__(self):
         self.__best_solution = None
         self.__algorithm = None
