@@ -1,6 +1,6 @@
-# Optimization Example on Simple Functions
+# Optimization Examples on Simple Functions
 
-In `example.py`, there are some examples of optimizing simple functions defined in `fx.py`
+Several optimization examples are defined in `continuous_opt.py`, `discrete_opt.py`, `discrete_with_order_opt.py`, `mixed_opt.py`, `opt_under_noise.py` and `quick_start.py`.
 
 Four simple functions in `simple_function.py`
 
@@ -12,4 +12,3 @@ Four simple functions in `simple_function.py`
 
 * `mixed_function`: a sum-of-all-dimension function for mixed real/discrete dimensions
 
-In `example.py`,  the main program has four sections separated by `if`. Each section is an example for minimzing one function.
