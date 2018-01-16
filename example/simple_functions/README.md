@@ -2,7 +2,7 @@
 
 Several optimization examples are defined in `continuous_opt.py`, `discrete_opt.py`, `discrete_with_order_opt.py`, `mixed_opt.py`, `opt_under_noise.py` and `quick_start.py`.
 
-Four simple functions in `simple_function.py`
+Four kinds of simple functions are defined in `simple_function.py`
 
 * `sphere`: a convex hyper-sphere function in real dimensions
 
