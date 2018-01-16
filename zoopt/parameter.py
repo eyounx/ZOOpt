@@ -26,7 +26,7 @@ class Parameter:
 
         :param algorithm: 'racos' or 'poss', 'racos' by defalut
         :param budget:
-            number of calls to the objective function. If noise_handling and resampling is True, resample_times
+            the number of calls to the objective function. If noise_handling and resampling is True, resample_times
             calls to the objective function count as one budget
         :param init_samples:
             Initial samples provided by user. If init_samples is not None, the samples will be added

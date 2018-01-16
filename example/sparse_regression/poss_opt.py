@@ -12,6 +12,7 @@ if __name__ == '__main__':
     mse.set_sparsity(8)
 
     # setup objective
+    # print(mse.get_dim().get_size())
     objective = Objective(func=mse.loss, dim=mse.get_dim(), constraint=mse.constraint)
     parameter = Parameter(algorithm='poss', budget=2 * exp(1) * (mse.get_sparsity() ** 2) * mse.get_dim().get_size())
 

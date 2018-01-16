@@ -35,14 +35,14 @@ class ParetoOpt:
         s_temp = deepcopy(s)
         threshold = 1.0 / n
         flipped = False
-        for i in range(0,n):
+        for i in range(0, n):
             # the probability is 1/n
             if gl.rand.uniform(0, 1) <= threshold:
-                s_temp[0, i] = (s[0, i] + 1) % 2
+                s_temp[i] = (s[i] + 1) % 2
                 flipped = True
         if not flipped:
             mustflip = gl.rand.randint(0, n-1)
-            s_temp[0, mustflip] = (s[0, mustflip] + 1) % 2
+            s_temp[mustflip] = (s[mustflip] + 1) % 2
         return s_temp
 
     def opt(self, objective, parameter):
@@ -57,7 +57,7 @@ class ParetoOpt:
         n = objective.get_dim().get_size()
 
         # initiate the population
-        sol = objective.construct_solution(np.zeros([1, n]))
+        sol = objective.construct_solution(np.zeros(n))
         objective.eval_constraint(sol)
 
         population = [sol]

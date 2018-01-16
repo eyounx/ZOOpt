@@ -42,10 +42,10 @@ class SparseMSE:
         :param s:
         :return: a list of index of s where element is 1
         """
-        n = np.shape(s)[1]
+        n = len(s)
         result = []
         for i in range(n):
-            if s[0, i] == 1:
+            if s[i] == 1:
                 result.append(i)
         return result
 
@@ -58,7 +58,7 @@ class SparseMSE:
         :return: a zero or positive value which means constraints are satisfied, otherwise a negative value
         """
         x = solution.get_x()
-        return self._k-x[0, :].sum()
+        return self._k-sum(x)
 
     def set_sparsity(self, k):
         self._k = k
@@ -72,7 +72,7 @@ class SparseMSE:
         :param solution: a Solution object
         """
         x = solution.get_x()
-        if x[0, :].sum() == 0.0 or x[0, :].sum() >= 2.0*self._k:
+        if sum(x) == 0.0 or sum(x) >= 2.0 * self._k:
             return float('inf')
         pos = self.position(x)
         alpha = (self._C[pos, :])[:, pos]
