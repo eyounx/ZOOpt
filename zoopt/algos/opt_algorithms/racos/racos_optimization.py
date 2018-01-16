@@ -6,14 +6,15 @@ Author:
 """
 
 from zoopt.algos.noise_handling.ssracos import SSRacos
-from racos import Racos
-from sracos import SRacos
+from zoopt.algos.opt_algorithms.racos.racos import Racos
+from zoopt.algos.opt_algorithms.racos.sracos import SRacos
 
 
 class RacosOptimization:
     """
     This class will choose the optimization algorithm and get the best solution.
     """
+
     def __init__(self):
         """
         Initialization.
@@ -90,4 +91,3 @@ class RacosOptimization:
 
     def get_best_sol(self):
         return self.__best_solution
-

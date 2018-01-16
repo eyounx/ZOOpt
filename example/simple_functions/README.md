@@ -2,7 +2,7 @@
 
 In `example.py`, there are some examples of optimizing simple functions defined in `fx.py`
 
-Four simple functions in `fx.py`
+Four simple functions in `simple_function.py`
 
 * `sphere`: a convex hyper-sphere function in real dimensions
 
