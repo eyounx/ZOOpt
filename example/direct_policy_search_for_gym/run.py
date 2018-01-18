@@ -10,7 +10,7 @@ from zoopt import Dimension, Objective, Parameter, ExpOpt, Opt
 
 def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value=None):
     """
-    Api of running direct policy search for gym task.
+    example of running direct policy search for gym task.
 
     :param task_name: gym task name
     :param layers:
@@ -43,9 +43,9 @@ def run_test(task_name, layers, in_budget, max_step, repeat, terminal_value=None
     solution_list = ExpOpt.min(objective, parameter, repeat=repeat)
 
 
-def run_ss_test(task_name, layers, in_budget, max_step, repeat, terminal_value):
+def run_test_handlingnoise(task_name, layers, in_budget, max_step, repeat, terminal_value):
     """
-    Api of running direct policy search with ssracos algorithm for gym task.
+    example of running direct policy search for gym task with noise handling.
 
     :param task_name: gym task name
     :param layers:
@@ -53,7 +53,7 @@ def run_ss_test(task_name, layers, in_budget, max_step, repeat, terminal_value):
         e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 and output layer has 1
     :param in_budget:  number of calls to the objective function
     :param max_step: max step in gym
-    :param repeat:  repeat number in a test
+    :param repeat:  number of repeatitions for noise handling
     :param terminal_value: early stop, algorithm should stop when such value is reached
     :return: no return value
     """
@@ -92,9 +92,7 @@ if __name__ == '__main__':
     lunarlander_layers = [8, 5, 3, 1]
 
     run_test('MountainCar-v0', mountain_car_layers, 2000, 1000, 1)
-    run_ss_test('MountainCar-v0', mountain_car_layers,  1000, 1000, 5, terminal_value=-500)
-    # run_ss_test('MountainCar-v0', mountain_car_layers, 1000, 1000, 10)
-    # run_test('MountainCar-v0', mountain_car_layers, 10000, 10000, 10)
+    run_test_handlingnoise('MountainCar-v0', mountain_car_layers,  1000, 1000, 5, terminal_value=-500)
     # run_test('Acrobot-v1', acrobot_layers, 2000, 500, 10)
     # If you want to run the following examples, you may need to install more libs(mujoco, Box2D).
     # run_test('HalfCheetah-v1', halfcheetah_layers, 2000, 10000, 10)
