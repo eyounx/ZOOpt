@@ -1,4 +1,6 @@
 *.py[cod]
+build
+zoopt.egg-info
 .idea
 test
 /example/direct_policy_search_for_gym/Theano
