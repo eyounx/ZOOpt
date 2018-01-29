@@ -6,6 +6,8 @@ A python package of Zeroth-Order Optimization (ZOOpt).
 
 Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimization) does not rely on the gradient of the objective function, but instead, learns from samples of the search space. It is suitable for optimizing functions that are nondifferentiable, with many local minima, or even unknown but only testable.
 
+ZOOpt has a single-thread version and a light-weighted distribution version. Please find the details in the documents.
+
 **Documents**: [Wiki of ZOOpt](https://github.com/eyounx/ZOOpt/wiki)
 
 **Citation**: 
