@@ -14,19 +14,18 @@ Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimiz
 
 (Features in this article are from version 0.2)
 
-## Getting and installing ZOOpt
+## Quick Start (single thread version)
 
-The easiest way to get ZOOpt is to type `pip install zoopt` in you terminal/command line.
+To use the single thread version, the easiest way to get ZOOpt is to type `pip install zoopt` in the terminal/command line.
 
-If you want to install ZOOpt by source code, download this project and sequentially run following commands in your terminal/command line.
+Alternatively, to install ZOOpt by source code, download this project and sequentially run following commands in your terminal/command line.
 
 ```
 $ python setup.py build
 $ python setup.py install
 ```
 
-
-## A quick example
+### A simple example
 
 We define the Ackley function for minimization (note that this function is for arbitrary dimensions, determined by the solution)
 
