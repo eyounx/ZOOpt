@@ -70,6 +70,8 @@ which looks like
 
 More examples are available in the `example` fold.
 
+# Single thread version releases
+
 ## release 0.2
 
 [Tar Download](https://github.com/eyounx/ZOOpt/releases/tag/v0.2)
