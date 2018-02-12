@@ -89,3 +89,7 @@ More examples are available in the `example` fold.
 - Include the general optimization method RACOS (AAAI'16) and Sequential RACOS (AAAI'17), and the subset selection method POSS (NIPS'15).
 - The algorithm selection is automatic. See examples in the `example` fold.- Default parameters work well on many problems, while parameters are fully controllable
 - Running speed optmized for Python
+
+# Distributed version
+
+The distributed version of ZOOpt is consisted of the [server project](https://github.com/eyounx/ZOOsrv) and the [client project](https://github.com/eyounx/ZOOclient.jl). Details can be found in the [tutorial of the distributed ZOOpt](https://github.com/eyounx/ZOOpt/wiki/Tutorial-of-Distributed-ZOOpt)
