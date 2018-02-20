@@ -56,15 +56,19 @@ class RacosCommon:
         # check if the initial solutions have been set
         data_temp = self._parameter.get_init_samples()
         i = 0
+        iteration_num = self._parameter.get_train_size()
         if data_temp is not None and self._best_solution is None:
-            for j in range(len(data_temp)):
+            size = len(data_temp)
+            if iteration_num < size:
+                size = iteration_num
+            for j in range(size):
                 x = self._objective.construct_solution(data_temp[j])
                 self._objective.eval(x)
                 self._data.append(x)
-                ToolFunction.log(" init solution %s, eval %s" % (i, x.get_value()))
+                ToolFunction.log("init solution %s, value: %s" % (i, x.get_value()))
                 i += 1
         # otherwise generate random solutions
-        iteration_num = self._parameter.get_train_size()
+
         while i < iteration_num:
             # distinct_flag: True means sample is distinct(can be use),
             # False means sample is distinct, you should sample again.
