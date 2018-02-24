@@ -10,3 +10,4 @@ test
 /example/simple_funcitions/asynchronous_*.py
 /build/*
 /tutorial/*
+/dist/*

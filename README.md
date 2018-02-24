@@ -76,7 +76,7 @@ More examples are available in the `example` fold.
 
 ## release 0.2
 
-[Tar Download](https://github.com/eyounx/ZOOpt/releases/tag/v0.2)
+[Tar Download](https://github.com/eyounx/ZOOpt/releases/tag/v0.2.1)
 
 - Add the noise handling strategies Re-sampling and Value Suppression (AAAI'18), and the subset selection method with noise handling PONSS (NIPS'17)
 - Add high-dimensionality handling method Sequential Random Embedding (IJCAI'16) 
