@@ -74,17 +74,13 @@ More examples are available in the `example` fold.
 
 # Single thread version releases
 
-## release 0.2
-
-[Tar Download](https://github.com/eyounx/ZOOpt/releases/tag/v0.2.1)
+## [release 0.2](https://github.com/eyounx/ZOOpt/releases/tag/v0.2.1)
 
 - Add the noise handling strategies Re-sampling and Value Suppression (AAAI'18), and the subset selection method with noise handling PONSS (NIPS'17)
 - Add high-dimensionality handling method Sequential Random Embedding (IJCAI'16) 
 - Rewrite Pareto optimization method. Bugs fixed.
 
-## release 0.1
-
-[Tar Download](https://github.com/eyounx/ZOOpt/releases/tag/v0.1)
+## [release 0.1](https://github.com/eyounx/ZOOpt/releases/tag/v0.1)
 
 - Include the general optimization method RACOS (AAAI'16) and Sequential RACOS (AAAI'17), and the subset selection method POSS (NIPS'15).
 - The algorithm selection is automatic. See examples in the `example` fold.- Default parameters work well on many problems, while parameters are fully controllable
