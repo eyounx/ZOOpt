@@ -2,7 +2,6 @@
 build
 zoopt.egg-info
 .idea
-test
 /example/direct_policy_search_for_gym/Theano
 /example/direct_policy_search_for_gym/test.py
 /doc-make
@@ -11,3 +10,6 @@ test
 /build/*
 /tutorial/*
 /dist/*
+/htmlcov/*
+.pytest_cache
+.coverage

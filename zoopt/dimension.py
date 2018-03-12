@@ -60,9 +60,15 @@ class Dimension:
         res_dim.set_size(dim1.get_size() + dim2.get_size())
         res_dim.get_regions().extend(dim2.get_regions())
         res_dim.get_types().extend(dim2.get_types())
-        new_order = True if dim1.get_order() is True or dim2.get_order() is True else False
-        res_dim.set_order(new_order)
+        res_dim.get_order().extend(dim2.get_order())
         return res_dim
+
+    def equal(self, dim2):
+        if self._size == dim2.get_size() and self._regions == dim2.get_regions() and self._types == dim2.get_types() \
+                and self._order == dim2.get_order():
+            return True
+        else:
+            return False
 
     def set_all(self, size, regs, tys):
         """
@@ -204,7 +210,6 @@ class Dimension:
         Print the dimension information.
         :return: no return value
         """
-
         ToolFunction.log('dim size: %d' % self._size)
         ToolFunction.log('dim regions is:')
         ToolFunction.log(self._regions)

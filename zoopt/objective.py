@@ -50,7 +50,7 @@ class Objective:
         :param parameter: a Parameter object
         :return: no return
         """
-        if parameter.get_noise_handling() is True and parameter.get_suppressioin() is True:
+        if parameter.get_noise_handling() is True and parameter.get_suppression() is True:
             self.__balance_rate = parameter.get_balance_rate()
         if parameter.get_noise_handling() is True and parameter.get_resampling() is True:
             self.__resample_times = parameter.get_resample_times()

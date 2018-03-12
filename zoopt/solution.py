@@ -7,7 +7,7 @@ Author:
 
 from zoopt.utils.zoo_global import pos_inf, neg_inf, nan, gl
 from zoopt.utils.tool_function import ToolFunction
-
+import copy
 
 class Solution:
     """
@@ -63,9 +63,9 @@ and attachment
         for x_i in self.__x:
             x.append(x_i)
         value = self.__value
-        attach = self.__attach
-        resample_value = self.__resample_value
-        post_attach = self.__post_attach
+        attach = None if self.__attach is None else copy.deepcopy(self.__attach)
+        resample_value = None if self.__resample_value is None else copy.deepcopy(self.__resample_value)
+        post_attach = None if self.__post_attach is None else copy.deepcopy(self.__post_attach)
         return Solution(x, value, resample_value, attach, post_attach, self.is_in_possible_solution)
 
     def is_equal(self, sol):
@@ -95,7 +95,7 @@ and attachment
         :return: True or False
         """
         for sol in sol_set:
-            if self.is_equal(self, sol):
+            if self.is_equal(sol):
                 return True
         return False
 
@@ -199,4 +199,4 @@ and attachment
             if sol_set[i].get_value() < mini:
                 mini = sol_set[i].get_value()
                 mini_index = i
-        return mini, mini_index
+        return sol_set[mini_index], mini_index
