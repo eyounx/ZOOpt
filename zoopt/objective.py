@@ -156,6 +156,9 @@ class Objective:
     def get_constraint(self):
         return self.__constraint
 
+    def set_history(self, history):
+        self.__history = history
+
     def get_history(self):
         return self.__history
 
