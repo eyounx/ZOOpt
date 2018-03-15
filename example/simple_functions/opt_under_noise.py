@@ -32,7 +32,7 @@ def minimize_ackley_continuous_noisy():
     # parameter = Parameter(budget=budget, noise_handling=True, resampling=True, resample_times=10)
     parameter.set_positive_size(5)
 
-    ExpOpt.min(objective, parameter, repeat=2, plot=True, plot_file="img/ackley_continuous_noisy_figure.png")
+    ExpOpt.min(objective, parameter, repeat=2, plot=False, plot_file="img/ackley_continuous_noisy_figure.png")
 
 if __name__ == '__main__':
     minimize_ackley_continuous_noisy()

@@ -46,7 +46,7 @@ class RacosOptimization:
         if ub is None:
             ub = self.choose_ub(objective)
         if parameter.get_sequential():
-            if parameter.get_noise_handling() is True and parameter.get_suppressioin() is True:
+            if parameter.get_noise_handling() is True and parameter.get_suppression() is True:
                 self.__algorithm = SSRacos()
             else:
                 self.__algorithm = SRacos()

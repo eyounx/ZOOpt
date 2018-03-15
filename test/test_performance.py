@@ -1,4 +1,4 @@
-from zoopt import Dimension, Objective, Parameter, Opt
+from zoopt import Dimension, Objective, Parameter, Opt, ExpOpt
 import numpy as np
 
 
@@ -20,3 +20,8 @@ class TestPerformance(object):
         parameter = Parameter(budget=100 * dim)
         solution = Opt.min(objective, parameter)
         assert solution.get_value() < 0.2
+
+        parameter = Parameter(budget=100 * dim, sequential=False)
+        solution = ExpOpt.min(objective, parameter)[0]
+        assert solution.get_value() < 0.2
+

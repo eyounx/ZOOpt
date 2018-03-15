@@ -7,7 +7,6 @@ Author:
     Chao Feng, Yang Yu
 """
 
-
 import numpy as np
 from zoopt.utils.zoo_global import gl
 from copy import deepcopy

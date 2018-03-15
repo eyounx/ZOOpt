@@ -72,6 +72,7 @@ class SparseMSE:
         :param solution: a Solution object
         """
         x = solution.get_x()
+        print(x)
         if sum(x) == 0.0 or sum(x) >= 2.0 * self._k:
             return float('inf')
         pos = self.position(x)

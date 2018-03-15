@@ -151,7 +151,7 @@ class Parameter:
     def get_ponss_b(self):
         return self.__ponss_b
 
-    def get_suppressioin(self):
+    def get_suppression(self):
         return self.__suppression
 
     def set_suppression(self, suppression):

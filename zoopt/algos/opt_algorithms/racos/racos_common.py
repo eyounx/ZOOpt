@@ -89,7 +89,7 @@ class RacosCommon:
         This function sequentially does:
             Sort self._data
             Choose [first, train_size )solutions as the new self._data
-            Choose first-positive_size solutions as self._positive_data
+            Choose first positive_size solutions as self._positive_data
             Choose [positive_size, train_size) solutions as self._negative_data
 
         :return: no return value
