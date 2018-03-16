@@ -33,7 +33,7 @@ class PONSS(ParetoOpt):
         n = objective.get_dim().get_size()
 
         # initiate the population
-        sol = objective.construct_solution(np.zeros([1, n]))
+        sol = objective.construct_solution(np.zeros(n))
         objective.eval_constraint(sol)
 
         population = [sol]

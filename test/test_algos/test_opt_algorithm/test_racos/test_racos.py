@@ -1,7 +1,19 @@
 from zoopt.algos.opt_algorithms.racos.racos_common import RacosCommon
 from zoopt.algos.opt_algorithms.racos.sracos import SRacos
-from zoopt import Solution
+from zoopt import Solution, Objective, Dimension, Parameter, Opt, ExpOpt
+import numpy as np
 
+
+def ackley(solution):
+    """
+    Ackley function for continuous optimization
+    """
+    x = solution.get_x()
+    bias = 0.2
+    ave_seq = sum([(i - bias) * (i - bias) for i in x]) / len(x)
+    ave_cos = sum([np.cos(2.0 * np.pi * (i - bias)) for i in x]) / len(x)
+    value = -20 * np.exp(-0.2 * np.sqrt(ave_seq)) - np.exp(ave_cos) + 20.0 + np.e
+    return value
 
 class TestRacos(object):
     def test_racos_common_extend(self):
@@ -90,3 +102,21 @@ class TestRacos(object):
         assert pos_set[4].get_value() == 3 and pos_set[0].get_value() == 0.1
         sracos.replace(neg_set, x, 'neg', 'LM')
         assert neg_set[3].get_value() == 0.1
+
+    def test_racos_performance(self):
+        dim = 100  # dimension
+        objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
+        parameter = Parameter(budget=100 * dim)
+        solution = Opt.min(objective, parameter)
+        assert solution.get_value() < 0.2
+
+    def test_sracos_performance(self):
+        dim = 100  # dimension
+        objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
+        parameter = Parameter(budget=100 * dim)
+        solution = Opt.min(objective, parameter)
+        assert solution.get_value() < 0.2
+
+        parameter = Parameter(budget=100 * dim, sequential=False)
+        solution = ExpOpt.min(objective, parameter)[0]
+        assert solution.get_value() < 0.2
