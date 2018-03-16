@@ -34,7 +34,7 @@ class Racos(RacosCommon):
         self.set_objective(objective)
         self.set_parameters(parameter)
         self.init_attribute()
-        t = self._parameter.get_budget() / self._parameter.get_negative_size()
+        t = int(self._parameter.get_budget() / self._parameter.get_negative_size())
         time_log1 = time.time()
         for i in range(t):
             j = 0

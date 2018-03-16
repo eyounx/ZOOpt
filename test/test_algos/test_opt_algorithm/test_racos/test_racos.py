@@ -106,8 +106,8 @@ class TestRacos(object):
     def test_racos_performance(self):
         dim = 100  # dimension
         objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
-        parameter = Parameter(budget=100 * dim)
-        solution = Opt.min(objective, parameter)
+        parameter = Parameter(budget=100 * dim, sequential=False)
+        solution = ExpOpt.min(objective, parameter)[0]
         assert solution.get_value() < 0.2
 
     def test_sracos_performance(self):
@@ -117,6 +117,3 @@ class TestRacos(object):
         solution = Opt.min(objective, parameter)
         assert solution.get_value() < 0.2
 
-        parameter = Parameter(budget=100 * dim, sequential=False)
-        solution = ExpOpt.min(objective, parameter)[0]
-        assert solution.get_value() < 0.2
