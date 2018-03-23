@@ -10,6 +10,11 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install coverage
+  - pip install codecov
+
 # command to run tests
 script:
   - coverage run --source zoopt -m py.test # or py.test for Python versions 3.5 and below
+
+after_success:
+    - code_cov
