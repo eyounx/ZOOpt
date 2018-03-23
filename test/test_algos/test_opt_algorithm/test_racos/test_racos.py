@@ -15,6 +15,7 @@ def ackley(solution):
     value = -20 * np.exp(-0.2 * np.sqrt(ave_seq)) - np.exp(ave_cos) + 20.0 + np.e
     return value
 
+
 class TestRacos(object):
     def test_racos_common_extend(self):
         a = [1, 2, 3]
