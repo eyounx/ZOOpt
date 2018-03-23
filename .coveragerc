@@ -1,0 +1,4 @@
+[run]
+source=zoopt
+pip install pytest pytest-cov
+pytest --cov=./
