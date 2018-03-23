@@ -1,6 +1,11 @@
 # ZOOpt
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/eyounx/ZOOpt/blob/master/LICENSE.txt)
+[![Build Status](https://www.travis-ci.org/AlexLiuyuren/ZOOpt.svg?branch=master)](https://www.travis-ci.org/AlexLiuyuren/ZOOpt)
+
+[![codecov](https://codecov.io/gh/AlexLiuyuren/ZOOpt/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexLiuyuren/ZOOpt)
+
+[![Downloads](https://img.shields.io/badge/release-v0.2.1-green.svg)](https://github.com/eyounx/ZOOpt/releases)
 
 A python package of Zeroth-Order Optimization (ZOOpt). 
 
