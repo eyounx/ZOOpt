@@ -52,7 +52,7 @@
           
 
           
-            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+            <a href="../index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -174,7 +174,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../zoopt.html">ZOOpt</a>
+          <a href="../index.html">ZOOpt</a>
         
       </nav>
 
@@ -202,7 +202,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="index.html">Module code</a> &raquo;</li>
         
@@ -275,7 +275,7 @@
             <span class="c1"># perform the optimization</span>
             <span class="n">solution</span> <span class="o">=</span> <span class="n">Opt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">)</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;solved solution is:&#39;</span><span class="p">)</span>
+            <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;solved solution is:&#39;</span><span class="p">)</span>
             <span class="n">solution</span><span class="o">.</span><span class="n">print_solution</span><span class="p">()</span>
             <span class="c1"># store the optimization result</span>
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">solution</span><span class="o">.</span><span class="n">get_value</span><span class="p">())</span>
@@ -307,7 +307,10 @@
         <span class="n">top_k</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">limit</span><span class="p">]</span>
         <span class="n">mean_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">top_k</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
         <span class="n">std_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">top_k</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-        <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Best </span><span class="si">%d</span><span class="s1"> results: </span><span class="si">%s</span><span class="s1"> +- </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">mean_r</span><span class="p">,</span> <span class="n">std_r</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">limit</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Best </span><span class="si">%d</span><span class="s1"> result: </span><span class="si">%s</span><span class="s1"> +- </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">mean_r</span><span class="p">,</span> <span class="n">std_r</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Best </span><span class="si">%d</span><span class="s1"> results: </span><span class="si">%s</span><span class="s1"> +- </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">mean_r</span><span class="p">,</span> <span class="n">std_r</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">mean_r</span><span class="p">,</span> <span class="n">std_r</span></div></div>
 </pre></div>
 

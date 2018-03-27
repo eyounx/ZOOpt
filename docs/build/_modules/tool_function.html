@@ -52,7 +52,7 @@
           
 
           
-            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+            <a href="../index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -174,7 +174,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../zoopt.html">ZOOpt</a>
+          <a href="../index.html">ZOOpt</a>
         
       </nav>
 
@@ -202,7 +202,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="index.html">Module code</a> &raquo;</li>
         
@@ -240,30 +240,6 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="ToolFunction.__init__"><a class="viewcode-back" href="../utils/tool_function.html#tool_function.ToolFunction.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div>
-
-    <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="ToolFunction.list_compare"><a class="viewcode-back" href="../utils/tool_function.html#tool_function.ToolFunction.list_compare">[docs]</a>    <span class="k">def</span> <span class="nf">list_compare</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compare two lists.</span>
-
-<span class="sd">        :return: True if the two lists are the same else False.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list2</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)):</span>
-            <span class="k">if</span> <span class="n">list1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">list2</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-                <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
-
-    <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="ToolFunction.deepcopy"><a class="viewcode-back" href="../utils/tool_function.html#tool_function.ToolFunction.deepcopy">[docs]</a>    <span class="k">def</span> <span class="nf">deepcopy</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Deep copy an object.</span>
-
-<span class="sd">        :param obj: an object</span>
-<span class="sd">        :return: a new object</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span></div>
 
     <span class="nd">@staticmethod</span>
 <div class="viewcode-block" id="ToolFunction.log"><a class="viewcode-back" href="../utils/tool_function.html#tool_function.ToolFunction.log">[docs]</a>    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>

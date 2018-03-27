@@ -52,7 +52,7 @@
           
 
           
-            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+            <a href="../index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -174,7 +174,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../zoopt.html">ZOOpt</a>
+          <a href="../index.html">ZOOpt</a>
         
       </nav>
 
@@ -202,7 +202,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="index.html">Module code</a> &raquo;</li>
         
@@ -286,9 +286,15 @@
         <span class="n">res_dim</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">dim1</span><span class="o">.</span><span class="n">get_size</span><span class="p">()</span> <span class="o">+</span> <span class="n">dim2</span><span class="o">.</span><span class="n">get_size</span><span class="p">())</span>
         <span class="n">res_dim</span><span class="o">.</span><span class="n">get_regions</span><span class="p">()</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">dim2</span><span class="o">.</span><span class="n">get_regions</span><span class="p">())</span>
         <span class="n">res_dim</span><span class="o">.</span><span class="n">get_types</span><span class="p">()</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">dim2</span><span class="o">.</span><span class="n">get_types</span><span class="p">())</span>
-        <span class="n">new_order</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">dim1</span><span class="o">.</span><span class="n">get_order</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">or</span> <span class="n">dim2</span><span class="o">.</span><span class="n">get_order</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
-        <span class="n">res_dim</span><span class="o">.</span><span class="n">set_order</span><span class="p">(</span><span class="n">new_order</span><span class="p">)</span>
+        <span class="n">res_dim</span><span class="o">.</span><span class="n">get_order</span><span class="p">()</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">dim2</span><span class="o">.</span><span class="n">get_order</span><span class="p">())</span>
         <span class="k">return</span> <span class="n">res_dim</span></div>
+
+    <span class="k">def</span> <span class="nf">equal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">==</span> <span class="n">dim2</span><span class="o">.</span><span class="n">get_size</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span> <span class="o">==</span> <span class="n">dim2</span><span class="o">.</span><span class="n">get_regions</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_types</span> <span class="o">==</span> <span class="n">dim2</span><span class="o">.</span><span class="n">get_types</span><span class="p">()</span> \
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_order</span> <span class="o">==</span> <span class="n">dim2</span><span class="o">.</span><span class="n">get_order</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
 
 <div class="viewcode-block" id="Dimension.set_all"><a class="viewcode-back" href="../dimension.html#dimension.Dimension.set_all">[docs]</a>    <span class="k">def</span> <span class="nf">set_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">regs</span><span class="p">,</span> <span class="n">tys</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -333,6 +339,8 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_types</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">rand</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_order</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">rand</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">rand_index</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">rand</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">rand_index</span><span class="p">]</span>
@@ -428,7 +436,6 @@
 <span class="sd">        Print the dimension information.</span>
 <span class="sd">        :return: no return value</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;dim size: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span><span class="p">)</span>
         <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;dim regions is:&#39;</span><span class="p">)</span>
         <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_regions</span><span class="p">)</span>

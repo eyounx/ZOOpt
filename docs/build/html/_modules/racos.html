@@ -52,7 +52,7 @@
           
 
           
-            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+            <a href="../index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -174,7 +174,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../zoopt.html">ZOOpt</a>
+          <a href="../index.html">ZOOpt</a>
         
       </nav>
 
@@ -202,7 +202,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="index.html">Module code</a> &raquo;</li>
         
@@ -233,8 +233,8 @@
 
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="kn">from</span> <span class="nn">racos_classification</span> <span class="k">import</span> <span class="n">RacosClassification</span>
-<span class="kn">from</span> <span class="nn">racos_common</span> <span class="k">import</span> <span class="n">RacosCommon</span>
+<span class="kn">from</span> <span class="nn">zoopt.algos.opt_algorithms.racos.racos_classification</span> <span class="k">import</span> <span class="n">RacosClassification</span>
+<span class="kn">from</span> <span class="nn">zoopt.algos.opt_algorithms.racos.racos_common</span> <span class="k">import</span> <span class="n">RacosCommon</span>
 <span class="kn">from</span> <span class="nn">zoopt.utils.tool_function</span> <span class="k">import</span> <span class="n">ToolFunction</span>
 <span class="kn">from</span> <span class="nn">zoopt.utils.zoo_global</span> <span class="k">import</span> <span class="n">gl</span>
 
@@ -243,6 +243,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The class Racos represents Racos algorithm. It&#39;s inherited from RacosCommon.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="Racos.__init__"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/racos.html#racos.Racos.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">RacosCommon</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
@@ -259,7 +260,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">set_objective</span><span class="p">(</span><span class="n">objective</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">init_attribute</span><span class="p">()</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_budget</span><span class="p">()</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_negative_size</span><span class="p">()</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_budget</span><span class="p">()</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_negative_size</span><span class="p">())</span>
         <span class="n">time_log1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
             <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
@@ -310,7 +311,6 @@
                     <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;terminal function value reached&#39;</span><span class="p">)</span>
                     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span></div></div>
-
 </pre></div>
 
            </div>

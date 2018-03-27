@@ -52,7 +52,7 @@
           
 
           
-            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+            <a href="../index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -174,7 +174,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../zoopt.html">ZOOpt</a>
+          <a href="../index.html">ZOOpt</a>
         
       </nav>
 
@@ -202,7 +202,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="index.html">Module code</a> &raquo;</li>
         
@@ -259,7 +259,7 @@
         <span class="n">n</span> <span class="o">=</span> <span class="n">objective</span><span class="o">.</span><span class="n">get_dim</span><span class="p">()</span><span class="o">.</span><span class="n">get_size</span><span class="p">()</span>
 
         <span class="c1"># initiate the population</span>
-        <span class="n">sol</span> <span class="o">=</span> <span class="n">objective</span><span class="o">.</span><span class="n">construct_solution</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]))</span>
+        <span class="n">sol</span> <span class="o">=</span> <span class="n">objective</span><span class="o">.</span><span class="n">construct_solution</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
         <span class="n">objective</span><span class="o">.</span><span class="n">eval_constraint</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
 
         <span class="n">population</span> <span class="o">=</span> <span class="p">[</span><span class="n">sol</span><span class="p">]</span>

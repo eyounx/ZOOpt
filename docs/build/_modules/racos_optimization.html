@@ -52,7 +52,7 @@
           
 
           
-            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+            <a href="../index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -174,7 +174,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../zoopt.html">ZOOpt</a>
+          <a href="../index.html">ZOOpt</a>
         
       </nav>
 
@@ -202,7 +202,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="index.html">Module code</a> &raquo;</li>
         
@@ -232,14 +232,15 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">zoopt.algos.noise_handling.ssracos</span> <span class="k">import</span> <span class="n">SSRacos</span>
-<span class="kn">from</span> <span class="nn">racos</span> <span class="k">import</span> <span class="n">Racos</span>
-<span class="kn">from</span> <span class="nn">sracos</span> <span class="k">import</span> <span class="n">SRacos</span>
+<span class="kn">from</span> <span class="nn">zoopt.algos.opt_algorithms.racos.racos</span> <span class="k">import</span> <span class="n">Racos</span>
+<span class="kn">from</span> <span class="nn">zoopt.algos.opt_algorithms.racos.sracos</span> <span class="k">import</span> <span class="n">SRacos</span>
 
 
 <div class="viewcode-block" id="RacosOptimization"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/racos_optimization.html#racos_optimization.RacosOptimization">[docs]</a><span class="k">class</span> <span class="nc">RacosOptimization</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class will choose the optimization algorithm and get the best solution.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="RacosOptimization.__init__"><a class="viewcode-back" href="../algos/opt_algorithms/racos_all/racos_optimization.html#racos_optimization.RacosOptimization.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialization.</span>
@@ -271,7 +272,7 @@
         <span class="k">if</span> <span class="n">ub</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">ub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">choose_ub</span><span class="p">(</span><span class="n">objective</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get_sequential</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get_noise_handling</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get_suppressioin</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get_noise_handling</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get_suppression</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">__algorithm</span> <span class="o">=</span> <span class="n">SSRacos</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">__algorithm</span> <span class="o">=</span> <span class="n">SRacos</span><span class="p">()</span>
@@ -316,7 +317,6 @@
 
     <span class="k">def</span> <span class="nf">get_best_sol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_solution</span></div>
-
 </pre></div>
 
            </div>

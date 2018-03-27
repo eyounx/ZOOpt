@@ -52,7 +52,7 @@
           
 
           
-            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+            <a href="../index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -174,7 +174,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../zoopt.html">ZOOpt</a>
+          <a href="../index.html">ZOOpt</a>
         
       </nav>
 
@@ -202,7 +202,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="index.html">Module code</a> &raquo;</li>
         
@@ -233,7 +233,7 @@
 
 <span class="kn">from</span> <span class="nn">zoopt.utils.zoo_global</span> <span class="k">import</span> <span class="n">pos_inf</span><span class="p">,</span> <span class="n">neg_inf</span><span class="p">,</span> <span class="n">nan</span><span class="p">,</span> <span class="n">gl</span>
 <span class="kn">from</span> <span class="nn">zoopt.utils.tool_function</span> <span class="k">import</span> <span class="n">ToolFunction</span>
-
+<span class="kn">import</span> <span class="nn">copy</span>
 
 <div class="viewcode-block" id="Solution"><a class="viewcode-back" href="../solution.html#solution.Solution">[docs]</a><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -289,9 +289,9 @@
         <span class="k">for</span> <span class="n">x_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__x</span><span class="p">:</span>
             <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_i</span><span class="p">)</span>
         <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__value</span>
-        <span class="n">attach</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__attach</span>
-        <span class="n">resample_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__resample_value</span>
-        <span class="n">post_attach</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__post_attach</span>
+        <span class="n">attach</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__attach</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__attach</span><span class="p">)</span>
+        <span class="n">resample_value</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__resample_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__resample_value</span><span class="p">)</span>
+        <span class="n">post_attach</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__post_attach</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__post_attach</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Solution</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">resample_value</span><span class="p">,</span> <span class="n">attach</span><span class="p">,</span> <span class="n">post_attach</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_in_possible_solution</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Solution.is_equal"><a class="viewcode-back" href="../solution.html#solution.Solution.is_equal">[docs]</a>    <span class="k">def</span> <span class="nf">is_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sol</span><span class="p">):</span>
@@ -321,7 +321,7 @@
 <span class="sd">        :return: True or False</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">sol</span> <span class="ow">in</span> <span class="n">sol_set</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sol</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_equal</span><span class="p">(</span><span class="n">sol</span><span class="p">):</span>
                 <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -425,7 +425,7 @@
             <span class="k">if</span> <span class="n">sol_set</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">mini</span><span class="p">:</span>
                 <span class="n">mini</span> <span class="o">=</span> <span class="n">sol_set</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
                 <span class="n">mini_index</span> <span class="o">=</span> <span class="n">i</span>
-        <span class="k">return</span> <span class="n">mini</span><span class="p">,</span> <span class="n">mini_index</span></div></div>
+        <span class="k">return</span> <span class="n">sol_set</span><span class="p">[</span><span class="n">mini_index</span><span class="p">],</span> <span class="n">mini_index</span></div></div>
 </pre></div>
 
            </div>

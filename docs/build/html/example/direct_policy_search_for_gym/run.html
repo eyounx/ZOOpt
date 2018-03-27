@@ -54,7 +54,7 @@
           
 
           
-            <a href="../../zoopt.html" class="icon icon-home"> ZOOpt
+            <a href="../../index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -176,7 +176,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../zoopt.html">ZOOpt</a>
+          <a href="../../index.html">ZOOpt</a>
         
       </nav>
 
@@ -204,7 +204,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../zoopt.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../example.html">example</a> &raquo;</li>
         
@@ -237,9 +237,9 @@
 <dd>Yu-Ren Liu</dd>
 </dl>
 <dl class="function">
-<dt id="run.run_ss_test">
-<code class="descclassname">run.</code><code class="descname">run_ss_test</code><span class="sig-paren">(</span><em>task_name</em>, <em>layers</em>, <em>in_budget</em>, <em>max_step</em>, <em>repeat</em>, <em>terminal_value</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/run.html#run_ss_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#run.run_ss_test" title="Permalink to this definition">¶</a></dt>
-<dd><p>Api of running direct policy search with ssracos algorithm for gym task.</p>
+<dt id="run.run_test">
+<code class="descclassname">run.</code><code class="descname">run_test</code><span class="sig-paren">(</span><em>task_name</em>, <em>layers</em>, <em>in_budget</em>, <em>max_step</em>, <em>repeat</em>, <em>terminal_value=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/run.html#run_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#run.run_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>example of running direct policy search for gym task.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -263,9 +263,9 @@ e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 an
 </dd></dl>
 
 <dl class="function">
-<dt id="run.run_test">
-<code class="descclassname">run.</code><code class="descname">run_test</code><span class="sig-paren">(</span><em>task_name</em>, <em>layers</em>, <em>in_budget</em>, <em>max_step</em>, <em>repeat</em>, <em>terminal_value=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/run.html#run_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#run.run_test" title="Permalink to this definition">¶</a></dt>
-<dd><p>Api of running direct policy search for gym task.</p>
+<dt id="run.run_test_handlingnoise">
+<code class="descclassname">run.</code><code class="descname">run_test_handlingnoise</code><span class="sig-paren">(</span><em>task_name</em>, <em>layers</em>, <em>in_budget</em>, <em>max_step</em>, <em>repeat</em>, <em>terminal_value</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/run.html#run_test_handlingnoise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#run.run_test_handlingnoise" title="Permalink to this definition">¶</a></dt>
+<dd><p>example of running direct policy search for gym task with noise handling.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -276,7 +276,7 @@ e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 an
 e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 and output layer has 1</li>
 <li><strong>in_budget</strong> &#8211; number of calls to the objective function</li>
 <li><strong>max_step</strong> &#8211; max step in gym</li>
-<li><strong>repeat</strong> &#8211; repeat number in a test</li>
+<li><strong>repeat</strong> &#8211; number of repeatitions for noise handling</li>
 <li><strong>terminal_value</strong> &#8211; early stop, algorithm should stop when such value is reached</li>
 </ul>
 </td>

@@ -52,7 +52,7 @@
           
 
           
-            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+            <a href="../index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -174,7 +174,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../zoopt.html">ZOOpt</a>
+          <a href="../index.html">ZOOpt</a>
         
       </nav>
 
@@ -202,7 +202,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="index.html">Module code</a> &raquo;</li>
         
@@ -247,18 +247,18 @@
     <span class="n">dim_tys</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim_size</span>  <span class="c1"># dimension type : real</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">dim_size</span><span class="p">,</span> <span class="n">dim_regs</span><span class="p">,</span> <span class="n">dim_tys</span><span class="p">)</span>  <span class="c1"># form up the dimension object</span>
     <span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">ackley_noise_func</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>  <span class="c1"># form up the objective function</span>
-    <span class="n">budget</span> <span class="o">=</span> <span class="mi">200000</span>  <span class="c1"># 20*dim_size  # number of calls to the objective function</span>
+    <span class="n">budget</span> <span class="o">=</span> <span class="mi">20000</span>  <span class="c1"># 20*dim_size  # number of calls to the objective function</span>
     <span class="c1"># suppression=True means optimize with value suppression, which is a noise handling method</span>
     <span class="c1"># resampling=True means optimize with re-sampling, which is another common used noise handling method</span>
     <span class="c1"># non_update_allowed=500 and resample_times=100 means if the best solution doesn&#39;t change for 500 budgets,</span>
     <span class="c1"># the best solution will be evaluated repeatedly for 100 times</span>
     <span class="c1"># balance_rate is a parameter for exponential weight average of several evaluations of one sample.</span>
-    <span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">,</span> <span class="n">noise_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">suppression</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">non_update_allowed</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">resample_times</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">balance_rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">,</span> <span class="n">noise_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">suppression</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">non_update_allowed</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">resample_times</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">balance_rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
     <span class="c1"># parameter = Parameter(budget=budget, noise_handling=True, resampling=True, resample_times=10)</span>
     <span class="n">parameter</span><span class="o">.</span><span class="n">set_positive_size</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="n">ExpOpt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_file</span><span class="o">=</span><span class="s2">&quot;img/ackley_continuous_noisy_figure.png&quot;</span><span class="p">)</span></div>
+    <span class="n">ExpOpt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">plot_file</span><span class="o">=</span><span class="s2">&quot;img/ackley_continuous_noisy_figure.png&quot;</span><span class="p">)</span></div>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">minimize_ackley_continuous_noisy</span><span class="p">()</span>

@@ -52,7 +52,7 @@
           
 
           
-            <a href="../zoopt.html" class="icon icon-home"> ZOOpt
+            <a href="../index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -174,7 +174,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../zoopt.html">ZOOpt</a>
+          <a href="../index.html">ZOOpt</a>
         
       </nav>
 
@@ -202,7 +202,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../zoopt.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="index.html">Module code</a> &raquo;</li>
         
@@ -282,15 +282,19 @@
         <span class="c1"># check if the initial solutions have been set</span>
         <span class="n">data_temp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_init_samples</span><span class="p">()</span>
         <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">iteration_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_train_size</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">data_temp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_solution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_temp</span><span class="p">)):</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_temp</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">iteration_num</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">:</span>
+                <span class="n">size</span> <span class="o">=</span> <span class="n">iteration_num</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
                 <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objective</span><span class="o">.</span><span class="n">construct_solution</span><span class="p">(</span><span class="n">data_temp</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_objective</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-                <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot; init solution </span><span class="si">%s</span><span class="s2">, eval </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">get_value</span><span class="p">()))</span>
+                <span class="n">ToolFunction</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;init solution </span><span class="si">%s</span><span class="s2">, value: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">get_value</span><span class="p">()))</span>
                 <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="c1"># otherwise generate random solutions</span>
-        <span class="n">iteration_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter</span><span class="o">.</span><span class="n">get_train_size</span><span class="p">()</span>
+
         <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">iteration_num</span><span class="p">:</span>
             <span class="c1"># distinct_flag: True means sample is distinct(can be use),</span>
             <span class="c1"># False means sample is distinct, you should sample again.</span>
@@ -311,7 +315,7 @@
 <span class="sd">        This function sequentially does:</span>
 <span class="sd">            Sort self._data</span>
 <span class="sd">            Choose [first, train_size )solutions as the new self._data</span>
-<span class="sd">            Choose first-positive_size solutions as self._positive_data</span>
+<span class="sd">            Choose first positive_size solutions as self._positive_data</span>
 <span class="sd">            Choose [positive_size, train_size) solutions as self._negative_data</span>
 
 <span class="sd">        :return: no return value</span>

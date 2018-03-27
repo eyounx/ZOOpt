@@ -1,5 +1,0 @@
-example
-=======
-
-.. automodule:: run
-   :members:

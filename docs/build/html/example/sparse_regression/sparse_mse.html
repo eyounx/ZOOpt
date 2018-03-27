@@ -53,7 +53,7 @@
           
 
           
-            <a href="../../zoopt.html" class="icon icon-home"> ZOOpt
+            <a href="../../index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -175,7 +175,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../zoopt.html">ZOOpt</a>
+          <a href="../../index.html">ZOOpt</a>
         
       </nav>
 
@@ -203,7 +203,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../zoopt.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../example.html">example</a> &raquo;</li>
         
@@ -249,14 +249,15 @@
 <dl class="method">
 <dt id="sparse_mse.SparseMSE.constraint">
 <code class="descname">constraint</code><span class="sig-paren">(</span><em>solution</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sparse_mse.html#SparseMSE.constraint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_mse.SparseMSE.constraint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constraint function returns a zero or positive value mean constraints are satisfied, otherwise negative</p>
+<dd><p>If the constraints are satisfied, the constraint function will return a zero or positive value. Otherwise a
+negative value will be returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>solution</strong> &#8211; a Solution object</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a zero or positive value mean constraints are satisfied, otherwise negative</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a zero or positive value which means constraints are satisfied, otherwise a negative value</td>
 </tr>
 </tbody>
 </table>
