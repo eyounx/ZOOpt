@@ -34,6 +34,7 @@ setup(
     install_requires=[
         'numpy',
         'matplotlib',
-        'liac-arff'
+        'liac-arff',
+        'gym'
     ]
 )
