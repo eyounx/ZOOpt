@@ -18,6 +18,7 @@
 #
 import os
 import sys
+from recommonmark.parser import CommonMarkParser
 sys.path.insert(0, os.path.abspath('../../zoopt'))
 sys.path.insert(0, os.path.abspath('../../zoopt/utils'))
 sys.path.insert(0, os.path.abspath('../../zoopt/algos/opt_algorithms/paretoopt'))

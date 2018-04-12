@@ -22,6 +22,7 @@ Reference
 .. toctree::
    :maxdepth: 10
 
+   home_zoopt
    dimension
    objective
    parameter
