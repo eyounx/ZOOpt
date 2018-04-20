@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>A-Generic-Process-to-Use-ZOOpt &mdash; zoopt  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> zoopt
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="Derivative-Free-Optimization.html">Derivative-Free-optimization</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">zoopt</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>A-Generic-Process-to-Use-ZOOpt</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/A-Generic-Process-to-Use-ZOOpt.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="a-generic-process-to-use-zoopt">
+<h1>A-Generic-Process-to-Use-ZOOpt<a class="headerlink" href="#a-generic-process-to-use-zoopt" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-brief-introduction-to-zoopt-components">
+<h2>A Brief Introduction to ZOOpt Components<a class="headerlink" href="#a-brief-introduction-to-zoopt-components" title="Permalink to this headline">¶</a></h2>
+<p>In ZOOpt, an optimization problem is abstracted in several components:
+<code class="docutils literal notranslate"><span class="pre">Objective</span></code>, <code class="docutils literal notranslate"><span class="pre">Dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">Parameter</span></code>, and <code class="docutils literal notranslate"><span class="pre">Solution</span></code>, each is a
+Python class.</p>
+<p>An <code class="docutils literal notranslate"><span class="pre">Objective</span></code> object is initialized with a function and a
+<code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object as the input, where the <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object
+defines the dimension size and boundaries of the search space. A
+<code class="docutils literal notranslate"><span class="pre">Parameter</span></code> object specifies algorithm parameters. ZOOpt is able to
+automatically choose parameters for a range of problems, leaving only
+one parameter of the optimization budget (i.e. the number of solution
+evaluations) needed to be manually determined according to the time of
+the user. The <code class="docutils literal notranslate"><span class="pre">Opt.min</span></code> function makes the optimization happen, and
+returns a <code class="docutils literal notranslate"><span class="pre">Solution</span></code> object which contains the final solution and the
+function value. Moreover, after the optimization, the <code class="docutils literal notranslate"><span class="pre">Objective</span></code>
+object contains the history of the optimization for observation.</p>
+</div>
+<div class="section" id="id1">
+<h2>A Generic Process to Use ZOOpt<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>The Generic process to use ZOOpt contains four steps</p>
+<ul class="simple">
+<li>Define an objective function <code class="docutils literal notranslate"><span class="pre">f</span></code></li>
+<li>Define a <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object <code class="docutils literal notranslate"><span class="pre">dim</span></code>, then use <code class="docutils literal notranslate"><span class="pre">f</span></code> and <code class="docutils literal notranslate"><span class="pre">dim</span></code> to
+construct an <code class="docutils literal notranslate"><span class="pre">Objective</span></code> object</li>
+<li>Define a <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> object <code class="docutils literal notranslate"><span class="pre">par</span></code></li>
+<li>Use <code class="docutils literal notranslate"><span class="pre">Opt.min</span></code> or <code class="docutils literal notranslate"><span class="pre">ExpOpt.min</span></code> to optimize</li>
+</ul>
+</div>
+<div class="section" id="details-of-the-generic-process">
+<h2>Details of the Generic Process<a class="headerlink" href="#details-of-the-generic-process" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="define-objective-function">
+<h3>Define objective function<a class="headerlink" href="#define-objective-function" title="Permalink to this headline">¶</a></h3>
+<p>An objective function should satisfy the interface
+<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">func(solution):</span></code> , where <code class="docutils literal notranslate"><span class="pre">solution</span></code> is a <code class="docutils literal notranslate"><span class="pre">Solution</span></code> object
+which encapsulate x and f(x). In general, users can custom their
+objective function by</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">solution</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="c1"># fixed pattern</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># function f takes a vector x as input</span>
+    <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+</div>
+<p>In the Sphere function example, the objective function looks like</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sphere</span><span class="p">(</span><span class="n">solution</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([(</span><span class="n">i</span><span class="o">-</span><span class="mf">0.2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mf">0.2</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span> <span class="c1"># sphere center is (0.2, 0.2)</span>
+    <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+</div>
+<p>The objective function can also be a member function of a class, so that
+it can be much more complex than a singleton function. In this case, the
+function should satisfy the interface <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">func(self,</span> <span class="pre">solution):</span></code>.</p>
+</div>
+<div class="section" id="define-dimension-object-dim-then-use-f-and-dim-to-construct-an-objective-object">
+<h3>Define <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object <code class="docutils literal notranslate"><span class="pre">dim</span></code>, then use <code class="docutils literal notranslate"><span class="pre">f</span></code> and <code class="docutils literal notranslate"><span class="pre">dim</span></code> to construct an <code class="docutils literal notranslate"><span class="pre">Objective</span></code> object<a class="headerlink" href="#define-dimension-object-dim-then-use-f-and-dim-to-construct-an-objective-object" title="Permalink to this headline">¶</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object <code class="docutils literal notranslate"><span class="pre">dim</span></code> and an objective function <code class="docutils literal notranslate"><span class="pre">f</span></code> are
+necessary components to construct an <code class="docutils literal notranslate"><span class="pre">Objective</span></code> object, which is one
+of the two requisite parameters to call <code class="docutils literal notranslate"><span class="pre">Opt.min</span></code> function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Dimension</span></code> class has an initial function looks like</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">regs</span><span class="o">=</span><span class="p">[],</span> <span class="n">tys</span><span class="o">=</span><span class="p">[],</span> <span class="n">order</span><span class="o">=</span><span class="p">[]):</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">size</span></code> is an integer indicating the dimension size. <code class="docutils literal notranslate"><span class="pre">regs</span></code> is a list
+contains the search space of each dimension (search space is a
+two-element list showing the range of each dimension, e.g., [-1, 1] for
+the range from -1 to 1). <code class="docutils literal notranslate"><span class="pre">tys</span></code> is a list of boolean value, <code class="docutils literal notranslate"><span class="pre">True</span></code>
+means continuous in this dimension and <code class="docutils literal notranslate"><span class="pre">False</span></code> means discrete.
+<code class="docutils literal notranslate"><span class="pre">order</span></code> is a list of boolean value, <code class="docutils literal notranslate"><span class="pre">True</span></code> means this dimension has
+a partial order relation and <code class="docutils literal notranslate"><span class="pre">False</span></code> means not. The boolean value in
+<code class="docutils literal notranslate"><span class="pre">order</span></code> is effective only when this dimension is discrete. By default,
+<code class="docutils literal notranslate"><span class="pre">order=[False]</span> <span class="pre">*</span> <span class="pre">size</span></code>. In most cases, <code class="docutils literal notranslate"><span class="pre">order</span></code> is not a necessity.</p>
+<p>In the Sphere function example, <code class="docutils literal notranslate"><span class="pre">dim</span></code> looks like</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dim_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">dim</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">dim_size</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dim_size</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim_size</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>It means that the dimension size is 100, the range of each dimension is
+[-1, 1] and is continuous.</p>
+<p>Then use <code class="docutils literal notranslate"><span class="pre">dim</span></code> and <code class="docutils literal notranslate"><span class="pre">f</span></code> to construct an Objective object.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-parameter-objective-par">
+<h3>Define <code class="docutils literal notranslate"><span class="pre">parameter</span></code> objective <code class="docutils literal notranslate"><span class="pre">par</span></code><a class="headerlink" href="#define-parameter-objective-par" title="Permalink to this headline">¶</a></h3>
+<p>The class <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> defines all parameters used in the optimization
+algorithms. Commonly, <code class="docutils literal notranslate"><span class="pre">budget</span></code> is the only parameter needed to be
+manually determined by users, while all parameters are controllable.
+Other parameters will be discussed in <a href="#id2"><span class="problematic" id="id3">`</span></a>Commonly used parameter setting
+in ZOOpt `</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">par</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-opt-min-or-expopt-min-to-optimize">
+<h3>Use <code class="docutils literal notranslate"><span class="pre">Opt.min</span></code> or <code class="docutils literal notranslate"><span class="pre">ExpOpt.min</span></code> to optimize<a class="headerlink" href="#use-opt-min-or-expopt-min-to-optimize" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Opt.min</span></code> and <code class="docutils literal notranslate"><span class="pre">ExpOpt.min</span></code> are two interfaces for optimization.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Opt.min</span></code> takes an <code class="docutils literal notranslate"><span class="pre">Objective</span></code> object e.g. <code class="docutils literal notranslate"><span class="pre">objective</span></code> and a
+<code class="docutils literal notranslate"><span class="pre">Parameter</span></code> object e.g. <code class="docutils literal notranslate"><span class="pre">par</span></code> as input. It will return a
+<code class="docutils literal notranslate"><span class="pre">Solution</span></code> object e.g. <code class="docutils literal notranslate"><span class="pre">sol</span></code>, which represents the optimal result of
+the optimization problem. <code class="docutils literal notranslate"><span class="pre">sol.get_x()</span></code> and <code class="docutils literal notranslate"><span class="pre">sol.get_value()</span></code> will
+return <code class="docutils literal notranslate"><span class="pre">sol</span></code>’s x and f(x).</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">Opt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">par</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">get_x</span><span class="p">(),</span> <span class="n">sol</span><span class="o">.</span><span class="n">get_value</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ExpOpt.min</span></code> is an API designed for repeated experiments, it will
+return a <code class="docutils literal notranslate"><span class="pre">Solution</span></code> object list containing <code class="docutils literal notranslate"><span class="pre">repeat</span></code> solutions.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExpOpt</span><span class="p">:</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">best_n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">plot_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">repeat</span></code> indicates the number of repetitions of the optimization (each
+starts from scratch). <code class="docutils literal notranslate"><span class="pre">best_n</span></code> is a parameter for result analysis,
+<code class="docutils literal notranslate"><span class="pre">best_n</span></code> is an integer and equals to <code class="docutils literal notranslate"><span class="pre">repeat</span></code> by default.
+<code class="docutils literal notranslate"><span class="pre">ExpOpt.min</span></code> will print the average value and the standard deviation
+of the <code class="docutils literal notranslate"><span class="pre">best_n</span></code> best results among the returned solution list.
+<code class="docutils literal notranslate"><span class="pre">plot</span></code> determines whether to plot the regret curve on screen during
+the optimization progress. When <code class="docutils literal notranslate"><span class="pre">plot=True</span></code>, the procedure will be
+blocked and show figure during its running if <code class="docutils literal notranslate"><span class="pre">plot_file</span></code> is not
+given. Otherwise, the procedure will save the figures to disk without
+blocking. <code class="docutils literal notranslate"><span class="pre">seed</span></code> is a parameter to set random seed in optimization.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solution_list</span> <span class="o">=</span> <span class="n">ExpOpt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">par</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">best_n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_file</span><span class="o">=</span><span class="s1">&#39;Figure.pdf&#39;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">777</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, huhz.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
