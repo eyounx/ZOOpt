@@ -1,5 +1,0 @@
-racos
-=====
-
-.. automodule:: racos
-   :members:

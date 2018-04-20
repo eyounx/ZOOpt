@@ -1,5 +1,0 @@
-parameter
-=========
-
-.. automodule:: parameter
-   :members:
