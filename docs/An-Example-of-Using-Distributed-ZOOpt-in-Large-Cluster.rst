@@ -1,5 +1,5 @@
 -------------------------------------------------------
-An-Example-of-Using-Distributed-ZOOpt-in-Large-Cluster
+An Example of Using Distributed ZOOpt in Large Cluster
 -------------------------------------------------------
 
 From the previous example, we see how to make ZOOpt use multiple

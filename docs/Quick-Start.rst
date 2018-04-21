@@ -1,5 +1,5 @@
 ---------------
-Quick-Start
+Quick Start
 ---------------
 ZOOpt is a python package of `Zeroth-Order
 Optimization <https://github.com/eyounx/ZOOpt/wiki/Derivative-Free-Optimization>`__.

@@ -1,5 +1,5 @@
 ==================================
-Explanation-of-Parameters-in-ZOOpt
+Explanation of Parameters in ZOOpt
 ==================================
 
 With the aim of supporting machine learning tasks, ZOOpt includes a

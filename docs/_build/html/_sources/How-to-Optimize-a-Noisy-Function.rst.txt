@@ -1,5 +1,5 @@
 ---------------------------------
-How-to-Optimize-a-Noisy-Function
+How to Optimize a Noisy Function
 ---------------------------------
 Many real-world environments are noisy, where solution evaluations are
 inaccurate due to the noise. Noisy evaluation can badly injure

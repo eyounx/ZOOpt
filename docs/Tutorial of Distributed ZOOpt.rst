@@ -7,8 +7,6 @@ optimization**. This documentation intends to explain how to use
 Distributed ZOOpt to perform large-scale optimization through utilizing
 many cores/computers.
 
-Table of Content
-================
 .. toctree::
    :maxdepth: 10
 

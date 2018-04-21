@@ -1,5 +1,5 @@
 -------------------------------------
-How-to-Optimize-a-Continuous-Function
+How to Optimize a Continuous Function
 -------------------------------------
 
 In mathematical optimization, the `Ackley

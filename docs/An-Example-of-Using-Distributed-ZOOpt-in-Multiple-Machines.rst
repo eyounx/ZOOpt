@@ -1,6 +1,6 @@
 
 -----------------------------------------------------------
-An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines
+An Example of Using Distributed ZOOpt in Multiple Machines
 -----------------------------------------------------------
 In this example, we have four machines: one for the client (M1), one for
 control server (M2) and two for evaluation servers (M3 and M4).
