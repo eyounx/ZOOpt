@@ -1,5 +1,0 @@
-sracos
-======
-
-.. automodule:: sracos
-   :members:

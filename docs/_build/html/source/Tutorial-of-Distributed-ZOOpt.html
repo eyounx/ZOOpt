@@ -1,0 +1,245 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial-of-Distributed-ZOOpt &mdash; zoopt  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> zoopt
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Tutorial-of-Distributed-ZOOpt</a><ul>
+<li><a class="reference internal" href="#table-of-content">Table of Content</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">zoopt</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Tutorial-of-Distributed-ZOOpt</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/source/Tutorial-of-Distributed-ZOOpt.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-of-distributed-zoopt">
+<h1>Tutorial-of-Distributed-ZOOpt<a class="headerlink" href="#tutorial-of-distributed-zoopt" title="Permalink to this headline">¶</a></h1>
+<p>Distributed ZOOpt is a distributed version of
+<a class="reference external" href="https://github.com/eyounx/ZOOpt">ZOOpt</a> for <strong>zeroth-order
+optimization</strong>. This documentation intends to explain how to use
+Distributed ZOOpt to perform large-scale optimization through utilizing
+many cores/computers.</p>
+<div class="section" id="table-of-content">
+<h2>Table of Content<a class="headerlink" href="#table-of-content" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Quick-Start.html">Quick-Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Quick-Start.html#required-packages">Required packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Quick-Start.html#getting-and-installing-zoopt">Getting and installing ZOOpt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Quick-Start.html#a-quick-example">A quick example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Large-Cluster.html">An-Example-of-Using-Distributed-ZOOpt-in-Large-Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html">A-Generic-Process-to-Use-Distributed-ZOOpt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#a-brief-introduction-to-zooclient-components">A Brief Introduction to ZOOclient Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#id1">A Generic Process to Use Distributed ZOOpt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#details-of-the-generic-process">Details of the Generic Process</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Commonly-Used-Parameter-Setting.html">Commonly-Used-Parameters-Setting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Commonly-Used-Parameter-Setting.html#optional-parameters">Optional Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Use-Distributed-ZOOpt-to-Solve-a-Subset-Selection-Problem.html">Use-Distributed-ZOOpt-to-Solve-a-Subset-Selection-Problem</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, huhz.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
