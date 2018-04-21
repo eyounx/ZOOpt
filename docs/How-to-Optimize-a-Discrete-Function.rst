@@ -1,5 +1,5 @@
 --------------------------------------
-How-to-Optimize-a-Discrete-Function
+How to Optimize a Discrete Function
 --------------------------------------
 
 The `set cover <https://en.wikipedia.org/wiki/Set_cover_problem>`__

@@ -15,27 +15,40 @@
 import os
 import sys
 from recommonmark.parser import CommonMarkParser
-sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt'))
-sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/utils'))
-sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/algos/opt_algorithms/paretoopt'))
-sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/algos/opt_algorithms/racos'))
-sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/algos/noise_handling'))
-sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/algos/high_dimensionality_handling'))
-sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/algos/racos'))
+#sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt'))
+#sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/utils'))
+#sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/algos/opt_algorithms/paretoopt'))
+#sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/algos/opt_algorithms/racos'))
+#sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/algos/noise_handling'))
+#sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/algos/high_dimensionality_handling'))
+#sys.path.insert(0, os.path.abspath('C:/Users/hhz/Anaconda3/Lib/site-packages/zoopt/algos/racos'))
 # sys.path.insert(0, os.path.abspath('../../example'))
-sys.path.insert(0, os.path.abspath('D:/ZOOpt/ZOOpt-0.2.1/example/direct_policy_search_for_gym'))
-sys.path.insert(0, os.path.abspath('D:/ZOOpt/ZOOpt-0.2.1/example/linear_classifier_using_ramploss'))
-sys.path.insert(0, os.path.abspath('D:/ZOOpt/ZOOpt-0.2.1/example/sequential_random_embedding'))
-sys.path.insert(0, os.path.abspath('D:/ZOOpt/ZOOpt-0.2.1/example/simple_functions'))
-sys.path.insert(0, os.path.abspath('D:/ZOOpt/ZOOpt-0.2.1/example/sparse_regression'))
-sys.path.insert(0, os.path.abspath('../../../../'))
-
+#sys.path.insert(0, os.path.abspath('D:/ZOOpt/ZOOpt-0.2.1/example/direct_policy_search_for_gym'))
+#sys.path.insert(0, os.path.abspath('D:/ZOOpt/ZOOpt-0.2.1/example/linear_classifier_using_ramploss'))
+#sys.path.insert(0, os.path.abspath('D:/ZOOpt/ZOOpt-0.2.1/example/sequential_random_embedding'))
+#sys.path.insert(0, os.path.abspath('D:/ZOOpt/ZOOpt-0.2.1/example/simple_functions'))
+#sys.path.insert(0, os.path.abspath('D:/ZOOpt/ZOOpt-0.2.1/example/sparse_regression'))
+#sys.path.insert(0, os.path.abspath('../../../../'))
+sys.path.insert(0, os.path.abspath('../zoopt'))
+sys.path.insert(0, os.path.abspath('../zoopt/utils'))
+sys.path.insert(0, os.path.abspath('../zoopt/algos/opt_algorithms/paretoopt'))
+sys.path.insert(0, os.path.abspath('../zoopt/algos/opt_algorithms/racos'))
+sys.path.insert(0, os.path.abspath('../zoopt/algos/noise_handling'))
+sys.path.insert(0, os.path.abspath('../zoopt/algos/high_dimensionality_handling'))
+sys.path.insert(0, os.path.abspath('../zoopt/algos/racos'))
+# sys.path.insert(0, os.path.abspath('../../example'))
+sys.path.insert(0, os.path.abspath('../example/direct_policy_search_for_gym'))
+sys.path.insert(0, os.path.abspath('../example/linear_classifier_using_ramploss'))
+sys.path.insert(0, os.path.abspath('../example/sequential_random_embedding'))
+sys.path.insert(0, os.path.abspath('../example/simple_functions'))
+sys.path.insert(0, os.path.abspath('../example/sparse_regression'))
+sys.path.insert(0, os.path.abspath('../'))
 
 # -- Project information -----------------------------------------------------
 
 project = 'ZOOpt'
-copyright = u'2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Chao Feng, Han-Zhe Hu, Yang Yu'
-author = u'Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Chao Feng, Yang Yu'
+copyright = u'2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu'
+author = u'Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Yang Yu'
 
 # The short X.Y version
 version = u'0.2.1'
@@ -154,7 +167,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'ZOOpt.tex', 'ZOOpt Documentation',
-     u'Yu-Ren Liu, Xiong-Hui Chen, Chao Feng, Yi-Qi Hu, Han-Zhe Hu, Yang Yu', 'manual'),
+     u'Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu', 'manual'),
 ]
 
 

@@ -1,5 +1,5 @@
 ---------------------------------
-Commonly-Used-Parameters-Setting
+Commonly Used Parameters Setting
 ---------------------------------
 In ZOOclient, The type ``Parameter`` defines all parameters used in the
 optimization algorithms. Commonly, five parameters are needed to be

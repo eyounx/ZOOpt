@@ -1,4 +1,4 @@
-run
+example
 ========
 
 .. automodule:: run

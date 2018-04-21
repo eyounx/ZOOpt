@@ -1,5 +1,5 @@
 ---------------------------------
-Quick-Start-of-Distributed-ZOOpt
+Quick Start of Distributed ZOOpt
 ---------------------------------
 Distributed ZOOpt is the distributed version of
 `ZOOpt <https://github.com/eyounx/ZOOpt>`__. In order to improve the

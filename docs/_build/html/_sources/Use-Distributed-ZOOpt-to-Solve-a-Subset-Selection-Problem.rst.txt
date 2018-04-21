@@ -1,5 +1,5 @@
 ----------------------------------------------------------
-Use-Distributed-ZOOpt-to-Solve-a-Subset-Selection-Problem
+Use Distributed ZOOpt to Solve a Subset Selection Problem
 ----------------------------------------------------------
 Subset selection that selects a few variables from a large set is a
 fundamental problem in many areas. The recently emerged Pareto

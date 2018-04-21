@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------
-How-to-Optimize-a-Function-with-the-Mixed-(Continuous-and-Discrete)-Search-Space
+How to Optimize a Function with the Mixed (Continuous and Discrete) Search Space
 ---------------------------------------------------------------------------------
 In some cases, the search space of the problem consists of both
 continuous subspace and discrete subspace. ZOOpt can solve this kind of

@@ -1,5 +1,5 @@
 -------------------------------------------
-How-to-Optimize-a-High-dimensional-Function
+How to Optimize a High-dimensional Function
 -------------------------------------------
 
 Derivative-free optimization methods are suitable for sophisticated

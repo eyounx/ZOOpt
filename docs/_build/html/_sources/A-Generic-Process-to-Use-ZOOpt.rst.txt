@@ -1,5 +1,5 @@
 --------------------------------
-A-Generic-Process-to-Use-ZOOpt
+A Generic Process to Use ZOOpt
 --------------------------------
 
 A Brief Introduction to ZOOpt Components

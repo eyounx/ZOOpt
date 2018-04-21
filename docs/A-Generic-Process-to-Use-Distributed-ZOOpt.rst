@@ -1,5 +1,5 @@
 -------------------------------------------
-A-Generic-Process-to-Use-Distributed-ZOOpt
+A Generic Process to Use Distributed ZOOpt
 -------------------------------------------
 
 A Brief Introduction to ZOOclient Components
