@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>​ &mdash; zoopt  documentation</title>
+  <title>Explanation-of-Parameters-in-ZOOpt &mdash; ZOOpt 0.2.1 documentation</title>
   
 
   
@@ -28,7 +28,9 @@
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How-to-Optimize-a-Continuous-Function" href="How-to-Optimize-a-Continuous-Function.html" />
+    <link rel="prev" title="A-Generic-Process-to-Use-ZOOpt" href="A-Generic-Process-to-Use-ZOOpt.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -47,7 +49,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> zoopt
+            <a href="index.html" class="icon icon-home"> ZOOpt
           
 
           
@@ -55,6 +57,10 @@
 
           
             
+            
+              <div class="version">
+                0.2.1
+              </div>
             
           
 
@@ -77,8 +83,157 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="Derivative-Free-Optimization.html">Derivative-Free-optimization</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="Tutorial of ZOOpt.html">Tutorial-of-ZOOpt</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Quick-Start.html">Quick-Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Quick-Start.html#required-packages">Required packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Quick-Start.html#getting-and-installing-zoopt">Getting and installing ZOOpt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Quick-Start.html#a-quick-example">A quick example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html">A-Generic-Process-to-Use-ZOOpt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#a-brief-introduction-to-zoopt-components">A Brief Introduction to ZOOpt Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#id1">A Generic Process to Use ZOOpt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#details-of-the-generic-process">Details of the Generic Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#define-objective-function">Define objective function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#define-dimension-object-dim-then-use-f-and-dim-to-construct-an-objective-object">Define <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object <code class="docutils literal notranslate"><span class="pre">dim</span></code>, then use <code class="docutils literal notranslate"><span class="pre">f</span></code> and <code class="docutils literal notranslate"><span class="pre">dim</span></code> to construct an <code class="docutils literal notranslate"><span class="pre">Objective</span></code> object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#define-parameter-objective-par">Define <code class="docutils literal notranslate"><span class="pre">parameter</span></code> objective <code class="docutils literal notranslate"><span class="pre">par</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#use-opt-min-or-expopt-min-to-optimize">Use <code class="docutils literal notranslate"><span class="pre">Opt.min</span></code> or <code class="docutils literal notranslate"><span class="pre">ExpOpt.min</span></code> to optimize</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Explanation-of-Parameters-in-ZOOpt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parameters-in-dimension-objective-and-parameter">Parameters in <code class="docutils literal notranslate"><span class="pre">Dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">Objective</span></code> and <code class="docutils literal notranslate"><span class="pre">Parameter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dimension">Dimension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#objective">Objective</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameter">Parameter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#parameter-setting-in-different-tasks">Parameter setting in different tasks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#optimize-a-function-with-the-continuous-search-space">Optimize a function with the continuous search space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optimize-a-function-with-the-discrete-search-space">Optimize a function with the discrete search space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optimize-a-function-with-the-mixed-search-space">Optimize a function with the mixed search space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optimize-a-noisy-function">Optimize a noisy function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optimize-a-high-dimensionality-function">Optimize a high-dimensionality function</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#other-useful-parameters-in-the-parameter-object">Other useful parameters in the <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> object</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#set-the-time-limit-of-the-optimization-procedure">Set the Time Limit of the Optimization Procedure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#print-intermediate-results">Print intermediate results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully">​Set <code class="docutils literal notranslate"><span class="pre">train_size</span></code> and <code class="docutils literal notranslate"><span class="pre">positive_size</span></code> in <code class="docutils literal notranslate"><span class="pre">RACOS</span></code>, <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> and <code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code> manully</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-Continuous-Function.html">How-to-Optimize-a-Continuous-Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-Discrete-Function.html">How-to-Optimize-a-Discrete-Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-Function-with-the-Mixed-(Continuous-and-Discrete)-Search-Space.html">How-to-Optimize-a-Function-with-the-Mixed-(Continuous-and-Discrete)-Search-Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html">How-to-Optimize-a-Noisy-Function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#re-sampling-and-value-suppression">Re-sampling and Value Suppression</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#re-sampling">Re-sampling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#value-suppression-for-sracos-ssracos">Value Suppression for <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> (<code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#threshold-selection-for-poss-ponss">Threshold Selection for <code class="docutils literal notranslate"><span class="pre">POSS</span></code> (<code class="docutils literal notranslate"><span class="pre">PONSS</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-High-dimensional-Function.html">How-to-Optimize-a-High-dimensional-Function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ZOOpt Reference.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dimension.html">dimension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html">objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter.html">parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solution.html">solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opt.html">opt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exp_opt.html">exp_opt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils/tool_function.html">tool_function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils/zoo_global.html">zoo_global</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="algos.html">algos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="algos/high_dimensionality_handling.html">high_dimensionality_handling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="algos/high_dimensionality_handling/sre_optimization.html">sre_optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="algos/noise_handling.html">noise_handling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="algos/noise_handling/ponss.html">ponss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="algos/noise_handling/ssracos.html">ssracos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="algos/opt_algorithms.html">opt_algorithms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="algos/opt_algorithms/racos_all.html">racos_all</a></li>
+<li class="toctree-l4"><a class="reference internal" href="algos/opt_algorithms/paretoopt.html">paretoopt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example.html">example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="example/direct_policy_search_for_gym.html">direct_policy_search_for_gym</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="example/direct_policy_search_for_gym/run.html">run</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/direct_policy_search_for_gym/gym_task.html">gym_task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/direct_policy_search_for_gym/nn_model.html">nn_model</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="example/linear_classifier_using_ramploss.html">linear_classifier_using_ramploss</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="example/linear_classifier_using_ramploss/ramploss.html">ramploss</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="example/sequential_random_embedding.html">sequential_random_embedding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="example/sequential_random_embedding/continuous_sre_opt.html">continuous_sre_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/sequential_random_embedding/sphere_sre.html">sphere_sre</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="example/simple_functions.html">simple_functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/continuous_opt.html">continuous_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/discrete_opt.html">discrete_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/discrete_with_order_opt.html">discrete_with_order_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/mixed_opt.html">mixed_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/opt_under_noise.html">opt_under_noise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/quick_start.html">quick_start</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/simple_functions_file.html">simple_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="example/sparse_regression.html">sparse_regression</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="example/sparse_regression/ponss_opt.html">ponss_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/sparse_regression/poss_opt.html">poss_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/sparse_regression/sparse_mse.html">sparse_mse</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial of Distributed ZOOpt.html">Tutorial-of-Distributed-ZOOpt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial of Distributed ZOOpt.html#table-of-content">Table of Content</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Quick-Start-of-Distributed-ZOOpt.html">Quick-Start-of-Distributed-ZOOpt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Quick-Start-of-Distributed-ZOOpt.html#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Quick-Start-of-Distributed-ZOOpt.html#an-example-of-using-distributed-zoopt-in-single-machine">An Example of Using Distributed ZOOpt in Single Machine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines.html">An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines.html#launch-servers">Launch Servers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines.html#perform-optimization">Perform Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Large-Cluster.html">An-Example-of-Using-Distributed-ZOOpt-in-Large-Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html">A-Generic-Process-to-Use-Distributed-ZOOpt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#a-brief-introduction-to-zooclient-components">A Brief Introduction to ZOOclient Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#id1">A Generic Process to Use Distributed ZOOpt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#details-of-the-generic-process">Details of the Generic Process</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Commonly-Used-Parameter-Setting.html">Commonly-Used-Parameters-Setting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Commonly-Used-Parameter-Setting.html#optional-parameters">Optional Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Use-Distributed-ZOOpt-to-Solve-a-Subset-Selection-Problem.html">Use-Distributed-ZOOpt-to-Solve-a-Subset-Selection-Problem</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             
@@ -93,7 +248,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">zoopt</a>
+          <a href="index.html">ZOOpt</a>
         
       </nav>
 
@@ -124,7 +279,9 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>​</li>
+          <li><a href="Tutorial of ZOOpt.html">Tutorial-of-ZOOpt</a> &raquo;</li>
+        
+      <li>Explanation-of-Parameters-in-ZOOpt</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -143,25 +300,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1>​<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="section" id="explanation-of-parameters-in-zoopt">
+  <div class="section" id="explanation-of-parameters-in-zoopt">
 <h1>Explanation-of-Parameters-in-ZOOpt<a class="headerlink" href="#explanation-of-parameters-in-zoopt" title="Permalink to this headline">¶</a></h1>
 <p>With the aim of supporting machine learning tasks, ZOOpt includes a
 set of methods that are efficient and performance-guaranteed, with
 addons handling noise and high-dimensionality. This page explains
 parameters of ZOOpt.</p>
-</div>
 <div class="section" id="parameters-in-dimension-objective-and-parameter">
-<h1>Parameters in <code class="docutils literal notranslate"><span class="pre">Dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">Objective</span></code> and <code class="docutils literal notranslate"><span class="pre">Parameter</span></code><a class="headerlink" href="#parameters-in-dimension-objective-and-parameter" title="Permalink to this headline">¶</a></h1>
+<h2>Parameters in <code class="docutils literal notranslate"><span class="pre">Dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">Objective</span></code> and <code class="docutils literal notranslate"><span class="pre">Parameter</span></code><a class="headerlink" href="#parameters-in-dimension-objective-and-parameter" title="Permalink to this headline">¶</a></h2>
 <p>To handle different tasks, users are to set specific parameters in
 <code class="docutils literal notranslate"><span class="pre">Dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">Objective</span></code> and <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> objects. Constructors of
 these classes are listed here for looking up. This part can be skipped
 if you don’t want to know all details of the parameters in these
 classes.</p>
 <div class="section" id="dimension">
-<h2>Dimension<a class="headerlink" href="#dimension" title="Permalink to this headline">¶</a></h2>
+<h3>Dimension<a class="headerlink" href="#dimension" title="Permalink to this headline">¶</a></h3>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dimension</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class describes dimension information of the search space.</span>
@@ -184,7 +337,7 @@ optional.</li>
 </ul>
 </div>
 <div class="section" id="objective">
-<h2>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h2>
+<h3>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h3>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Objective</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class represents the objective function and its associated variables</span>
@@ -205,7 +358,7 @@ Optional parameters</li>
 </ul>
 </div>
 <div class="section" id="parameter">
-<h2>Parameter<a class="headerlink" href="#parameter" title="Permalink to this headline">¶</a></h2>
+<h3>Parameter<a class="headerlink" href="#parameter" title="Permalink to this headline">¶</a></h3>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parameter</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This class contains all parameters used for optimization.</span>
@@ -258,11 +411,11 @@ part.</li>
 </div>
 </div>
 <div class="section" id="parameter-setting-in-different-tasks">
-<h1>Parameter setting in different tasks<a class="headerlink" href="#parameter-setting-in-different-tasks" title="Permalink to this headline">¶</a></h1>
+<h2>Parameter setting in different tasks<a class="headerlink" href="#parameter-setting-in-different-tasks" title="Permalink to this headline">¶</a></h2>
 <p>We will introduce the most important parameters in different tasks and
 omit the others.</p>
 <div class="section" id="optimize-a-function-with-the-continuous-search-space">
-<h2>Optimize a function with the continuous search space<a class="headerlink" href="#optimize-a-function-with-the-continuous-search-space" title="Permalink to this headline">¶</a></h2>
+<h3>Optimize a function with the continuous search space<a class="headerlink" href="#optimize-a-function-with-the-continuous-search-space" title="Permalink to this headline">¶</a></h3>
 <p>A <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object should be paid attention to in this example.
 <code class="docutils literal notranslate"><span class="pre">ty</span></code> of the <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object should be set <code class="docutils literal notranslate"><span class="pre">[True]</span> <span class="pre">*</span> <span class="pre">dim_size</span></code>,
 which means it’s search space is continuous.</p>
@@ -272,7 +425,7 @@ which means it’s search space is continuous.</p>
 </div>
 </div>
 <div class="section" id="optimize-a-function-with-the-discrete-search-space">
-<h2>Optimize a function with the discrete search space<a class="headerlink" href="#optimize-a-function-with-the-discrete-search-space" title="Permalink to this headline">¶</a></h2>
+<h3>Optimize a function with the discrete search space<a class="headerlink" href="#optimize-a-function-with-the-discrete-search-space" title="Permalink to this headline">¶</a></h3>
 <p>In this example, <code class="docutils literal notranslate"><span class="pre">ty</span></code> of the <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object should be set
 <code class="docutils literal notranslate"><span class="pre">[False]</span> <span class="pre">*</span> <span class="pre">dim_size</span></code>, which means it’s search space is discrete.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dim_size</span> <span class="o">=</span> <span class="mi">10</span>
@@ -287,7 +440,7 @@ relation, <code class="docutils literal notranslate"><span class="pre">order</sp
 </div>
 </div>
 <div class="section" id="optimize-a-function-with-the-mixed-search-space">
-<h2>Optimize a function with the mixed search space<a class="headerlink" href="#optimize-a-function-with-the-mixed-search-space" title="Permalink to this headline">¶</a></h2>
+<h3>Optimize a function with the mixed search space<a class="headerlink" href="#optimize-a-function-with-the-mixed-search-space" title="Permalink to this headline">¶</a></h3>
 <p>In this example, the search space is mixed with continuous subspace and
 discrete subspace.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dim</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
@@ -299,12 +452,12 @@ relation. The second dimension is discrete and has partial order
 relation. The third dimension is continuous.</p>
 </div>
 <div class="section" id="optimize-a-noisy-function">
-<h2>Optimize a noisy function<a class="headerlink" href="#optimize-a-noisy-function" title="Permalink to this headline">¶</a></h2>
+<h3>Optimize a noisy function<a class="headerlink" href="#optimize-a-noisy-function" title="Permalink to this headline">¶</a></h3>
 <p>Three noise handling methods are implemented in ZOOpt, respectively are
 resampling, value suppression for <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> (<code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>) and threshold
 selection for <code class="docutils literal notranslate"><span class="pre">POSS</span></code> (<code class="docutils literal notranslate"><span class="pre">PONSS</span></code>).</p>
 <div class="section" id="resampling">
-<h3>Resampling<a class="headerlink" href="#resampling" title="Permalink to this headline">¶</a></h3>
+<h4>Resampling<a class="headerlink" href="#resampling" title="Permalink to this headline">¶</a></h4>
 <p>Resamping is a generic nosie handling method of all optimization
 algorithms. It evalueates one sample several times to obtain a stable
 mean value.</p>
@@ -316,7 +469,7 @@ be set to <code class="docutils literal notranslate"><span class="pre">True</spa
 should also be provided by users.</p>
 </div>
 <div class="section" id="value-suppression-for-sracos-ssracos">
-<h3>Value Suppression for <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> (<code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>)<a class="headerlink" href="#value-suppression-for-sracos-ssracos" title="Permalink to this headline">¶</a></h3>
+<h4>Value Suppression for <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> (<code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>)<a class="headerlink" href="#value-suppression-for-sracos-ssracos" title="Permalink to this headline">¶</a></h4>
 <p>Value suppression is a noise handling method proposed recently.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">noise_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">suppression</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">non_update_allowed</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">resample_times</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">balance_rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
@@ -330,7 +483,7 @@ solution will be re-evaluated for <code class="docutils literal notranslate"><sp
 several evaluations of one sample.</p>
 </div>
 <div class="section" id="threshold-selection-for-poss-ponss">
-<h3>Threshold Selection for <code class="docutils literal notranslate"><span class="pre">POSS</span></code> (<code class="docutils literal notranslate"><span class="pre">PONSS</span></code>)<a class="headerlink" href="#threshold-selection-for-poss-ponss" title="Permalink to this headline">¶</a></h3>
+<h4>Threshold Selection for <code class="docutils literal notranslate"><span class="pre">POSS</span></code> (<code class="docutils literal notranslate"><span class="pre">PONSS</span></code>)<a class="headerlink" href="#threshold-selection-for-poss-ponss" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">PONSS</span></code> is a variant of <code class="docutils literal notranslate"><span class="pre">POSS</span></code> and designed to solve noisy subset
 selection problems.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;poss&#39;</span><span class="p">,</span> <span class="n">noise_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ponss</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ponss_theta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ponss_b</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
@@ -344,7 +497,7 @@ the population set.</p>
 </div>
 </div>
 <div class="section" id="optimize-a-high-dimensionality-function">
-<h2>Optimize a high-dimensionality function<a class="headerlink" href="#optimize-a-high-dimensionality-function" title="Permalink to this headline">¶</a></h2>
+<h3>Optimize a high-dimensionality function<a class="headerlink" href="#optimize-a-high-dimensionality-function" title="Permalink to this headline">¶</a></h3>
 <p>ZOOpt implements a high-dimensionality handling method called sequential
 random embedding (<code class="docutils literal notranslate"><span class="pre">SRE</span></code>).</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">high_dim_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reducedim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_sre</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">low_dimension</span><span class="o">=</span><span class="n">Dimension</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>
@@ -365,9 +518,9 @@ most cases, it’s not necessary for users to provide them.</p>
 </div>
 </div>
 <div class="section" id="other-useful-parameters-in-the-parameter-object">
-<h1>Other useful parameters in the <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> object<a class="headerlink" href="#other-useful-parameters-in-the-parameter-object" title="Permalink to this headline">¶</a></h1>
+<h2>Other useful parameters in the <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> object<a class="headerlink" href="#other-useful-parameters-in-the-parameter-object" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="set-the-time-limit-of-the-optimization-procedure">
-<h2>Set the Time Limit of the Optimization Procedure<a class="headerlink" href="#set-the-time-limit-of-the-optimization-procedure" title="Permalink to this headline">¶</a></h2>
+<h3>Set the Time Limit of the Optimization Procedure<a class="headerlink" href="#set-the-time-limit-of-the-optimization-procedure" title="Permalink to this headline">¶</a></h3>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">time_budget</span><span class="o">=</span><span class="mi">3600</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -376,7 +529,7 @@ running time exceeds 3600s, the optimization procedure will stop early
 and return the best solution so far.</p>
 </div>
 <div class="section" id="print-intermediate-results">
-<h2>Print intermediate results<a class="headerlink" href="#print-intermediate-results" title="Permalink to this headline">¶</a></h2>
+<h3>Print intermediate results<a class="headerlink" href="#print-intermediate-results" title="Permalink to this headline">¶</a></h3>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">intermediate_result</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">intermediate_freq</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -389,7 +542,7 @@ objective function if <code class="docutils literal notranslate"><span class="pr
 every 100 budgets.</p>
 </div>
 <div class="section" id="set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully">
-<h2>​Set <code class="docutils literal notranslate"><span class="pre">train_size</span></code> and <code class="docutils literal notranslate"><span class="pre">positive_size</span></code> in <code class="docutils literal notranslate"><span class="pre">RACOS</span></code>, <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> and <code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code> manully<a class="headerlink" href="#set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully" title="Permalink to this headline">¶</a></h2>
+<h3>​Set <code class="docutils literal notranslate"><span class="pre">train_size</span></code> and <code class="docutils literal notranslate"><span class="pre">positive_size</span></code> in <code class="docutils literal notranslate"><span class="pre">RACOS</span></code>, <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> and <code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code> manully<a class="headerlink" href="#set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully" title="Permalink to this headline">¶</a></h3>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">20000</span><span class="p">)</span>
 <span class="n">parameter</span><span class="o">.</span><span class="n">set_train_size</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
 <span class="n">parameter</span><span class="o">.</span><span class="n">set_positive_size</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -409,6 +562,7 @@ them manually.</p>
 </div>
 </div>
 </div>
+</div>
 
 
            </div>
@@ -416,12 +570,21 @@ them manually.</p>
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="How-to-Optimize-a-Continuous-Function.html" class="btn btn-neutral float-right" title="How-to-Optimize-a-Continuous-Function" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="A-Generic-Process-to-Use-ZOOpt.html" class="btn btn-neutral" title="A-Generic-Process-to-Use-ZOOpt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, huhz.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Chao Feng, Han-Zhe Hu, Yang Yu.
 
     </p>
   </div>
@@ -443,7 +606,7 @@ them manually.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'',
+            VERSION:'0.2.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -465,7 +628,7 @@ them manually.</p>
   <script type="text/javascript">
       jQuery(function () {
           
-          SphinxRtdTheme.Navigation.enableSticky();
+          SphinxRtdTheme.Navigation.enable();
           
       });
   </script> 

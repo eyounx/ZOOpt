@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Derivative-Free-optimization &mdash; ZOOpt 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ZOOpt
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial of ZOOpt.html">Tutorial-of-ZOOpt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Quick-Start.html">Quick-Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Quick-Start.html#required-packages">Required packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Quick-Start.html#getting-and-installing-zoopt">Getting and installing ZOOpt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Quick-Start.html#a-quick-example">A quick example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html">A-Generic-Process-to-Use-ZOOpt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#a-brief-introduction-to-zoopt-components">A Brief Introduction to ZOOpt Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#id1">A Generic Process to Use ZOOpt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#details-of-the-generic-process">Details of the Generic Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#define-objective-function">Define objective function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#define-dimension-object-dim-then-use-f-and-dim-to-construct-an-objective-object">Define <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object <code class="docutils literal notranslate"><span class="pre">dim</span></code>, then use <code class="docutils literal notranslate"><span class="pre">f</span></code> and <code class="docutils literal notranslate"><span class="pre">dim</span></code> to construct an <code class="docutils literal notranslate"><span class="pre">Objective</span></code> object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#define-parameter-objective-par">Define <code class="docutils literal notranslate"><span class="pre">parameter</span></code> objective <code class="docutils literal notranslate"><span class="pre">par</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#use-opt-min-or-expopt-min-to-optimize">Use <code class="docutils literal notranslate"><span class="pre">Opt.min</span></code> or <code class="docutils literal notranslate"><span class="pre">ExpOpt.min</span></code> to optimize</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html">Explanation-of-Parameters-in-ZOOpt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#parameters-in-dimension-objective-and-parameter">Parameters in <code class="docutils literal notranslate"><span class="pre">Dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">Objective</span></code> and <code class="docutils literal notranslate"><span class="pre">Parameter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#dimension">Dimension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#objective">Objective</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#parameter">Parameter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#parameter-setting-in-different-tasks">Parameter setting in different tasks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#optimize-a-function-with-the-continuous-search-space">Optimize a function with the continuous search space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#optimize-a-function-with-the-discrete-search-space">Optimize a function with the discrete search space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#optimize-a-function-with-the-mixed-search-space">Optimize a function with the mixed search space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#optimize-a-noisy-function">Optimize a noisy function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#optimize-a-high-dimensionality-function">Optimize a high-dimensionality function</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#other-useful-parameters-in-the-parameter-object">Other useful parameters in the <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> object</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#set-the-time-limit-of-the-optimization-procedure">Set the Time Limit of the Optimization Procedure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#print-intermediate-results">Print intermediate results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Explanation-of-Parameters-in-ZOOpt.html#set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully">​Set <code class="docutils literal notranslate"><span class="pre">train_size</span></code> and <code class="docutils literal notranslate"><span class="pre">positive_size</span></code> in <code class="docutils literal notranslate"><span class="pre">RACOS</span></code>, <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> and <code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code> manully</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-Continuous-Function.html">How-to-Optimize-a-Continuous-Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-Discrete-Function.html">How-to-Optimize-a-Discrete-Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-Function-with-the-Mixed-(Continuous-and-Discrete)-Search-Space.html">How-to-Optimize-a-Function-with-the-Mixed-(Continuous-and-Discrete)-Search-Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html">How-to-Optimize-a-Noisy-Function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#re-sampling-and-value-suppression">Re-sampling and Value Suppression</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#re-sampling">Re-sampling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#value-suppression-for-sracos-ssracos">Value Suppression for <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> (<code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#threshold-selection-for-poss-ponss">Threshold Selection for <code class="docutils literal notranslate"><span class="pre">POSS</span></code> (<code class="docutils literal notranslate"><span class="pre">PONSS</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-High-dimensional-Function.html">How-to-Optimize-a-High-dimensional-Function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ZOOpt Reference.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dimension.html">dimension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html">objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter.html">parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solution.html">solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opt.html">opt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exp_opt.html">exp_opt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils/tool_function.html">tool_function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils/zoo_global.html">zoo_global</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="algos.html">algos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="algos/high_dimensionality_handling.html">high_dimensionality_handling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="algos/high_dimensionality_handling/sre_optimization.html">sre_optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="algos/noise_handling.html">noise_handling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="algos/noise_handling/ponss.html">ponss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="algos/noise_handling/ssracos.html">ssracos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="algos/opt_algorithms.html">opt_algorithms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="algos/opt_algorithms/racos_all.html">racos_all</a></li>
+<li class="toctree-l4"><a class="reference internal" href="algos/opt_algorithms/paretoopt.html">paretoopt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example.html">example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="example/direct_policy_search_for_gym.html">direct_policy_search_for_gym</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="example/direct_policy_search_for_gym/run.html">run</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/direct_policy_search_for_gym/gym_task.html">gym_task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/direct_policy_search_for_gym/nn_model.html">nn_model</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="example/linear_classifier_using_ramploss.html">linear_classifier_using_ramploss</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="example/linear_classifier_using_ramploss/ramploss.html">ramploss</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="example/sequential_random_embedding.html">sequential_random_embedding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="example/sequential_random_embedding/continuous_sre_opt.html">continuous_sre_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/sequential_random_embedding/sphere_sre.html">sphere_sre</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="example/simple_functions.html">simple_functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/continuous_opt.html">continuous_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/discrete_opt.html">discrete_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/discrete_with_order_opt.html">discrete_with_order_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/mixed_opt.html">mixed_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/opt_under_noise.html">opt_under_noise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/quick_start.html">quick_start</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/simple_functions/simple_functions_file.html">simple_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="example/sparse_regression.html">sparse_regression</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="example/sparse_regression/ponss_opt.html">ponss_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/sparse_regression/poss_opt.html">poss_opt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/sparse_regression/sparse_mse.html">sparse_mse</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial of Distributed ZOOpt.html">Tutorial-of-Distributed-ZOOpt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial of Distributed ZOOpt.html#table-of-content">Table of Content</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Quick-Start-of-Distributed-ZOOpt.html">Quick-Start-of-Distributed-ZOOpt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Quick-Start-of-Distributed-ZOOpt.html#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Quick-Start-of-Distributed-ZOOpt.html#an-example-of-using-distributed-zoopt-in-single-machine">An Example of Using Distributed ZOOpt in Single Machine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines.html">An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines.html#launch-servers">Launch Servers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines.html#perform-optimization">Perform Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Large-Cluster.html">An-Example-of-Using-Distributed-ZOOpt-in-Large-Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html">A-Generic-Process-to-Use-Distributed-ZOOpt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#a-brief-introduction-to-zooclient-components">A Brief Introduction to ZOOclient Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#id1">A Generic Process to Use Distributed ZOOpt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#details-of-the-generic-process">Details of the Generic Process</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Commonly-Used-Parameter-Setting.html">Commonly-Used-Parameters-Setting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Commonly-Used-Parameter-Setting.html#optional-parameters">Optional Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Use-Distributed-ZOOpt-to-Solve-a-Subset-Selection-Problem.html">Use-Distributed-ZOOpt-to-Solve-a-Subset-Selection-Problem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ZOOpt</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Derivative-Free-optimization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Derivative Free Optimization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="derivative-free-optimization">
+<h1>Derivative-Free-optimization<a class="headerlink" href="#derivative-free-optimization" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Mathematical_optimization">Optimization</a>
+is to approximate the optimal solution <strong>x</strong> * of a function <em>f</em>.</p>
+<p>I assume that readers are aware of
+<a class="reference external" href="https://en.wikipedia.org/wiki/Gradient">gradient</a> based
+optimization: to find a minimum valued solution of a function, follows
+the negative gradient direction, such as the <a class="reference external" href="https://en.wikipedia.org/wiki/Gradient_descent">gradient
+descent</a> method. To
+apply gradient-based optimization, the function has several
+restrictions. It needs to be (almost) differentiable in order to
+calculate the gradient. To guarantee that the the minimum point of the
+function can be found, the function needs to be (closely)
+<a class="reference external" href="https://en.wikipedia.org/wiki/Convex_function">convex</a> .</p>
+<p>Let’s rethink about why gradients can be followed to do the
+optimization. For a convex function, the negative gradient direction
+points to the global optimum. In other words, the gradient at a solution
+can tell where better solutions are.</p>
+<p>Derivative-free optimization does not rely on the gradient. Note that
+the only principle for optimization is, again, collecting the
+information about where better solutions are. Derivative-free
+optimization methods use sampling to understand the landscape of the
+function, and find regions that contain better solutions.</p>
+<p>A typical structure of a derivative-free optimization method is outlined
+as follows:</p>
+<div class="line-block">
+<div class="line">1. starting from the model <em>D</em> which is the uniform distribution over
+the search space</div>
+<div class="line">2. samples a set of solutions { <em>x</em> <sub>1</sub>, <em>x</em> <sub>2</sub> ,…, <em>x</em>
+<sub>m</sub> } from <em>D</em></div>
+<div class="line">3. for each solution <em>x</em> <sub>i</sub>, evaluate its function value <em>f</em> (
+<em>x</em> <sub>i</sub> )</div>
+<div class="line">4. record in the history set <em>H</em> the solutions with their function
+values</div>
+<div class="line">5. learn from <em>H</em> a new model <em>D</em></div>
+<div class="line">6. repeat from step 2 until the stop criterion is met</div>
+<div class="line">7. return the best solution in <em>H</em></div>
+</div>
+<p>Different derivative-free optimization methods many differ in the way of
+learning the model (step 5) and sampling (step 2). For examples, in
+<a class="reference external" href="https://en.wikipedia.org/wiki/Genetic_algorithm">genetic algorithms</a>
+, the (implicit) model is a set of good solutions, and the sampling is
+by some variation operators on these solutions; in <a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_optimization">Bayesian
+optimization</a>
+which appears very different with genetic algorithms, the model is
+explicitly a regression model (commonly the Gaussian process), the
+sampling is by solving an acquisition function; in
+<a class="reference external" href="http://lamda.nju.edu.cn/yuy/GetFile.aspx?File=papers/aaai17-sracos-with-appendix.pdf">RACOS</a>
+algorithm that has been implemented in ZOOpt, the model is a hypercube
+and the sampling is from the uniform distribution in the hypercube, so
+that RACOS is simple enough to have theoretical guarantee and high
+practical efficiency.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Chao Feng, Han-Zhe Hu, Yang Yu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enable();
+          
+      });
+  </script> 
+
+</body>
+</html>
