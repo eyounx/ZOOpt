@@ -12,9 +12,9 @@ Table of Content
 .. toctree::
    :maxdepth: 10
 
-   Quick-Start
+   Quick-Start-of-Distributed-ZOOpt
    An-Example-of-Using-Distributed-ZOOpt-in-MultipleMachines
    An-Example-of-Using-Distributed-ZOOpt-in-Large-Cluster
    A-Generic-Process-to-Use-Distributed-ZOOpt
    Commonly-Used-Parameter-Setting
-   Use-Distributed-ZOOpt-to-Solve-a-Subset-Selection-Problem 
+   Use-Distributed-ZOOpt-to-Solve-a-Subset-Selection-Problem
