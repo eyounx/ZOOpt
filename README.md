@@ -8,7 +8,7 @@ Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimiz
 
 ZOOpt has a single-thread version and a light-weighted distribution version. Please find the details in the documents.
 
-**Documents**: [Wiki of ZOOpt](https://github.com/eyounx/ZOOpt/wiki)
+**Documents**: [Tutorial of ZOOpt](http://zoopt.readthedocs.io/en/latest/index.html)
 
 **Citation**: 
 
