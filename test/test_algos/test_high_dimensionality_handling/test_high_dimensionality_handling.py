@@ -28,4 +28,4 @@ class TestHighDimensionalityHandling(object):
         parameter = Parameter(budget=budget, high_dim_handling=True, reducedim=True, num_sre=5,
                               low_dimension=Dimension(10, [[-1, 1]] * 10, [True] * 10))
         solution = Opt.min(objective, parameter)
-        assert solution.get_value() < 0.2
+        assert solution.get_value() < 0.3
