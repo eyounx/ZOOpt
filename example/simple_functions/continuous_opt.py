@@ -45,6 +45,7 @@ def minimize_sphere_continuous():
                           intermediate_freq=1000)
     ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/sphere_continuous_figure.png")
 
+
 if __name__ == '__main__':
     minimize_ackley_continuous()
     # minimize_sphere_continuous()

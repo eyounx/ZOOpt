@@ -27,5 +27,6 @@ def minimize_setcover_discrete():
 
     ExpOpt.min(objective, parameter, repeat=10, best_n=5, plot=True, plot_file="img/setcover_discrete_figure.png")
 
+
 if __name__ == '__main__':
     minimize_setcover_discrete()

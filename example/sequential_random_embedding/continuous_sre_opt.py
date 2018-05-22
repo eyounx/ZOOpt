@@ -28,5 +28,6 @@ def minimize_sphere_sre():
                           low_dimension=Dimension(10, [[-1, 1]] * 10, [True] * 10))
     solution_list = ExpOpt.min(objective, parameter, repeat=5, plot=True, plot_file="img/minimize_sphere_sre.png")
 
+
 if __name__ == "__main__":
     minimize_sphere_sre()
