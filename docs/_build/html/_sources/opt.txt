@@ -1,0 +1,5 @@
+opt
+===
+
+.. automodule:: opt
+   :members:
