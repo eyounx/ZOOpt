@@ -322,8 +322,28 @@
 <h1>An Example of Using Distributed ZOOpt in Large Cluster<a class="headerlink" href="#an-example-of-using-distributed-zoopt-in-large-cluster" title="Permalink to this headline">¶</a></h1>
 <p>From the previous example, we see how to make ZOOpt use multiple
 machines. When having a large cluster of many machines, say a thousand,
-it is infeasible to setup every machine manually. The scripts provided
-can help setup many machines easier.</p>
+it is infeasible to set up every machine manually. The scripts provided
+can help set up many machines easier. Specific steps are listed as follows.</p>
+<ol class="arabic simple">
+<li>Set up SSH login without password.</li>
+</ol>
+<blockquote>
+<div>To use scripts we provided, you should set up SSH login without password on multiple machines. The method can be found
+<a class="reference external" href="https://stackoverflow.com/questions/4388385/how-to-ssh-login-without-password/16604890#16604890">here</a>.</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Download dependencies to make sure your machines can run bash and expect scripts.</li>
+<li>Download <a class="reference external" href="https://github.com/eyounx/ZOOsrv">this repository</a> and modify variables in <code class="docutils literal"><span class="pre">login_and_deploy.sh</span></code>, <code class="docutils literal"><span class="pre">deploy_servers.sh</span></code>, <code class="docutils literal"><span class="pre">deploy_servers.exp</span></code> and <code class="docutils literal"><span class="pre">evaluation_server.cfg</span></code>.</li>
+</ol>
+<blockquote>
+<div>The scripts are located in <code class="docutils literal"><span class="pre">ZOOsrv/example</span></code> directory. <code class="docutils literal"><span class="pre">login_and_deploy.sh</span></code> is a script to automatically log in servers. It will
+then call <code class="docutils literal"><span class="pre">deploy_servers.sh</span></code> to start evaluation servers on different nodes. <code class="docutils literal"><span class="pre">deploy_servers.sh</span></code> will call  <code class="docutils literal"><span class="pre">deploy_servers.exp</span></code>
+many times. <code class="docutils literal"><span class="pre">deploy_servers.exp</span></code> is an interactive script to log in one node and start evaluation servers on this node.</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Transer this repository to your machines.</li>
+<li>Start the control server by running <code class="docutils literal"><span class="pre">start_control_server.py</span></code> remotely.</li>
+<li>Run <code class="docutils literal"><span class="pre">login_and_deploy.sh</span></code> locally to start all evaluation servers.</li>
+</ol>
+<p>Detailed codes and their explanation can be found <a class="reference external" href="https://github.com/eyounx/ZOOsrv/tree/master/example">here</a>.</p>
 </div>
 
 

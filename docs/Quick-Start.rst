@@ -70,56 +70,56 @@ We then use ZOOpt to optimize a 100-dimension Ackley function:
 1. import components from zoopt, where ``ExpOpt`` is the
    experiment-purpose replacement of ``Opt``
 
-    .. code:: python
+.. code:: python
 
-       from zoopt import Dimension, Objective, Parameter, ExpOpt
+    from zoopt import Dimension, Objective, Parameter, ExpOpt
 
 2. set the dimension
 
-    .. code:: python
+.. code:: python
 
-        dim = 100  # dimension
+    dim = 100  # dimension
 
 3. set up the ``Dimension`` object
 
-    .. code:: python
+.. code:: python
 
-        # The search space is [-1, 1] for each dimension and is continuous 
-        dimobj = Dimension(dim, [[-1, 1]] * dim, [True] * dim)
+    # The search space is [-1, 1] for each dimension and is continuous 
+    dimobj = Dimension(dim, [[-1, 1]] * dim, [True] * dim)
 
 4. set up the ``Objective`` object defining the function to be minimized
 
-   .. code:: python
+.. code:: python
 
-       objective = Objective(ackley, dimobj)
+    objective = Objective(ackley, dimobj)
 
 5. set up the parameters of the optimization algorithms. The minimum
    variable is the budget size
 
-   .. code:: python
+.. code:: python
 
-       parameter = Parameter(budget=100 * dim)
+    parameter = Parameter(budget=100 * dim)
 
 6. perform the optimization by
 
-   .. code:: python
+.. code:: python
 
-       solution = Opt.min(objective, parameter)
+    solution = Opt.min(objective, parameter)
 
 7. visualize the optimization progress
 
-    .. code:: python
+.. code:: python
 
-        import matplotlib.pyplot as plt
+    import matplotlib.pyplot as plt
 
-        plt.plot(objective.get_history_bestsofar())
-        plt.savefig('opt_progress.pdf')
+    plt.plot(objective.get_history_bestsofar())
+    plt.savefig('opt_progress.pdf')
 
 Combining step 6 and 7, ``ExpOpt`` (from v0.2) can be used for experiments, which supports multi-repeat and ploting
 
-   .. code:: python
+.. code:: python
 
-       solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file='opt_progress.pdf')
+    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file='opt_progress.pdf')
    
 Finally the whole piece of the code for optimization is:
 
