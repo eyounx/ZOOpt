@@ -25,19 +25,24 @@
   
 
   
+  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="How to Optimize a Continuous Function" href="How-to-Optimize-a-Continuous-Function.html" />
-    <link rel="prev" title="A-Generic-Process-to-Use-ZOOpt" href="A-Generic-Process-to-Use-ZOOpt.html" /> 
+  
+
+  
+
+  
+    <link rel="top" title="ZOOpt 0.2.1 documentation" href="index.html"/>
+        <link rel="up" title="Tutorial of ZOOpt" href="Tutorial of ZOOpt.html"/>
+        <link rel="next" title="How to Optimize a Continuous Function" href="How-to-Optimize-a-Continuous-Function.html"/>
+        <link rel="prev" title="A Generic Process to Use ZOOpt" href="A-Generic-Process-to-Use-ZOOpt.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -92,20 +97,20 @@
 <li class="toctree-l3"><a class="reference internal" href="Quick-Start.html#a-quick-example">A quick example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html">A-Generic-Process-to-Use-ZOOpt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html">A Generic Process to Use ZOOpt</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#a-brief-introduction-to-zoopt-components">A Brief Introduction to ZOOpt Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#id1">A Generic Process to Use ZOOpt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#details-of-the-generic-process">Details of the Generic Process</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#define-objective-function">Define objective function</a></li>
-<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#define-dimension-object-dim-then-use-f-and-dim-to-construct-an-objective-object">Define <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object <code class="docutils literal notranslate"><span class="pre">dim</span></code>, then use <code class="docutils literal notranslate"><span class="pre">f</span></code> and <code class="docutils literal notranslate"><span class="pre">dim</span></code> to construct an <code class="docutils literal notranslate"><span class="pre">Objective</span></code> object</a></li>
-<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#define-parameter-objective-par">Define <code class="docutils literal notranslate"><span class="pre">parameter</span></code> objective <code class="docutils literal notranslate"><span class="pre">par</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#use-opt-min-or-expopt-min-to-optimize">Use <code class="docutils literal notranslate"><span class="pre">Opt.min</span></code> or <code class="docutils literal notranslate"><span class="pre">ExpOpt.min</span></code> to optimize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#define-dimension-object-dim-then-use-f-and-dim-to-construct-an-objective-object">Define <code class="docutils literal"><span class="pre">Dimension</span></code> object <code class="docutils literal"><span class="pre">dim</span></code>, then use <code class="docutils literal"><span class="pre">f</span></code> and <code class="docutils literal"><span class="pre">dim</span></code> to construct an <code class="docutils literal"><span class="pre">Objective</span></code> object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#define-parameter-objective-par">Define <code class="docutils literal"><span class="pre">parameter</span></code> objective <code class="docutils literal"><span class="pre">par</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="A-Generic-Process-to-Use-ZOOpt.html#use-opt-min-or-expopt-min-to-optimize">Use <code class="docutils literal"><span class="pre">Opt.min</span></code> or <code class="docutils literal"><span class="pre">ExpOpt.min</span></code> to optimize</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Explanation of Parameters in ZOOpt</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#parameters-in-dimension-objective-and-parameter">Parameters in <code class="docutils literal notranslate"><span class="pre">Dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">Objective</span></code> and <code class="docutils literal notranslate"><span class="pre">Parameter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parameters-in-dimension-objective-and-parameter">Parameters in <code class="docutils literal"><span class="pre">Dimension</span></code>, <code class="docutils literal"><span class="pre">Objective</span></code> and <code class="docutils literal"><span class="pre">Parameter</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dimension">Dimension</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#objective">Objective</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#parameter">Parameter</a></li>
@@ -119,10 +124,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#optimize-a-high-dimensionality-function">Optimize a high-dimensionality function</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#other-useful-parameters-in-the-parameter-object">Other useful parameters in the <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#other-useful-parameters-in-the-parameter-object">Other useful parameters in the <code class="docutils literal"><span class="pre">Parameter</span></code> object</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#set-the-time-limit-of-the-optimization-procedure">Set the Time Limit of the Optimization Procedure</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#print-intermediate-results">Print intermediate results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully">​Set <code class="docutils literal notranslate"><span class="pre">train_size</span></code> and <code class="docutils literal notranslate"><span class="pre">positive_size</span></code> in <code class="docutils literal notranslate"><span class="pre">RACOS</span></code>, <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> and <code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code> manully</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully">​Set <code class="docutils literal"><span class="pre">train_size</span></code> and <code class="docutils literal"><span class="pre">positive_size</span></code> in <code class="docutils literal"><span class="pre">RACOS</span></code>, <code class="docutils literal"><span class="pre">SRACOS</span></code> and <code class="docutils literal"><span class="pre">SSRACOS</span></code> manully</a></li>
 </ul>
 </li>
 </ul>
@@ -133,10 +138,10 @@
 <li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html">How to Optimize a Noisy Function</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#re-sampling-and-value-suppression">Re-sampling and Value Suppression</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#re-sampling">Re-sampling</a></li>
-<li class="toctree-l4"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#value-suppression-for-sracos-ssracos">Value Suppression for <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> (<code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#value-suppression-for-sracos-ssracos">Value Suppression for <code class="docutils literal"><span class="pre">SRACOS</span></code> (<code class="docutils literal"><span class="pre">SSRACOS</span></code>)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#threshold-selection-for-poss-ponss">Threshold Selection for <code class="docutils literal notranslate"><span class="pre">POSS</span></code> (<code class="docutils literal notranslate"><span class="pre">PONSS</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="How-to-Optimize-a-Noisy-Function.html#threshold-selection-for-poss-ponss">Threshold Selection for <code class="docutils literal"><span class="pre">POSS</span></code> (<code class="docutils literal"><span class="pre">PONSS</span></code>)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="How-to-Optimize-a-High-dimensional-Function.html">How to Optimize a High-dimensional Function</a></li>
@@ -173,7 +178,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="example.html">example</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="example/direct_policy_search_for_gym.html">direct_policy_search_for_gym</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="example/direct_policy_search_for_gym/run.html">run</a></li>
+<li class="toctree-l4"><a class="reference internal" href="example/direct_policy_search_for_gym/run.html">example</a></li>
 <li class="toctree-l4"><a class="reference internal" href="example/direct_policy_search_for_gym/gym_task.html">gym_task</a></li>
 <li class="toctree-l4"><a class="reference internal" href="example/direct_policy_search_for_gym/nn_model.html">nn_model</a></li>
 </ul>
@@ -221,7 +226,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines.html">An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines.html">An Example of Using Distributed ZOOpt in Multiple Machines</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines.html#launch-servers">Launch Servers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines.html#launch-a-control-server">Launch a control server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines.html#launch-evaluation-servers">Launch evaluation servers</a></li>
@@ -234,14 +239,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Large-Cluster.html">An-Example-of-Using-Distributed-ZOOpt-in-Large-Cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html">A-Generic-Process-to-Use-Distributed-ZOOpt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="An-Example-of-Using-Distributed-ZOOpt-in-Large-Cluster.html">An Example of Using Distributed ZOOpt in Large Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html">A Generic Process to Use Distributed ZOOpt</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#a-brief-introduction-to-zooclient-components">A Brief Introduction to ZOOclient Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#id1">A Generic Process to Use Distributed ZOOpt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="A-Generic-Process-to-Use-Distributed-ZOOpt.html#details-of-the-generic-process">Details of the Generic Process</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Commonly-Used-Parameter-Setting.html">Commonly-Used-Parameters-Setting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Commonly-Used-Parameter-Setting.html">Commonly Used Parameters Setting</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Commonly-Used-Parameter-Setting.html#optional-parameters">Optional Parameters</a></li>
 </ul>
 </li>
@@ -259,7 +264,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">ZOOpt</a>
@@ -267,10 +272,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -301,7 +305,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/Explanation-of-Parameters-in-ZOOpt.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/Explanation-of-Parameters-in-ZOOpt.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -321,15 +325,15 @@ set of methods that are efficient and performance-guaranteed, with
 addons handling noise and high-dimensionality. This page explains
 parameters of ZOOpt.</p>
 <div class="section" id="parameters-in-dimension-objective-and-parameter">
-<h2>Parameters in <code class="docutils literal notranslate"><span class="pre">Dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">Objective</span></code> and <code class="docutils literal notranslate"><span class="pre">Parameter</span></code><a class="headerlink" href="#parameters-in-dimension-objective-and-parameter" title="Permalink to this headline">¶</a></h2>
+<h2>Parameters in <code class="docutils literal"><span class="pre">Dimension</span></code>, <code class="docutils literal"><span class="pre">Objective</span></code> and <code class="docutils literal"><span class="pre">Parameter</span></code><a class="headerlink" href="#parameters-in-dimension-objective-and-parameter" title="Permalink to this headline">¶</a></h2>
 <p>To handle different tasks, users are to set specific parameters in
-<code class="docutils literal notranslate"><span class="pre">Dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">Objective</span></code> and <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> objects. Constructors of
+<code class="docutils literal"><span class="pre">Dimension</span></code>, <code class="docutils literal"><span class="pre">Objective</span></code> and <code class="docutils literal"><span class="pre">Parameter</span></code> objects. Constructors of
 these classes are listed here for looking up. This part can be skipped
-if you don’t want to know all details of the parameters in these
+if you don&#8217;t want to know all details of the parameters in these
 classes.</p>
 <div class="section" id="dimension">
 <h3>Dimension<a class="headerlink" href="#dimension" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dimension</span><span class="p">:</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dimension</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class describes dimension information of the search space.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -337,22 +341,22 @@ classes.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">size</span></code> is an integer indicating the dimension size.</li>
-<li><code class="docutils literal notranslate"><span class="pre">regs</span></code> is a list contains the search space of each dimension
+<li><code class="docutils literal"><span class="pre">size</span></code> is an integer indicating the dimension size.</li>
+<li><code class="docutils literal"><span class="pre">regs</span></code> is a list contains the search space of each dimension
 (search space is a two-element list showing the range of each
 dimension, e.g., [-1, 1] for the range from -1 to 1).</li>
-<li><code class="docutils literal notranslate"><span class="pre">tys</span></code> is a list of boolean value, <code class="docutils literal notranslate"><span class="pre">True</span></code> means continuous in this
-dimension and <code class="docutils literal notranslate"><span class="pre">False</span></code> means discrete.</li>
-<li><code class="docutils literal notranslate"><span class="pre">order</span></code> is a list of boolean value, <code class="docutils literal notranslate"><span class="pre">True</span></code> means this dimension
-has a partial order relation and <code class="docutils literal notranslate"><span class="pre">False</span></code> means not. The boolean
-value in <code class="docutils literal notranslate"><span class="pre">order</span></code> is effective only when this dimension is discrete.
-By default, <code class="docutils literal notranslate"><span class="pre">order=[False]</span> <span class="pre">*</span> <span class="pre">size</span></code>. In most cases, <code class="docutils literal notranslate"><span class="pre">order</span></code> is
+<li><code class="docutils literal"><span class="pre">tys</span></code> is a list of boolean value, <code class="docutils literal"><span class="pre">True</span></code> means continuous in this
+dimension and <code class="docutils literal"><span class="pre">False</span></code> means discrete.</li>
+<li><code class="docutils literal"><span class="pre">order</span></code> is a list of boolean value, <code class="docutils literal"><span class="pre">True</span></code> means this dimension
+has a partial order relation and <code class="docutils literal"><span class="pre">False</span></code> means not. The boolean
+value in <code class="docutils literal"><span class="pre">order</span></code> is effective only when this dimension is discrete.
+By default, <code class="docutils literal"><span class="pre">order=[False]</span> <span class="pre">*</span> <span class="pre">size</span></code>. In most cases, <code class="docutils literal"><span class="pre">order</span></code> is
 optional.</li>
 </ul>
 </div>
 <div class="section" id="objective">
 <h3>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Objective</span><span class="p">:</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Objective</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class represents the objective function and its associated variables</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -360,20 +364,20 @@ optional.</li>
 </pre></div>
 </div>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">func</span></code> is the objective function to be optimized. Indispensable
+<li><code class="docutils literal"><span class="pre">func</span></code> is the objective function to be optimized. Indispensable
 parameter for all tasks.</li>
-<li><code class="docutils literal notranslate"><span class="pre">dim</span></code> is a <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object describing information of the
+<li><code class="docutils literal"><span class="pre">dim</span></code> is a <code class="docutils literal"><span class="pre">Dimension</span></code> object describing information of the
 search space. Indispensable parameter for all tasks.</li>
-<li><code class="docutils literal notranslate"><span class="pre">constraint</span></code> is set for subset selection algorithm <code class="docutils literal notranslate"><span class="pre">POSS</span></code>.
+<li><code class="docutils literal"><span class="pre">constraint</span></code> is set for subset selection algorithm <code class="docutils literal"><span class="pre">POSS</span></code>.
 Optional parameter.</li>
-<li><code class="docutils literal notranslate"><span class="pre">resample_func</span></code> and <code class="docutils literal notranslate"><span class="pre">balance_rate</span></code> is set for <code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>, a
-noise handling variant of general optimization method <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code>.
+<li><code class="docutils literal"><span class="pre">resample_func</span></code> and <code class="docutils literal"><span class="pre">balance_rate</span></code> is set for <code class="docutils literal"><span class="pre">SSRACOS</span></code>, a
+noise handling variant of general optimization method <code class="docutils literal"><span class="pre">SRACOS</span></code>.
 Optional parameters</li>
 </ul>
 </div>
 <div class="section" id="parameter">
 <h3>Parameter<a class="headerlink" href="#parameter" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parameter</span><span class="p">:</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parameter</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This class contains all parameters used for optimization.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -385,39 +389,39 @@ Optional parameters</li>
 </pre></div>
 </div>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">budget</span></code> is the only indispensable parameter of all tasks, it means
+<li><code class="docutils literal"><span class="pre">budget</span></code> is the only indispensable parameter of all tasks, it means
 the number of calls to the objective function.</li>
-<li><code class="docutils literal notranslate"><span class="pre">autoset</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> by default. If <code class="docutils literal notranslate"><span class="pre">autoset=False</span></code>, users
+<li><code class="docutils literal"><span class="pre">autoset</span></code> is <code class="docutils literal"><span class="pre">True</span></code> by default. If <code class="docutils literal"><span class="pre">autoset=False</span></code>, users
 should control all the algorithm parameters.</li>
-<li><code class="docutils literal notranslate"><span class="pre">algorithm</span></code> is the optimization algorithm that ZOOpt uses, can be
-‘racos’ or ‘poss’. By default it is set to ‘racos’. When the solution
+<li><code class="docutils literal"><span class="pre">algorithm</span></code> is the optimization algorithm that ZOOpt uses, can be
+&#8216;racos&#8217; or &#8216;poss&#8217;. By default it is set to &#8216;racos&#8217;. When the solution
 space is binary and a constraint function has been set, the default
-algorithm is ‘poss’.</li>
-<li><code class="docutils literal notranslate"><span class="pre">init_samples</span></code> is a list of samples (<code class="docutils literal notranslate"><span class="pre">Solution</span></code> objects) provided
-by user. By default it is <code class="docutils literal notranslate"><span class="pre">None</span></code> and the algorithm will randomly
+algorithm is &#8216;poss&#8217;.</li>
+<li><code class="docutils literal"><span class="pre">init_samples</span></code> is a list of samples (<code class="docutils literal"><span class="pre">Solution</span></code> objects) provided
+by user. By default it is <code class="docutils literal"><span class="pre">None</span></code> and the algorithm will randomly
 sample initial solutions. If the users do have some initial samples,
-set the samples to <code class="docutils literal notranslate"><span class="pre">init_samples</span></code>, and these samples will be added
+set the samples to <code class="docutils literal"><span class="pre">init_samples</span></code>, and these samples will be added
 into the first sampled solution set.</li>
-<li><code class="docutils literal notranslate"><span class="pre">time_budget</span></code> set the time limit of the optimization algorithm. If
+<li><code class="docutils literal"><span class="pre">time_budget</span></code> set the time limit of the optimization algorithm. If
 running time exceeds this value, the optimization algorithm will
 return the best solution immediately.</li>
-<li><code class="docutils literal notranslate"><span class="pre">terminal_value</span></code> is set for early stop. The optimization procedure
-will stop if the function value reaches <code class="docutils literal notranslate"><span class="pre">terminal_value</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">sequential</span></code> switches between <code class="docutils literal notranslate"><span class="pre">RACOS</span></code> and <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> optimization
-algorithms. <code class="docutils literal notranslate"><span class="pre">sequential</span></code> equals to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default and ZOOpt
-will use <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code>. Otherwise, ZOOpt will use <code class="docutils literal notranslate"><span class="pre">RACOS</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">precision</span></code> sets the precision of the result.</li>
-<li><code class="docutils literal notranslate"><span class="pre">uncertain_bits</span></code> sets the number of uncertain bits in <code class="docutils literal notranslate"><span class="pre">RACOS</span></code>,
-<code class="docutils literal notranslate"><span class="pre">SRACOS</span></code>, and <code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">intermediate_result</span></code> and <code class="docutils literal notranslate"><span class="pre">intermediate_freq</span></code> are set for showing
+<li><code class="docutils literal"><span class="pre">terminal_value</span></code> is set for early stop. The optimization procedure
+will stop if the function value reaches <code class="docutils literal"><span class="pre">terminal_value</span></code></li>
+<li><code class="docutils literal"><span class="pre">sequential</span></code> switches between <code class="docutils literal"><span class="pre">RACOS</span></code> and <code class="docutils literal"><span class="pre">SRACOS</span></code> optimization
+algorithms. <code class="docutils literal"><span class="pre">sequential</span></code> equals to <code class="docutils literal"><span class="pre">True</span></code> by default and ZOOpt
+will use <code class="docutils literal"><span class="pre">SRACOS</span></code>. Otherwise, ZOOpt will use <code class="docutils literal"><span class="pre">RACOS</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">precision</span></code> sets the precision of the result.</li>
+<li><code class="docutils literal"><span class="pre">uncertain_bits</span></code> sets the number of uncertain bits in <code class="docutils literal"><span class="pre">RACOS</span></code>,
+<code class="docutils literal"><span class="pre">SRACOS</span></code>, and <code class="docutils literal"><span class="pre">SSRACOS</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">intermediate_result</span></code> and <code class="docutils literal"><span class="pre">intermediate_freq</span></code> are set for showing
 intermediate results during the optimization progress. The procedure
-will show the best solution every <code class="docutils literal notranslate"><span class="pre">intermediate_freq</span></code> calls to the
-objective function if <code class="docutils literal notranslate"><span class="pre">intermediate_result=True</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">noise_handling</span></code>, <code class="docutils literal notranslate"><span class="pre">resampling</span></code>, <code class="docutils literal notranslate"><span class="pre">suppression</span></code>, <code class="docutils literal notranslate"><span class="pre">ponss</span></code>,
-<code class="docutils literal notranslate"><span class="pre">ponss_theta</span></code>, <code class="docutils literal notranslate"><span class="pre">ponss_b</span></code>, <code class="docutils literal notranslate"><span class="pre">non_update_allowed</span></code>,
-<code class="docutils literal notranslate"><span class="pre">resample_times</span></code>, <code class="docutils literal notranslate"><span class="pre">balance_rate</span></code> are set for noise handling.</li>
-<li><code class="docutils literal notranslate"><span class="pre">high_dim_handling</span></code>, <code class="docutils literal notranslate"><span class="pre">reducedim</span></code>, <code class="docutils literal notranslate"><span class="pre">num_sre</span></code>, <code class="docutils literal notranslate"><span class="pre">low_dimension</span></code>,
-<code class="docutils literal notranslate"><span class="pre">withdraw_alpha</span></code>, <code class="docutils literal notranslate"><span class="pre">variance_A</span></code> are set for high-dimensionality
+will show the best solution every <code class="docutils literal"><span class="pre">intermediate_freq</span></code> calls to the
+objective function if <code class="docutils literal"><span class="pre">intermediate_result=True</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">noise_handling</span></code>, <code class="docutils literal"><span class="pre">resampling</span></code>, <code class="docutils literal"><span class="pre">suppression</span></code>, <code class="docutils literal"><span class="pre">ponss</span></code>,
+<code class="docutils literal"><span class="pre">ponss_theta</span></code>, <code class="docutils literal"><span class="pre">ponss_b</span></code>, <code class="docutils literal"><span class="pre">non_update_allowed</span></code>,
+<code class="docutils literal"><span class="pre">resample_times</span></code>, <code class="docutils literal"><span class="pre">balance_rate</span></code> are set for noise handling.</li>
+<li><code class="docutils literal"><span class="pre">high_dim_handling</span></code>, <code class="docutils literal"><span class="pre">reducedim</span></code>, <code class="docutils literal"><span class="pre">num_sre</span></code>, <code class="docutils literal"><span class="pre">low_dimension</span></code>,
+<code class="docutils literal"><span class="pre">withdraw_alpha</span></code>, <code class="docutils literal"><span class="pre">variance_A</span></code> are set for high-dimensionality
 handling. Details of parameter setting for noise handling and
 high-dimensionality handling in ZOOpt will be discussed in the next
 part.</li>
@@ -430,25 +434,25 @@ part.</li>
 omit the others.</p>
 <div class="section" id="optimize-a-function-with-the-continuous-search-space">
 <h3>Optimize a function with the continuous search space<a class="headerlink" href="#optimize-a-function-with-the-continuous-search-space" title="Permalink to this headline">¶</a></h3>
-<p>A <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object should be paid attention to in this example.
-<code class="docutils literal notranslate"><span class="pre">ty</span></code> of the <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object should be set <code class="docutils literal notranslate"><span class="pre">[True]</span> <span class="pre">*</span> <span class="pre">dim_size</span></code>,
-which means it’s search space is continuous.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dim_size</span> <span class="o">=</span> <span class="mi">10</span>
+<p>A <code class="docutils literal"><span class="pre">Dimension</span></code> object should be paid attention to in this example.
+<code class="docutils literal"><span class="pre">ty</span></code> of the <code class="docutils literal"><span class="pre">Dimension</span></code> object should be set <code class="docutils literal"><span class="pre">[True]</span> <span class="pre">*</span> <span class="pre">dim_size</span></code>,
+which means it&#8217;s search space is continuous.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">dim_size</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">dim</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">dim_size</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dim_size</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim_size</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="optimize-a-function-with-the-discrete-search-space">
 <h3>Optimize a function with the discrete search space<a class="headerlink" href="#optimize-a-function-with-the-discrete-search-space" title="Permalink to this headline">¶</a></h3>
-<p>In this example, <code class="docutils literal notranslate"><span class="pre">ty</span></code> of the <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object should be set
-<code class="docutils literal notranslate"><span class="pre">[False]</span> <span class="pre">*</span> <span class="pre">dim_size</span></code>, which means it’s search space is discrete.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dim_size</span> <span class="o">=</span> <span class="mi">10</span>
+<p>In this example, <code class="docutils literal"><span class="pre">ty</span></code> of the <code class="docutils literal"><span class="pre">Dimension</span></code> object should be set
+<code class="docutils literal"><span class="pre">[False]</span> <span class="pre">*</span> <span class="pre">dim_size</span></code>, which means it&#8217;s search space is discrete.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">dim_size</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">dim</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">dim_size</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dim_size</span><span class="p">,</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim_size</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>If the search space of a dimension is discrete and has partial order
-relation, <code class="docutils literal notranslate"><span class="pre">order</span></code> of this dimension should be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dim_size</span> <span class="o">=</span> <span class="mi">10</span>
+relation, <code class="docutils literal"><span class="pre">order</span></code> of this dimension should be set to <code class="docutils literal"><span class="pre">True</span></code>.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">dim_size</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">dim</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">dim_size</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dim_size</span><span class="p">,</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim_size</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim_size</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -457,7 +461,7 @@ relation, <code class="docutils literal notranslate"><span class="pre">order</sp
 <h3>Optimize a function with the mixed search space<a class="headerlink" href="#optimize-a-function-with-the-mixed-search-space" title="Permalink to this headline">¶</a></h3>
 <p>In this example, the search space is mixed with continuous subspace and
 discrete subspace.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dim</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">dim</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>It means the dimension size is 3, the range of each dimension is [-1,
@@ -468,74 +472,74 @@ relation. The third dimension is continuous.</p>
 <div class="section" id="optimize-a-noisy-function">
 <h3>Optimize a noisy function<a class="headerlink" href="#optimize-a-noisy-function" title="Permalink to this headline">¶</a></h3>
 <p>Three noise handling methods are implemented in ZOOpt, respectively are
-resampling, value suppression for <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> (<code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>) and threshold
-selection for <code class="docutils literal notranslate"><span class="pre">POSS</span></code> (<code class="docutils literal notranslate"><span class="pre">PONSS</span></code>).</p>
+resampling, value suppression for <code class="docutils literal"><span class="pre">SRACOS</span></code> (<code class="docutils literal"><span class="pre">SSRACOS</span></code>) and threshold
+selection for <code class="docutils literal"><span class="pre">POSS</span></code> (<code class="docutils literal"><span class="pre">PONSS</span></code>).</p>
 <div class="section" id="resampling">
 <h4>Resampling<a class="headerlink" href="#resampling" title="Permalink to this headline">¶</a></h4>
 <p>Resamping is a generic nosie handling method of all optimization
 algorithms. It evalueates one sample several times to obtain a stable
 mean value.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">noise_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">resampling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">resample_times</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">noise_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">resampling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">resample_times</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To use resampling in ZOOpt, <code class="docutils literal notranslate"><span class="pre">noise_handling</span></code> and <code class="docutils literal notranslate"><span class="pre">resampling</span></code> should
-be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>. <code class="docutils literal notranslate"><span class="pre">resample_times</span></code>, times of evaluating one sample,
+<p>To use resampling in ZOOpt, <code class="docutils literal"><span class="pre">noise_handling</span></code> and <code class="docutils literal"><span class="pre">resampling</span></code> should
+be set to <code class="docutils literal"><span class="pre">True</span></code>. <code class="docutils literal"><span class="pre">resample_times</span></code>, times of evaluating one sample,
 should also be provided by users.</p>
 </div>
 <div class="section" id="value-suppression-for-sracos-ssracos">
-<h4>Value Suppression for <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> (<code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>)<a class="headerlink" href="#value-suppression-for-sracos-ssracos" title="Permalink to this headline">¶</a></h4>
+<h4>Value Suppression for <code class="docutils literal"><span class="pre">SRACOS</span></code> (<code class="docutils literal"><span class="pre">SSRACOS</span></code>)<a class="headerlink" href="#value-suppression-for-sracos-ssracos" title="Permalink to this headline">¶</a></h4>
 <p>Value suppression is a noise handling method proposed recently.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">noise_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">suppression</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">non_update_allowed</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">resample_times</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">balance_rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">noise_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">suppression</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">non_update_allowed</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">resample_times</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">balance_rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To use <code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code> in ZOOpt, <code class="docutils literal notranslate"><span class="pre">noise_handling</span></code> and <code class="docutils literal notranslate"><span class="pre">suppression</span></code>
-should be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>. <code class="docutils literal notranslate"><span class="pre">non_update_allowed</span></code>, <code class="docutils literal notranslate"><span class="pre">resample_times</span></code>
-and <code class="docutils literal notranslate"><span class="pre">balance_rate</span></code> should be provided by users. It means if the best
-solution doesn’t change for <code class="docutils literal notranslate"><span class="pre">non_update_allowed</span></code> budgets, the best
-solution will be re-evaluated for <code class="docutils literal notranslate"><span class="pre">resample_times</span></code> times.
-<code class="docutils literal notranslate"><span class="pre">balance_rate</span></code> is a parameter for exponential weight average of
+<p>To use <code class="docutils literal"><span class="pre">SSRACOS</span></code> in ZOOpt, <code class="docutils literal"><span class="pre">noise_handling</span></code> and <code class="docutils literal"><span class="pre">suppression</span></code>
+should be set to <code class="docutils literal"><span class="pre">True</span></code>. <code class="docutils literal"><span class="pre">non_update_allowed</span></code>, <code class="docutils literal"><span class="pre">resample_times</span></code>
+and <code class="docutils literal"><span class="pre">balance_rate</span></code> should be provided by users. It means if the best
+solution doesn&#8217;t change for <code class="docutils literal"><span class="pre">non_update_allowed</span></code> budgets, the best
+solution will be re-evaluated for <code class="docutils literal"><span class="pre">resample_times</span></code> times.
+<code class="docutils literal"><span class="pre">balance_rate</span></code> is a parameter for exponential weight average of
 several evaluations of one sample.</p>
 </div>
 <div class="section" id="threshold-selection-for-poss-ponss">
-<h4>Threshold Selection for <code class="docutils literal notranslate"><span class="pre">POSS</span></code> (<code class="docutils literal notranslate"><span class="pre">PONSS</span></code>)<a class="headerlink" href="#threshold-selection-for-poss-ponss" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">PONSS</span></code> is a variant of <code class="docutils literal notranslate"><span class="pre">POSS</span></code> and designed to solve noisy subset
+<h4>Threshold Selection for <code class="docutils literal"><span class="pre">POSS</span></code> (<code class="docutils literal"><span class="pre">PONSS</span></code>)<a class="headerlink" href="#threshold-selection-for-poss-ponss" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">PONSS</span></code> is a variant of <code class="docutils literal"><span class="pre">POSS</span></code> and designed to solve noisy subset
 selection problems.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;poss&#39;</span><span class="p">,</span> <span class="n">noise_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ponss</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ponss_theta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ponss_b</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;poss&#39;</span><span class="p">,</span> <span class="n">noise_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ponss</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ponss_theta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ponss_b</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To use <code class="docutils literal notranslate"><span class="pre">PONSS</span></code> in ZOOpt, <code class="docutils literal notranslate"><span class="pre">noise_handling</span></code> and <code class="docutils literal notranslate"><span class="pre">ponss</span></code> should be
-set to <code class="docutils literal notranslate"><span class="pre">True</span></code>. <code class="docutils literal notranslate"><span class="pre">ponss_theta</span></code> and <code class="docutils literal notranslate"><span class="pre">ponss_b</span></code> are parameters used in
-<code class="docutils literal notranslate"><span class="pre">PONSS</span></code> algorithm and should be provided by users. <code class="docutils literal notranslate"><span class="pre">ponss_theta</span></code>
-stands for the threshold. <code class="docutils literal notranslate"><span class="pre">ponss_b</span></code> limits the number of solutions in
+<p>To use <code class="docutils literal"><span class="pre">PONSS</span></code> in ZOOpt, <code class="docutils literal"><span class="pre">noise_handling</span></code> and <code class="docutils literal"><span class="pre">ponss</span></code> should be
+set to <code class="docutils literal"><span class="pre">True</span></code>. <code class="docutils literal"><span class="pre">ponss_theta</span></code> and <code class="docutils literal"><span class="pre">ponss_b</span></code> are parameters used in
+<code class="docutils literal"><span class="pre">PONSS</span></code> algorithm and should be provided by users. <code class="docutils literal"><span class="pre">ponss_theta</span></code>
+stands for the threshold. <code class="docutils literal"><span class="pre">ponss_b</span></code> limits the number of solutions in
 the population set.</p>
 </div>
 </div>
 <div class="section" id="optimize-a-high-dimensionality-function">
 <h3>Optimize a high-dimensionality function<a class="headerlink" href="#optimize-a-high-dimensionality-function" title="Permalink to this headline">¶</a></h3>
 <p>ZOOpt implements a high-dimensionality handling method called sequential
-random embedding (<code class="docutils literal notranslate"><span class="pre">SRE</span></code>).</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">high_dim_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reducedim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_sre</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">low_dimension</span><span class="o">=</span><span class="n">Dimension</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>
+random embedding (<code class="docutils literal"><span class="pre">SRE</span></code>).</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">high_dim_handling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reducedim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_sre</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">low_dimension</span><span class="o">=</span><span class="n">Dimension</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>To use <code class="docutils literal notranslate"><span class="pre">SRE</span></code> in ZOOpt, <code class="docutils literal notranslate"><span class="pre">high_dim_handling</span></code> and <code class="docutils literal notranslate"><span class="pre">reducedim</span></code> should
-be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>. <code class="docutils literal notranslate"><span class="pre">num_sre</span></code>, <code class="docutils literal notranslate"><span class="pre">low_dimension</span></code> and
-<code class="docutils literal notranslate"><span class="pre">withdraw_alpha</span></code> are parameters used in <code class="docutils literal notranslate"><span class="pre">SRE</span></code> and should be provided
-by users. <code class="docutils literal notranslate"><span class="pre">num_sre</span></code> means the number of sequential random embedding.
-<code class="docutils literal notranslate"><span class="pre">low_dimension</span></code> stands for the low dimension <code class="docutils literal notranslate"><span class="pre">SRE</span></code> projects to.
-<code class="docutils literal notranslate"><span class="pre">withdraw_alpha</span></code> and <code class="docutils literal notranslate"><span class="pre">variance_A</span></code> are optimal parameters.
-<code class="docutils literal notranslate"><span class="pre">withdraw_alpha</span></code>, a withdraw variable to the previous solution, is a
-<code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object with only one dimension. <code class="docutils literal notranslate"><span class="pre">variance_A</span></code> specifies
-the variance of the projection matrix A. By default, <code class="docutils literal notranslate"><span class="pre">withdraw_alpha</span></code>
-equals to <code class="docutils literal notranslate"><span class="pre">Dimension(1,</span> <span class="pre">[[-1,</span> <span class="pre">1]],</span> <span class="pre">[True])</span></code> and <code class="docutils literal notranslate"><span class="pre">variance_A</span></code> equals
-to <code class="docutils literal notranslate"><span class="pre">1/d</span></code> (<code class="docutils literal notranslate"><span class="pre">d</span></code> is the dimension size of the <code class="docutils literal notranslate"><span class="pre">low_dimension</span></code>). In
-most cases, it’s not necessary for users to provide them.</p>
+<p>To use <code class="docutils literal"><span class="pre">SRE</span></code> in ZOOpt, <code class="docutils literal"><span class="pre">high_dim_handling</span></code> and <code class="docutils literal"><span class="pre">reducedim</span></code> should
+be set to <code class="docutils literal"><span class="pre">True</span></code>. <code class="docutils literal"><span class="pre">num_sre</span></code>, <code class="docutils literal"><span class="pre">low_dimension</span></code> and
+<code class="docutils literal"><span class="pre">withdraw_alpha</span></code> are parameters used in <code class="docutils literal"><span class="pre">SRE</span></code> and should be provided
+by users. <code class="docutils literal"><span class="pre">num_sre</span></code> means the number of sequential random embedding.
+<code class="docutils literal"><span class="pre">low_dimension</span></code> stands for the low dimension <code class="docutils literal"><span class="pre">SRE</span></code> projects to.
+<code class="docutils literal"><span class="pre">withdraw_alpha</span></code> and <code class="docutils literal"><span class="pre">variance_A</span></code> are optimal parameters.
+<code class="docutils literal"><span class="pre">withdraw_alpha</span></code>, a withdraw variable to the previous solution, is a
+<code class="docutils literal"><span class="pre">Dimension</span></code> object with only one dimension. <code class="docutils literal"><span class="pre">variance_A</span></code> specifies
+the variance of the projection matrix A. By default, <code class="docutils literal"><span class="pre">withdraw_alpha</span></code>
+equals to <code class="docutils literal"><span class="pre">Dimension(1,</span> <span class="pre">[[-1,</span> <span class="pre">1]],</span> <span class="pre">[True])</span></code> and <code class="docutils literal"><span class="pre">variance_A</span></code> equals
+to <code class="docutils literal"><span class="pre">1/d</span></code> (<code class="docutils literal"><span class="pre">d</span></code> is the dimension size of the <code class="docutils literal"><span class="pre">low_dimension</span></code>). In
+most cases, it&#8217;s not necessary for users to provide them.</p>
 </div>
 </div>
 <div class="section" id="other-useful-parameters-in-the-parameter-object">
-<h2>Other useful parameters in the <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> object<a class="headerlink" href="#other-useful-parameters-in-the-parameter-object" title="Permalink to this headline">¶</a></h2>
+<h2>Other useful parameters in the <code class="docutils literal"><span class="pre">Parameter</span></code> object<a class="headerlink" href="#other-useful-parameters-in-the-parameter-object" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="set-the-time-limit-of-the-optimization-procedure">
 <h3>Set the Time Limit of the Optimization Procedure<a class="headerlink" href="#set-the-time-limit-of-the-optimization-procedure" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">time_budget</span><span class="o">=</span><span class="mi">3600</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">time_budget</span><span class="o">=</span><span class="mi">3600</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In this example, time budget is 3600s and it means if the overall
@@ -544,30 +548,30 @@ and return the best solution so far.</p>
 </div>
 <div class="section" id="print-intermediate-results">
 <h3>Print intermediate results<a class="headerlink" href="#print-intermediate-results" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">intermediate_result</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">intermediate_freq</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">intermediate_result</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">intermediate_freq</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">intermediate_result</span></code> and <code class="docutils literal notranslate"><span class="pre">intermediate_freq</span></code> are set for showing
+<p><code class="docutils literal"><span class="pre">intermediate_result</span></code> and <code class="docutils literal"><span class="pre">intermediate_freq</span></code> are set for showing
 intermediate results during the optimization progress. The procedure
-will show the best solution every <code class="docutils literal notranslate"><span class="pre">intermediate_freq</span></code> calls to the
-objective function if <code class="docutils literal notranslate"><span class="pre">intermediate_result=True</span></code>.
-<code class="docutils literal notranslate"><span class="pre">intermediate_freq</span></code> is set to 100 by default.</p>
+will show the best solution every <code class="docutils literal"><span class="pre">intermediate_freq</span></code> calls to the
+objective function if <code class="docutils literal"><span class="pre">intermediate_result=True</span></code>.
+<code class="docutils literal"><span class="pre">intermediate_freq</span></code> is set to 100 by default.</p>
 <p>In this example, the optimization procedure will print the best solution
 every 100 budgets.</p>
 </div>
 <div class="section" id="set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully">
-<h3>​Set <code class="docutils literal notranslate"><span class="pre">train_size</span></code> and <code class="docutils literal notranslate"><span class="pre">positive_size</span></code> in <code class="docutils literal notranslate"><span class="pre">RACOS</span></code>, <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> and <code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code> manully<a class="headerlink" href="#set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">20000</span><span class="p">)</span>
+<h3>​Set <code class="docutils literal"><span class="pre">train_size</span></code> and <code class="docutils literal"><span class="pre">positive_size</span></code> in <code class="docutils literal"><span class="pre">RACOS</span></code>, <code class="docutils literal"><span class="pre">SRACOS</span></code> and <code class="docutils literal"><span class="pre">SSRACOS</span></code> manully<a class="headerlink" href="#set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">20000</span><span class="p">)</span>
 <span class="n">parameter</span><span class="o">.</span><span class="n">set_train_size</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
 <span class="n">parameter</span><span class="o">.</span><span class="n">set_positive_size</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">train_size</span></code> represents the size of the binary classification data
-set, which is a component of <code class="docutils literal notranslate"><span class="pre">RACOS</span></code>, <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> and <code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>.
-<code class="docutils literal notranslate"><span class="pre">positive_size</span></code> represents the size of the positive data among all
-data. <code class="docutils literal notranslate"><span class="pre">negetive_size</span></code> is set to <code class="docutils literal notranslate"><span class="pre">train_size</span></code> - <code class="docutils literal notranslate"><span class="pre">positive_size</span></code>
-automatically. It shouldn’t be set manually.</p>
-<p>In most cases, default setting can work well and there’s no need to set
+<p><code class="docutils literal"><span class="pre">train_size</span></code> represents the size of the binary classification data
+set, which is a component of <code class="docutils literal"><span class="pre">RACOS</span></code>, <code class="docutils literal"><span class="pre">SRACOS</span></code> and <code class="docutils literal"><span class="pre">SSRACOS</span></code>.
+<code class="docutils literal"><span class="pre">positive_size</span></code> represents the size of the positive data among all
+data. <code class="docutils literal"><span class="pre">negetive_size</span></code> is set to <code class="docutils literal"><span class="pre">train_size</span></code> - <code class="docutils literal"><span class="pre">positive_size</span></code>
+automatically. It shouldn&#8217;t be set manually.</p>
+<p>In most cases, default setting can work well and there&#8217;s no need to set
 them manually.</p>
 <div class="line-block">
 <div class="line">​</div>
@@ -580,7 +584,9 @@ them manually.</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -589,7 +595,7 @@ them manually.</p>
         <a href="How-to-Optimize-a-Continuous-Function.html" class="btn btn-neutral float-right" title="How to Optimize a Continuous Function" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="A-Generic-Process-to-Use-ZOOpt.html" class="btn btn-neutral" title="A-Generic-Process-to-Use-ZOOpt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="A-Generic-Process-to-Use-ZOOpt.html" class="btn btn-neutral" title="A Generic Process to Use ZOOpt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -602,7 +608,7 @@ them manually.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -621,11 +627,10 @@ them manually.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'0.2.1',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
@@ -639,13 +644,8 @@ them manually.</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  <script type="text/javascript">
-      jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enable();
-          
-      });
-  </script> 
+  
+   
 
 </body>
 </html>
