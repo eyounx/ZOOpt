@@ -88,4 +88,4 @@ More examples are available in the `example` fold.
 
 # Distributed version
 
-The distributed version of ZOOpt is consisted of the [server project](https://github.com/eyounx/ZOOsrv) and the [client project](https://github.com/eyounx/ZOOclient.jl). Details can be found in the [tutorial of the distributed ZOOpt](https://github.com/eyounx/ZOOpt/wiki/Tutorial-of-Distributed-ZOOpt)
+The distributed version of ZOOpt is consisted of the [server project](https://github.com/eyounx/ZOOsrv) and the [client project](https://github.com/eyounx/ZOOclient.jl). Details can be found in the [tutorial of the distributed ZOOpt](http://zoopt.readthedocs.io/en/latest/Tutorial%20of%20Distributed%20ZOOpt.html)
