@@ -234,7 +234,7 @@ be set to ``True``. ``num_sre``, ``low_dimension`` and
 ``withdraw_alpha`` are parameters used in ``SRE`` and should be provided
 by users. ``num_sre`` means the number of sequential random embedding.
 ``low_dimension`` stands for the low dimension ``SRE`` projects to.
-``withdraw_alpha`` and ``variance_A`` are optimal parameters.
+``withdraw_alpha`` and ``variance_A`` are optional parameters.
 ``withdraw_alpha``, a withdraw variable to the previous solution, is a
 ``Dimension`` object with only one dimension. ``variance_A`` specifies
 the variance of the projection matrix A. By default, ``withdraw_alpha``

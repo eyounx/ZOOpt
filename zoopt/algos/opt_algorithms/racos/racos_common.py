@@ -5,8 +5,9 @@ Author:
     Yu-Ren Liu
 """
 
-import copy
+import copy, math
 from zoopt.utils.tool_function import ToolFunction
+from zoopt.solution import Solution
 
 
 class RacosCommon:
@@ -62,8 +63,12 @@ class RacosCommon:
             if iteration_num < size:
                 size = iteration_num
             for j in range(size):
-                x = self._objective.construct_solution(data_temp[j])
-                self._objective.eval(x)
+                if isinstance(data_temp[j], Solution) is False:
+                    x = self._objective.construct_solution(data_temp[j])
+                else:
+                    x = data_temp[j]
+                if math.isnan(x.get_value()):
+                    self._objective.eval(x)
                 self._data.append(x)
                 ToolFunction.log("init solution %s, value: %s" % (i, x.get_value()))
                 i += 1

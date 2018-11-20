@@ -4,10 +4,10 @@ This module contains the class Solution.
 Author:
     Yu-Ren Liu, Xiong-Hui Chen
 """
-
 from zoopt.utils.zoo_global import pos_inf, neg_inf, nan, gl
 from zoopt.utils.tool_function import ToolFunction
 import copy
+
 
 class Solution:
     """

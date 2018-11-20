@@ -149,6 +149,8 @@ class RacosClassification:
                             i += 1
                     if delete != 0:
                         index_set.remove(k)
+                    if len(index_set) == 0:
+                        index_set.append(k)
         self.set_uncertain_bit(index_set)
         return
 
