@@ -42,6 +42,7 @@ class SRacos(RacosCommon):
         self.set_objective(objective)
         self.set_parameters(parameter)
         self.init_attribute()
+        stopping_criterion = self._parameter.get_stopping_criterion()
         i = 0
         iteration_num = self._parameter.get_budget() - self._parameter.get_train_size()
         time_log1 = time.time()
@@ -101,6 +102,8 @@ class SRacos(RacosCommon):
                 if self._best_solution.get_value() <= self._parameter.get_terminal_value():
                     ToolFunction.log('terminal function value reached')
                     return self._best_solution
+            if stopping_criterion.check(self) is True:
+                return self._best_solution
             i += 1
         return self._best_solution
 

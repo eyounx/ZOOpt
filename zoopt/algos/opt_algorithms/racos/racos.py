@@ -34,6 +34,7 @@ class Racos(RacosCommon):
         self.set_objective(objective)
         self.set_parameters(parameter)
         self.init_attribute()
+        stopping_criterion = self._parameter.get_stopping_criterion()
         t = int(self._parameter.get_budget() / self._parameter.get_negative_size())
         time_log1 = time.time()
         for i in range(t):
@@ -57,10 +58,13 @@ class Racos(RacosCommon):
                 # evaluate the solution
                 objective.eval(solution)
                 # show best solution
-                times = i + self._parameter.get_train_size() + 1
+                times = i * self._parameter.get_negative_size() + j + 1
                 self.show_best_solution(parameter.get_intermediate_result(), times,
                                         parameter.get_intermediate_freq())
                 self._data.append(solution)
+                # stopping criterion check
+                if stopping_criterion.check(self) is True:
+                    return self._best_solution
                 j += 1
             self.selection()
             self._best_solution = self._positive_data[0]

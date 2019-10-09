@@ -271,3 +271,15 @@ class RacosCommon:
         ToolFunction.log('the size of b is: %d' % (len(self._data)))
         for x in self._data:
             x.print_solution()
+
+    def get_best_solution(self):
+        return self._best_solution
+
+    def get_data(self):
+        return self._data
+
+    def get_positive_data(self):
+        return self._positive_data
+
+    def get_negative_data(self):
+        return self._negative_data

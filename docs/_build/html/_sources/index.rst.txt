@@ -15,7 +15,7 @@ Table of Content
 -----------------
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
    Derivative-Free Optimization
    Tutorial of ZOOpt

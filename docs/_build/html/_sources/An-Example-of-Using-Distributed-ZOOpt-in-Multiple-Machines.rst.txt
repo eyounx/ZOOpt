@@ -146,8 +146,9 @@ CPU cores on the machine.
 
 For a few seconds, the optimization is done and we will get the result.
 
- .. image::https://github.com/eyounx/ZOOjl.jl/blob/master/img/result.png?raw=true
+ .. image:: https://github.com/eyounx/ZOOjl.jl/blob/master/img/result.png?raw=true
 
 Visualized optimization progress looks like:
 
-.. image::https://github.com/eyounx/ZOOjl.jl/blob/master/img/figure.png?raw=true
+.. image:: https://github.com/eyounx/ZOOjl.jl/blob/master/img/figure.png?raw=true
+    :width: 500

@@ -73,7 +73,8 @@ Parameter
                      precision=None, uncertain_bits=None, intermediate_result=False, intermediate_freq=100, autoset=True,
                      noise_handling=False, resampling=False, suppression=False, ponss=False, ponss_theta=None, ponss_b=None,
                      non_update_allowed=500, resample_times=100, balance_rate=0.5, high_dim_handling=False, reducedim=False, num_sre=5,
-                     low_dimension=None, withdraw_alpha=Dimension(1, [[-1, 1]], [True]), variance_A=None):
+                     low_dimension=None, withdraw_alpha=Dimension(1, [[-1, 1]], [True]), variance_A=None,
+                     stopping_criterion=DefaultStoppingCriterion()):
 
 -  ``budget`` is the only indispensable parameter of all tasks, it means
    the number of calls to the objective function.
@@ -111,6 +112,7 @@ Parameter
    handling. Details of parameter setting for noise handling and
    high-dimensionality handling in ZOOpt will be discussed in the next
    part.
+-  ``stopping_criterion`` customizes a stopping criterion for the optimization. It should be  an instance of a class that implements the member function ``check(self, optcontent)``, which will be invoked at each iteration of the  optimization. The optimization algorithm will  stop in advance if ``stopping_criterion.check`` returns True.
 
 Parameter setting in different tasks
 ------------------------------------
@@ -234,7 +236,7 @@ be set to ``True``. ``num_sre``, ``low_dimension`` and
 ``withdraw_alpha`` are parameters used in ``SRE`` and should be provided
 by users. ``num_sre`` means the number of sequential random embedding.
 ``low_dimension`` stands for the low dimension ``SRE`` projects to.
-``withdraw_alpha`` and ``variance_A`` are optimal parameters.
+``withdraw_alpha`` and ``variance_A`` are optional parameters.
 ``withdraw_alpha``, a withdraw variable to the previous solution, is a
 ``Dimension`` object with only one dimension. ``variance_A`` specifies
 the variance of the projection matrix A. By default, ``withdraw_alpha``
@@ -272,7 +274,7 @@ objective function if ``intermediate_result=True``.
 In this example, the optimization procedure will print the best solution
 every 100 budgets.
 
-​Set ``train_size`` and ``positive_size`` in ``RACOS``, ``SRACOS`` and ``SSRACOS`` manully
+Set ``train_size`` and ``positive_size`` in ``RACOS``, ``SRACOS`` and ``SSRACOS`` manully
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: python
@@ -290,6 +292,43 @@ automatically. It shouldn't be set manually.
 In most cases, default setting can work well and there's no need to set
 them manually.
 
-| ​
-| ​
-| ​
+Customize ``stopping_criterion`` for the optimization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: python
+
+    class StoppingCriterion:
+        def __init__(self):
+            self.__best_result = 0 
+            self.__count = 0
+            self.__total_count = 0
+            self.__count_limit = 100
+
+        def check(self, optcontent):
+            """
+            :param optcontent: an instance of the class RacosCommon. Several functions can be invoked to get the contexts of the optimization, which are listed as follows,
+            optcontent.get_best_solution(): get the current optimal solution
+            optcontent.get_data(): get all the solutions contained in the current solution pool
+            optcontent.get_positive_data(): get positive solutions contained in the current solution pool
+            optcontent.get_negative_data(): get negative solutions contained in the current solution pool
+
+            :return: bool object.
+
+            """
+            self.__total_count += 1
+            content_best_value = optcontent.get_best_solution().get_value()
+            if content_best_value == self.__best_result:
+                self.__count += 1
+            else:
+                self.__best_result = content_best_value
+                self.__count = 0
+            if self.__count >= self.__count_limit:
+                print("stopping criterion holds, total_count: %d" % self.__total_count)
+                return True
+            else:
+                return False
+
+    parameter = Parameter(budget=20000, stopping_criterion=StoppingCriterion())
+
+StoppingCriterion customizes a stopping criterion for the optimization, which is used as a initialization parameter of the class Parameter and should implement a member function ``check(self, optcontent)``. The ``check`` function is invoked at each iteration of the optimization. The optimization will stop if this function returns True, otherwise, it is not affected. In this example, the optimization will be stopped if the best result remains unchanged for 100 iterations.
+

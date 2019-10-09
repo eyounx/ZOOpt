@@ -107,7 +107,7 @@ class GymTask:
                 if true_act >= self.__action_sca[i]:
                     true_act = self.__action_sca[i] - 1
                 action.append(true_act)
-        if self.__action_size == 1:
+        if self.__action_size == 1 and self.__action_type[0] is False:
             action = action[0]
         return action
 
@@ -197,3 +197,4 @@ class GymTask:
     def set_max_step(self, ms):
         self.__max_step = ms
         return
+

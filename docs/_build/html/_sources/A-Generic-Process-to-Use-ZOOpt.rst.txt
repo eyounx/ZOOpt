@@ -40,7 +40,7 @@ Define objective function
 
 An objective function should satisfy the interface
 ``def func(solution):`` , where ``solution`` is a ``Solution`` object
-which encapsulate x and f(x). In general, users can custom their
+which encapsulates x and f(x). In general, users can custom their
 objective function by
 
 .. code:: python
@@ -153,4 +153,4 @@ blocking. ``seed`` is a parameter to set random seed in optimization.
 
 .. code:: python
 
-    solution_list = ExpOpt.min(objective, par, repeat=10, best_n=5, plot=True, plot_file='Figure.pdf', seed=777)
+    solution_list = ExpOpt.min(objective, par, repeat=10, best_n=5, plot=True, plot_file='opt_progress.pdf', seed=777)

@@ -2,8 +2,13 @@
 Tutorial of ZOOpt
 -----------------------
 
+This documentation introduces the single-thread version of ZOOpt. Examples are provided 
+to solve optimization problems under different settings. To master ZOOpt, a careful reading
+of **A Generic Process th Use ZOOpt** and **Explanation of Parameters in ZOOpt** will be
+much helpful.
+
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
    Quick-Start
    A-Generic-Process-to-Use-ZOOpt

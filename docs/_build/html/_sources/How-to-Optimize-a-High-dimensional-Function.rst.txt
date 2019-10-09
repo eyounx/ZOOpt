@@ -90,6 +90,7 @@ For a few seconds, the optimization is done. Visualized optimization
 progress looks like
 
 .. image:: https://github.com/eyounx/ZOOpt/blob/dev/img/sphere_continuous_sre.png?raw=true
+    :width: 500
 
 More concrete examples are available in the
 ``example/sequential_random_embedding/continuous_sre_opt.py`` file .

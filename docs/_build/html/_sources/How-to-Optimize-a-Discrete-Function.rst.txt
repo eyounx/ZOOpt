@@ -141,6 +141,7 @@ For a few seconds, the optimization is done. Visualized optimization
 progress looks like
 
 .. image:: https://github.com/eyounx/ZOOpt/blob/dev/img/setcover_discrete_figure.png?raw=true
+    :width: 500
 
 More concrete examples are available in the
 ``example/simple_functions/discrete_opt.py`` file.

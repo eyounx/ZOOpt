@@ -202,7 +202,4 @@ For a few seconds, the optimization is done and we will get the result.
 Visualized optimization progress looks like:
 
 .. image:: https://github.com/eyounx/ZOOjl.jl/blob/master/img/figure.png?raw=true
-
-| ​
-| ​
-| ​
+    :width: 500

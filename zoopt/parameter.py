@@ -11,6 +11,27 @@ from zoopt.dimension import Dimension
 from zoopt.utils.tool_function import ToolFunction
 
 
+class DefaultStoppingCriterion:
+    """
+    This class is the default StoppingCriterion class, which is used by the class Parameter and should implement
+    check(self, optcontent) member function.
+    """
+    def check(self, optcontent):
+        """
+        This function is invoked at each iteration of the optimization.
+        Optimization will stop early when this function returns True, otherwise, it is not affected. In this example,
+        optimization will not be stopped early as False is always returned.
+        :param optcontent: an instance of the class RacosCommon. Functions, which can be invoked to get the contexts of
+        the optimization, are listed as follows.
+        optcontent.get_best_solution(): get the current optimal solution
+        optcontent.get_data(): get all the solutions contained in the current solution pool
+        optcontent.get_positive_data(): get positive solutions contained in the current solution pool
+        optcontent.get_negative_data(): get negative solutions contained in the current solution pool
+        :return: bool object.
+        """
+        return False
+
+
 class Parameter:
     """
         This class contains all parameters used for optimization.
@@ -20,7 +41,8 @@ class Parameter:
                  precision=None, uncertain_bits=None, intermediate_result=False, intermediate_freq=100, autoset=True,
                  noise_handling=False, resampling=False, suppression=False, ponss=False, ponss_theta=None, ponss_b=None,
                  non_update_allowed=500, resample_times=100, balance_rate=0.5, high_dim_handling=False, reducedim=False,
-                 num_sre=5, low_dimension=None, withdraw_alpha=Dimension(1, [[-1, 1]], [True]), variance_A=None):
+                 num_sre=5, low_dimension=None, withdraw_alpha=Dimension(1, [[-1, 1]], [True]), variance_A=None,
+                 stopping_criterion=DefaultStoppingCriterion()):
         """
         Initialization.
 
@@ -55,6 +77,9 @@ class Parameter:
         :param low_dimension: low dimension of sequential random embedding
         :param withdraw_alpha: a parameter for random embedding
         :param variance_A: matrix to map high-dimensional input x to low-dimensional x'
+        :param stopping_criterion: an instance of a class that implements the member function check(self, optcontent),
+        which will be invoked at each iteration of the optimization. The optimization algorithm will stop early if
+        stopping_criterion.check returns True.
         """
         self.__algorithm = algorithm
         self.__budget = budget if noise_handling is False or resampling is False else (budget / resample_times)
@@ -104,6 +129,7 @@ class Parameter:
         self.__low_dimension = low_dimension if low_dimension is not None else Dimension(10, [[-1, 1]]*10, [True]*10)
         self.__withdraw_alpha = withdraw_alpha if withdraw_alpha is not None else Dimension(1, [[-1, 1]], [True])
         self.__variance_A = variance_A if variance_A is not None else 1.0/self.__low_dimension.get_size()
+        self.__stopping_criterion = stopping_criterion
         return
 
     def auto_set(self, budget):
@@ -283,3 +309,9 @@ class Parameter:
 
     def get_withdraw_alpha(self):
         return self.__withdraw_alpha
+
+    def get_stopping_criterion(self):
+        return self.__stopping_criterion
+
+
+

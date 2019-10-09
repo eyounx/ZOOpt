@@ -84,8 +84,9 @@ Finally, type the following command
 For a few seconds, the optimization is done and we will get the result.
 
 .. image:: https://github.com/eyounx/ZOOjl/blob/master/img/sparse_mse_result.png?raw=true
+
 Visualized optimization progress looks like:
 
 .. image:: https://github.com/eyounx/ZOOjl/blob/master/img/sparse_mse.png?raw=true
     :width: 500
-​
+

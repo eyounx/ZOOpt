@@ -24,7 +24,7 @@ We define the Ackley function in simple\_function.py for minimization
         x = solution.get_x()
         bias = 0.2
         ave_seq = sum([(i - bias) * (i - bias) for i in x]) / len(x)
-        ave_cos = sum([np.cos(2.0*np.pi*(i-bias)) for i in x]) / len(x)
+        ave_cos = sum([np.cos(2.0 * np.pi * (i - bias)) for i in x]) / len(x)
         value = -20 * np.exp(-0.2 * np.sqrt(ave_seq)) - np.exp(ave_cos) + 20.0 + np.e
         return value
 
@@ -81,6 +81,7 @@ For a few seconds, the optimization is done. Visualized optimization
 progress looks like
 
 .. image:: https://github.com/eyounx/ZOOpt/blob/dev/img/ackley_continuous_figure.png?raw=true
+    :width: 500
 
 More concrete examples are available in the
 ``example/simple_functions/continuous_opt.py`` file .

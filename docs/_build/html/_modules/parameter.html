@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>parameter &mdash; ZOOpt 0.2.1 documentation</title>
+  <title>parameter &mdash; ZOOpt 0.2.2 documentation</title>
   
 
   
@@ -25,22 +25,17 @@
   
 
   
-  
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="ZOOpt 0.2.1 documentation" href="../index.html"/>
-        <link rel="up" title="Module code" href="index.html"/> 
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -62,7 +57,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -100,15 +95,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../A-Generic-Process-to-Use-ZOOpt.html#id1">A Generic Process to Use ZOOpt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../A-Generic-Process-to-Use-ZOOpt.html#details-of-the-generic-process">Details of the Generic Process</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../A-Generic-Process-to-Use-ZOOpt.html#define-objective-function">Define objective function</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../A-Generic-Process-to-Use-ZOOpt.html#define-dimension-object-dim-then-use-f-and-dim-to-construct-an-objective-object">Define <code class="docutils literal"><span class="pre">Dimension</span></code> object <code class="docutils literal"><span class="pre">dim</span></code>, then use <code class="docutils literal"><span class="pre">f</span></code> and <code class="docutils literal"><span class="pre">dim</span></code> to construct an <code class="docutils literal"><span class="pre">Objective</span></code> object</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../A-Generic-Process-to-Use-ZOOpt.html#define-parameter-objective-par">Define <code class="docutils literal"><span class="pre">parameter</span></code> objective <code class="docutils literal"><span class="pre">par</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../A-Generic-Process-to-Use-ZOOpt.html#use-opt-min-or-expopt-min-to-optimize">Use <code class="docutils literal"><span class="pre">Opt.min</span></code> or <code class="docutils literal"><span class="pre">ExpOpt.min</span></code> to optimize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../A-Generic-Process-to-Use-ZOOpt.html#define-dimension-object-dim-then-use-f-and-dim-to-construct-an-objective-object">Define <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object <code class="docutils literal notranslate"><span class="pre">dim</span></code>, then use <code class="docutils literal notranslate"><span class="pre">f</span></code> and <code class="docutils literal notranslate"><span class="pre">dim</span></code> to construct an <code class="docutils literal notranslate"><span class="pre">Objective</span></code> object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../A-Generic-Process-to-Use-ZOOpt.html#define-parameter-objective-par">Define <code class="docutils literal notranslate"><span class="pre">parameter</span></code> objective <code class="docutils literal notranslate"><span class="pre">par</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../A-Generic-Process-to-Use-ZOOpt.html#use-opt-min-or-expopt-min-to-optimize">Use <code class="docutils literal notranslate"><span class="pre">Opt.min</span></code> or <code class="docutils literal notranslate"><span class="pre">ExpOpt.min</span></code> to optimize</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html">Explanation of Parameters in ZOOpt</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#parameters-in-dimension-objective-and-parameter">Parameters in <code class="docutils literal"><span class="pre">Dimension</span></code>, <code class="docutils literal"><span class="pre">Objective</span></code> and <code class="docutils literal"><span class="pre">Parameter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#parameters-in-dimension-objective-and-parameter">Parameters in <code class="docutils literal notranslate"><span class="pre">Dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">Objective</span></code> and <code class="docutils literal notranslate"><span class="pre">Parameter</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#dimension">Dimension</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#objective">Objective</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#parameter">Parameter</a></li>
@@ -122,10 +117,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#optimize-a-high-dimensionality-function">Optimize a high-dimensionality function</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#other-useful-parameters-in-the-parameter-object">Other useful parameters in the <code class="docutils literal"><span class="pre">Parameter</span></code> object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#other-useful-parameters-in-the-parameter-object">Other useful parameters in the <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> object</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#set-the-time-limit-of-the-optimization-procedure">Set the Time Limit of the Optimization Procedure</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#print-intermediate-results">Print intermediate results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully">​Set <code class="docutils literal"><span class="pre">train_size</span></code> and <code class="docutils literal"><span class="pre">positive_size</span></code> in <code class="docutils literal"><span class="pre">RACOS</span></code>, <code class="docutils literal"><span class="pre">SRACOS</span></code> and <code class="docutils literal"><span class="pre">SSRACOS</span></code> manully</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#set-train-size-and-positive-size-in-racos-sracos-and-ssracos-manully">Set <code class="docutils literal notranslate"><span class="pre">train_size</span></code> and <code class="docutils literal notranslate"><span class="pre">positive_size</span></code> in <code class="docutils literal notranslate"><span class="pre">RACOS</span></code>, <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> and <code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code> manully</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Explanation-of-Parameters-in-ZOOpt.html#customize-stopping-criterion-for-the-optimization">Customize <code class="docutils literal notranslate"><span class="pre">stopping_criterion</span></code> for the optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -136,10 +132,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../How-to-Optimize-a-Noisy-Function.html">How to Optimize a Noisy Function</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../How-to-Optimize-a-Noisy-Function.html#re-sampling-and-value-suppression">Re-sampling and Value Suppression</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../How-to-Optimize-a-Noisy-Function.html#re-sampling">Re-sampling</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../How-to-Optimize-a-Noisy-Function.html#value-suppression-for-sracos-ssracos">Value Suppression for <code class="docutils literal"><span class="pre">SRACOS</span></code> (<code class="docutils literal"><span class="pre">SSRACOS</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../How-to-Optimize-a-Noisy-Function.html#value-suppression-for-sracos-ssracos">Value Suppression for <code class="docutils literal notranslate"><span class="pre">SRACOS</span></code> (<code class="docutils literal notranslate"><span class="pre">SSRACOS</span></code>)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../How-to-Optimize-a-Noisy-Function.html#threshold-selection-for-poss-ponss">Threshold Selection for <code class="docutils literal"><span class="pre">POSS</span></code> (<code class="docutils literal"><span class="pre">PONSS</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-to-Optimize-a-Noisy-Function.html#threshold-selection-for-poss-ponss">Threshold Selection for <code class="docutils literal notranslate"><span class="pre">POSS</span></code> (<code class="docutils literal notranslate"><span class="pre">PONSS</span></code>)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../How-to-Optimize-a-High-dimensional-Function.html">How to Optimize a High-dimensional Function</a></li>
@@ -262,7 +258,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">ZOOpt</a>
@@ -270,9 +266,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -302,8 +299,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -328,6 +323,27 @@
 <span class="kn">from</span> <span class="nn">zoopt.utils.tool_function</span> <span class="k">import</span> <span class="n">ToolFunction</span>
 
 
+<div class="viewcode-block" id="DefaultStoppingCriterion"><a class="viewcode-back" href="../parameter.html#parameter.DefaultStoppingCriterion">[docs]</a><span class="k">class</span> <span class="nc">DefaultStoppingCriterion</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class is the default StoppingCriterion class, which is used by the class Parameter and should implement</span>
+<span class="sd">    check(self, optcontent) member function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="DefaultStoppingCriterion.check"><a class="viewcode-back" href="../parameter.html#parameter.DefaultStoppingCriterion.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">optcontent</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function is invoked at each iteration of the optimization.</span>
+<span class="sd">        Optimization will stop early when this function returns True, otherwise, it is not affected. In this example,</span>
+<span class="sd">        optimization will not be stopped early as False is always returned.</span>
+<span class="sd">        :param optcontent: an instance of the class RacosCommon. Functions, which can be invoked to get the contexts of</span>
+<span class="sd">        the optimization, are listed as follows.</span>
+<span class="sd">        optcontent.get_best_solution(): get the current optimal solution</span>
+<span class="sd">        optcontent.get_data(): get all the solutions contained in the current solution pool</span>
+<span class="sd">        optcontent.get_positive_data(): get positive solutions contained in the current solution pool</span>
+<span class="sd">        optcontent.get_negative_data(): get negative solutions contained in the current solution pool</span>
+<span class="sd">        :return: bool object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">False</span></div></div>
+
+
 <div class="viewcode-block" id="Parameter"><a class="viewcode-back" href="../parameter.html#parameter.Parameter">[docs]</a><span class="k">class</span> <span class="nc">Parameter</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This class contains all parameters used for optimization.</span>
@@ -337,7 +353,8 @@
                  <span class="n">precision</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uncertain_bits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intermediate_result</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">intermediate_freq</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">autoset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">noise_handling</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">resampling</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">suppression</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ponss</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ponss_theta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ponss_b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">non_update_allowed</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">resample_times</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">balance_rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">high_dim_handling</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reducedim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                 <span class="n">num_sre</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">low_dimension</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">withdraw_alpha</span><span class="o">=</span><span class="n">Dimension</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="kc">True</span><span class="p">]),</span> <span class="n">variance_A</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                 <span class="n">num_sre</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">low_dimension</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">withdraw_alpha</span><span class="o">=</span><span class="n">Dimension</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="kc">True</span><span class="p">]),</span> <span class="n">variance_A</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">stopping_criterion</span><span class="o">=</span><span class="n">DefaultStoppingCriterion</span><span class="p">()):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialization.</span>
 
@@ -372,6 +389,9 @@
 <span class="sd">        :param low_dimension: low dimension of sequential random embedding</span>
 <span class="sd">        :param withdraw_alpha: a parameter for random embedding</span>
 <span class="sd">        :param variance_A: matrix to map high-dimensional input x to low-dimensional x&#39;</span>
+<span class="sd">        :param stopping_criterion: an instance of a class that implements the member function check(self, optcontent),</span>
+<span class="sd">        which will be invoked at each iteration of the optimization. The optimization algorithm will stop early if</span>
+<span class="sd">        stopping_criterion.check returns True.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__algorithm</span> <span class="o">=</span> <span class="n">algorithm</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__budget</span> <span class="o">=</span> <span class="n">budget</span> <span class="k">if</span> <span class="n">noise_handling</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="n">resampling</span> <span class="ow">is</span> <span class="kc">False</span> <span class="k">else</span> <span class="p">(</span><span class="n">budget</span> <span class="o">/</span> <span class="n">resample_times</span><span class="p">)</span>
@@ -421,6 +441,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__low_dimension</span> <span class="o">=</span> <span class="n">low_dimension</span> <span class="k">if</span> <span class="n">low_dimension</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">Dimension</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__withdraw_alpha</span> <span class="o">=</span> <span class="n">withdraw_alpha</span> <span class="k">if</span> <span class="n">withdraw_alpha</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">Dimension</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="kc">True</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__variance_A</span> <span class="o">=</span> <span class="n">variance_A</span> <span class="k">if</span> <span class="n">variance_A</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mf">1.0</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">__low_dimension</span><span class="o">.</span><span class="n">get_size</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__stopping_criterion</span> <span class="o">=</span> <span class="n">stopping_criterion</span>
         <span class="k">return</span></div>
 
 <div class="viewcode-block" id="Parameter.auto_set"><a class="viewcode-back" href="../parameter.html#parameter.Parameter.auto_set">[docs]</a>    <span class="k">def</span> <span class="nf">auto_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">budget</span><span class="p">):</span>
@@ -599,13 +620,17 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__variance_A</span>
 
     <span class="k">def</span> <span class="nf">get_withdraw_alpha</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__withdraw_alpha</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__withdraw_alpha</span>
+
+    <span class="k">def</span> <span class="nf">get_stopping_criterion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stopping_criterion</span></div>
+
+
+
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -618,7 +643,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -636,11 +661,12 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -654,8 +680,11 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
-  
-   
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
 
 </body>
 </html>

@@ -143,6 +143,7 @@ Visualized optimization progress looks like
 
 .. image:: https://github.com/eyounx/ZOOpt/blob/dev/img/quick_start.png?raw=true
     :width: 500
+
 To get all solutions in solution_list, you can type
 
 .. code:: python

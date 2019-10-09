@@ -8,7 +8,7 @@ Distributed ZOOpt to perform large-scale optimization through utilizing
 many cores/computers.
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
    Quick-Start-of-Distributed-ZOOpt
    An-Example-of-Using-Distributed-ZOOpt-in-Multiple-Machines
