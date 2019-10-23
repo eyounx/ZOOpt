@@ -11,16 +11,16 @@ class TestParetoOpt(object):
         res = ParetoOpt.mutation(a, n)
         assert res != a
 
-    def test_performance(self):
-        mse = SparseMSE('example/sparse_regression/sonar.arff')
-        mse.set_sparsity(8)
-
-        # setup objective
-        # print(mse.get_dim().get_size())
-        objective = Objective(func=mse.loss, dim=mse.get_dim(), constraint=mse.constraint)
-        parameter = Parameter(algorithm='poss',
-                              budget=2 * exp(1) * (mse.get_sparsity() ** 2) * mse.get_dim().get_size())
-
-        # perform sparse regression with constraint |w|_0 <= k
-        solution = Opt.min(objective, parameter)
-        assert solution.get_value()[0] < 0.6
+    # def test_performance(self):
+    #     mse = SparseMSE('example/sparse_regression/sonar.arff')
+    #     mse.set_sparsity(8)
+    #
+    #     # setup objective
+    #     # print(mse.get_dim().get_size())
+    #     objective = Objective(func=mse.loss, dim=mse.get_dim(), constraint=mse.constraint)
+    #     parameter = Parameter(algorithm='poss',
+    #                           budget=2 * exp(1) * (mse.get_sparsity() ** 2) * mse.get_dim().get_size())
+    #
+    #     # perform sparse regression with constraint |w|_0 <= k
+    #     solution = Opt.min(objective, parameter)
+    #     assert solution.get_value()[0] < 0.6

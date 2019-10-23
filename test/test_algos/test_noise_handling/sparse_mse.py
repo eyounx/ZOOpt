@@ -15,25 +15,19 @@ class SparseMSE:
     """
     This class implements the Sparse MSE problem.
     """
-    _X = 0
-    _Y = 0
-    _C = 0
-    _b = 0
-    _size = 0
-    _k = 0
-    _best_solution = None
-
     def __init__(self, filename):
         """
         Initialization.
         :param filename: filename
         """
         data = self.read_data(filename)
-        self._size = np.shape(data)[1] - 1
+        self._size = data.shape[1] - 1
         self._X = data[:, 0: self._size]
         self._Y = data[:, self._size]
         self._C = self._X.T * self._X
         self._b = self._X.T * self._Y
+        self._k = 0
+        self._best_solution = None
 
     def position(self, s):
         """
@@ -78,7 +72,7 @@ class SparseMSE:
         alpha = (self._C[pos, :])[:, pos]
         alpha = alpha.I * self._b[pos, :]
         sub = self._Y - self._X[:, pos]*alpha
-        mse = sub.T*sub / np.shape(self._Y)[0]
+        mse = sub.T*sub / self._Y.shape[0]
         return mse[0, 0]
 
     def get_dim(self):
@@ -112,10 +106,10 @@ class SparseMSE:
         :return: normalized data
         """
         try:
-            mat_size = np.shape(data_matrix)
+            mat_size = data_matrix.shape
             for i in range(0, mat_size[1]):
                 the_column = data_matrix[:, i]
-                column_mean = sum(the_column)/mat_size[0]
+                column_mean = np.mean(the_column)
                 minus_column = np.mat(the_column-column_mean)
                 std = np.sqrt(np.transpose(minus_column)*minus_column/mat_size[0])
                 data_matrix[:, i] = (the_column-column_mean)/std
