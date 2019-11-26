@@ -6,6 +6,7 @@ Author:
 """
 
 from random import Random
+import numpy as np
 
 
 class Global:
@@ -31,6 +32,7 @@ class Global:
         :return: no return value
         """
         self.rand.seed(seed)
+        np.random.seed(seed)
         return
 
     def set_precision(self, my_precision):

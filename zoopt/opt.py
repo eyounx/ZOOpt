@@ -60,5 +60,8 @@ class Opt:
         """
 
         precision = parameter.get_precision()
+        seed = parameter.get_seed()
         if precision:
             gl.set_precision(precision)
+        if seed:
+            gl.set_seed(seed)

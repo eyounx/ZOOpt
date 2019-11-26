@@ -16,7 +16,7 @@ if __name__ == '__main__':
     # ponss_theta and ponss_b are parameters used in PONSS algorithm and should be provided by users. ponss_theta stands
     # for the threshold. ponss_b limits the number of solutions in the population set.
     parameter = Parameter(algorithm='poss', noise_handling=True, ponss=True, ponss_theta=0.5, ponss_b=mse.get_k(),
-                          budget=2 * exp(1) * (mse.get_sparsity() ** 2) * mse.get_dim().get_size())
+                          budget=2 * exp(1) * (mse.get_sparsity() ** 2) * mse.get_dim().get_size(), seed=1)
 
     # perform sparse regression with constraint |w|_0 <= k
-    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True)
+    solution_list = ExpOpt.min(objective, parameter, repeat=2, plot=False)
