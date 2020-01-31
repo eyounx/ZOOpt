@@ -13,14 +13,12 @@ class Global:
     """
     This class defines global variables used in all algorithms.
     """
-    rand = None
 
     def __init__(self):
         """
         Initialize rand and precision.
         """
         # rand is the random object used by all files
-        self.rand = Random()
         self.precision = 1e-17
         # rand.seed(100)
 
@@ -31,7 +29,6 @@ class Global:
         :param seed: random seed
         :return: no return value
         """
-        self.rand.seed(seed)
         np.random.seed(seed)
         return
 
@@ -44,6 +41,7 @@ class Global:
         """
         self.precision = my_precision
         return
+
 
 gl = Global()
 # constants

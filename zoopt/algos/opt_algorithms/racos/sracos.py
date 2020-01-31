@@ -7,13 +7,12 @@ Author:
 
 import time
 
-import numpy
+import numpy as np
 
 from zoopt.algos.opt_algorithms.racos.racos_classification import RacosClassification
 from zoopt.algos.opt_algorithms.racos.racos_common import RacosCommon
 from zoopt.solution import Solution
 from zoopt.utils.tool_function import ToolFunction
-from zoopt.utils.zoo_global import gl
 
 
 class SRacos(RacosCommon):
@@ -50,7 +49,7 @@ class SRacos(RacosCommon):
         current_not_distinct_times = 0
         last_best = None
         while i < iteration_num:
-            if gl.rand.random() < self._parameter.get_probability():
+            if np.random.random() < self._parameter.get_probability():
                 classifier = RacosClassification(
                     self._objective.get_dim(), self._positive_data, self._negative_data, ub)
                 classifier.mixed_classification()
@@ -178,7 +177,7 @@ class SRacos(RacosCommon):
         :return: the replaced solution
         """
         len_iset = len(iset)
-        replace_index = gl.rand.randint(0, len_iset - 1)
+        replace_index = np.random.randint(0, len_iset)
         replace_ele = iset[replace_index]
         iset[replace_index] = x
         return replace_ele
@@ -215,4 +214,4 @@ class SRacos(RacosCommon):
         dis = 0
         for i in range(len(x)):
             dis += (x[i] - y[i])**2
-        return numpy.sqrt(dis)
+        return np.sqrt(dis)

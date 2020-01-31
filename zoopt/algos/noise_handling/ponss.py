@@ -7,7 +7,6 @@ import numpy as np
 
 from zoopt.algos.opt_algorithms.paretoopt.paretoopt import ParetoOpt
 from zoopt.utils.tool_function import ToolFunction
-from zoopt.utils.zoo_global import gl
 
 
 class PONSS(ParetoOpt):
@@ -45,7 +44,7 @@ class PONSS(ParetoOpt):
             if t == 0:
                 time_log1 = time.time()
             # choose a individual from population randomly
-            s = population[gl.rand.randint(1, pop_size) - 1]
+            s = population[np.random.randint(0, pop_size)]
             # every bit will be flipped with probability 1/n
             offspring_x = self.mutation(s.get_x(), n)
             offspring = objective.construct_solution(offspring_x)
@@ -80,7 +79,7 @@ class PONSS(ParetoOpt):
                         population.remove(sol)
                     j = 0
                     while j < b:
-                        sols = gl.rand.sample(Q, 2)
+                        sols = np.random.choice(Q, 2, replace=False)
                         Q.remove(sols[0])
                         Q.remove(sols[1])
                         objective.eval_constraint(sols[0])

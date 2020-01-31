@@ -12,7 +12,7 @@ import time
 from zoopt.algos.opt_algorithms.racos.racos_classification import RacosClassification
 from zoopt.algos.opt_algorithms.racos.sracos import SRacos
 from zoopt.utils.tool_function import ToolFunction
-from zoopt.utils.zoo_global import gl
+import numpy as np
 
 
 class SSRacos(SRacos):
@@ -50,7 +50,7 @@ class SSRacos(SRacos):
         non_update_baselines_times = 0
 
         while self.i < iteration_num:
-            if gl.rand.random() < self._parameter.get_probability():
+            if np.random.random() < self._parameter.get_probability():
                 classifier = RacosClassification(
                     self._objective.get_dim(), self._positive_data, self._negative_data, ub)
                 classifier.mixed_classification()

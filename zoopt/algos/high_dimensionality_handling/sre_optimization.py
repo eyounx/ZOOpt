@@ -11,7 +11,6 @@ import numpy as np
 import copy
 import math
 from zoopt.utils.tool_function import ToolFunction
-from zoopt.utils.zoo_global import gl
 
 
 class SequentialRandomEmbedding:

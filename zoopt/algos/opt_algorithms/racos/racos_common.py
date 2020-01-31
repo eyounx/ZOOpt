@@ -8,6 +8,7 @@ Author:
 import copy, math
 from zoopt.utils.tool_function import ToolFunction
 from zoopt.solution import Solution
+from multiprocessing import Queue
 
 
 class RacosCommon:
@@ -86,6 +87,56 @@ class RacosCommon:
                 self._objective.eval(x)
                 self._data.append(x)
                 i += 1
+        self.selection()
+        return
+
+    def parallel_init_attribute(self, unevaluated_queue, evaluated_queue):
+        """
+               Init self._data, self._positive_data, self._negative_data by sampling.
+
+               :return: no return value
+               """
+        self._parameter.set_negative_size(self._parameter.get_train_size() - self._parameter.get_positive_size())
+        # check if the initial solutions have been set
+        data_temp = self._parameter.get_init_samples()
+        ini_size = 0
+        if data_temp is not None:
+            ini_size = len(data_temp)
+        eval_num = 0
+        iteration_num = self._parameter.get_train_size()
+        if data_temp is not None and self._best_solution is None:
+            for j in range(min(ini_size, iteration_num)):
+                if isinstance(data_temp[j], Solution) is False:
+                    sol = self._objective.construct_solution(data_temp[j])
+                else:
+                    sol = data_temp[j]
+                if math.isnan(sol.get_value()):
+                    unevaluated_queue.put(sol, block=True, timeout=None)
+                    eval_num += 1
+                else:
+                    self._data.append(sol)
+        for i in range(0, eval_num):
+            sol = evaluated_queue.get(block=True, timeout=None)
+            ToolFunction.log("init solution %s, value: %s" % (i, sol.get_value()))
+            self._data.append(sol)
+        # otherwise generate random solutions
+        t = ini_size
+        while t < iteration_num:
+            # distinct_flag: True means sample is distinct(can be use),
+            # False means sample is distinct, you should sample again.
+            sol, distinct_flag = self.distinct_sample_from_set(self._objective.get_dim(), self._data,
+                                                             data_num=iteration_num)
+            # panic stop
+            if sol is None:
+                break
+            if distinct_flag:
+                unevaluated_queue.put(sol, block=True, timeout=None)
+                t += 1
+        t = ini_size
+        while t < iteration_num:
+            sol = evaluated_queue.get(block=True, timeout=None)
+            self._data.append(sol)
+            t += 1
         self.selection()
         return
 
@@ -189,12 +240,12 @@ class RacosCommon:
                 if times % 10 == 0:
                     if times == 10:
                         space = classifier.get_sample_space()
-                    limited, number = space.limited_space()
-                    if limited is True:
-                        if number <= data_num:
-                            ToolFunction.log(
-                                'racos_common: WARNING -- sample space has been fully enumerated. Stop early')
-                            return None, None
+                        limited, number = space.limited_space()
+                        if limited is True:
+                            if number <= data_num:
+                                ToolFunction.log(
+                                    'racos_common: WARNING -- sample space has been fully enumerated. Stop early')
+                                return None, None
                     if times > 100:
                         distinct_flag = False
                         break
@@ -271,6 +322,9 @@ class RacosCommon:
         ToolFunction.log('the size of b is: %d' % (len(self._data)))
         for x in self._data:
             x.print_solution()
+
+    def set_best_solution(self, solution):
+        self._best_solution = solution
 
     def get_best_solution(self):
         return self._best_solution

@@ -42,7 +42,7 @@ class Parameter:
                  noise_handling=False, resampling=False, suppression=False, ponss=False, ponss_theta=None, ponss_b=None,
                  non_update_allowed=500, resample_times=100, balance_rate=0.5, high_dim_handling=False, reducedim=False,
                  num_sre=5, low_dimension=None, withdraw_alpha=Dimension(1, [[-1, 1]], [True]), variance_A=None,
-                 stopping_criterion=DefaultStoppingCriterion(), seed=None):
+                 stopping_criterion=DefaultStoppingCriterion(), seed=None, parallel=False, server_num=1):
         """
         Initialization.
 
@@ -131,6 +131,8 @@ class Parameter:
         self.__variance_A = variance_A if variance_A is not None else 1.0/self.__low_dimension.get_size()
         self.__stopping_criterion = stopping_criterion
         self.__seed = seed
+        self.parallel = parallel
+        self.server_num = server_num
         return
 
     def auto_set(self, budget):
@@ -317,3 +319,14 @@ class Parameter:
     def get_seed(self):
         return self.__seed
 
+    def get_parallel(self):
+        return self.parallel
+
+    def set_parallel(self, parallel):
+        self.parallel = parallel
+
+    def get_server_num(self):
+        return self.server_num
+
+    def set_server_num(self, server_num):
+        self.server_num = server_num

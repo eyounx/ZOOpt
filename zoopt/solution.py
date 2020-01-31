@@ -15,7 +15,7 @@ class Solution:
 and attachment
     """
 
-    def __init__(self, x=[], value=nan, resample_value=None, attach=None, post_attach=None, is_in_possible_solution=False):
+    def __init__(self, x=[], value=nan, resample_value=None, attach=None, post_attach=None, is_in_possible_solution=False, no=None):
         """
         Initialization.
 
@@ -36,6 +36,8 @@ and attachment
             This is a meaningful parameter only when using the SSRACOS algorithm. 
             In SSRACOS algorithm, a solution will be added to "possible solution list" after being re-sampling.
             This parameter is to mark if a solution has been added to "possible solution list".
+        :param no:
+            Serial number. For ASRacos.
         """
         self.__x = x
         self.__value = value
@@ -43,6 +45,7 @@ and attachment
         self.__attach = attach
         self.__post_attach = post_attach
         self.__is_in_possible_solution = is_in_possible_solution
+        self.__no = no
         return
 
     @property
@@ -122,6 +125,9 @@ and attachment
     def set_resample_value(self, resample_value):
         self.__resample_value = resample_value
 
+    def set_no(self, no):
+        self.__no = no
+
     def get_resample_value(self):
         return self.__resample_value
 
@@ -140,6 +146,8 @@ and attachment
     def get_attach(self):
         return self.__attach
 
+    def get_no(self):
+        return self.__no
     def print_solution(self):
         ToolFunction.log('x: ' + repr(self.__x))
         ToolFunction.log('value: ' + repr(self.__value))

@@ -8,7 +8,6 @@ Author:
 """
 
 import numpy as np
-from zoopt.utils.zoo_global import gl
 from copy import deepcopy
 import time
 from zoopt.utils.tool_function import ToolFunction
@@ -36,11 +35,11 @@ class ParetoOpt:
         flipped = False
         for i in range(0, n):
             # the probability is 1/n
-            if gl.rand.uniform(0, 1) <= threshold:
+            if np.random.uniform(0, 1) <= threshold:
                 s_temp[i] = (s[i] + 1) % 2
                 flipped = True
         if not flipped:
-            mustflip = gl.rand.randint(0, n-1)
+            mustflip = np.random.randint(0, n)
             s_temp[mustflip] = (s[mustflip] + 1) % 2
         return s_temp
 
@@ -69,7 +68,7 @@ class ParetoOpt:
             if t == 0:
                 time_log1 = time.time()
             # choose a individual from population randomly
-            s = population[gl.rand.randint(1, pop_size)-1]
+            s = population[np.random.randint(0, pop_size)]
             # every bit will be flipped with probability 1/n
             offspring_x = self.mutation(s.get_x(), n)
             offspring = objective.construct_solution(offspring_x)

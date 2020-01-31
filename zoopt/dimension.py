@@ -7,6 +7,7 @@ Author:
 
 from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
+import numpy as np
 import copy
 
 
@@ -111,10 +112,10 @@ class Dimension:
         x = []
         for i in range(self._size):
             if self._types[i] is True:
-                value = gl.rand.uniform(
+                value = np.random.uniform(
                     self._regions[i][0], self._regions[i][1])
             else:
-                value = gl.rand.randint(self._regions[i][0], self._regions[i][1])
+                value = np.random.randint(self._regions[i][0], self._regions[i][1]+1)
             x.append(value)
         return x
 

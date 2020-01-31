@@ -6,8 +6,8 @@ Author:
 """
 
 from zoopt.dimension import Dimension
-from zoopt.utils.zoo_global import gl
 from zoopt.utils.tool_function import ToolFunction
+import numpy as np
 
 
 class RacosClassification:
@@ -62,22 +62,22 @@ class RacosClassification:
         :return: no return value
         """
 
-        self.__x_positive = self.__positive_solution[gl.rand.randint(
-            0, len(self.__positive_solution) - 1)]
+        self.__x_positive = self.__positive_solution[np.random.randint(
+            0, len(self.__positive_solution))]
         len_negative = len(self.__negative_solution)
         index_set = list(range(self.__solution_space.get_size()))
         types = self.__solution_space.get_types()
         order = self.__solution_space.get_order()
         while len_negative > 0:
-            k = index_set[gl.rand.randint(0, len(index_set) - 1)]
+            k = index_set[np.random.randint(0, len(index_set))]
             x_pos_k = self.__x_positive.get_x_index(k)
             # continuous
             if types[k] is True:
                 x_negative = self.__negative_solution[
-                    gl.rand.randint(0, len_negative - 1)]
+                    np.random.randint(0, len_negative)]
                 x_neg_k = x_negative.get_x_index(k)
                 if x_pos_k < x_neg_k:
-                    r = gl.rand.uniform(x_pos_k, x_neg_k)
+                    r = np.random.uniform(x_pos_k, x_neg_k)
                     if r < self.__sample_region[k][1]:
                         self.__sample_region[k][1] = r
                         i = 0
@@ -90,7 +90,7 @@ class RacosClassification:
                             else:
                                 i += 1
                 else:
-                    r = gl.rand.uniform(x_neg_k, x_pos_k)
+                    r = np.random.uniform(x_neg_k, x_pos_k)
                     if r > self.__sample_region[k][0]:
                         self.__sample_region[k][0] = r
                         i = 0
@@ -106,11 +106,11 @@ class RacosClassification:
             else:
                 if order[k] is True:
                     x_negative = self.__negative_solution[
-                        gl.rand.randint(0, len_negative - 1)]
+                        np.random.randint(0, len_negative)]
                     x_neg_k = x_negative.get_x_index(k)
                     if x_pos_k < x_neg_k:
                         # different from continuous version
-                        r = gl.rand.randint(x_pos_k, x_neg_k - 1)
+                        r = np.random.randint(x_pos_k, x_neg_k)
                         if r < self.__sample_region[k][1]:
                             self.__sample_region[k][1] = r
                             i = 0
@@ -123,7 +123,7 @@ class RacosClassification:
                                 else:
                                     i += 1
                     else:
-                        r = gl.rand.randint(x_neg_k, x_pos_k)
+                        r = np.random.randint(x_neg_k, x_pos_k + 1)
                         if r > self.__sample_region[k][0]:
                             self.__sample_region[k][0] = r
                             i = 0
@@ -163,7 +163,7 @@ class RacosClassification:
         """
         index_set = iset
         for i in range(self.__uncertain_bit):
-            index = index_set[gl.rand.randint(0, len(index_set) - 1)]
+            index = index_set[np.random.randint(0, len(index_set))]
             self.__label[index] = True
             index_set.remove(index)
         return
@@ -178,9 +178,9 @@ class RacosClassification:
         for i in range(self.__solution_space.get_size()):
             if self.__label[i] is True:
                 if self.__solution_space.get_type(i) is True:
-                    x.append(gl.rand.uniform(self.__sample_region[i][0], self.__sample_region[i][1]))
+                    x.append(np.random.uniform(self.__sample_region[i][0], self.__sample_region[i][1]))
                 else:
-                    x.append(gl.rand.randint(self.__sample_region[i][0], self.__sample_region[i][1]))
+                    x.append(np.random.randint(self.__sample_region[i][0], self.__sample_region[i][1]+1))
             else:
                 x.append(self.__x_positive.get_x_index(i))
         return x
