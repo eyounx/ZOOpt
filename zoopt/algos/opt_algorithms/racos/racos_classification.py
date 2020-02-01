@@ -7,6 +7,7 @@ Author:
 
 from zoopt.dimension import Dimension
 from zoopt.utils.tool_function import ToolFunction
+import copy
 import numpy as np
 
 
@@ -26,7 +27,7 @@ class RacosClassification:
         """
         self.__solution_space = dim
         self.__sample_region = []
-        self.__label = []
+        self.__label_index = []
         # Solution
         self.__positive_solution = positive
         self.__negative_solution = negative
@@ -37,7 +38,6 @@ class RacosClassification:
         for i in range(dim.get_size()):
             temp = [regions[i][0], regions[i][1]]
             self.__sample_region.append(temp)
-            self.__label.append(False)
         return
 
     def reset_classifier(self):
@@ -50,7 +50,7 @@ class RacosClassification:
         for i in range(self.__solution_space.get_size()):
             self.__sample_region[i][0] = regions[i][0]
             self.__sample_region[i][1] = regions[i][1]
-            self.__label[i] = False
+            self.__label_index = []
         self.__x_positive = None
         return
 
@@ -161,11 +161,7 @@ class RacosClassification:
         :param iset: index set
         :return: no return value
         """
-        index_set = iset
-        for i in range(self.__uncertain_bit):
-            index = index_set[np.random.randint(0, len(index_set))]
-            self.__label[index] = True
-            index_set.remove(index)
+        self.__label_index = np.random.choice(iset, self.__uncertain_bit, replace=False)
         return
 
     def rand_sample(self):
@@ -174,15 +170,12 @@ class RacosClassification:
 
         :return: sampled x
         """
-        x = []
-        for i in range(self.__solution_space.get_size()):
-            if self.__label[i] is True:
-                if self.__solution_space.get_type(i) is True:
-                    x.append(np.random.uniform(self.__sample_region[i][0], self.__sample_region[i][1]))
-                else:
-                    x.append(np.random.randint(self.__sample_region[i][0], self.__sample_region[i][1]+1))
+        x = copy.deepcopy(self.__x_positive.get_x())
+        for index in self.__label_index:
+            if self.__solution_space.get_type(index) is True:
+                x[index] = np.random.uniform(self.__sample_region[index][0], self.__sample_region[index][1])
             else:
-                x.append(self.__x_positive.get_x_index(i))
+                x[index] = np.random.randint(self.__sample_region[index][0], self.__sample_region[index][1] + 1)
         return x
 
     def get_sample_region(self):
@@ -203,8 +196,8 @@ class RacosClassification:
     def get_x_positive(self):
         return self.__x_positive
 
-    def get_label(self):
-        return self.__label
+    def get_label_index(self):
+        return self.__label_index
 
     # for debugging
     def print_neg(self):

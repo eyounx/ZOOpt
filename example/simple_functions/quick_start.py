@@ -11,8 +11,9 @@ from simple_function import ackley
 if __name__ == '__main__':
     dim = 100  # dimension
     objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
-    parameter = Parameter(budget=100 * dim, init_samples=[Solution([0] * 100)])  # init with init_samples
-    solution_list = ExpOpt.min(objective, parameter, repeat=5, plot=False, plot_file="img/quick_start.png")
+    parameter = Parameter(budget=100 * dim, intermediate_result= True, intermediate_freq=1000)
+    # parameter = Parameter(budget=100 * dim, init_samples=[Solution([0] * 100)])  # init with init_samples
+    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/quick_start.png")
     for solution in solution_list:
         x = solution.get_x()
         value = solution.get_value()
