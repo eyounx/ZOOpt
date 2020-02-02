@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>objective &mdash; ZOOpt 0.2.2 documentation</title>
+  <title>objective &mdash; ZOOpt 0.3.0 documentation</title>
   
 
   
@@ -17,35 +17,45 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="parameter" href="parameter.html" />
     <link rel="prev" title="dimension" href="dimension.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -315,166 +325,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-objective">
-<span id="objective"></span><h1>objective<a class="headerlink" href="#module-objective" title="Permalink to this headline">¶</a></h1>
-<p>This module contains the class Objective</p>
-<dl class="docutils">
-<dt>Author:</dt>
-<dd>Yu-Ren Liu, Xiong-Hui Chen</dd>
-</dl>
-<dl class="class">
-<dt id="objective.Objective">
-<em class="property">class </em><code class="descclassname">objective.</code><code class="descname">Objective</code><span class="sig-paren">(</span><em>func=None</em>, <em>dim=None</em>, <em>constraint=None</em>, <em>resample_func=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objective.html#Objective"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objective.Objective" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class represents the objective function and its associated variables</p>
-<dl class="method">
-<dt id="objective.Objective.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>func=None</em>, <em>dim=None</em>, <em>constraint=None</em>, <em>resample_func=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objective.html#Objective.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objective.Objective.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialization.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>func</strong> – objective function defined by the user</li>
-<li><strong>dim</strong> – a Dimension object, which describes the search space.</li>
-<li><strong>constraint</strong> – constraint function for POSS</li>
-<li><strong>resample_func</strong> – resample function for SSRacos</li>
-<li><strong>reducedim</strong> – whether to use sequential random embedding</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="objective.Objective.clean_history">
-<code class="descname">clean_history</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/objective.html#Objective.clean_history"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objective.Objective.clean_history" title="Permalink to this definition">¶</a></dt>
-<dd><p>clean the optimization history</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="objective.Objective.construct_solution">
-<code class="descname">construct_solution</code><span class="sig-paren">(</span><em>x</em>, <em>parent=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objective.html#Objective.construct_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objective.Objective.construct_solution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Construct a solution from x</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> – a list</li>
-<li><strong>parent</strong> – the attached structure</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">solution</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="objective.Objective.default_inherit">
-<em class="property">static </em><code class="descname">default_inherit</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objective.html#Objective.default_inherit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objective.Objective.default_inherit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Default inherited function.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parent</strong> – the parent structure</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="objective.Objective.default_post_inherit">
-<em class="property">static </em><code class="descname">default_post_inherit</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objective.html#Objective.default_post_inherit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objective.Objective.default_post_inherit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Default post inherited function.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parent</strong> – the parent structure</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="objective.Objective.eval">
-<code class="descname">eval</code><span class="sig-paren">(</span><em>solution</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objective.html#Objective.eval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objective.Objective.eval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use the objective function to evaluate a solution.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>solution</strong> – </td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">value of fx(evaluation result) will be returned</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="objective.Objective.get_history_bestsofar">
-<code class="descname">get_history_bestsofar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/objective.html#Objective.get_history_bestsofar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objective.Objective.get_history_bestsofar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the best-so-far history.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="objective.Objective.parameter_set">
-<code class="descname">parameter_set</code><span class="sig-paren">(</span><em>parameter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objective.html#Objective.parameter_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objective.Objective.parameter_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use a Parameter object to set attributes in Objective object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parameter</strong> – a Parameter object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">no return</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="objective.Objective.resample">
-<code class="descname">resample</code><span class="sig-paren">(</span><em>solution</em>, <em>repeat_times</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objective.html#Objective.resample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objective.Objective.resample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resample function for value suppression.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>solution</strong> – a Solution object</li>
-<li><strong>repeat_times</strong> – repeat times</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">repeat times</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="objective.Objective.set_func">
-<code class="descname">set_func</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objective.html#Objective.set_func"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objective.Objective.set_func" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the objective function
-:param func: the objective function
-:return: no return value</p>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="objective">
+<h1>objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -488,7 +340,7 @@
         <a href="parameter.html" class="btn btn-neutral float-right" title="parameter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dimension.html" class="btn btn-neutral" title="dimension" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dimension.html" class="btn btn-neutral float-left" title="dimension" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -497,7 +349,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu
 
     </p>
   </div>
@@ -514,35 +366,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

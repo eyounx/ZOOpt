@@ -1,5 +1,0 @@
-dimension
-=========
-
-.. automodule:: dimension
-   :members:

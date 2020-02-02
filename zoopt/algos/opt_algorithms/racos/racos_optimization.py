@@ -54,7 +54,7 @@ class RacosOptimization:
                     self.__algorithm = SSRacos()
                 else:
                     self.__algorithm = SRacos()
-                    self.__best_solution = self.__algorithm.opt(
+                self.__best_solution = self.__algorithm.opt(
                         objective, parameter, strategy, ub)
             else:
                 self.__algorithm = Racos()

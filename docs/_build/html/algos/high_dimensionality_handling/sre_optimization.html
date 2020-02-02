@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sre_optimization &mdash; ZOOpt 0.2.2 documentation</title>
+  <title>sre_optimization &mdash; ZOOpt 0.3.0 documentation</title>
   
 
   
@@ -17,35 +17,45 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'0.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="noise_handling" href="../noise_handling.html" />
     <link rel="prev" title="high_dimensionality_handling" href="../high_dimensionality_handling.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -319,51 +329,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-sre_optimization">
-<span id="sre-optimization"></span><h1>sre_optimization<a class="headerlink" href="#module-sre_optimization" title="Permalink to this headline">¶</a></h1>
-<p>This module contains the class SequentialRandomEmbedding.</p>
-<dl class="docutils">
-<dt>Author:</dt>
-<dd>Yu-Ren Liu</dd>
-</dl>
-<dl class="class">
-<dt id="sre_optimization.SequentialRandomEmbedding">
-<em class="property">class </em><code class="descclassname">sre_optimization.</code><code class="descname">SequentialRandomEmbedding</code><span class="sig-paren">(</span><em>objective</em>, <em>parameter</em>, <em>optimizer</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sre_optimization.html#SequentialRandomEmbedding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sre_optimization.SequentialRandomEmbedding" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sequential random embedding is implemented in this class.</p>
-<dl class="method">
-<dt id="sre_optimization.SequentialRandomEmbedding.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>objective</em>, <em>parameter</em>, <em>optimizer</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sre_optimization.html#SequentialRandomEmbedding.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sre_optimization.SequentialRandomEmbedding.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>objective</strong> – an Objective object</li>
-<li><strong>parameter</strong> – an Parameter object</li>
-<li><strong>optimizer</strong> – the optimization algorithm</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sre_optimization.SequentialRandomEmbedding.opt">
-<code class="descname">opt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sre_optimization.html#SequentialRandomEmbedding.opt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sre_optimization.SequentialRandomEmbedding.opt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sequential random embedding optimization.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the best solution of the optimization</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="sre-optimization">
+<h1>sre_optimization<a class="headerlink" href="#sre-optimization" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -377,7 +344,7 @@
         <a href="../noise_handling.html" class="btn btn-neutral float-right" title="noise_handling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../high_dimensionality_handling.html" class="btn btn-neutral" title="high_dimensionality_handling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../high_dimensionality_handling.html" class="btn btn-neutral float-left" title="high_dimensionality_handling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -386,7 +353,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu
 
     </p>
   </div>
@@ -403,35 +370,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

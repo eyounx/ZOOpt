@@ -1,5 +1,0 @@
-ramploss
-========
-
-.. automodule:: ramploss
-   :members:

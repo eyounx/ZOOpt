@@ -66,10 +66,13 @@ class RacosClassification:
             0, len(self.__positive_solution))]
         len_negative = len(self.__negative_solution)
         index_set = list(range(self.__solution_space.get_size()))
+        remain_index_set = list(range(self.__solution_space.get_size()))
         types = self.__solution_space.get_types()
         order = self.__solution_space.get_order()
         while len_negative > 0:
-            k = index_set[np.random.randint(0, len(index_set))]
+            if len(remain_index_set) == 0:
+                ToolFunction.log('ERROR: sampled two same solutions, please raise issues on github')
+            k = remain_index_set[np.random.randint(0, len(remain_index_set))]
             x_pos_k = self.__x_positive.get_x_index(k)
             # continuous
             if types[k] is True:
@@ -147,6 +150,7 @@ class RacosClassification:
                             self.__negative_solution[len_negative] = itemp
                         else:
                             i += 1
+                    remain_index_set.remove(k)
                     if delete != 0:
                         index_set.remove(k)
                     if len(index_set) == 0:
@@ -154,14 +158,15 @@ class RacosClassification:
         self.set_uncertain_bit(index_set)
         return
 
-    def set_uncertain_bit(self, iset):
+    def set_uncertain_bit(self, index_set):
         """
         Choose uncertain bits from iset.
 
         :param iset: index set
         :return: no return value
         """
-        self.__label_index = np.random.choice(iset, self.__uncertain_bit, replace=False)
+        ub = min(self.__uncertain_bit, len(index_set))
+        self.__label_index = np.random.choice(index_set, ub, replace=False)
         return
 
     def rand_sample(self):

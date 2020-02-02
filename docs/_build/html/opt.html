@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>opt &mdash; ZOOpt 0.2.2 documentation</title>
+  <title>opt &mdash; ZOOpt 0.3.0 documentation</title>
   
 
   
@@ -17,35 +17,45 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="exp_opt" href="exp_opt.html" />
     <link rel="prev" title="solution" href="solution.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -315,62 +325,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-opt">
-<span id="opt"></span><h1>opt<a class="headerlink" href="#module-opt" title="Permalink to this headline">¶</a></h1>
-<p>This module contains the class Opt.</p>
-<dl class="docutils">
-<dt>Author:</dt>
-<dd>Yu-Ren Liu</dd>
-</dl>
-<dl class="class">
-<dt id="opt.Opt">
-<em class="property">class </em><code class="descclassname">opt.</code><code class="descname">Opt</code><a class="reference internal" href="_modules/opt.html#Opt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opt.Opt" title="Permalink to this definition">¶</a></dt>
-<dd><p>The main entrance of the optimization.</p>
-<dl class="method">
-<dt id="opt.Opt.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/opt.html#Opt.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opt.Opt.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="opt.Opt.min">
-<em class="property">static </em><code class="descname">min</code><span class="sig-paren">(</span><em>objective</em>, <em>parameter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opt.html#Opt.min"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opt.Opt.min" title="Permalink to this definition">¶</a></dt>
-<dd><p>Minimization function.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>objective</strong> – an Objective object</li>
-<li><strong>parameter</strong> – a Parameter object</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the result of the optimization</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="opt.Opt.set_global">
-<em class="property">static </em><code class="descname">set_global</code><span class="sig-paren">(</span><em>parameter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/opt.html#Opt.set_global"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opt.Opt.set_global" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set global variables.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parameter</strong> – a Parameter object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">no return value</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="opt">
+<h1>opt<a class="headerlink" href="#opt" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -384,7 +340,7 @@
         <a href="exp_opt.html" class="btn btn-neutral float-right" title="exp_opt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="solution.html" class="btn btn-neutral" title="solution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="solution.html" class="btn btn-neutral float-left" title="solution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -393,7 +349,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu
 
     </p>
   </div>
@@ -410,35 +366,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

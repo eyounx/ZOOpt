@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick Start &mdash; ZOOpt 0.2.2 documentation</title>
+  <title>Quick Start &mdash; ZOOpt 0.3.0 documentation</title>
   
 
   
@@ -17,35 +17,45 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="A Generic Process to Use ZOOpt" href="A-Generic-Process-to-Use-ZOOpt.html" />
     <link rel="prev" title="Tutorial of ZOOpt" href="Tutorial of ZOOpt.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -332,13 +342,7 @@ Optimization</a>.</p>
 <a class="reference external" href="https://www.anaconda.com/what-is-anaconda/">conda</a> environment
 manager. Typing the following command in your terminal will install all
 required packages in your Python environment.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install numpy matplotlib
-</pre></div>
-</div>
 <p>or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install numpy matplotlib
-</pre></div>
-</div>
 </div>
 <div class="section" id="getting-and-installing-zoopt">
 <h2>Getting and installing ZOOpt<a class="headerlink" href="#getting-and-installing-zoopt" title="Permalink to this headline">¶</a></h2>
@@ -346,25 +350,25 @@ required packages in your Python environment.</p>
 terminal/command line.</p>
 <p>If you want to install ZOOpt by source code, download this project and
 sequentially run following commands in your terminal/command line.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python setup.py build
-$ python setup.py install
-</pre></div>
-</div>
 </div>
 <div class="section" id="a-quick-example">
 <h2>A quick example<a class="headerlink" href="#a-quick-example" title="Permalink to this headline">¶</a></h2>
 <p>We define the Ackley function for minimization (note that this function
 is for arbitrary dimensions, determined by the solution)</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ackley</span><span class="p">(</span><span class="n">solution</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Ackley function for continuous optimization&quot;&quot;&quot;</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span>
-    <span class="n">bias</span> <span class="o">=</span> <span class="mf">0.2</span>
-    <span class="n">ave_seq</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([(</span><span class="n">i</span> <span class="o">-</span> <span class="n">bias</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">bias</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">ave_cos</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">bias</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ave_seq</span><span class="p">))</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ave_cos</span><span class="p">)</span> <span class="o">+</span> <span class="mf">20.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">e</span>
-    <span class="k">return</span> <span class="n">value</span>
-</pre></div>
-</div>
+<dl class="docutils">
+<dt>::</dt>
+<dd><dl class="first last docutils">
+<dt>def ackley(solution):</dt>
+<dd>“”“Ackley function for continuous optimization”“”
+x = solution.get_x()
+bias = 0.2
+ave_seq = sum([(i - bias) * (i - bias) for i in x]) / len(x)
+ave_cos = sum([np.cos(2.0 * np.pi * (i - bias)) for i in x]) / len(x)
+value = -20 * np.exp(-0.2 * np.sqrt(ave_seq)) - np.exp(ave_cos) + 20.0 + np.e
+return value</dd>
+</dl>
+</dd>
+</dl>
 <p>Ackley function is a classical function with many local minima. In
 2-dimension, it looks like (from wikipedia)</p>
 <img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Ackley%27s_function.pdf/page1-400px-Ackley%27s_function.pdf.jpg?raw=true" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Ackley%27s_function.pdf/page1-400px-Ackley%27s_function.pdf.jpg?raw=true" />
@@ -373,74 +377,80 @@ is for arbitrary dimensions, determined by the solution)</p>
 <li>import components from zoopt, where <code class="docutils literal notranslate"><span class="pre">ExpOpt</span></code> is the
 experiment-purpose replacement of <code class="docutils literal notranslate"><span class="pre">Opt</span></code></li>
 </ol>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoopt</span> <span class="k">import</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">Objective</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">ExpOpt</span>
+<div class="code python highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoopt</span> <span class="kn">import</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">Objective</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">ExpOpt</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li>set the dimension</li>
 </ol>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dim</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># dimension</span>
+<div class="code python highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dim</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># dimension</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li>set up the <code class="docutils literal notranslate"><span class="pre">Dimension</span></code> object</li>
 </ol>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># The search space is [-1, 1] for each dimension and is continuous</span>
-<span class="n">dimobj</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dim</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim</span><span class="p">)</span>
+<div class="code python highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The search space is [-1, 1] for each dimension and is continuous</span>
+<span class="n">dimobj</span> <span class="o">=</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dim</span><span class="p">,</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
 <li>set up the <code class="docutils literal notranslate"><span class="pre">Objective</span></code> object defining the function to be minimized</li>
 </ol>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">ackley</span><span class="p">,</span> <span class="n">dimobj</span><span class="p">)</span>
+<div class="code python highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">ackley</span><span class="p">,</span> <span class="n">dimobj</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
 <li>set up the parameters of the optimization algorithms. The minimum
 variable is the budget size</li>
 </ol>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">100</span> <span class="o">*</span> <span class="n">dim</span><span class="p">)</span>
+<div class="code python highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">100</span> <span class="o">*</span> <span class="n">dim</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
 <li>perform the optimization by</li>
 </ol>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solution</span> <span class="o">=</span> <span class="n">Opt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">)</span>
+<div class="code python highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solution</span> <span class="o">=</span> <span class="n">Opt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
 <li>visualize the optimization progress</li>
 </ol>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="code python highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">objective</span><span class="o">.</span><span class="n">get_history_bestsofar</span><span class="p">())</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;opt_progress.pdf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Combining step 6 and 7, <code class="docutils literal notranslate"><span class="pre">ExpOpt</span></code> (from v0.2) can be used for experiments, which supports multi-repeat and ploting</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solution_list</span> <span class="o">=</span> <span class="n">ExpOpt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_file</span><span class="o">=</span><span class="s1">&#39;opt_progress.pdf&#39;</span><span class="p">)</span>
+<div class="code python highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solution_list</span> <span class="o">=</span> <span class="n">ExpOpt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">plot_file</span><span class="o">=</span><span class="s1">&#39;opt_progress.pdf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Finally the whole piece of the code for optimization is:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoopt</span> <span class="k">import</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">Objective</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">ExpOpt</span>
+<div class="code python highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoopt</span> <span class="kn">import</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">Objective</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">ExpOpt</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
        <span class="n">dim</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># dimension</span>
-       <span class="n">Objective</span><span class="p">(</span><span class="n">ackley</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dim</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim</span><span class="p">))</span> <span class="c1">#set up objective</span>
+       <span class="n">Objective</span><span class="p">(</span><span class="n">ackley</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dim</span><span class="p">,</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim</span><span class="p">))</span> <span class="c1">#set up objective</span>
        <span class="n">parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">budget</span><span class="o">=</span><span class="mi">100</span> <span class="o">*</span> <span class="n">dim</span><span class="p">)</span>
-       <span class="n">solution_list</span> <span class="o">=</span> <span class="n">ExpOpt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_file</span><span class="o">=</span><span class="s1">&#39;opt_progress.pdf&#39;</span><span class="p">)</span>
+       <span class="n">solution_list</span> <span class="o">=</span> <span class="n">ExpOpt</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">plot_file</span><span class="o">=</span><span class="s1">&#39;opt_progress.pdf&#39;</span><span class="p">)</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 <p>For a few seconds, the optimization is done. The terminal/command line
 will show optimization result</p>
 <img alt="https://github.com/eyounx/ZOOpt/blob/dev/img/quick_start_cmd.png?raw=true" src="https://github.com/eyounx/ZOOpt/blob/dev/img/quick_start_cmd.png?raw=true" />
 <p>Visualized optimization progress looks like</p>
 <a class="reference internal image-reference" href="https://github.com/eyounx/ZOOpt/blob/dev/img/quick_start.png?raw=true"><img alt="https://github.com/eyounx/ZOOpt/blob/dev/img/quick_start.png?raw=true" src="https://github.com/eyounx/ZOOpt/blob/dev/img/quick_start.png?raw=true" style="width: 500px;" /></a>
 <p>To get all solutions in solution_list, you can type</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">solution</span> <span class="ow">in</span> <span class="n">solution_list</span><span class="p">:</span>
+<div class="code python highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">solution</span> <span class="ow">in</span> <span class="n">solution_list</span><span class="p">:</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span>
     <span class="n">value</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The rest of the tutorial introduces more functions of ZOOpt.</p>
@@ -458,7 +468,7 @@ will show optimization result</p>
         <a href="A-Generic-Process-to-Use-ZOOpt.html" class="btn btn-neutral float-right" title="A Generic Process to Use ZOOpt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Tutorial of ZOOpt.html" class="btn btn-neutral" title="Tutorial of ZOOpt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Tutorial of ZOOpt.html" class="btn btn-neutral float-left" title="Tutorial of ZOOpt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -467,7 +477,7 @@ will show optimization result</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu
 
     </p>
   </div>
@@ -484,35 +494,16 @@ will show optimization result</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

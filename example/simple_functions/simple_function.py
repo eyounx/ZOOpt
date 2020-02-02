@@ -5,7 +5,6 @@ Author:
     Yu-Ren Liu
 """
 
-from random import Random
 from zoopt.dimension import Dimension
 import numpy as np
 
@@ -15,8 +14,6 @@ class SetCover:
     set cover problem for discrete optimization
     this problem has some extra initialization tasks, thus we define this problem as a class
     """
-    __weight = None
-    __subset = None
 
     def __init__(self):
         self.__weight = [0.8356, 0.5495, 0.4444, 0.7269, 0.9960, 0.6633, 0.5062, 0.8429, 0.1293, 0.7355,
@@ -110,8 +107,6 @@ def sphere_discrete_order(solution):
     """
     Sphere function for integer continuous optimization
     """
-    a = 0
-    rd = Random()
     x = solution.get_x()
     value = sum([(i-2)*(i-2) for i in x])
     return value

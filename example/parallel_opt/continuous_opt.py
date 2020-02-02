@@ -1,34 +1,23 @@
-from zoopt import Objective, Dimension, Solution, Parameter, ExpOpt
-import time
+from zoopt import Objective, Dimension, Solution, Parameter, ExpOpt, Opt
+import numpy as np
 
 
-def sphere(solution):
+def ackley(solution):
     """
-    Sphere function for continuous optimization
+    Ackley function for continuous optimization
     """
     x = solution.get_x()
-    value = sum([(i-0.2)*(i-0.2) for i in x])
-    # time.sleep(2)
+    bias = 0.2
+    ave_seq = sum([(i - bias) * (i - bias) for i in x]) / len(x)
+    ave_cos = sum([np.cos(2.0*np.pi*(i-bias)) for i in x]) / len(x)
+    value = -20 * np.exp(-0.2 * np.sqrt(ave_seq)) - np.exp(ave_cos) + 20.0 + np.e
     return value
 
 
 if __name__ == '__main__':
     dim = 100  # dimension
-    objective = Objective(sphere, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
-    parameter = Parameter(budget=4000, seed=666, intermediate_freq=100, parallel=True, server_num=10)  # init with init_samples
-    t1 = time.time()
-    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=False)
-    # t2 = time.time()
-    # m, s = divmod(t2-t1, 60)
-    # h, m = divmod(m, 60)
-    # print('running time: %02d:%02d:%02d' % (h, m, s))
-    for solution in solution_list:
-        x = solution.get_x()
-        value = solution.get_value()
-        print(x, value)
-    parameter = Parameter(budget=2000, seed=666, intermediate_freq=100)
-    solution_list = ExpOpt.min(objective, parameter, repeat=1, plot=False)
-    for solution in solution_list:
-        x = solution.get_x()
-        value = solution.get_value()
-        print(x, value)
+    objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
+    parameter = Parameter(budget=10000, parallel=True, server_num=3)  # init with init_samples
+    sol = Opt.min(objective, parameter)
+    print(sol.get_x())
+    print(sol.get_value())

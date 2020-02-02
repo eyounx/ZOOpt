@@ -1,5 +1,0 @@
-solution
-========
-
-.. automodule:: solution
-   :members:

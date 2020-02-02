@@ -39,15 +39,16 @@ class Racos(RacosCommon):
         for i in range(t):
             j = 0
             iteration_num = len(self._negative_data)
+            sampled_data = self._positive_data + self._negative_data
             while j < iteration_num:
                 if np.random.random() < self._parameter.get_probability():
                     classifier = RacosClassification(
                         self._objective.get_dim(), self._positive_data, self._negative_data, ub)
                     classifier.mixed_classification()
-                    solution, distinct_flag = self.distinct_sample_classifier(classifier, True,
+                    solution, distinct_flag = self.distinct_sample_classifier(classifier, sampled_data, True,
                                                                               self._parameter.get_train_size())
                 else:
-                    solution, distinct_flag = self.distinct_sample(self._objective.get_dim())
+                    solution, distinct_flag = self.distinct_sample(self._objective.get_dim(), sampled_data)
                 # panic stop
                 if solution is None:
                     return self._best_solution
@@ -61,6 +62,7 @@ class Racos(RacosCommon):
                 self.show_best_solution(parameter.get_intermediate_result(), times,
                                         parameter.get_intermediate_freq())
                 self._data.append(solution)
+                sampled_data.append(solution)
                 # stopping criterion check
                 if stopping_criterion.check(self) is True:
                     return self._best_solution

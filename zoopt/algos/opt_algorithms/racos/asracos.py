@@ -40,7 +40,7 @@ class ASRacos():
             evaluator.start()
         self.asracoscont.parallel_init_attribute(unevaluated_queue, evaluated_queue)
         updater = Updater(objective, parameter, unevaluated_queue, evaluated_queue, result_queue, history_queue, self.asracoscont,
-                          strategy='WR', ub=1)
+                          strategy, ub)
         updater.start()
         result = result_queue.get(block=True, timeout=None)
         self.asracoscont.get_objective().set_history(history_queue.get(block=True, timeout=None))
@@ -58,35 +58,6 @@ class ASRacosCont(SRacos):
         """
         SRacos.__init__(self)
         return
-
-    def parallel_distinct_sample(self, classifier, under_evaluate_list, check_distinct=True, data_num=0):
-        """
-                Sample a distinct solution from a classifier.
-                """
-        x = classifier.rand_sample()
-        ins = self._objective.construct_solution(x)
-        times = 1
-        distinct_flag = True
-        if check_distinct is True:
-            while self.is_distinct(self._positive_data, ins) is False or \
-                    self.is_distinct(self._negative_data, ins) is False or \
-                    self.is_distinct(under_evaluate_list, ins) is False:
-                x = classifier.rand_sample()
-                ins = self._objective.construct_solution(x)
-                times += 1
-                if times % 10 == 0:
-                    if times == 10:
-                        space = classifier.get_sample_space()
-                        limited, number = space.limited_space()
-                        if limited is True:
-                            if number <= data_num:
-                                ToolFunction.log(
-                                    'racos_common: WARNING -- sample space has been fully enumerated. Stop early')
-                                return None, None
-                    if times > 100:
-                        distinct_flag = False
-                        break
-        return ins, distinct_flag
 
 
 class Evaluator(Process):
@@ -135,9 +106,10 @@ class Updater(Process):
         classifier.mixed_classification()
         t = 0
         history = []
+        sampled_data = self.asracoscont.get_positive_data() + self.asracoscont.get_negative_data()
         while t < self.parameter.server_num:
-            solution, distinct_flag = self.asracoscont.parallel_distinct_sample(classifier, under_evaluate_list, True,
-                                                                                self.parameter.get_train_size())
+            solution, distinct_flag = self.asracoscont.distinct_sample_classifier(classifier, sampled_data, True,
+                                                                       self.parameter.get_train_size())
             if distinct_flag is False:
                 ToolFunction.log(
                     "[break initiation] cannot sample non-repetitive solutions from the search space.")
@@ -145,10 +117,12 @@ class Updater(Process):
                 return
             solution.set_no(t)
             under_evaluate_list.append(solution)
+            sampled_data.append(solution)
             self.unevaluated_queue.put(solution, block=True, timeout=None)
             t += 1
         while i < iteration_num:
             # evaluate the solution
+            assert len(under_evaluate_list) == self.parameter.server_num
             new_sol = self.evaluated_queue.get(block=True, timeout=None)
             history.append(self.asracoscont.get_best_solution().get_value())
             # show best solution
@@ -187,16 +161,17 @@ class Updater(Process):
             i += 1
             current_not_distinct_times = 0
             solution = None
+            sampled_data = self.asracoscont.get_positive_data() + self.asracoscont.get_negative_data() + under_evaluate_list
             while current_not_distinct_times < max_distinct_repeat_times:
                 if np.random.rand() < self.parameter.get_probability():
                     classifier = RacosClassification(
                         self.objective.get_dim(), self.asracoscont.get_positive_data(), self.asracoscont.get_negative_data(), self.ub)
                     classifier.mixed_classification()
-                    solution, distinct_flag = self.asracoscont.parallel_distinct_sample(
-                        classifier, True, self.parameter.get_train_size())
+                    solution, distinct_flag = self.asracoscont.distinct_sample_classifier(
+                        classifier, sampled_data, True, self.parameter.get_train_size())
                 else:
                     solution, distinct_flag = self.asracoscont.distinct_sample(
-                        self.objective.get_dim())
+                        self.objective.get_dim(), sampled_data)
                 # panic stop
                 if solution is None:
                     ToolFunction.log(" [break loop] failure in sampling new solutions")
@@ -209,7 +184,9 @@ class Updater(Process):
             if current_not_distinct_times >= max_distinct_repeat_times:
                 ToolFunction.log(
                     "[break loop] cannot sample non-repetitive solutions from the search space.")
+                self.objective.set_history(history)
                 self.result_queue.put(self.asracoscont.get_best_solution(), block=True, timeout=None)
+                self.history_queue.put(history, block=True, timeout=None)
                 return
             under_evaluate_list[new_sol.get_no()] = solution
             self.unevaluated_queue.put(solution, block=True, timeout=None)

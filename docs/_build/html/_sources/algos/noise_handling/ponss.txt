@@ -1,5 +1,0 @@
-ponss
-=====
-
-.. automodule:: ponss
-   :members:

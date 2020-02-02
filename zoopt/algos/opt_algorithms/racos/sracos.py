@@ -47,17 +47,16 @@ class SRacos(RacosCommon):
         time_log1 = time.time()
         max_distinct_repeat_times = 100
         current_not_distinct_times = 0
-        last_best = None
         while i < iteration_num:
+            sampled_data = self._positive_data + self._negative_data
             if np.random.random() < self._parameter.get_probability():
                 classifier = RacosClassification(
                     self._objective.get_dim(), self._positive_data, self._negative_data, ub)
                 classifier.mixed_classification()
                 solution, distinct_flag = self.distinct_sample_classifier(
-                    classifier, True, self._parameter.get_train_size())
+                    classifier, sampled_data, True, self._parameter.get_train_size())
             else:
-                solution, distinct_flag = self.distinct_sample(
-                    self._objective.get_dim())
+                solution, distinct_flag = self.distinct_sample(self._objective.get_dim(), sampled_data)
             # panic stop
             if solution is None:
                 ToolFunction.log(" [break loop] because solution is None")
@@ -78,7 +77,6 @@ class SRacos(RacosCommon):
             bad_ele = self.replace(self._positive_data, solution, 'pos')
             self.replace(self._negative_data, bad_ele, 'neg', strategy)
             self._best_solution = self._positive_data[0]
-            last_best = self._best_solution.get_value()
             if i == 4:
                 time_log2 = time.time()
                 expected_time = (self._parameter.get_budget() - self._parameter.get_train_size()) * \

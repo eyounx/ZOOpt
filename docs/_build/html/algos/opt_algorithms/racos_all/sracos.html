@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sracos &mdash; ZOOpt 0.2.2 documentation</title>
+  <title>sracos &mdash; ZOOpt 0.3.0 documentation</title>
   
 
   
@@ -17,35 +17,45 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'0.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="paretoopt" href="../paretoopt.html" />
     <link rel="prev" title="racos_optimization" href="racos_optimization.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -321,168 +331,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-sracos">
-<span id="sracos"></span><h1>sracos<a class="headerlink" href="#module-sracos" title="Permalink to this headline">¶</a></h1>
-<p>This module contains the class SRacos, which is the sequential version of Racos (a classification based optimization algorithm).</p>
-<dl class="docutils">
-<dt>Author:</dt>
-<dd>Yu-ren Liu</dd>
-</dl>
-<dl class="class">
-<dt id="sracos.SRacos">
-<em class="property">class </em><code class="descclassname">sracos.</code><code class="descname">SRacos</code><a class="reference internal" href="../../../_modules/sracos.html#SRacos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sracos.SRacos" title="Permalink to this definition">¶</a></dt>
-<dd><p>The class SRacos represents Sequential Racos algorithm. It’s inherited from RacosCommon.</p>
-<dl class="method">
-<dt id="sracos.SRacos.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/sracos.html#SRacos.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sracos.SRacos.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialization.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="sracos.SRacos.binary_search">
-<code class="descname">binary_search</code><span class="sig-paren">(</span><em>iset</em>, <em>x</em>, <em>begin</em>, <em>end</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/sracos.html#SRacos.binary_search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sracos.SRacos.binary_search" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the first element larger than x.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>iset</strong> – a solution set</li>
-<li><strong>x</strong> – a Solution object</li>
-<li><strong>begin</strong> – begin position</li>
-<li><strong>end</strong> – end position</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the index of the first element larger than x</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="sracos.SRacos.distance">
-<em class="property">static </em><code class="descname">distance</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/sracos.html#SRacos.distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sracos.SRacos.distance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the distance between the list x and y
-:param x: a list
-:param y: a list
-:return: Euclidean distance</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="sracos.SRacos.opt">
-<code class="descname">opt</code><span class="sig-paren">(</span><em>objective</em>, <em>parameter</em>, <em>strategy='WR'</em>, <em>ub=1</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/sracos.html#SRacos.opt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sracos.SRacos.opt" title="Permalink to this definition">¶</a></dt>
-<dd><p>SRacos optimization.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>objective</strong> – an Objective object</li>
-<li><strong>parameter</strong> – a Parameter object</li>
-<li><strong>strategy</strong> – replace strategy</li>
-<li><strong>ub</strong> – uncertain bits, which is a parameter of SRacos</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Optimization result</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sracos.SRacos.replace">
-<code class="descname">replace</code><span class="sig-paren">(</span><em>iset</em>, <em>x</em>, <em>iset_type</em>, <em>strategy='WR'</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/sracos.html#SRacos.replace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sracos.SRacos.replace" title="Permalink to this definition">¶</a></dt>
-<dd><p>Replace a solution(chosen by strategy) in iset with x.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>iset</strong> – a solution list</li>
-<li><strong>x</strong> – a Solution object</li>
-<li><strong>iset_type</strong> – ‘pos’ or ‘neg’</li>
-<li><strong>strategy</strong> – ‘WR’: worst replace or ‘RR’: random replace or ‘LM’: replace the farthest solution</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the replaced solution</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sracos.SRacos.strategy_lm">
-<code class="descname">strategy_lm</code><span class="sig-paren">(</span><em>iset</em>, <em>best_sol</em>, <em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/sracos.html#SRacos.strategy_lm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sracos.SRacos.strategy_lm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Replace the farthest solution from best_sol</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>iset</strong> – a solution set</li>
-<li><strong>best_sol</strong> – the best solution, distance between solution in iset and best_sol will be computed</li>
-<li><strong>x</strong> – a Solution object</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the farthest solution (has the largest margin) in iset</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sracos.SRacos.strategy_rr">
-<code class="descname">strategy_rr</code><span class="sig-paren">(</span><em>iset</em>, <em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/sracos.html#SRacos.strategy_rr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sracos.SRacos.strategy_rr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Replace a random solution in iset.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>iset</strong> – a solution set</li>
-<li><strong>x</strong> – a Solution object</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the replaced solution</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sracos.SRacos.strategy_wr">
-<code class="descname">strategy_wr</code><span class="sig-paren">(</span><em>iset</em>, <em>x</em>, <em>iset_type</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/sracos.html#SRacos.strategy_wr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sracos.SRacos.strategy_wr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Replace the worst solution in iset.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>iset</strong> – a solution set</li>
-<li><strong>x</strong> – a Solution object</li>
-<li><strong>iset_type</strong> – ‘pos’ or ‘neg’</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the worst solution</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="sracos">
+<h1>sracos<a class="headerlink" href="#sracos" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -496,7 +346,7 @@
         <a href="../paretoopt.html" class="btn btn-neutral float-right" title="paretoopt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="racos_optimization.html" class="btn btn-neutral" title="racos_optimization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="racos_optimization.html" class="btn btn-neutral float-left" title="racos_optimization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -505,7 +355,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu
 
     </p>
   </div>
@@ -522,35 +372,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

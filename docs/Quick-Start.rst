@@ -1,3 +1,6 @@
+.. highlight:: python
+   :linenothreshold: 5
+
 ---------------
 Quick Start
 ---------------
@@ -19,13 +22,13 @@ The easiest way to get these is to use
 manager. Typing the following command in your terminal will install all
 required packages in your Python environment.
 
-::
+.. code-block::
 
     $ conda install numpy matplotlib
 
 or
 
-::
+.. code-block::
 
     $ pip install numpy matplotlib
 
@@ -38,7 +41,7 @@ terminal/command line.
 If you want to install ZOOpt by source code, download this project and
 sequentially run following commands in your terminal/command line.
 
-::
+.. code-block::
 
     $ python setup.py build
     $ python setup.py install
@@ -49,8 +52,7 @@ A quick example
 We define the Ackley function for minimization (note that this function
 is for arbitrary dimensions, determined by the solution)
 
-.. code:: python
-
+::
     def ackley(solution):
         """Ackley function for continuous optimization"""
         x = solution.get_x()

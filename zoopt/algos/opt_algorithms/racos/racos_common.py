@@ -74,11 +74,10 @@ class RacosCommon:
                 ToolFunction.log("init solution %s, value: %s" % (i, x.get_value()))
                 i += 1
         # otherwise generate random solutions
-
         while i < iteration_num:
             # distinct_flag: True means sample is distinct(can be use),
             # False means sample is distinct, you should sample again.
-            x, distinct_flag = self.distinct_sample_from_set(self._objective.get_dim(), self._data,
+            x, distinct_flag = self.distinct_sample(self._objective.get_dim(), self._data,
                                                              data_num=iteration_num)
             # panic stop
             if x is None:
@@ -99,6 +98,7 @@ class RacosCommon:
         self._parameter.set_negative_size(self._parameter.get_train_size() - self._parameter.get_positive_size())
         # check if the initial solutions have been set
         data_temp = self._parameter.get_init_samples()
+        sampled_data = []
         ini_size = 0
         if data_temp is not None:
             ini_size = len(data_temp)
@@ -119,18 +119,20 @@ class RacosCommon:
             sol = evaluated_queue.get(block=True, timeout=None)
             ToolFunction.log("init solution %s, value: %s" % (i, sol.get_value()))
             self._data.append(sol)
+            sampled_data.append(sol)
         # otherwise generate random solutions
         t = ini_size
         while t < iteration_num:
             # distinct_flag: True means sample is distinct(can be use),
             # False means sample is distinct, you should sample again.
-            sol, distinct_flag = self.distinct_sample_from_set(self._objective.get_dim(), self._data,
+            sol, distinct_flag = self.distinct_sample(self._objective.get_dim(), sampled_data,
                                                              data_num=iteration_num)
             # panic stop
             if sol is None:
                 break
             if distinct_flag:
                 unevaluated_queue.put(sol, block=True, timeout=None)
+                sampled_data.append(sol)
                 t += 1
         t = ini_size
         while t < iteration_num:
@@ -159,38 +161,7 @@ class RacosCommon:
         self._best_solution = self._positive_data[0]
         return
 
-    #
-    def distinct_sample(self, dim, check_distinct=True, data_num=0):
-        """
-        Sample a distinct(compared with solutions in self._data) solution from dim.
-
-        :param dim: a Dimension object
-        :param check_distinct: whether to check the sampled solution is distinct
-        :param data_num: the maximum number to sample
-        :return: sampled solution and distinct_flag (True if it's distinct)
-        """
-        objective = self._objective
-        x = objective.construct_solution(dim.rand_sample())
-        times = 1
-        distinct_flag = True
-        if check_distinct is True:
-            while self.is_distinct(self._positive_data, x) is False or \
-                    self.is_distinct(self._negative_data, x) is False:
-                x = objective.construct_solution(dim.rand_sample())
-                times += 1
-                if times % 10 == 0:
-                    limited, number = dim.limited_space()
-                    if limited is True:
-                        if number <= data_num:
-                            ToolFunction.log(
-                                'racos_common.py: WARNING -- sample space has been fully enumerated. Stop early')
-                            return None, None
-                    if times > 100:
-                        distinct_flag = False
-                        break
-        return x, distinct_flag
-
-    def distinct_sample_from_set(self, dim, set, check_distinct=True, data_num=0):
+    def distinct_sample(self, dim, data_list, check_distinct=True, data_num=0):
         """
         Sample a distinct solution(compared with solutions in set) from dim.
 
@@ -205,7 +176,7 @@ class RacosCommon:
         times = 1
         distinct_flag = True
         if check_distinct is True:
-            while self.is_distinct(set, x) is False:
+            while self.is_distinct(data_list, x) is False:
                 x = objective.construct_solution(dim.rand_sample())
                 times += 1
                 if times % 10 == 0:
@@ -222,20 +193,19 @@ class RacosCommon:
 
     # Distinct sample from a classifier, return a solution
     # if check_distinct is False, you don't need to sample distinctly
-    def distinct_sample_classifier(self, classifier, check_distinct=True, data_num=0):
+    def distinct_sample_classifier(self, classifier, data_list, check_distinct=True, data_num=0):
         """
         Sample a distinct solution from a classifier.
         """
 
         x = classifier.rand_sample()
-        ins = self._objective.construct_solution(x)
+        sol = self._objective.construct_solution(x)
         times = 1
         distinct_flag = True
         if check_distinct is True:
-            while self.is_distinct(self._positive_data, ins) is False or \
-                    self.is_distinct(self._negative_data, ins) is False:
+            while self.is_distinct(data_list, sol) is False:
                 x = classifier.rand_sample()
-                ins = self._objective.construct_solution(x)
+                sol = self._objective.construct_solution(x)
                 times += 1
                 if times % 10 == 0:
                     if times == 10:
@@ -244,12 +214,12 @@ class RacosCommon:
                         if limited is True:
                             if number <= data_num:
                                 ToolFunction.log(
-                                    'racos_common: WARNING -- sample space has been fully enumerated. Stop early')
+                                    'racos_common: WARNING -- sample space has been fully explored. Stop early')
                                 return None, None
                     if times > 100:
                         distinct_flag = False
                         break
-        return ins, distinct_flag
+        return sol, distinct_flag
 
     def show_best_solution(self, intermediate_print=False, times=0, freq=100):
         """
@@ -275,7 +245,7 @@ class RacosCommon:
         return result
 
     @staticmethod
-    def is_distinct(seta, x):
+    def is_distinct(sol_list, sol):
         """
         Check if x is distinct from each solution in seta.
 
@@ -283,8 +253,8 @@ class RacosCommon:
         :param x: a Solution object
         :return: True or False
         """
-        for ins in seta:
-            if x.is_equal(ins):
+        for ins in sol_list:
+            if sol.is_equal(ins):
                 return False
         return True
 

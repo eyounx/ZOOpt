@@ -24,7 +24,7 @@ def minimize_sphere_discrete_order():
 
     # setup algorithm parameters
     budget = 10000  # number of calls to the objective function
-    parameter = Parameter(budget=budget)
+    parameter = Parameter(budget=budget, uncertain_bits=1)
 
     ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/sphere_discrete_order_figure.png")
 

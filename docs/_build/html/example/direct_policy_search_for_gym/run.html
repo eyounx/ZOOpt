@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>example &mdash; ZOOpt 0.2.2 documentation</title>
+  <title>example &mdash; ZOOpt 0.3.0 documentation</title>
   
 
   
@@ -17,35 +17,45 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'0.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="gym_task" href="gym_task.html" />
     <link rel="prev" title="direct_policy_search_for_gym" href="../direct_policy_search_for_gym.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -319,65 +329,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-run">
-<span id="example"></span><h1>example<a class="headerlink" href="#module-run" title="Permalink to this headline">¶</a></h1>
-<p>Function run_test is defined in this file. You can run this file to get results of this example.</p>
-<dl class="docutils">
-<dt>Author:</dt>
-<dd>Yu-Ren Liu</dd>
-</dl>
-<dl class="function">
-<dt id="run.run_test">
-<code class="descclassname">run.</code><code class="descname">run_test</code><span class="sig-paren">(</span><em>task_name</em>, <em>layers</em>, <em>in_budget</em>, <em>max_step</em>, <em>repeat</em>, <em>terminal_value=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/run.html#run_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#run.run_test" title="Permalink to this definition">¶</a></dt>
-<dd><p>example of running direct policy search for gym task.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>task_name</strong> – gym task name</li>
-<li><strong>layers</strong> – layer information of the neural network
-e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 and output layer has 1</li>
-<li><strong>in_budget</strong> – number of calls to the objective function</li>
-<li><strong>max_step</strong> – max step in gym</li>
-<li><strong>repeat</strong> – repeat number in a test</li>
-<li><strong>terminal_value</strong> – early stop, algorithm should stop when such value is reached</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">no return value</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="run.run_test_handlingnoise">
-<code class="descclassname">run.</code><code class="descname">run_test_handlingnoise</code><span class="sig-paren">(</span><em>task_name</em>, <em>layers</em>, <em>in_budget</em>, <em>max_step</em>, <em>repeat</em>, <em>terminal_value</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/run.html#run_test_handlingnoise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#run.run_test_handlingnoise" title="Permalink to this definition">¶</a></dt>
-<dd><p>example of running direct policy search for gym task with noise handling.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>task_name</strong> – gym task name</li>
-<li><strong>layers</strong> – layer information of the neural network
-e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 and output layer has 1</li>
-<li><strong>in_budget</strong> – number of calls to the objective function</li>
-<li><strong>max_step</strong> – max step in gym</li>
-<li><strong>repeat</strong> – number of repeatitions for noise handling</li>
-<li><strong>terminal_value</strong> – early stop, algorithm should stop when such value is reached</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">no return value</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+  <div class="section" id="example">
+<h1>example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -391,7 +344,7 @@ e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 an
         <a href="gym_task.html" class="btn btn-neutral float-right" title="gym_task" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../direct_policy_search_for_gym.html" class="btn btn-neutral" title="direct_policy_search_for_gym" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../direct_policy_search_for_gym.html" class="btn btn-neutral float-left" title="direct_policy_search_for_gym" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -400,7 +353,7 @@ e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 an
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu
 
     </p>
   </div>
@@ -417,35 +370,16 @@ e.g., [2, 5, 1] means input layer has 2 neurons, hidden layer(only one) has 5 an
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

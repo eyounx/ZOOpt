@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>solution &mdash; ZOOpt 0.2.2 documentation</title>
+  <title>solution &mdash; ZOOpt 0.3.0 documentation</title>
   
 
   
@@ -17,35 +17,45 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="opt" href="opt.html" />
     <link rel="prev" title="parameter" href="parameter.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -315,163 +325,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-solution">
-<span id="solution"></span><h1>solution<a class="headerlink" href="#module-solution" title="Permalink to this headline">¶</a></h1>
-<p>This module contains the class Solution.</p>
-<dl class="docutils">
-<dt>Author:</dt>
-<dd>Yu-Ren Liu, Xiong-Hui Chen</dd>
-</dl>
-<dl class="class">
-<dt id="solution.Solution">
-<em class="property">class </em><code class="descclassname">solution.</code><code class="descname">Solution</code><span class="sig-paren">(</span><em>x=[]</em>, <em>value=nan</em>, <em>resample_value=None</em>, <em>attach=None</em>, <em>post_attach=None</em>, <em>is_in_possible_solution=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div>A solution encapsulates a solution vector with attached properties, including dimension information, objective value,</div></blockquote>
-<p>and attachment</p>
-<dl class="method">
-<dt id="solution.Solution.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>x=[]</em>, <em>value=nan</em>, <em>resample_value=None</em>, <em>attach=None</em>, <em>post_attach=None</em>, <em>is_in_possible_solution=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialization.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>x</strong> – a list</li>
-<li><strong>value</strong> – objective value</li>
-<li><strong>resample_value</strong> – re-evaluated value.
-This is a meaningful parameter only when using the SSRACOS algorithm. 
-In SSRACOS algorithm, we record the noise reduction result in this parameter.</li>
-<li><strong>attach</strong> – attached structure.
-self.set_attach() will be called after constructed a solution.
-You can define the behavior through rewrite Objecttive.__inherit function (just do nothing as default).
-See more details in Objective.set_inherit_func()</li>
-<li><strong>post_attach</strong> – the attachment to the solution.
-self.set_post_attach() will be called after evaluated a solution.
-You can define the behavior through rewrite Objecttive.__post_inherit function (just do nothing as default).
-See more details in Objective.set_post_inherit_func()</li>
-<li><strong>is_in_possible_solution</strong> – This is a meaningful parameter only when using the SSRACOS algorithm. 
-In SSRACOS algorithm, a solution will be added to “possible solution list” after being re-sampling.
-This parameter is to mark if a solution has been added to “possible solution list”.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="solution.Solution.deep_copy">
-<code class="descname">deep_copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.deep_copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.deep_copy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deep copy this solution. Note that the attachment is not deeply copied.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a new solution</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="solution.Solution.deep_copy_set">
-<em class="property">static </em><code class="descname">deep_copy_set</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.deep_copy_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.deep_copy_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deep copy a solution set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol_set</strong> – a solution set</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the copied solution set</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="solution.Solution.exist_equal">
-<code class="descname">exist_equal</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.exist_equal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.exist_equal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if exists another solution in sol_set the same as this one.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol_set</strong> – a solution set</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="solution.Solution.find_maximum">
-<em class="property">static </em><code class="descname">find_maximum</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.find_maximum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.find_maximum" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the solution having maximum value from the solution set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol_set</strong> – solution set</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">solution, index</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="solution.Solution.find_minimum">
-<em class="property">static </em><code class="descname">find_minimum</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.find_minimum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.find_minimum" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the solution having minimum value from the solution set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol_set</strong> – solution set</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">solution, index</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="solution.Solution.is_equal">
-<code class="descname">is_equal</code><span class="sig-paren">(</span><em>sol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.is_equal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.is_equal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if two solutions equal.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol</strong> – another solution</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="solution.Solution.print_solution_set">
-<em class="property">static </em><code class="descname">print_solution_set</code><span class="sig-paren">(</span><em>sol_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solution.html#Solution.print_solution_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solution.Solution.print_solution_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Print the value of each solution in an solution set.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sol_set</strong> – solution set</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">no return value</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="solution">
+<h1>solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -485,7 +340,7 @@ This parameter is to mark if a solution has been added to “possible solution l
         <a href="opt.html" class="btn btn-neutral float-right" title="opt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="parameter.html" class="btn btn-neutral" title="parameter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="parameter.html" class="btn btn-neutral float-left" title="parameter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -494,7 +349,7 @@ This parameter is to mark if a solution has been added to “possible solution l
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu
 
     </p>
   </div>
@@ -511,35 +366,16 @@ This parameter is to mark if a solution has been added to “possible solution l
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

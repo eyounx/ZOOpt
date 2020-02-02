@@ -148,6 +148,7 @@ and attachment
 
     def get_no(self):
         return self.__no
+
     def print_solution(self):
         ToolFunction.log('x: ' + repr(self.__x))
         ToolFunction.log('value: ' + repr(self.__value))

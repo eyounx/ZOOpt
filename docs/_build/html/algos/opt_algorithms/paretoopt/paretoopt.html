@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>paretoopt &mdash; ZOOpt 0.2.2 documentation</title>
+  <title>paretoopt &mdash; ZOOpt 0.3.0 documentation</title>
   
 
   
@@ -17,35 +17,45 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'0.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="pareto_optimization" href="pareto_optimization.html" />
     <link rel="prev" title="paretoopt" href="../paretoopt.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -321,69 +331,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-paretoopt">
-<span id="paretoopt"></span><h1>paretoopt<a class="headerlink" href="#module-paretoopt" title="Permalink to this headline">¶</a></h1>
-<p>The canonical Pareto optimization
-Running Pareto optimization will use the objective.eval_constraint function. This function makes the solution.get_value() a vector.
-The first element of the vector is the objective function value by objective.__func, and the second element is the constraint degree by objective.__constraint</p>
-<dl class="docutils">
-<dt>Author:</dt>
-<dd>Chao Feng, Yang Yu</dd>
-</dl>
-<dl class="class">
-<dt id="paretoopt.ParetoOpt">
-<em class="property">class </em><code class="descclassname">paretoopt.</code><code class="descname">ParetoOpt</code><a class="reference internal" href="../../../_modules/paretoopt.html#ParetoOpt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#paretoopt.ParetoOpt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pareto optimization.</p>
-<dl class="method">
-<dt id="paretoopt.ParetoOpt.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/paretoopt.html#ParetoOpt.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#paretoopt.ParetoOpt.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="paretoopt.ParetoOpt.mutation">
-<em class="property">static </em><code class="descname">mutation</code><span class="sig-paren">(</span><em>s</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/paretoopt.html#ParetoOpt.mutation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#paretoopt.ParetoOpt.mutation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Every bit of s will be flipped with probability 1/n.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>s</strong> – s is a list</li>
-<li><strong>n</strong> – the probability of flipping is set to 1/n</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">flipped s</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="paretoopt.ParetoOpt.opt">
-<code class="descname">opt</code><span class="sig-paren">(</span><em>objective</em>, <em>parameter</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/paretoopt.html#ParetoOpt.opt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#paretoopt.ParetoOpt.opt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pareto optimization.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>objective</strong> – an Objective object</li>
-<li><strong>parameter</strong> – a Parameters object</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the best solution of the optimization</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="paretoopt">
+<h1>paretoopt<a class="headerlink" href="#paretoopt" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -397,7 +346,7 @@ The first element of the vector is the objective function value by objective.__f
         <a href="pareto_optimization.html" class="btn btn-neutral float-right" title="pareto_optimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../paretoopt.html" class="btn btn-neutral" title="paretoopt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../paretoopt.html" class="btn btn-neutral float-left" title="paretoopt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -406,7 +355,7 @@ The first element of the vector is the objective function value by objective.__f
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu
 
     </p>
   </div>
@@ -423,35 +372,16 @@ The first element of the vector is the objective function value by objective.__f
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sparse_mse &mdash; ZOOpt 0.2.2 documentation</title>
+  <title>sparse_mse &mdash; ZOOpt 0.3.0 documentation</title>
   
 
   
@@ -17,35 +17,45 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'0.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Tutorial of Distributed ZOOpt" href="../../Tutorial of Distributed ZOOpt.html" />
     <link rel="prev" title="poss_opt" href="poss_opt.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -319,90 +329,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-sparse_mse">
-<span id="sparse-mse"></span><h1>sparse_mse<a class="headerlink" href="#module-sparse_mse" title="Permalink to this headline">¶</a></h1>
-<p>This module contains the implementation of Sparse MSE problem.</p>
-<dl class="docutils">
-<dt>Author:</dt>
-<dd>Chao Feng</dd>
-</dl>
-<dl class="class">
-<dt id="sparse_mse.SparseMSE">
-<em class="property">class </em><code class="descclassname">sparse_mse.</code><code class="descname">SparseMSE</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sparse_mse.html#SparseMSE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_mse.SparseMSE" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class implements the Sparse MSE problem.</p>
-<dl class="method">
-<dt id="sparse_mse.SparseMSE.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sparse_mse.html#SparseMSE.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_mse.SparseMSE.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialization.
-:param filename: filename</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="sparse_mse.SparseMSE.constraint">
-<code class="descname">constraint</code><span class="sig-paren">(</span><em>solution</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sparse_mse.html#SparseMSE.constraint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_mse.SparseMSE.constraint" title="Permalink to this definition">¶</a></dt>
-<dd><p>If the constraints are satisfied, the constraint function will return a zero or positive value. Otherwise a
-negative value will be returned.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>solution</strong> – a Solution object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a zero or positive value which means constraints are satisfied, otherwise a negative value</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sparse_mse.SparseMSE.get_dim">
-<code class="descname">get_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sparse_mse.html#SparseMSE.get_dim"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_mse.SparseMSE.get_dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Construct a Dimension object of this problem.
-:return: a dimension object of sparse mse.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="sparse_mse.SparseMSE.loss">
-<code class="descname">loss</code><span class="sig-paren">(</span><em>solution</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sparse_mse.html#SparseMSE.loss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_mse.SparseMSE.loss" title="Permalink to this definition">¶</a></dt>
-<dd><p>loss function for sparse regression
-:param solution: a Solution object</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="sparse_mse.SparseMSE.normalize_data">
-<em class="property">static </em><code class="descname">normalize_data</code><span class="sig-paren">(</span><em>data_matrix</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sparse_mse.html#SparseMSE.normalize_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_mse.SparseMSE.normalize_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Normalize data to have mean 0 and variance 1 for each column</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data_matrix</strong> – matrix of all data</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">normalized data</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sparse_mse.SparseMSE.position">
-<code class="descname">position</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sparse_mse.html#SparseMSE.position"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_mse.SparseMSE.position" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function is to find the index of s where element is 1
-return a list of positions
-:param s:
-:return: a list of index of s where element is 1</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="sparse_mse.SparseMSE.read_data">
-<code class="descname">read_data</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sparse_mse.html#SparseMSE.read_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_mse.SparseMSE.read_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read data from file.
-:param filename: filename
-:return: normalized data</p>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="sparse-mse">
+<h1>sparse_mse<a class="headerlink" href="#sparse-mse" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -416,7 +344,7 @@ return a list of positions
         <a href="../../Tutorial of Distributed ZOOpt.html" class="btn btn-neutral float-right" title="Tutorial of Distributed ZOOpt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="poss_opt.html" class="btn btn-neutral" title="poss_opt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="poss_opt.html" class="btn btn-neutral float-left" title="poss_opt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -425,7 +353,7 @@ return a list of positions
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu
 
     </p>
   </div>
@@ -442,35 +370,16 @@ return a list of positions
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

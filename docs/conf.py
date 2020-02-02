@@ -35,13 +35,12 @@ sys.path.insert(0, os.path.abspath('../zoopt/algos/opt_algorithms/paretoopt'))
 sys.path.insert(0, os.path.abspath('../zoopt/algos/opt_algorithms/racos'))
 sys.path.insert(0, os.path.abspath('../zoopt/algos/noise_handling'))
 sys.path.insert(0, os.path.abspath('../zoopt/algos/high_dimensionality_handling'))
-sys.path.insert(0, os.path.abspath('../zoopt/algos/racos'))
-# sys.path.insert(0, os.path.abspath('../../example'))
 sys.path.insert(0, os.path.abspath('../example/direct_policy_search_for_gym'))
 sys.path.insert(0, os.path.abspath('../example/linear_classifier_using_ramploss'))
 sys.path.insert(0, os.path.abspath('../example/sequential_random_embedding'))
 sys.path.insert(0, os.path.abspath('../example/simple_functions'))
 sys.path.insert(0, os.path.abspath('../example/sparse_regression'))
+sys.path.insert(0, os.path.abspath('../example/parallel_opt'))
 sys.path.insert(0, os.path.abspath('../'))
 
 # -- Project information -----------------------------------------------------
@@ -51,9 +50,9 @@ copyright = u'2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu'
 author = u'Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Yang Yu'
 
 # The short X.Y version
-version = u'0.2.2'
+version = u'0.3.0'
 # The full version, including alpha/beta/rc tags
-release = u'0.2.2'
+release = u'0.3.0'
 
 
 # -- General configuration ---------------------------------------------------

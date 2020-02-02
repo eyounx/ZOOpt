@@ -41,8 +41,7 @@ def minimize_sphere_continuous():
 
     budget = 100 * dim_size
     # if intermediate_result is True, ZOOpt will output intermediate best solution every intermediate_freq budget
-    parameter = Parameter(budget=budget, intermediate_result=True,
-                          intermediate_freq=1000)
+    parameter = Parameter(budget=budget, intermediate_result=True, intermediate_freq=1000)
     ExpOpt.min(objective, parameter, repeat=1, plot=True, plot_file="img/sphere_continuous_figure.png")
 
 

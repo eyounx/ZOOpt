@@ -16,6 +16,90 @@ def ackley(solution):
     return value
 
 
+def sphere_discrete_order(solution):
+    """
+    Sphere function for integer continuous optimization
+    """
+    x = solution.get_x()
+    value = sum([(i-2)*(i-2) for i in x])
+    return value
+
+class SetCover:
+    """
+    set cover problem for discrete optimization
+    this problem has some extra initialization tasks, thus we define this problem as a class
+    """
+
+    def __init__(self):
+        self.__weight = [0.8356, 0.5495, 0.4444, 0.7269, 0.9960, 0.6633, 0.5062, 0.8429, 0.1293, 0.7355,
+                         0.7979, 0.2814, 0.7962, 0.1754, 0.0267, 0.9862, 0.1786, 0.5884, 0.6289, 0.3008]
+        self.__subset = []
+        self.__subset.append([0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0])
+        self.__subset.append([0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0])
+        self.__subset.append([1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0])
+        self.__subset.append([0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0])
+        self.__subset.append([1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1])
+        self.__subset.append([0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0])
+        self.__subset.append([0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0])
+        self.__subset.append([0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0])
+        self.__subset.append([0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0])
+        self.__subset.append([0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1])
+        self.__subset.append([0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0])
+        self.__subset.append([0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1])
+        self.__subset.append([1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1])
+        self.__subset.append([1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1])
+        self.__subset.append([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1])
+        self.__subset.append([1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0])
+        self.__subset.append([1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1])
+        self.__subset.append([0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1])
+        self.__subset.append([0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0])
+        self.__subset.append([0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1])
+
+    def fx(self, solution):
+        """
+        Objective function.
+
+        :param solution: a Solution object
+        :return: the value of f(x)
+        """
+        x = solution.get_x()
+        allweight = 0
+        countw = 0
+        for i in range(len(self.__weight)):
+            allweight += self.__weight[i]
+
+        dims = []
+        for i in range(len(self.__subset[0])):
+            dims.append(False)
+
+        for i in range(len(self.__subset)):
+            if x[i] == 1:
+                countw += self.__weight[i]
+                for j in range(len(self.__subset[i])):
+                    if self.__subset[i][j] == 1:
+                        dims[j] = True
+        full = True
+        for i in range(len(dims)):
+            if dims[i] is False:
+                full = False
+
+        if full is False:
+            countw += allweight
+
+        return countw
+
+    @property
+    def dim(self):
+        """
+        Dimension of set cover problem.
+        :return: Dimension instance
+        """
+        dim_size = 20
+        dim_regs = [[0, 1]] * dim_size
+        dim_tys = [False] * dim_size
+        return Dimension(dim_size, dim_regs, dim_tys)
+
+
 class TestRacos(object):
     def test_racos_common_extend(self):
         a = [1, 2, 3]
@@ -105,16 +189,98 @@ class TestRacos(object):
         assert neg_set[3].get_value() == 0.1
 
     def test_racos_performance(self):
+        # continuous
         dim = 100  # dimension
         objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
         parameter = Parameter(budget=100 * dim, sequential=False)
         solution = ExpOpt.min(objective, parameter)[0]
         assert solution.get_value() < 0.2
+        dim = 500
+        objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
+        parameter = Parameter(budget=10000, sequential=False)
+        sol = Opt.min(objective, parameter)
+        sol.print_solution()
+        assert solution.get_value() < 2
+        # discrete
+        # setcover
+        problem = SetCover()
+        dim = problem.dim  # the dim is prepared by the class
+        objective = Objective(problem.fx, dim)  # form up the objective function
+        budget = 100 * dim.get_size()  # number of calls to the objective function
+        parameter = Parameter(budget=budget, sequential=False)
+        sol = Opt.min(objective, parameter)
+        sol.print_solution()
+        assert sol.get_value() < 1.5
+        # sphere
+        dim_size = 100  # dimensions
+        dim_regs = [[-10, 10]] * dim_size  # dimension range
+        dim_tys = [False] * dim_size  # dimension type : integer
+        dim_order = [True] * dim_size
+        dim = Dimension(dim_size, dim_regs, dim_tys, order=dim_order)  # form up the dimension object
+        objective = Objective(sphere_discrete_order, dim)  # form up the objective function
+        parameter = Parameter(budget=10000, sequential=False)
+        sol = Opt.min(objective, parameter)
+        sol.print_solution()
+        assert sol.get_value() < 200
 
     def test_sracos_performance(self):
+        # continuous
         dim = 100  # dimension
         objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
         parameter = Parameter(budget=100 * dim)
         solution = Opt.min(objective, parameter)
         assert solution.get_value() < 0.2
+        dim = 500
+        objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
+        parameter = Parameter(budget=10000)
+        solution = Opt.min(objective, parameter)
+        assert solution.get_value() < 1.5
+        # discrete
+        # setcover
+        problem = SetCover()
+        dim = problem.dim  # the dim is prepared by the class
+        objective = Objective(problem.fx, dim)  # form up the objective function
+        budget = 100 * dim.get_size()  # number of calls to the objective function
+        parameter = Parameter(budget=budget)
+        sol = Opt.min(objective, parameter)
+        assert sol.get_value() < 1.5
+        # sphere
+        dim_size = 100  # dimensions
+        dim_regs = [[-10, 10]] * dim_size  # dimension range
+        dim_tys = [False] * dim_size  # dimension type : integer
+        dim_order = [True] * dim_size
+        dim = Dimension(dim_size, dim_regs, dim_tys, order=dim_order)  # form up the dimension object
+        objective = Objective(sphere_discrete_order, dim)  # form up the objective function
+        parameter = Parameter(budget=10000)
+        sol = Opt.min(objective, parameter)
+        assert sol.get_value() < 200
 
+    def test_asracos_performance(self):
+        # continuous
+        dim = 100  # dimension
+        objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
+        parameter = Parameter(budget=100 * dim, parallel=True, server_num=2)
+        # parameter = Parameter(budget=100 * dim, init_samples=[Solution([0] * 100)])  # init with init_samples
+        solution_list = ExpOpt.min(objective, parameter, repeat=1)
+        for solution in solution_list:
+            value = solution.get_value()
+            assert value < 0.2
+        # discrete
+        # setcover
+        problem = SetCover()
+        dim = problem.dim  # the dim is prepared by the class
+        objective = Objective(problem.fx, dim)  # form up the objective function
+        budget = 100 * dim.get_size()  # number of calls to the objective function
+        parameter = Parameter(budget=budget, parallel=True, server_num=2)
+        sol = ExpOpt.min(objective, parameter, repeat=1)[0]
+        assert sol.get_value() < 1.5
+        # sphere
+        dim_size = 100  # dimensions
+        dim_regs = [[-10, 10]] * dim_size  # dimension range
+        dim_tys = [False] * dim_size  # dimension type : integer
+        dim_order = [True] * dim_size
+        dim = Dimension(dim_size, dim_regs, dim_tys, order=dim_order)  # form up the dimension object
+        objective = Objective(sphere_discrete_order, dim)  # form up the objective function
+        parameter = Parameter(budget=10000, parallel=True, server_num=2, uncertain_bits=1, seed=1)
+        sol = ExpOpt.min(objective, parameter)[0]
+        assert sol.get_value() < 10

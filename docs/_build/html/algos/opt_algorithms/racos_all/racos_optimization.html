@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>racos_optimization &mdash; ZOOpt 0.2.2 documentation</title>
+  <title>racos_optimization &mdash; ZOOpt 0.3.0 documentation</title>
   
 
   
@@ -17,35 +17,45 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'0.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="sracos" href="sracos.html" />
     <link rel="prev" title="racos_common" href="racos_common.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -321,77 +331,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-racos_optimization">
-<span id="racos-optimization"></span><h1>racos_optimization<a class="headerlink" href="#module-racos_optimization" title="Permalink to this headline">¶</a></h1>
-<p>This module contains the class RacosOptimization, which will choose the optimization algorithm and get the best solution.</p>
-<dl class="docutils">
-<dt>Author:</dt>
-<dd>Yu-Ren Liu</dd>
-</dl>
-<dl class="class">
-<dt id="racos_optimization.RacosOptimization">
-<em class="property">class </em><code class="descclassname">racos_optimization.</code><code class="descname">RacosOptimization</code><a class="reference internal" href="../../../_modules/racos_optimization.html#RacosOptimization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#racos_optimization.RacosOptimization" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class will choose the optimization algorithm and get the best solution.</p>
-<dl class="method">
-<dt id="racos_optimization.RacosOptimization.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/racos_optimization.html#RacosOptimization.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#racos_optimization.RacosOptimization.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialization.</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="racos_optimization.RacosOptimization.choose_ub">
-<em class="property">static </em><code class="descname">choose_ub</code><span class="sig-paren">(</span><em>objective</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/racos_optimization.html#RacosOptimization.choose_ub"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#racos_optimization.RacosOptimization.choose_ub" title="Permalink to this definition">¶</a></dt>
-<dd><p>Choose uncertain_bits according to the dimension size automatically.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>objective</strong> – an Objective object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">uncertain bits</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="racos_optimization.RacosOptimization.clear">
-<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/racos_optimization.html#RacosOptimization.clear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#racos_optimization.RacosOptimization.clear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clear the instance.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">no return value</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="racos_optimization.RacosOptimization.opt">
-<code class="descname">opt</code><span class="sig-paren">(</span><em>objective</em>, <em>parameter</em>, <em>strategy='WR'</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/racos_optimization.html#RacosOptimization.opt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#racos_optimization.RacosOptimization.opt" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function will choose optimization algorithm and use it to optimize.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>objective</strong> – a Objective object</li>
-<li><strong>parameter</strong> – a Parameter object</li>
-<li><strong>strategy</strong> – replace strategy, used by SRacos and SSRacos</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the best solution</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="racos-optimization">
+<h1>racos_optimization<a class="headerlink" href="#racos-optimization" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -405,7 +346,7 @@
         <a href="sracos.html" class="btn btn-neutral float-right" title="sracos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="racos_common.html" class="btn btn-neutral" title="racos_common" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="racos_common.html" class="btn btn-neutral float-left" title="racos_common" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -414,7 +355,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu
 
     </p>
   </div>
@@ -431,35 +372,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

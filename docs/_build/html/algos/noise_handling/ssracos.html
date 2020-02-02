@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ssracos &mdash; ZOOpt 0.2.2 documentation</title>
+  <title>ssracos &mdash; ZOOpt 0.3.0 documentation</title>
   
 
   
@@ -17,35 +17,45 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'0.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="opt_algorithms" href="../opt_algorithms.html" />
     <link rel="prev" title="ponss" href="ponss.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -319,91 +329,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ssracos">
-<span id="ssracos"></span><h1>ssracos<a class="headerlink" href="#module-ssracos" title="Permalink to this headline">¶</a></h1>
-<p>This module contains the class SSRacos, which combines the noise handling method value suppression with SRacos.</p>
-<dl class="docutils">
-<dt>Author:</dt>
-<dd>Xiong-Hui Chen, Yu-Ren Liu</dd>
-</dl>
-<dl class="class">
-<dt id="ssracos.SSRacos">
-<em class="property">class </em><code class="descclassname">ssracos.</code><code class="descname">SSRacos</code><a class="reference internal" href="../../_modules/ssracos.html#SSRacos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ssracos.SSRacos" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class implements SSRacos algorithm, which combines the noise handling method value suppression with SRacos.</p>
-<dl class="method">
-<dt id="ssracos.SSRacos.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ssracos.html#SSRacos.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ssracos.SSRacos.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialization.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ssracos.SSRacos.get_best_solution">
-<code class="descname">get_best_solution</code><span class="sig-paren">(</span><em>for_test=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ssracos.html#SSRacos.get_best_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ssracos.SSRacos.get_best_solution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the best solution.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>for_test</strong> – if set for_test as False, this method will re-sample all of the solutions in positive data and then add them to possible solution before search the best solution.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">return resample value if for_test is False otherwise return suppression value.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="ssracos.SSRacos.opt">
-<code class="descname">opt</code><span class="sig-paren">(</span><em>objective</em>, <em>parameter</em>, <em>strategy='WR'</em>, <em>ub=1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ssracos.html#SSRacos.opt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ssracos.SSRacos.opt" title="Permalink to this definition">¶</a></dt>
-<dd><p>SSRacos optimization.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>objective</strong> – a Objective object</li>
-<li><strong>parameter</strong> – a Parameter object</li>
-<li><strong>strategy</strong> – replace strategy</li>
-<li><strong>ub</strong> – uncertain bits, which is a parameter of SRacos</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the best solution of the optimization</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="ssracos.SSRacos.sort_solution_list">
-<code class="descname">sort_solution_list</code><span class="sig-paren">(</span><em>solution_list</em>, <em>key=&lt;function SSRacos.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ssracos.html#SSRacos.sort_solution_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ssracos.SSRacos.sort_solution_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sort a solution list (eg. self._positive_data, self._possible_solution_list) with key</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>solution_list</strong> – the solution list to be sorted.</li>
-<li><strong>key</strong> – a function which input a solution and return its key.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">return a copy of sorted list(without change origin solution list).</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="ssracos.SSRacos.update_possible_solution">
-<code class="descname">update_possible_solution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ssracos.html#SSRacos.update_possible_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ssracos.SSRacos.update_possible_solution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Search all of solutions in self._positive_data, add it to self._possible_solution_list if not exist.</p>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="ssracos">
+<h1>ssracos<a class="headerlink" href="#ssracos" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -417,7 +344,7 @@
         <a href="../opt_algorithms.html" class="btn btn-neutral float-right" title="opt_algorithms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ponss.html" class="btn btn-neutral" title="ponss" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ponss.html" class="btn btn-neutral float-left" title="ponss" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -426,7 +353,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu.
+        &copy; Copyright 2018, Yu-Ren Liu, Xiong-Hui Chen, Yi-Qi Hu, Han-Zhe Hu, Yang Yu
 
     </p>
   </div>
@@ -443,35 +370,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
