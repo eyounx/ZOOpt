@@ -12,7 +12,7 @@ class TestParetoOpt(object):
         assert res != a
 
     def test_performance(self):
-        mse = SparseMSE('test_algos/test_opt_algorithm/test_paretoopt/sonar.arff')
+        mse = SparseMSE('test/test_algos/test_opt_algorithm/test_paretoopt/sonar.arff')
         mse.set_sparsity(8)
         objective = Objective(func=mse.loss, dim=mse.get_dim(), constraint=mse.constraint)
         parameter = Parameter(algorithm='poss',
@@ -20,7 +20,7 @@ class TestParetoOpt(object):
         solution = Opt.min(objective, parameter)
         assert solution.get_value()[0] < 0.6
         # PONSS
-        mse = SparseMSE('test_algos/test_opt_algorithm/test_paretoopt/sonar.arff')
+        mse = SparseMSE('test/test_algos/test_opt_algorithm/test_paretoopt/sonar.arff')
         mse.set_sparsity(8)
         objective = Objective(func=mse.loss, dim=mse.get_dim(), constraint=mse.constraint)
         parameter = Parameter(algorithm='poss', noise_handling=True, ponss=True, ponss_theta=0.5, ponss_b=mse.get_k(),

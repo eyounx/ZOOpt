@@ -37,8 +37,8 @@ class Parameter:
         This class contains all parameters used for optimization.
     """
 
-    def __init__(self, algorithm=None, budget=0, init_samples=None, time_budget=None, terminal_value=None, sequential=True,
-                 precision=None, uncertain_bits=None, intermediate_result=False, intermediate_freq=100, autoset=True,
+    def __init__(self, algorithm=None, budget=0, exploration_rate=0.01, init_samples=None, time_budget=None, terminal_value=None,
+                 sequential=True, precision=None, uncertain_bits=None, intermediate_result=False, intermediate_freq=100, autoset=True,
                  noise_handling=False, resampling=False, suppression=False, ponss=False, ponss_theta=None, ponss_b=None,
                  non_update_allowed=500, resample_times=100, balance_rate=0.5, high_dim_handling=False, reducedim=False,
                  num_sre=5, low_dimension=None, withdraw_alpha=Dimension(1, [[-1, 1]], [True]), variance_A=None,
@@ -50,6 +50,8 @@ class Parameter:
         :param budget:
             the number of calls to the objective function. If noise_handling and resampling is True, resample_times
             calls to the objective function count as one budget
+        :param exploration_rate:
+            the exploration rate of the optimization method.
         :param init_samples:
             Initial samples provided by user. If init_samples is not None, the samples will be added
             into the first sampled solution set
@@ -77,9 +79,15 @@ class Parameter:
         :param low_dimension: low dimension of sequential random embedding
         :param withdraw_alpha: a parameter for random embedding
         :param variance_A: matrix to map high-dimensional input x to low-dimensional x'
+
         :param stopping_criterion: an instance of a class that implements the member function check(self, optcontent),
         which will be invoked at each iteration of the optimization. The optimization algorithm will stop early if
-        stopping_criterion.check returns True.
+        stopping_criterion.check() returns True.
+        :param seed: the seed of all generated random numbers used in ZOOpt.
+
+        :param parallel: whether to use parallel optimization.
+        :param server_num: the number of servers started for parallel optimization.
+
         """
         self.__algorithm = algorithm
         self.__budget = budget if noise_handling is False or resampling is False else (budget / resample_times)
@@ -96,7 +104,7 @@ class Parameter:
         self.__train_size = 0
         self.__positive_size = 0
         self.__negative_size = 0
-        self.__probability = 0.99
+        self.__probability = 1 - exploration_rate
 
         # for intermediate result
         self.__intermediate_result = intermediate_result
@@ -164,6 +172,9 @@ class Parameter:
             self.__train_size = 22
             self.__positive_size = 2
         self.__negative_size = self.__train_size - self.__positive_size
+
+    def set_exploration_rate(self, exploration_rate):
+        self.__probability = 1 - exploration_rate
 
     def get_noise_handling(self):
         return self.__noise_handling

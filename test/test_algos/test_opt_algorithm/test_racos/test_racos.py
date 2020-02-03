@@ -271,9 +271,9 @@ class TestRacos(object):
         dim = problem.dim  # the dim is prepared by the class
         objective = Objective(problem.fx, dim)  # form up the objective function
         budget = 100 * dim.get_size()  # number of calls to the objective function
-        parameter = Parameter(budget=budget, parallel=True, server_num=2)
+        parameter = Parameter(budget=budget, parallel=True, server_num=2, seed=777)
         sol = ExpOpt.min(objective, parameter, repeat=1)[0]
-        assert sol.get_value() < 1.5
+        assert sol.get_value() < 2
         # sphere
         dim_size = 100  # dimensions
         dim_regs = [[-10, 10]] * dim_size  # dimension range

@@ -23,7 +23,7 @@ class ExpOpt:
         return
 
     @staticmethod
-    def min(objective, parameter, repeat=1, best_n=None, plot=False, plot_file=None, seed=None):
+    def min(objective, parameter, repeat=1, best_n=None, plot=False, plot_file=None):
         """
         Minimization function.
 
@@ -42,8 +42,6 @@ class ExpOpt:
         ret = []
         if best_n is None:
             best_n = repeat
-        if seed is not None:
-            gl.set_seed(seed)  # set random seed
         result = []
         for i in range(repeat):
             # perform the optimization

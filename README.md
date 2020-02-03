@@ -2,11 +2,11 @@
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/eyounx/ZOOpt/blob/master/LICENSE.txt) [![Build Status](https://www.travis-ci.org/eyounx/ZOOpt.svg?branch=master)](https://www.travis-ci.org/eyounx/ZOOpt) [![Documentation Status](https://readthedocs.org/projects/zoopt/badge/?version=latest)](https://zoopt.readthedocs.io/en/latest/?badge=latest) [![codecov](https://codecov.io/gh/AlexLiuyuren/ZOOpt/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexLiuyuren/ZOOpt)
 
-A python package of Zeroth-Order Optimization (ZOOpt). 
+ZOOpt is a python package for Zeroth-Order Optimization. 
 
 Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimization) does not rely on the gradient of the objective function, but instead, learns from samples of the search space. It is suitable for optimizing functions that are nondifferentiable, with many local minima, or even unknown but only testable.
 
-ZOOpt has a single-thread version and a light-weighted distribution version. Please find the details in the documents.
+ZOOpt implements some state-of-the-art zeroth-order optimization methods and their parallel versions. Users only need to add serveral keywords to use parallel optimization on a single machine. For large-scale distributed optimization across multiple machines, please refer to [Distributed ZOOpt](https://github.com/eyounx/ZOOsrv).  
 
 **Documents**: [Tutorial of ZOOpt](http://zoopt.readthedocs.io/en/latest/index.html)
 
@@ -16,11 +16,11 @@ ZOOpt has a single-thread version and a light-weighted distribution version. Ple
 
 (Features in this article are from version 0.2)
 
-## Quick Start (single thread version)
+## Installation 
 
-To use the single thread version, the easiest way to get ZOOpt is to type `pip install zoopt` in the terminal/command line.
+The easiest way to install ZOOpt is to type `pip install zoopt` in the terminal/command line.
 
-Alternatively, to install ZOOpt by source code, download this project and sequentially run following commands in your terminal/command line.
+Alternatively, to install ZOOpt by source code, download this repository and sequentially run following commands in your terminal/command line.
 
 ```
 $ python setup.py build
@@ -43,19 +43,20 @@ def ackley(solution):
 
 Ackley function is a classical function with many local minima. In 2-dimension, it looks like (from wikipedia)
 
-<table border=0><tr><td width="400px"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Ackley%27s_function.pdf/page1-400px-Ackley%27s_function.pdf.jpg" alt="Expeirment results"/></td></tr></table>
-
+<table border=0><tr><td width="400px"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Ackley%27s_function.pdf/page1-400px-Ackley%27s_function.pdf.jpg" alt="Ackley function"/></td></tr></table>
  Then, use ZOOpt to optimize a 100-dimension Ackley function:
 
 ```python
-from zoopt import Dimension, Objective, Parameter, Opt
+from zoopt import Dimension, Objective, Parameter, Opt, ExpOpt
 
 dim = 100  # dimension
-obj = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))
+obj = Objective(ackley, Dimension(dim, [[-1, 1]]*dim, [True]*dim))
 # perform optimization
-solution = Opt.min(obj, Parameter(budget=100 * dim))
-# print result
-solution.print_solution()
+solution = Opt.min(obj, Parameter(budget=100*dim))
+# print the solution
+print(solution.get_x(), solution.get_value())
+# parallel optimization for time-consuming tasks
+solution = Opt.min(obj, Parameter(budget=100*dim, parallel=True, server_num=3))
 ```
 
 For a few seconds, the optimization is done. Then, we can visualize the optimization progress
@@ -69,10 +70,25 @@ plt.savefig('figure.png')
 which looks like
 
 <table border=0><tr><td width="400px"><img src="https://github.com/eyounx/ZOOpt/blob/dev/img/quick_start.png?raw=true" alt="Expeirment results"/></td></tr></table>
+We can also use `ExpOpt` to repeat the optimization for performance analysis, which will calculate the mean and standard deviation of multiple optimization results while automatically visualizing the optimization progress.
+
+```python
+solution_list = ExpOpt.min(obj, Parameter(budget=100*dim), repeat=3, plot=True, plot_file="progress.png")
+
+for solution in solution_list:
+		print(solution.get_x(), solution.get_value())
+
+```
 
 More examples are available in the `example` fold.
 
 # Single thread version releases
+
+## [release 0.3](https://github.com/eyounx/ZOOpt/releases/tag/v0.3)
+
+- Add a parallel implementation of SRACOS, which accelarates the optimization by asynchronous parallelization.
+
+- Add a function that enables users to set  a customized stop criteria for the optimization.
 
 ## [release 0.2](https://github.com/eyounx/ZOOpt/releases/tag/v0.2.1)
 
@@ -86,6 +102,7 @@ More examples are available in the `example` fold.
 - The algorithm selection is automatic. See examples in the `example` fold.- Default parameters work well on many problems, while parameters are fully controllable
 - Running speed optmized for Python
 
-# Distributed version
+# Distributed ZOOpt
 
-The distributed version of ZOOpt is consisted of the [server project](https://github.com/eyounx/ZOOsrv) and the [client project](https://github.com/eyounx/ZOOclient.jl). Details can be found in the [tutorial of the distributed ZOOpt](http://zoopt.readthedocs.io/en/latest/Tutorial%20of%20Distributed%20ZOOpt.html)
+Distributed ZOOpt is consisted of a [server project](https://github.com/eyounx/ZOOsrv) and a [client project](https://github.com/eyounx/ZOOclient.jl). Details can be found in the [Tutorial of Distributed ZOOpt](http://zoopt.readthedocs.io/en/latest/Tutorial%20of%20Distributed%20ZOOpt.html)
+

@@ -48,6 +48,7 @@ class Opt:
             result = sre.opt()
         else:
             result = optimizer.opt(objective, parameter)
+        result.print_solution()
         return result
 
     @staticmethod
