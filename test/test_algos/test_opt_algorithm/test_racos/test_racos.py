@@ -192,12 +192,12 @@ class TestRacos(object):
         # continuous
         dim = 100  # dimension
         objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
-        parameter = Parameter(budget=100 * dim, sequential=False)
+        parameter = Parameter(budget=100 * dim, sequential=False, seed=1)
         solution = ExpOpt.min(objective, parameter)[0]
         assert solution.get_value() < 0.2
         dim = 500
         objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
-        parameter = Parameter(budget=10000, sequential=False)
+        parameter = Parameter(budget=10000, sequential=False, seed=1)
         sol = Opt.min(objective, parameter)
         sol.print_solution()
         assert solution.get_value() < 2
@@ -207,10 +207,10 @@ class TestRacos(object):
         dim = problem.dim  # the dim is prepared by the class
         objective = Objective(problem.fx, dim)  # form up the objective function
         budget = 100 * dim.get_size()  # number of calls to the objective function
-        parameter = Parameter(budget=budget, sequential=False)
+        parameter = Parameter(budget=budget, sequential=False, seed=777)
         sol = Opt.min(objective, parameter)
         sol.print_solution()
-        assert sol.get_value() < 1.5
+        assert sol.get_value() < 2
         # sphere
         dim_size = 100  # dimensions
         dim_regs = [[-10, 10]] * dim_size  # dimension range
@@ -218,7 +218,7 @@ class TestRacos(object):
         dim_order = [True] * dim_size
         dim = Dimension(dim_size, dim_regs, dim_tys, order=dim_order)  # form up the dimension object
         objective = Objective(sphere_discrete_order, dim)  # form up the objective function
-        parameter = Parameter(budget=10000, sequential=False)
+        parameter = Parameter(budget=10000, sequential=False, seed=77)
         sol = Opt.min(objective, parameter)
         sol.print_solution()
         assert sol.get_value() < 200
@@ -227,12 +227,12 @@ class TestRacos(object):
         # continuous
         dim = 100  # dimension
         objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
-        parameter = Parameter(budget=100 * dim)
+        parameter = Parameter(budget=100 * dim, seed=77)
         solution = Opt.min(objective, parameter)
         assert solution.get_value() < 0.2
         dim = 500
         objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
-        parameter = Parameter(budget=10000)
+        parameter = Parameter(budget=10000, seed=777)
         solution = Opt.min(objective, parameter)
         assert solution.get_value() < 1.5
         # discrete
@@ -241,9 +241,9 @@ class TestRacos(object):
         dim = problem.dim  # the dim is prepared by the class
         objective = Objective(problem.fx, dim)  # form up the objective function
         budget = 100 * dim.get_size()  # number of calls to the objective function
-        parameter = Parameter(budget=budget)
+        parameter = Parameter(budget=budget, seed=777)
         sol = Opt.min(objective, parameter)
-        assert sol.get_value() < 1.5
+        assert sol.get_value() < 2
         # sphere
         dim_size = 100  # dimensions
         dim_regs = [[-10, 10]] * dim_size  # dimension range
@@ -259,7 +259,7 @@ class TestRacos(object):
         # continuous
         dim = 100  # dimension
         objective = Objective(ackley, Dimension(dim, [[-1, 1]] * dim, [True] * dim))  # setup objective
-        parameter = Parameter(budget=100 * dim, parallel=True, server_num=2)
+        parameter = Parameter(budget=100 * dim, parallel=True, server_num=2, seed=2)
         # parameter = Parameter(budget=100 * dim, init_samples=[Solution([0] * 100)])  # init with init_samples
         solution_list = ExpOpt.min(objective, parameter, repeat=1)
         for solution in solution_list:
