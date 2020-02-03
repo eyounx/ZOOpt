@@ -1,3 +1,5 @@
 numpy
 matplotlib
+liac-arff
+gym
 
