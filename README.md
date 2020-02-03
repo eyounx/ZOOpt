@@ -73,7 +73,8 @@ which looks like
 We can also use `ExpOpt` to repeat the optimization for performance analysis, which will calculate the mean and standard deviation of multiple optimization results while automatically visualizing the optimization progress.
 
 ```python
-solution_list = ExpOpt.min(obj, Parameter(budget=100*dim), repeat=3, plot=True, plot_file="progress.png")
+solution_list = ExpOpt.min(obj, Parameter(budget=100*dim), repeat=3,
+                           plot=True, plot_file="progress.png")
 
 for solution in solution_list:
 		print(solution.get_x(), solution.get_value())

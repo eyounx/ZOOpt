@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='zoopt',
-    version='0.2.3',
+    version='0.3.0',
     description=(
         'A Python Package for Zeroth-Order Optimization'
     ),
@@ -34,7 +34,5 @@ setup(
     install_requires=[
         'numpy',
         'matplotlib',
-        'liac-arff',
-        'gym'
     ]
 )
