@@ -6,7 +6,7 @@ ZOOpt is a python package for Zeroth-Order Optimization.
 
 Zeroth-order optimization (a.k.a. derivative-free optimization/black-box optimization) does not rely on the gradient of the objective function, but instead, learns from samples of the search space. It is suitable for optimizing functions that are nondifferentiable, with many local minima, or even unknown but only testable.
 
-ZOOpt implements some state-of-the-art zeroth-order optimization methods and their parallel versions. Users only need to add serveral keywords to use parallel optimization on a single machine. For large-scale distributed optimization across multiple machines, please refer to [Distributed ZOOpt](https://github.com/eyounx/ZOOsrv).  
+ZOOpt implements some state-of-the-art zeroth-order optimization methods and their parallel versions. Users only need to add several keywords to use parallel optimization on a single machine. For large-scale distributed optimization across multiple machines, please refer to [Distributed ZOOpt](https://github.com/eyounx/ZOOsrv).  
 
 **Documents**: [Tutorial of ZOOpt](http://zoopt.readthedocs.io/en/latest/index.html)
 
