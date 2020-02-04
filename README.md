@@ -27,7 +27,7 @@ $ python setup.py build
 $ python setup.py install
 ```
 
-### A simple example
+## A simple example
 
 We define the Ackley function for minimization (note that this function is for arbitrary dimensions, determined by the solution)
 
@@ -75,7 +75,6 @@ We can also use `ExpOpt` to repeat the optimization for performance analysis, wh
 ```python
 solution_list = ExpOpt.min(obj, Parameter(budget=100*dim), repeat=3,
                            plot=True, plot_file="progress.png")
-
 for solution in solution_list:
 		print(solution.get_x(), solution.get_value())
 
@@ -88,8 +87,8 @@ More examples are available in the `example` fold.
 ## [release 0.3](https://github.com/eyounx/ZOOpt/releases/tag/v0.3)
 
 - Add a parallel implementation of SRACOS, which accelarates the optimization by asynchronous parallelization.
-
 - Add a function that enables users to set  a customized stop criteria for the optimization.
+- Rewrite the documentation to make it easier to follow.
 
 ## [release 0.2](https://github.com/eyounx/ZOOpt/releases/tag/v0.2.1)
 
