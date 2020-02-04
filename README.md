@@ -83,7 +83,7 @@ for solution in solution_list:
 
 More examples are available in the `example` fold.
 
-# Single thread version releases
+# Releases
 
 ## [release 0.3](https://github.com/eyounx/ZOOpt/releases/tag/v0.3)
 
