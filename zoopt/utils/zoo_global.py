@@ -45,6 +45,6 @@ class Global:
 
 gl = Global()
 # constants
-pos_inf = float('Inf')
-neg_inf = float('-Inf')
-nan = float('Nan')
+pos_inf = np.inf
+neg_inf = -np.inf
+nan = np.nan
