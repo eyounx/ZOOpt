@@ -4,9 +4,11 @@ This module contains the class Solution.
 Author:
     Yu-Ren Liu, Xiong-Hui Chen
 """
-from zoopt.utils.zoo_global import pos_inf, neg_inf, nan, gl
-from zoopt.utils.tool_function import ToolFunction
 import copy
+
+import numpy as np
+from zoopt.utils.tool_function import ToolFunction
+from zoopt.utils.zoo_global import pos_inf, neg_inf, nan, gl
 
 
 class Solution:
@@ -80,7 +82,7 @@ and attachment
         """
         sol_x = sol.get_x()
         sol_value = sol.get_value()
-        if sol_value != nan and self.__value != nan:
+        if not np.isnan(sol_value) and not np.isnan(self.__value):
             if abs(self.__value - sol_value) > gl.precision:
                 return False
         if len(self.__x) != len(sol_x):
