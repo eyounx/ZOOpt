@@ -82,7 +82,7 @@ and attachment
         """
         sol_x = sol.get_x()
         sol_value = sol.get_value()
-        if not np.isnan(sol_value) and not np.isnan(self.__value):
+        if sol_value != nan and self.__value != nan:
             if abs(self.__value - sol_value) > gl.precision:
                 return False
         if len(self.__x) != len(sol_x):
