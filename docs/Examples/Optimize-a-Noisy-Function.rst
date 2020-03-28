@@ -53,6 +53,7 @@ Then, define a corresponding *objective* object.
     dim_regs = [[-1, 1]] * dim_size  # dimension range
     dim_tys = [True] * dim_size  # dimension type : real
     dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
+    # dim = Dimension2([(ValueType.CONTINUOUS, [-1, 1], 1e-6)]*dim_size)  # another way to form up the dimension object
     objective = Objective(ackley_noise_func, dim)  # form up the objective function
 
 Re-sampling

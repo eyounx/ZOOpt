@@ -1,4 +1,4 @@
-from zoopt.dimension import Dimension
+from zoopt.dimension import Dimension, Dimension2, ValueType
 from zoopt.objective import Objective
 from zoopt.opt import Opt
 from zoopt.parameter import Parameter

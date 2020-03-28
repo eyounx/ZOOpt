@@ -74,18 +74,20 @@ Then, use ZOOpt to optimize a 100-dimension Ackley function:
 
 .. code:: python
 
-    from zoopt import Dimension, Objective, Parameter, Opt, ExpOpt
+    from zoopt import Dimension, ValueType, Dimension2, Objective, Parameter, Opt, ExpOpt
 
-    dim = 100  # dimension
-    obj = Objective(ackley, Dimension(dim, [[-1, 1]]*dim, [True]*dim))
+    dim_size = 100  # dimension
+    dim = Dimension(dim_size, [[-1, 1]]*dim_size, [True]*dim_size)  # or dim = Dimension2([(ValueType.CONTINUOUS, [-1, 1], 1e-6)]*dim_size)
+    obj = Objective(ackley, dim)
     # perform optimization
-    solution = Opt.min(obj, Parameter(budget=100*dim))
+    solution = Opt.min(obj, Parameter(budget=100*dim_size))
     # print the solution
     print(solution.get_x(), solution.get_value())
     # parallel optimization for time-consuming tasks
-    solution = Opt.min(obj, Parameter(budget=100*dim, parallel=True, server_num=3))
-    
-For a few seconds, the optimization is done. Then, we can visualize the optimization progress
+    solution = Opt.min(obj, Parameter(budget=100*dim_size, parallel=True, server_num=3))
+
+Note that two classes are provided for constructing dimensions, feel free to try them.
+For a few seconds, the optimization is done. Then, we can visualize the optimization progress.
 
 .. code:: python
 

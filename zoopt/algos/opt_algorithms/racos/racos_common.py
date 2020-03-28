@@ -3,6 +3,9 @@ This module contains the class RacosCommon, which is a common part in Racos, SRa
 
 Author:
     Yu-Ren Liu
+
+Updated by:
+    Ze-Wen Li
 """
 
 import copy, math
@@ -141,6 +144,16 @@ class RacosCommon:
             t += 1
         self.selection()
         return
+
+    def tune_init_attribute(self):
+        """
+        Init samples for Tune.
+
+        :return: sample x
+        """
+        self._parameter.set_negative_size(self._parameter.get_train_size() - self._parameter.get_positive_size())
+        x, distinct_flag = self.distinct_sample(self._objective.get_dim(), self._data, data_num=1)
+        return x
 
     def selection(self):
         """

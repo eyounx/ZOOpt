@@ -34,6 +34,7 @@ Then, define corresponding *objective* and *parameter*.
             dim_regs.append([0, 100])
             dim_tys.append(False)
     dim = Dimension(dim_size, dim_regs, dim_tys)
+    # dim = Dimension2([(ValueType.CONTINUOUS, [0, 1], 1e-6), (ValueType.DISCRETE, [0, 100], False)] * (dim_size/2))
     objective = Objective(sphere_mixed, dim)  # form up the objective function
 
 .. code:: python
@@ -52,7 +53,7 @@ The whole process lists below.
 .. code:: python
 
     from simple_function import sphere_mixed
-    from zoopt import Dimension, Objective, Parameter, ExpOpt
+    from zoopt import Dimension, ValueType, Dimension2, Objective, Parameter, ExpOpt
 
 
     # mixed optimization
@@ -77,6 +78,7 @@ The whole process lists below.
                 dim_regs.append([0, 100])
                 dim_tys.append(False)
         dim = Dimension(dim_size, dim_regs, dim_tys)
+        # dim = Dimension2([(ValueType.CONTINUOUS, [0, 1], 1e-6), (ValueType.DISCRETE, [0, 100], False)] * (dim_size/2)
         objective = Objective(sphere_mixed, dim)  # form up the objective function
         budget = 100 * dim_size  # the number of calls to the objective function
         parameter = Parameter(budget=budget)
