@@ -47,16 +47,17 @@ Ackley function is a classical function with many local minima. In 2-dimension, 
  Then, use ZOOpt to optimize a 100-dimension Ackley function:
 
 ```python
-from zoopt import Dimension, Objective, Parameter, Opt, ExpOpt
+from zoopt import Dimension, ValueType, Dimension2, Objective, Parameter, Opt, ExpOpt
 
-dim = 100  # dimension
-obj = Objective(ackley, Dimension(dim, [[-1, 1]]*dim, [True]*dim))
+dim_size = 100  # dimension size
+dim = Dimension(dim_size, [[-1, 1]]*dim_size, [True]*dim_size)  # dim = Dimension2([(ValueType.CONTINUOUS, [-1, 1], 1e-6)]*dim_size)
+obj = Objective(ackley, dim)
 # perform optimization
-solution = Opt.min(obj, Parameter(budget=100*dim))
+solution = Opt.min(obj, Parameter(budget=100*dim_size))
 # print the solution
 print(solution.get_x(), solution.get_value())
 # parallel optimization for time-consuming tasks
-solution = Opt.min(obj, Parameter(budget=100*dim, parallel=True, server_num=3))
+solution = Opt.min(obj, Parameter(budget=100*dim_size, parallel=True, server_num=3))
 ```
 
 For a few seconds, the optimization is done. Then, we can visualize the optimization progress
@@ -73,7 +74,7 @@ which looks like
 We can also use `ExpOpt` to repeat the optimization for performance analysis, which will calculate the mean and standard deviation of multiple optimization results while automatically visualizing the optimization progress.
 
 ```python
-solution_list = ExpOpt.min(obj, Parameter(budget=100*dim), repeat=3,
+solution_list = ExpOpt.min(obj, Parameter(budget=100*dim_size), repeat=3,
                            plot=True, plot_file="progress.png")
 for solution in solution_list:
 		print(solution.get_x(), solution.get_value())
