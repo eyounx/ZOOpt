@@ -10,7 +10,7 @@ Parameters in ``Dimension``, ``Objective`` and ``Parameter``
 ------------------------------------------------------------
 
 To handle different tasks, users are to set specific parameters in
-``Dimension``, ``Objective`` and ``Parameter`` objects. Constructors of
+``Dimension`` (or ``Dimension2``), ``Objective`` and ``Parameter`` objects. Constructors of
 these classes are listed here for looking up. This part can be skipped
 if you don't want to know all details of the parameters in these
 classes.
@@ -37,7 +37,29 @@ Dimension
    value in ``order`` is effective only when this dimension is discrete.
    By default, ``order=[False] * size``. Setting ```order`` for discrete optimization
    problems which have ordered relations in their search space, can increase the  optimization
-   performance. 
+   performance.
+
+Dimension2
+>>>>>>>>>>
+
+.. code:: python
+
+    class Dimension2:
+        """
+        This class is another format to describe dimension information of the search space.
+        """
+         def __init__(self, dim_list=[]):
+
+-  ``dim_list`` is a list of tuples. Each tuple has three arguments. For continuous dimensions, arguments are
+   ``(type, range, float_precision)``. ``type`` indicates the continuity of the dimension,
+   which should be set to ``ValueType.CONTINUOUS``. ``range`` is a list that indicates the search space.
+   ``float_precision`` indicates the precision of the dimension, e.g., if ``float_precision``
+   is set to ``1e-6``, ``0.001``, or ``10``, the answer will be accurate to six decimal places,
+   three decimal places, or tens places, respectively. For discrete dimensions, arguments are
+   ``(type, range, has_partial_order)``. ``type`` indicates the continuity of the dimension,
+   which should be set to ``ValueType.DISCRETE``. ``range`` is a list that indicates the search space.
+   ``has_partial_order`` indicates whether this dimension is ordered. ``True`` is for an ordered
+   relation and ``False`` means not.
 
 Objective
 >>>>>>>>>>
@@ -52,7 +74,7 @@ Objective
 
 -  ``func`` is the objective function to be optimized. Indispensable
    parameter for all tasks.
--  ``dim`` is a ``Dimension`` object describing information of the
+-  ``dim`` is a ``Dimension`` (or ``Dimension2``) object describing information of the
    search space. Indispensable parameter for all tasks.
 -  ``constraint`` is set for subset selection algorithm ``POSS``.
    Optional parameter.
@@ -135,6 +157,7 @@ which means it's search space is continuous.
 
     dim_size = 10
     dim = Dimension(dim_size, [[-1, 1]] * dim_size, [True] * dim_size)
+    # dim = Dimension2([(ValueType.CONTINUOUS, [-1, 1], 1e-6)] * dim_size)
 
 Optimize a function with the discrete search space
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -146,6 +169,7 @@ In this example, ``ty`` of the ``Dimension`` object should be set
 
     dim_size = 10
     dim = Dimension(dim_size, [[-1, 1]] * dim_size, [False] * dim_size)
+    # dim = Dimension2([(ValueType.DISCRETE, [-1, 1], False)] * dim_size)
 
 If the search space of a dimension is discrete and has partial order
 relation, ``order`` of this dimension should be set to ``True``.
@@ -154,6 +178,7 @@ relation, ``order`` of this dimension should be set to ``True``.
 
     dim_size = 10
     dim = Dimension(dim_size, [[-1, 1]] * dim_size, [False] * dim_size, [True] * dim_size)
+    # dim = Dimension2([(ValueType.DISCRETE, [-1, 1], True)] * dim_size)
 
 Optimize a function with the mixed search space
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -164,6 +189,9 @@ discrete subspace.
 .. code:: python
 
     dim = Dimension(3, [[-1, 1]] * 3, [False, False, True], [False, True, False])
+    # dim = Dimension2([(ValueType.DISCRETE, [-1, 1], False),
+    #                   (ValueType.DISCRETE, [-1, 1], True),
+    #                   (ValueType.CONTINUOUS, [-1, 1], 1e-6)])
 
 It means the dimension size is 3, the range of each dimension is [-1,
 1]. The first dimension is discrete and does not have partial order

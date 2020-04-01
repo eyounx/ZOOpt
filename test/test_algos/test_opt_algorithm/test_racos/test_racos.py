@@ -1,6 +1,6 @@
 from zoopt.algos.opt_algorithms.racos.racos_common import RacosCommon
 from zoopt.algos.opt_algorithms.racos.sracos import SRacos
-from zoopt import Solution, Objective, Dimension, Parameter, Opt, ExpOpt
+from zoopt import Solution, Objective, Dimension, Parameter, Opt, ExpOpt, ValueType, Dimension2
 import numpy as np
 
 
@@ -223,6 +223,46 @@ class TestRacos(object):
         sol.print_solution()
         assert sol.get_value() < 200
 
+    def test_racos_performance2(self):
+        # continuous
+        dim = 100  # dimension
+        one_dim = (ValueType.CONTINUOUS, [-1, 1], 1e-6)
+        dim_list = [(one_dim)] * dim
+        objective = Objective(ackley, Dimension2(dim_list))  # setup objective
+        parameter = Parameter(budget=100 * dim, sequential=False, seed=1)
+        solution = ExpOpt.min(objective, parameter)[0]
+        assert solution.get_value() < 0.2
+        dim = 500
+        dim_list = [(one_dim)] * dim
+        objective = Objective(ackley, Dimension2(dim_list))  # setup objective
+        parameter = Parameter(budget=10000, sequential=False, seed=1)
+        sol = Opt.min(objective, parameter)
+        sol.print_solution()
+        assert solution.get_value() < 2
+        # discrete
+        # setcover
+        problem = SetCover()
+        dim_size = 20
+        one_dim = (ValueType.DISCRETE, [0, 1], False)
+        dim_list = [(one_dim)] * dim_size
+        dim = Dimension2(dim_list)  # the dim is prepared by the class
+        objective = Objective(problem.fx, dim)  # form up the objective function
+        budget = 100 * dim.get_size()  # number of calls to the objective function
+        parameter = Parameter(budget=budget, sequential=False, seed=777)
+        sol = Opt.min(objective, parameter)
+        sol.print_solution()
+        assert sol.get_value() < 2
+        # sphere
+        dim_size = 100  # dimensions
+        one_dim = (ValueType.DISCRETE, [-10, 10], True)
+        dim_list = [(one_dim)] * dim_size
+        dim = Dimension2(dim_list)  # form up the dimension object
+        objective = Objective(sphere_discrete_order, dim)  # form up the objective function
+        parameter = Parameter(budget=10000, sequential=False, seed=77)
+        sol = Opt.min(objective, parameter)
+        sol.print_solution()
+        assert sol.get_value() < 200
+
     def test_sracos_performance(self):
         # continuous
         dim = 100  # dimension
@@ -250,6 +290,44 @@ class TestRacos(object):
         dim_tys = [False] * dim_size  # dimension type : integer
         dim_order = [True] * dim_size
         dim = Dimension(dim_size, dim_regs, dim_tys, order=dim_order)  # form up the dimension object
+        objective = Objective(sphere_discrete_order, dim)  # form up the objective function
+        parameter = Parameter(budget=10000)
+        sol = Opt.min(objective, parameter)
+        assert sol.get_value() < 200
+
+    def test_sracos_performance2(self):
+        # continuous
+        dim = 100  # dimension
+        one_dim = (ValueType.CONTINUOUS, [-1, 1], 1e-6)
+        dim_list = [(one_dim)] * dim
+        objective = Objective(ackley, Dimension2(dim_list))
+        parameter = Parameter(budget=100 * dim, seed=77)
+        solution = Opt.min(objective, parameter)
+        assert solution.get_value() < 0.2
+        dim = 500
+        one_dim = (ValueType.CONTINUOUS, [-1, 1], 1e-6)
+        dim_list = [(one_dim)] * dim
+        objective = Objective(ackley, Dimension2(dim_list))  # setup objective
+        parameter = Parameter(budget=10000, seed=777)
+        solution = Opt.min(objective, parameter)
+        assert solution.get_value() < 1.5
+        # discrete
+        # setcover
+        problem = SetCover()
+        dim_size = 20
+        one_dim = (ValueType.DISCRETE, [0, 1], False)
+        dim_list = [(one_dim)] * dim_size
+        dim = Dimension2(dim_list)  # the dim is prepared by the class
+        objective = Objective(problem.fx, dim)  # form up the objective function
+        budget = 100 * dim.get_size()  # number of calls to the objective function
+        parameter = Parameter(budget=budget, seed=777)
+        sol = Opt.min(objective, parameter)
+        assert sol.get_value() < 2
+        # sphere
+        dim_size = 100  # dimensions
+        one_dim = (ValueType.DISCRETE, [-10, 10], True)
+        dim_list = [(one_dim)] * dim_size
+        dim = Dimension2(dim_list)  # form up the dimension object
         objective = Objective(sphere_discrete_order, dim)  # form up the objective function
         parameter = Parameter(budget=10000)
         sol = Opt.min(objective, parameter)

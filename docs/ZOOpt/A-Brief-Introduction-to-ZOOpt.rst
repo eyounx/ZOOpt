@@ -8,11 +8,11 @@ ZOOpt Components
 ----------------------------------------
 
 In ZOOpt, an optimization problem is abstracted into several components:
-``Objective``, ``Dimension``, ``Parameter``, and ``Solution``, each is a
+``Objective``, ``Dimension`` (or ``Dimension2``), ``Parameter``, and ``Solution``, each is a
 Python class.
 
 An ``Objective`` object is initialized with a function and a
-``Dimension`` object, where the ``Dimension`` object
+``Dimension`` (or ``Dimension2``) object, where the ``Dimension`` (or ``Dimension2``) object
 defines the dimension size and boundaries of the search space. A
 ``Parameter`` object specifies algorithm parameters. ZOOpt is able to
 automatically choose parameters for a range of problems, leaving only
@@ -29,7 +29,7 @@ Use ZOOpt step by step
 Using ZOOpt for your optimization tasks contains four steps
 
 -  Define an objective function ``f``
--  Define a ``Dimension`` object ``dim``, then use ``f`` and ``dim`` to
+-  Define a ``Dimension`` (or ``Dimension2``) object ``dim``, then use ``f`` and ``dim`` to
    construct an ``Objective`` object
 -  Define a ``Parameter`` object
 -  Use ``Opt.min`` or ``ExpOpt.min`` to optimize
@@ -62,10 +62,10 @@ The objective function can also be a member function of a class, so that
 it can be much more complex than a single function. In this case, the
 function should be defined to satisfy the interface ``def func(self, solution):``.
 
-Define a ``Dimension`` object ``dim``, then use ``f`` and ``dim`` to construct an ``Objective`` object
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Define a ``Dimension`` (or ``Dimension2``) object ``dim``, then use ``f`` and ``dim`` to construct an ``Objective`` object
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A ``Dimension`` object ``dim`` and an objective function ``f`` are
+A ``Dimension`` (or ``Dimension2``) object ``dim`` and an objective function ``f`` are
 necessary components to construct an ``Objective`` object, which is one
 of the two requisite parameters to call ``Opt.min`` function.
 
@@ -87,7 +87,7 @@ an order relation and ``False`` means not. The boolean value in
 whereby ZOOpt can make full use of the order relation if it is set to be True.
 For example, we can specify ``order=[True] * size`` in the optimization of the Sphere function with discrete search space [-10, 10].
 
-In the optmization of the Sphere function with continous search space, ``dim`` looks like
+In the optmization of the Sphere function with continuous search space, ``dim`` looks like
 
 .. code:: python
 
@@ -96,6 +96,37 @@ In the optmization of the Sphere function with continous search space, ``dim`` l
 
 It means that the dimension size is 100, the range of each dimension is
 [-1, 1] and is continuous.
+
+Besides, if you prefer to put together the info of each dimension,
+``Dimension2`` is a good choice. It looks like:
+
+.. code:: python
+
+    def __init__(self, dim_list=[]):
+
+Where ``dim_list`` is a list of tuples.
+Each tuple has three arguments. For continuous dimensions, arguments are
+``(type, range, float_precision)``. ``type`` indicates the continuity of the dimension,
+which should be set to ``ValueType.CONTINUOUS``. ``range`` is a list that indicates the search space.
+``float_precision`` indicates the precision of the dimension, e.g., if ``float_precision``
+is set to ``1e-6``, ``0.001``, or ``10``, the answer will be accurate to six decimal places,
+three decimal places, or tens places. For discrete dimensions, arguments are
+``(type, range, has_partial_order)``. ``type`` indicates the continuity of the dimension,
+which should be set to ``ValueType.DISCRETE``. ``range`` is a list that indicates the search space.
+``has_partial_order`` indicates whether this dimension is ordered. ``True`` is for an ordered
+relation and ``False`` means not.
+
+In the optmization of the Sphere function with continuous search space, ``dim`` looks like
+
+.. code:: python
+
+    dim_size = 100
+    one_dim = (ValueType.CONTINUOUS, [-1, 1], 1e-6)
+    dim_list = [one_dim] * dim_size
+    dim = Dimension2(dim_list)
+
+It means that the dimension size is 100, each dimension is continuous, ranging from -1 to 1,
+with two decimal precision.
 
 Then use ``dim`` and ``f`` to construct an Objective object.
 

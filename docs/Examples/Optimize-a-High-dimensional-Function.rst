@@ -61,7 +61,7 @@ The whole process lists below.
 .. code:: python
 
     from simple_function import sphere_sre
-    from zoopt import Dimension, Objective, Parameter, ExpOpt
+    from zoopt import Dimension, ValueType, Dimension2, Objective, Parameter, ExpOpt
 
 
     def sphere_continuous_sre():
@@ -75,6 +75,7 @@ The whole process lists below.
         dim_regs = [[-1, 1]] * dim_size  # dimension range
         dim_tys = [True] * dim_size  # dimension type : real
         dim = Dimension(dim_size, dim_regs, dim_tys)  # form up the dimension object
+        # dim = Dimension2([(ValueType.CONTINUOUS, [-1, 1], 1e-6)]*dim_size)
         objective = Objective(sphere_sre, dim)  # form up the objective function
 
         # setup algorithm parameters

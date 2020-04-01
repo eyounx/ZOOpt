@@ -12,7 +12,7 @@ We define the SetCover function in fx.py for minimization.
 
 .. code:: python
 
-    from zoopt.dimension import Dimension
+    from zoopt.dimension import Dimension, ValueType, Dimension2
 
     class SetCover:
         """
@@ -88,6 +88,14 @@ We define the SetCover function in fx.py for minimization.
             dim_tys = [False] * dim_size
             return Dimension(dim_size, dim_regs, dim_tys)
 
+        @property
+        def dim2(self):
+            dim_size = 20
+            one_dim = (ValueType.DISCRETE, [0, 1], False)
+            dim_list = [one_dim] * dim_size
+            return Dimension2(dim_list)
+
+
 Then, Define corresponding *objective* and *parameter*.
 
 .. code:: python
@@ -115,7 +123,7 @@ The whole process lists below.
 .. code:: python
 
     from fx import SetCover
-    from zoopt import Dimension, Objective, Parameter, ExpOpt
+    from zoopt import Dimension, ValueType, Dimension2, Objective, Parameter, ExpOpt
 
 
     def minimize_setcover_discrete():
@@ -124,6 +132,7 @@ The whole process lists below.
         """
         problem = SetCover()
         dim = problem.dim  # the dim is prepared by the class
+        # dim = problem.dim2
         objective = Objective(problem.fx, dim)  # form up the objective function
 
         budget = 100 * dim.get_size()  # number of calls to the objective function
