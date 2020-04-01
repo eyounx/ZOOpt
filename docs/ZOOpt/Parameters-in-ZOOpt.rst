@@ -50,12 +50,12 @@ Dimension2
         """
          def __init__(self, dim_list=[]):
 
--  ``dim_list`` is a list of tuples.Each tuple has three arguments. For continuous dimensions, arguments are
+-  ``dim_list`` is a list of tuples. Each tuple has three arguments. For continuous dimensions, arguments are
    ``(type, range, float_precision)``. ``type`` indicates the continuity of the dimension,
    which should be set to ``ValueType.CONTINUOUS``. ``range`` is a list that indicates the search space.
    ``float_precision`` indicates the precision of the dimension, e.g., if ``float_precision``
    is set to ``1e-6``, ``0.001``, or ``10``, the answer will be accurate to six decimal places,
-   three decimal places, or tens places. For discrete dimensions, arguments are
+   three decimal places, or tens places, respectively. For discrete dimensions, arguments are
    ``(type, range, has_partial_order)``. ``type`` indicates the continuity of the dimension,
    which should be set to ``ValueType.DISCRETE``. ``range`` is a list that indicates the search space.
    ``has_partial_order`` indicates whether this dimension is ordered. ``True`` is for an ordered
