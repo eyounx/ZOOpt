@@ -3,6 +3,9 @@ This module contains the class SRacos, which is the sequential version of Racos 
 
 Author:
     Yu-ren Liu
+
+Updated by:
+    Ze-Wen Li
 """
 
 import time
