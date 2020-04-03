@@ -16,7 +16,7 @@ from zoopt.algos.opt_algorithms.racos.racos_classification import RacosClassific
 from zoopt.algos.opt_algorithms.racos.racos_common import RacosCommon
 from zoopt.solution import Solution
 from zoopt.utils.tool_function import ToolFunction
-
+from zoopt import Objective
 
 class SRacos(RacosCommon):
     """
