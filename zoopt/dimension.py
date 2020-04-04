@@ -240,11 +240,37 @@ class Dimension2:
                                         e.g.: (ValueType.DISCRETE, [0, 1], False)
 
         """
+        gl.float_precisions = []
         self._size = len(dim_list)
         self._regions = list(map(lambda x: x[1], dim_list))
         # True means continuous, False means discrete
         self._types = list(map(lambda x: x[0] == True, dim_list))
         self._order_or_precision = list(map(lambda x: x[2], dim_list))
+
+        for _dim in dim_list:
+            if _dim[0] == ValueType.CONTINUOUS:
+                _str_x = str(_dim[2])
+                _precision_len = None
+                if _dim[2] == 1:
+                    _precision_len = 0
+                elif _dim[2] > 1:
+                    if 'e+' in _str_x:
+                        _precision_len = 0 - int(_str_x.split('e+')[-1])
+                    else:
+                        _precision_len = 1 - len(str(int(_dim[2])))
+                else:
+                    assert _dim[2] != 0, "input float_precision must not be 0!"
+                    if 'e-' in _str_x:
+                        _precision_len = int(_str_x.split('e-')[-1])
+                    elif '.' in _str_x:
+                        _precision_len = len(_str_x.split('.')[-1])
+                    else:
+                        ToolFunction.log('sample wrong, input float_precision is invalid!')
+
+                gl.float_precisions.append(_precision_len)
+            else:
+                gl.float_precisions.append(None)
+
         return
 
     @staticmethod
@@ -322,19 +348,7 @@ class Dimension2:
         x = []
         for i in range(self._size):
             if self._types[i]:
-                __str_x = str(self._order_or_precision[i])
-                __precision_len = None
-                if 'e' in __str_x or 'E' in __str_x:
-                    __precision_len = int(__str_x.split('e-')[-1])
-                elif '.' in __str_x:
-                    __precision_len = len(__str_x.split('.')[-1])
-                elif self._order_or_precision[i] == 1:
-                    __precision_len = 0
-                elif self._order_or_precision[i] % 10 == 0 and self._order_or_precision[i] != 0:
-                    __precision_len = 1 - len(__str_x)
-                else:
-                    ToolFunction.log('sample wrong, float_precision is invalid!')
-                value = round(np.random.uniform(self._regions[i][0], self._regions[i][1]), __precision_len)
+                value = round(np.random.uniform(self._regions[i][0], self._regions[i][1]), gl.float_precisions[i])
             else:
                 value = np.random.randint(self._regions[i][0], self._regions[i][1] + 1)
             x.append(value)

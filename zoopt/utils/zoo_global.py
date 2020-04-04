@@ -3,6 +3,9 @@ This module contains the class Global.
 
 Author:
     Yu-Ren Liu
+
+Updated by:
+    Ze-Wen Li
 """
 
 from random import Random
@@ -20,6 +23,7 @@ class Global:
         """
         # rand is the random object used by all files
         self.precision = 1e-17
+        self.float_precisions = []
         # rand.seed(100)
 
     def set_seed(self, seed):

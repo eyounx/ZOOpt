@@ -71,20 +71,6 @@ class TestDimension2(object):
             (ValueType.CONTINUOUS, [2, 3], 1e-6)
         ]))
 
-    def test_set_region(self):
-        dim = Dimension2([(ValueType.CONTINUOUS, [1, 2], 1e-6),
-                          (ValueType.CONTINUOUS, [2, 3], 1e-6)])
-        dim.set_region(1, [-1, 1], True)
-        assert dim.equal(Dimension2([(ValueType.CONTINUOUS, [1, 2], 1e-6),
-                                     (ValueType.CONTINUOUS, [-1, 1], 1e-6)]))
-
-    def test_set_regions(self):
-        dim = Dimension2([(ValueType.CONTINUOUS, [1, 2], 1e-6),
-                          (ValueType.CONTINUOUS, [2, 3], 1e-6)])
-        dim.set_regions([[-1, 1], [-1, 1]], [True, True])
-        assert dim.equal(Dimension2([(ValueType.CONTINUOUS, [-1, 1], 1e-6),
-                                     (ValueType.CONTINUOUS, [-1, 1], 1e-6)]))
-
     def test_limited_space(self):
         dim1 = Dimension2([(ValueType.CONTINUOUS, [-1, 1], 1e-6),
                            (ValueType.CONTINUOUS, [-1, 1], 1e-6)])
