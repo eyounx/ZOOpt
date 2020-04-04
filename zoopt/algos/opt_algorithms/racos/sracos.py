@@ -18,6 +18,7 @@ from zoopt.solution import Solution
 from zoopt.utils.tool_function import ToolFunction
 from zoopt import Objective
 
+
 class SRacos(RacosCommon):
     """
     The class SRacos represents Sequential Racos algorithm. It's inherited from RacosCommon.

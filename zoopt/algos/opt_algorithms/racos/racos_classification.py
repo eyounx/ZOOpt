@@ -12,6 +12,7 @@ from zoopt.dimension import Dimension, Dimension2
 from zoopt.utils.tool_function import ToolFunction
 import copy
 import numpy as np
+from zoopt.utils.zoo_global import gl
 
 
 class RacosClassification:
@@ -178,21 +179,8 @@ class RacosClassification:
                     x_negative = self.__negative_solution[np.random.randint(0, len_negative)]
                     x_neg_k = x_negative.get_x_index(k)
 
-                    _str_x = str(order_or_precision[k])
-                    _precision_len = None
-                    if 'e' in _str_x or 'E' in _str_x:
-                        _precision_len = int(_str_x.split('e-')[-1])
-                    elif '.' in _str_x:
-                        _precision_len = len(_str_x.split('.')[-1])
-                    elif order_or_precision[k] == 1:
-                        _precision_len = 0
-                    elif order_or_precision[k] % 10 == 0 and order_or_precision[k] != 0:
-                        _precision_len = 1 - len(_str_x)
-                    else:
-                        ToolFunction.log('float_precision is invalid!')
-
                     if x_pos_k < x_neg_k:
-                        r = round(np.random.uniform(x_pos_k, x_neg_k), _precision_len)
+                        r = round(np.random.uniform(x_pos_k, x_neg_k), gl.float_precisions[k])
                         if r < self.__sample_region[k][1]:
                             self.__sample_region[k][1] = r
                             i = 0
@@ -205,7 +193,7 @@ class RacosClassification:
                                 else:
                                     i += 1
                     else:
-                        r = round(np.random.uniform(x_neg_k, x_pos_k), _precision_len)
+                        r = round(np.random.uniform(x_neg_k, x_pos_k), gl.float_precisions[k])
                         if r > self.__sample_region[k][0]:
                             self.__sample_region[k][0] = r
                             i = 0
@@ -295,25 +283,11 @@ class RacosClassification:
             return x
         elif type(self.__solution_space) == Dimension2:
             x = copy.deepcopy(self.__x_positive.get_x())
-            all_precision = self.__solution_space.get_order_or_precision()
             for index in self.__label_index:
                 # continuous
                 if self.__solution_space.get_type(index):
-                    _str_x = str(all_precision[index])
-                    _precision_len = None
-                    if 'e' in _str_x or 'E' in _str_x:
-                        _precision_len = int(_str_x.split('e-')[-1])
-                    elif '.' in _str_x:
-                        _precision_len = len(_str_x.split('.')[-1])
-                    elif all_precision[index] == 1:
-                        _precision_len = 0
-                    elif all_precision[index] % 10 == 0 and all_precision[index] != 0:
-                        _precision_len = 1 - len(_str_x)
-                    else:
-                        ToolFunction.log('sample wrong, float_precision is invalid!')
-
                     x[index] = round(np.random.uniform(self.__sample_region[index][0], self.__sample_region[index][1]),
-                                     _precision_len)
+                                     gl.float_precisions[index])
                 # discrete
                 else:
                     x[index] = np.random.randint(self.__sample_region[index][0], self.__sample_region[index][1] + 1)
