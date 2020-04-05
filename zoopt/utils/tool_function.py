@@ -4,7 +4,7 @@ This module contains the class ToolFunction.
 Author:
     Yu-Ren Liu, Yang Yu
 """
-
+from __future__ import print_function
 import pickle
 
 
