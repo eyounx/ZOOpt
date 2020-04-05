@@ -14,7 +14,7 @@ import numpy as np
 import copy
 
 
-class Dimension:
+class Dimension(object):
     """
     This class describes the dimension information of the search space.
     """
@@ -223,7 +223,7 @@ class ValueType(enumerate):
     DISCRETE = 0
 
 
-class Dimension2:
+class Dimension2(object):
     """
     This class describes the dimension information of the search space.
     `Dimension2` has the same function as `Dimension` class, but the format of parameters is different.
