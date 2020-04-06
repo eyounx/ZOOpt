@@ -1,3 +1,5 @@
+The maintenance of ZOOpt has shifted to https://github.com/polixir/ZOOpt . The new version is compatible with [Ray](https://github.com/ray-project/ray).
+
 # ZOOpt
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/eyounx/ZOOpt/blob/master/LICENSE.txt) [![Build Status](https://www.travis-ci.org/eyounx/ZOOpt.svg?branch=master)](https://www.travis-ci.org/eyounx/ZOOpt) [![Documentation Status](https://readthedocs.org/projects/zoopt/badge/?version=latest)](https://zoopt.readthedocs.io/en/latest/?badge=latest) [![codecov](https://codecov.io/gh/AlexLiuyuren/ZOOpt/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexLiuyuren/ZOOpt)
